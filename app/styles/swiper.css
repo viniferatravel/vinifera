@@ -1,0 +1,73 @@
+.swiper-pagination-bullet {
+    background: white !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+  
+  /* Custom Swiper Navigation Buttons */
+  .swiper-button-next, .swiper-button-prev {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .mySwiper {
+    height: 50%;
+    width: 90%;
+  }
+
+  .placesSwiper .swiper-button-next, 
+.placesSwiper .swiper-button-prev {
+    color: black;
+    font-weight: bold;
+}
+
+.placesSwiper .swiper-button-next:after, 
+.placesSwiper .swiper-button-prev:after {
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+}
+
+.placesSwiper .swiper-wrapper {
+    /* gap: 50px; */
+}
+
+  .placesSwiper {
+    height: 50%;
+    width: 90%;
+  }
+
+
+  .placesSwiperPackage {
+    height: 100%;
+    width: 100%;
+  }
+
+
+  .placesSwiperPackage .swiper-button-next, 
+  .placesSwiperPackage .swiper-button-prev {
+    border-radius: 200px;
+    
+    background: white;
+      color: black;
+      font-weight: bold;
+      height: 30px;
+      width: 30px;
+  }
+  
+  .placesSwiperPackage .swiper-button-next:after, 
+  .placesSwiperPackage .swiper-button-prev:after {
+      font-size: 15px;
+      color: black;
+      font-weight: bold;
+  }
+  
+  .placesSwiperPackage .swiper-wrapper {
+      /* gap: 50px; */
+  }

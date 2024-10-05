@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar on small devices */
+html {
+  scroll-behavior: smooth;
+}
+.hide-scrollbar-x {
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@media (max-width: 639px) {
+  /* Tailwind's sm breakpoint */
+  .hide-scrollbar-x::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar-x {
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* Show scrollbar on larger devices */
+@media (min-width: 640px) {
+  /* Tailwind's sm breakpoint */
+  .hide-scrollbar-x {
+    overflow-x: scroll; /* Ensure x-axis scroll is enabled */
+  }
+  .hide-scrollbar-x::-webkit-scrollbar {
+    width: 2px; /* Adjust width for vertical scrollbar */
+  }
+}
+
+.react-datepicker-wrapper {
+  display: block !important;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  75% {
+    transform: translateX(-20px);
+  }
+  90% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Tailwind's lg breakpoint */
+  .shake {
+    animation: shake 1s ease-in-out;
+  }
+}
+
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.form-control {
+  padding-top: 1.8rem !important;
+  padding-bottom: 1.8rem !important;
+  width: 100% !important;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.styled-paragraph {
+  position: relative;
+  padding: 0 20px;
+  text-align: left;
+  margin: 0;
+}
+
+.styled-paragraph::before {
+  content: "";
+  background: url('/image/quote.png') bottom;
+  background-size: cover;
+  width: 19px;
+  height: 14px;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #2c3e50;
+  display: inline-block;
+  margin: 0 10px;
+  transform: rotate(90eg);
+}
+
+.styled-paragraph::after {
+  content: "";
+  background: url('/image/quote.png') bottom;
+  background-size: cover;
+  width: 19px;
+  height: 14px;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #2c3e50;
+  display: inline-block;
+  margin: 0 10px;
+  transform: rotate(180deg);
+}

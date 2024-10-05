@@ -1,0 +1,17 @@
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+  }
+
+  .reviewSwiper .swiper-button-next, 
+  .reviewSwiper .swiper-button-prev {
+    border-radius: 200px;
+    
+    background: whitesmoke;
+      color: black;
+      font-weight: bold;
+      height: 30px;
+      width: 30px;
+  }
+

@@ -7,6 +7,7 @@ import {
 } from '@nextui-org/react';
 import { ref, getDownloadURL } from 'firebase/storage';
 import { storage } from "@/app/config";
+import Swal from 'sweetalert2';
 
 const EmailModal = ({ modalOpen, onCloseModal, selectedPackage }) => {
 
@@ -38,7 +39,12 @@ const EmailModal = ({ modalOpen, onCloseModal, selectedPackage }) => {
 
             const data = await response.json();
             if (response.ok) {
-                alert('Email sent successfully!');
+                // alert('Email sent successfully!');
+                Swal.fire({
+                    title: "Email sent successfully!",
+                    text: "Pleasr check you mail",
+                    icon: "success"
+                });
             } else {
                 // alert(`Error: ${data.message}`);
             }

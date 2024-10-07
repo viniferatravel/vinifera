@@ -4,9 +4,10 @@ import { Check } from "lucide-react"
 import ContactForm from "@/_components/Contact"
 import "@/app/styles/modal.css"
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 
-const CorporateTourEnquiry = ({onSubmitSuccess}) => {
+const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
 
     const [formData, setFormData] = useState({
         name: "",
@@ -28,9 +29,10 @@ const CorporateTourEnquiry = ({onSubmitSuccess}) => {
         }));
     };
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
 
         const abc = async () => {
             const response = await axios.post("/api/send-email", {
@@ -47,7 +49,12 @@ const CorporateTourEnquiry = ({onSubmitSuccess}) => {
             });
             console.log(response.data, "check respobse");
             if (response.data.status === 200) {
-                alert(response.data.message);
+                // alert(response.data.message);
+                Swal.fire({
+                    title: "Response sent successfully",
+                    text: "Team connect with you soon",
+                    icon: "success"
+                });
                 setFormData({
                     name: "",
                     email: "",
@@ -67,23 +74,23 @@ const CorporateTourEnquiry = ({onSubmitSuccess}) => {
 
         // console.log("Form submitted:", formData);
 
-    //     const whatsappMessage = `Hi, I am interested in your service*.
-    
-    // *My details are -* 
-    
-    //   *Name:* ${formData.name},
-    //   *Phone:* ${formData.phone}, 
-    //   *Email:* ${formData.email}, 
-    //   *Company Name:* ${formData.companyname},
-    //   *No of Days:* ${formData.noofdays},
-    //   *Destination:* ${formData.destination},
-    //   *Purpose:* ${formData.purpose},
-    //   *Travel Date:* ${formData.date},
-    //   *Queries:* ${formData.queries}`;
-    //     const whatsappURL = `https://wa.me/7738527031?text=${encodeURIComponent(
-    //         whatsappMessage
-    //     )}`;
-    //     window.open(whatsappURL, "_blank");
+        //     const whatsappMessage = `Hi, I am interested in your service*.
+
+        // *My details are -* 
+
+        //   *Name:* ${formData.name},
+        //   *Phone:* ${formData.phone}, 
+        //   *Email:* ${formData.email}, 
+        //   *Company Name:* ${formData.companyname},
+        //   *No of Days:* ${formData.noofdays},
+        //   *Destination:* ${formData.destination},
+        //   *Purpose:* ${formData.purpose},
+        //   *Travel Date:* ${formData.date},
+        //   *Queries:* ${formData.queries}`;
+        //     const whatsappURL = `https://wa.me/7738527031?text=${encodeURIComponent(
+        //         whatsappMessage
+        //     )}`;
+        //     window.open(whatsappURL, "_blank");
 
         // setFormData({
         //     name: "",
@@ -239,6 +246,7 @@ const PassportTourEnquiry = ({ onSubmitSuccess }) => {
         service: "",
         queries: "",
     });
+    console.log(formData, "formData");
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -253,7 +261,7 @@ const PassportTourEnquiry = ({ onSubmitSuccess }) => {
 
         const abc = async () => {
             const response = await axios.post("/api/send-email", {
-                operation: "passportenquiry",
+                operation: "passportmodalenquiry",
                 name: formData.name,
                 email: formData.email,
                 phone: formData.phone,
@@ -262,7 +270,12 @@ const PassportTourEnquiry = ({ onSubmitSuccess }) => {
             });
             console.log(response.data, "check respobse");
             if (response.data.status === 200) {
-                alert(response.data.message);
+                Swal.fire({
+                    title: "Response sent successfully",
+                    text: "Team connect with you soon",
+                    icon: "success"
+                });
+                // alert(response.data.message);
                 setFormData({
                     name: "",
                     email: "",

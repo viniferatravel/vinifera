@@ -13,13 +13,12 @@ const PassportSchema = new Schema({
         type: String,
         require: true,
     },
-    services: 
+    services: [
         {
-
             type: String,
             require: true,
-
         }
+    ]
     ,
     query: {
         type: String,

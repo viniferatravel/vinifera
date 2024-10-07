@@ -209,6 +209,7 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
               className="h-4 w-4 text-red-600"
               checked={formData.termsAgreed}
               onChange={handleChange}
+              required
             />
             <label className="text-sm">
               I authorize vinifera.com to contact me and have read the Terms and
@@ -222,6 +223,7 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
               name="updatesAgreed"
               checked={formData.updatesAgreed}
               onChange={handleChange}
+              required
             />
             <label className="text-sm">
               I agree to receive updates & offers from vinifera.com.

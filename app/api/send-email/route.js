@@ -115,7 +115,7 @@ export async function POST(request) {
   else if (payload.operation === "passportenquiry") {
     try {
 
-      const { name, email, number, services, textarea } = payload;
+      const { name, email, number, services, query } = payload;
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
@@ -144,7 +144,7 @@ export async function POST(request) {
           <p>Email: ${email}</p>
           <p>Number: ${number}</p>
           <p>services: ${services}</p>
-          <p>textarea: ${textarea}</p>
+          <p>query: ${query}</p>
         `,
       });
 
@@ -152,8 +152,8 @@ export async function POST(request) {
         name: name,
         email: email,
         number: number,
-        services: services.map(service => ({ servicesfield: service })),
-        textarea: textarea,
+        services: services,
+        query: query,
       })
       console.log(newEnquiry, "newEnquiry");
       await newEnquiry.save();
@@ -165,7 +165,7 @@ export async function POST(request) {
       console.error("Error during user registration:", error);
       return NextResponse.json({ status: 500, message: "An error occurred during registration" });
     }
-  } else if(payload.operation === "corporateenquiry") {
+  } else if (payload.operation === "corporateenquiry") {
 
     try {
       console.log("Payload:::::::>", payload)
@@ -286,6 +286,58 @@ export async function POST(request) {
 
       return NextResponse.json({ status: 200, message: "feedback sent successfully" })
 
+    } catch (error) {
+      console.error("Error during user registration:", error);
+      return NextResponse.json({ status: 500, message: "An error occurred during registration" });
+    }
+  }
+  else if (payload.operation === "passportmodalenquiry") {
+    try {
+
+      const { name, email, number, services, query } = payload;
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return NextResponse.json({ status: 400, message: "Invalid email format" });
+      }
+
+      const findEmail = await PassportEnquiry.findOne({ email });
+      if (findEmail) {
+        return NextResponse.json({ status: 401, message: "Email is already present" });
+      }
+
+      // if (!/^\d{10}$/.test(number)) {
+      //   return NextResponse.json({
+      //     status: 402,
+      //     message: "Number must be exactly 10 digits and contain only numeric values"
+      //   });
+      // }
+
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
+        subject: 'Your Received Passport Enquiry',
+        html: `
+          <h2>Contact Form Details</h2>
+          <p>Name: ${name}</p>
+          <p>Email: ${email}</p>
+          <p>Number: ${number}</p>
+          <p>services: ${services}</p>
+          <p>query: ${query}</p>
+        `,
+      });
+
+      const newEnquiry = new PassportEnquiry({
+        name: name,
+        email: email,
+        number: number,
+        services: services,
+        query: query,
+      })
+      console.log(newEnquiry, "newEnquiry");
+      await newEnquiry.save();
+
+      return NextResponse.json({ status: 200, message: "Response sent successfully" })
     } catch (error) {
       console.error("Error during user registration:", error);
       return NextResponse.json({ status: 500, message: "An error occurred during registration" });

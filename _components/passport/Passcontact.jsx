@@ -5,6 +5,7 @@ import Image from "next/image";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Passcontact = () => {
 
@@ -43,11 +44,19 @@ const Passcontact = () => {
             email: passportenquiry.email,
             number: phone,
             services: selectedServices,
-            textarea: passportenquiry.textarea,
+            query: passportenquiry.textarea,
         })
         console.log(response.data, "check response");
         if (response.data.status === 200) {
-            alert(response.data.message)
+            // alert(response.data.message)
+            Swal.fire({
+                title: "Response sent successfully",
+                text: "Team connect with you soon",
+                icon: "success"
+            });
+            setPhone('');
+            setpassportenquiry({ name: "", email: "", textarea: "" });
+            setSelectedServices([])
         }
         else if (response.data.status === 400) {
             alert(response.data.message)
@@ -60,7 +69,6 @@ const Passcontact = () => {
         }
     }
 
-
     return (
         <div>
             <div className='lg:w-[95%] m-auto flex justify-center items-center flex-col lg:flex-row gap-8'>
@@ -71,7 +79,7 @@ const Passcontact = () => {
                         alt="contact-landing"
                         fill
                         className="object-cover w-full h-full rounded-lg"
-                    /> 
+                    />
                 </div>
 
                 <div className='border border-gray-300 w-[80%] lg:w-[30%] rounded-lg p-5 relative bottom-32 lg:bottom-0 lg:translate-x-[-90px] bg-white'>

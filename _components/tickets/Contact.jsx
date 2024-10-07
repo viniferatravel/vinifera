@@ -1,6 +1,7 @@
 'use client'
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Swal from 'sweetalert2';
 
 const Contact = () => {
 
@@ -8,7 +9,7 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    queries:"",
+    queries: "",
   });
 
   const handleChange = (e) => {
@@ -31,7 +32,12 @@ const Contact = () => {
     });
     console.log(response.data, "check respobse");
     if (response.data.status === 200) {
-      alert(response.data.message);
+      // alert(response.data.message);
+      Swal.fire({
+        title: "Email sent and enquiry saved successfully",
+        text: "Team connect with you soon",
+        icon: "success"
+      });
       setFormData({
         name: "",
         email: "",
@@ -40,27 +46,27 @@ const Contact = () => {
       });
     }
 
-//     console.log("Form submitted:", formData);
+    //     console.log("Form submitted:", formData);
 
-//     const whatsappMessage = `Hi, I am interested in your service!*.
+    //     const whatsappMessage = `Hi, I am interested in your service!*.
 
-// *My details are -* 
+    // *My details are -* 
 
-//   *Name:* ${formData.name},
-//   *Phone:* ${formData.phone}, 
-//   *Email:* ${formData.email}, 
-//   *Queries:* ${formData.queries}`;
-//     const whatsappURL = `https://wa.me/7738527031?text=${encodeURIComponent(
-//       whatsappMessage
-//     )}`;
-//     window.open(whatsappURL, "_blank");
+    //   *Name:* ${formData.name},
+    //   *Phone:* ${formData.phone}, 
+    //   *Email:* ${formData.email}, 
+    //   *Queries:* ${formData.queries}`;
+    //     const whatsappURL = `https://wa.me/7738527031?text=${encodeURIComponent(
+    //       whatsappMessage
+    //     )}`;
+    //     window.open(whatsappURL, "_blank");
 
-//     setFormData({
-//       name: "",
-//       email: "",
-//       phone: "",
-//       queries:"",
-//     });
+    //     setFormData({
+    //       name: "",
+    //       email: "",
+    //       phone: "",
+    //       queries:"",
+    //     });
   };
 
   return (

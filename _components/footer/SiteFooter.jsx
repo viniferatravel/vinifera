@@ -150,6 +150,7 @@ import {
 } from "@/config/siteConfig";
 import FooterTabs from "./FooterTabs";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 const SiteFooter = () => {
   const [fullName, setFullName] = useState("");
@@ -174,10 +175,15 @@ const SiteFooter = () => {
     })
     console.log(response.data, "check respobse");
     if (response.data.status === 200) {
-      alert(response.data.message);
+      // alert(response.data.message);
       setFullName("");
       setEmail("");
       setPhoneNumber("");
+      Swal.fire({
+        title: "Email sent and enquiry saved successfully",
+        text: "Team connect with you soon",
+        icon: "success"
+      });
     }
     //     const whatsappMessage = `Hi, I am interested in your service*.
 
@@ -208,10 +214,10 @@ const SiteFooter = () => {
               1006, Juhi Niharika Mirage, Sector 10, Kharghar, 410210
             </p>
 
-            <Link href="https://maps.app.goo.gl/LQZzRHKRaVXkZrc59" passHref  target="_blank" className="font-semibold text-themeColor">
-            
-                Locate Us
-          
+            <Link href="https://maps.app.goo.gl/LQZzRHKRaVXkZrc59" passHref target="_blank" className="font-semibold text-themeColor">
+
+              Locate Us
+
             </Link>
           </div>
 

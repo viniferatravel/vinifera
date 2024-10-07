@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
 
@@ -28,34 +29,49 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
 
     e.preventDefault();
 
-    const response = await axios.post("/api/send-email", {
-      operation: "sendenquirymail",
-      name: formData.name,
-      email: formData.email,
-      number: formData.phone,
-      city: formData.city || null,
-      adults: formData.adults || null,
-      date: formData.travelDate || null,
-      query: formData.queries || null,
-      termsAgreed: formData.termsAgreed,
-      updatesAgreed: formData.updatesAgreed,
-    });
-    console.log(response.data, "check respobse");
-    if (response.data.status === 200) {
-      alert(response.data.message);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        city: "",
-        adults: "",
-        travelDate: "",
-        queries: "",
-        termsAgreed: false,
-        updatesAgreed: false,
+    if (formData.termsAgreed && formData.updatesAgreed && formData.name && formData.email && formData.phone && formData.city && formData.adults && formData.travelDate) {
+      const response = await axios.post("/api/send-email", {
+        operation: "sendenquirymail",
+        name: formData.name,
+        email: formData.email,
+        number: formData.phone,
+        city: formData.city || null,
+        adults: formData.adults || null,
+        date: formData.travelDate || null,
+        query: formData.queries || null,
+        termsAgreed: formData.termsAgreed,
+        updatesAgreed: formData.updatesAgreed,
       });
-      onSubmitSuccess(true)
+      console.log(response.data, "check respobse");
+      if (response.data.status === 200) {
+        // alert(response.data.message);
+        Swal.fire({
+          title: "Email sent and enquiry saved successfully",
+          text: "Team connect with you soon",
+          icon: "success"
+        });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          city: "",
+          adults: "",
+          travelDate: "",
+          queries: "",
+          termsAgreed: false,
+          updatesAgreed: false,
+        });
+        onSubmitSuccess(true)
+      }
+    } else {
+      Swal.fire({
+        title: "please select the check",
+        // text: "Team connect with you soon",
+        icon: "success"
+      });
     }
+
+
 
     //     console.log("Form submitted:", formData);
 
@@ -170,6 +186,7 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
                   placeholder="No of Adults"
                   value={formData.adults}
                   onChange={handleChange}
+                  min="0"
                 />
               </div>
               <div>
@@ -209,10 +226,9 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
               className="h-4 w-4 text-red-600"
               checked={formData.termsAgreed}
               onChange={handleChange}
-              required
             />
             <label className="text-sm">
-              I authorize vinifera.com to contact me and have read the Terms and
+              I authorize viniferaa.com to contact me and have read the Terms and
               Conditions.
             </label>
           </div>
@@ -223,7 +239,6 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
               name="updatesAgreed"
               checked={formData.updatesAgreed}
               onChange={handleChange}
-              required
             />
             <label className="text-sm">
               I agree to receive updates & offers from vinifera.com.

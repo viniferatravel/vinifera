@@ -73,7 +73,7 @@ const Whyus = () => {
       <div className=" w-[95%] m-auto px-4 py-10">
         <div className="flex justify-center items-center">
           <div className=" inline-block text-center">
-            <h2 className="text-center font-semibold text-2xl lg:text-3xl">
+            <h2 className="text-center font-bold text-2xl lg:text-3xl text-gray-600">
               Why us?
             </h2>
             <div className="border-2 w-full rounded-full mt-1 border-themeColor"></div>

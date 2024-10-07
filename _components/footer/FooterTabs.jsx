@@ -5,7 +5,13 @@ import { useState, useEffect, useRef } from "react";
 
 const FooterTabs = () => {
   const [activeTab, setActiveTab] = useState("popular");
+
   const [allPackage, setAllPackage] = useState([]);
+  console.log(allPackage, "allPackage");
+
+  const [showMore, setShowMore] = useState(false);
+  console.log(showMore, "showMore");
+
   const router = useRouter();
 
   const tabs = [
@@ -55,12 +61,15 @@ const FooterTabs = () => {
     router.push(`/packages?id=${id}`)
   }
 
+  const handleShowMoreToggle = () => {
+    setShowMore(!showMore);
+  };
 
+  const filteredPackages = allPackage.filter((item) =>
+    item.sub_category.includes(activeTab.toUpperCase())
+  );
 
-
-
-
-
+  const displayedPackages = showMore ? filteredPackages : filteredPackages.slice(0, 15);
 
   return (
     <div className="flex w-[95%] mx-auto flex-col py-10 border-b-2 gap-5">
@@ -81,10 +90,13 @@ const FooterTabs = () => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                setShowMore(false);
+              }}
               className={`text-sm lg:text-lg py-2 px-4 whitespace-nowrap ${activeTab === tab.id
-                ? "text-themeColor border-b-2 border-themeColor "
-                : "text-gray-400 "
+                ? "text-themeColor border-b-2 border-themeColor"
+                : "text-gray-400"
                 }`}
             >
               {tab.label}
@@ -95,114 +107,33 @@ const FooterTabs = () => {
 
       {/* Tabs Content */}
       <div className="mt-4">
-        {activeTab === "popular" && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4">
-            {allPackage?.filter((item) => item.sub_category.includes("POPULAR")).map((link) => (
-              <div
-                key={link.package_id}
-                // href={link.link}
-                // className="flex justify-center items-center p-2 lg:p-4  rounded-lg text-start hover:bg-gray-100 gap-2"
-                className="flex items-center p-1 lg:p-1 rounded-lg text-start hover:bg-gray-100 gap-2 bg-white border shadow-sm cursor-pointer"
-                onClick={() => handleCardClick(link.package_id)}
-              >
-                {/* <div className="relative h-[100%] w-[50%] rounded-xl overflow-hidden shadow-lg"> */}
-                <div className="relative h-[60px] w-[35%] rounded-xl overflow-hidden shadow-lg">
-                  <Image src={link?.package_image[0]} alt="" fill className="object-fit" />
-                </div>
-                <p className="w-[50%] text-sm lg:text-[15px] font-semibold lg:font-medium lg:w-full opacity-80 lg:pl-2">{link.package_name}</p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4">
+          {displayedPackages.map((link) => (
+            <div
+              key={link.package_id}
+              className="flex items-center p-1 lg:p-1 rounded-lg text-start hover:bg-gray-100 gap-2 bg-white border shadow-sm cursor-pointer"
+              onClick={() => handleCardClick(link.package_id)}
+            >
+              <div className="relative h-[60px] w-[35%] rounded-xl overflow-hidden shadow-lg">
+                <Image src={link?.package_image[0]} alt="" fill className="object-fit" />
               </div>
-            ))}
-          </div>
-        )}
-
-        {activeTab === "winter" && (
-          <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4">
-              {allPackage?.filter((item) => item.sub_category.includes("WINTER")).map((link) => (
-
-
-                <div
-                  key={link.package_id}
-                  // href={link.link}
-                  // className="flex justify-center items-center p-2 lg:p-4  rounded-lg text-start hover:bg-gray-100 gap-2"
-                  className="flex items-center p-2 lg:p-1 rounded-lg text-start hover:bg-gray-100 gap-2 bg-white border shadow-sm cursor-pointer"
-                  onClick={() => handleCardClick(link.package_id)}
-                >
-                  {/* <div className="relative h-[100%] w-[50%] rounded-xl overflow-hidden shadow-lg"> */}
-                  <div className="relative h-[60px] w-[35%] rounded-xl overflow-hidden shadow-lg">
-                    <Image src={link?.package_image[0]} alt="" fill className="object-fit" />
-                  </div>
-                  <p className="w-[50%] text-sm lg:text-[15px] font-semibold lg:font-medium lg:w-full opacity-80 lg:pl-2">{link.package_name}</p>
-                </div>
-
-              ))}
+              <p className="w-[50%] text-sm lg:text-[15px] font-semibold lg:font-medium lg:w-full opacity-80 lg:pl-2">
+                {link.package_name}
+              </p>
             </div>
-          </div>
-        )}
-        {activeTab === "beaches" && (
-          <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4">
-              {allPackage?.filter((item) => item.sub_category.includes("BEACHES")).map((link) => (
-                <div
-                  key={link.package_id}
-                  // href={link.link}
-                  // className="flex justify-center items-center p-2 lg:p-4  rounded-lg text-start hover:bg-gray-100 gap-2"
-                  className="flex items-center p-2 lg:p-1 rounded-lg text-start hover:bg-gray-100 gap-2 bg-white border shadow-sm cursor-pointer"
-                  onClick={() => handleCardClick(link.package_id)}
-                >
-                  {/* <div className="relative h-[100%] w-[50%] rounded-xl overflow-hidden shadow-lg"> */}
-                  <div className="relative h-[60px] w-[35%] rounded-xl overflow-hidden shadow-lg">
-                    <Image src={link?.package_image[0]} alt="" fill className="object-fit" />
-                  </div>
-                  <p className="w-[50%] text-sm lg:text-[15px] font-semibold lg:font-medium lg:w-full opacity-80 lg:pl-2">{link.package_name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {activeTab === "mountains" && (
-          <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4">
-              {allPackage?.filter((item) => item.sub_category.includes("MOUNTAINS")).map((link) => (
-                <div
-                  key={link.package_id}
-                  // href={link.link}
-                  // className="flex justify-center items-center p-2 lg:p-4  rounded-lg text-start hover:bg-gray-100 gap-2"
-                  className="flex items-center p-2 lg:p-1 rounded-lg text-start hover:bg-gray-100 gap-2 bg-white border shadow-sm cursor-pointer"
-                  onClick={() => handleCardClick(link.package_id)}
-                >
-                  {/* <div className="relative h-[100%] w-[50%] rounded-xl overflow-hidden shadow-lg"> */}
-                  <div className="relative h-[60px] w-[35%] rounded-xl overflow-hidden shadow-lg">
-                    <Image src={link?.package_image[0]} alt="" fill className="object-fit" />
-                  </div>
-                  <p className="w-[50%] font-semibold lg:w-full opacity-80 lg:pl-2">{link.package_name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {activeTab === "unique" && (
-          <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4">
-              {allPackage?.filter((item) => item.sub_category.includes("unique")).map((link) => (
-                <div
-                  key={link.package_id}
-                  // href={link.link}
-                  // className="flex justify-center items-center p-2 lg:p-4  rounded-lg text-start hover:bg-gray-100 gap-2"
-                  className="flex items-center p-2 lg:p-1 rounded-lg text-start hover:bg-gray-100 gap-2 bg-white border shadow-sm cursor-pointer"
-                  onClick={() => handleCardClick(link.package_id)}
-                >
-                  {/* <div className="relative h-[100%] w-[50%] rounded-xl overflow-hidden shadow-lg"> */}
-                  <div className="relative h-[60px] w-[35%] rounded-xl overflow-hidden shadow-lg">
-                    <Image src={link?.package_image[0]} alt="" fill className="object-fit" />
-                  </div>
-                  <p className="w-[50%] font-semibold lg:w-full opacity-80 lg:pl-2">{link.package_name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
 
+        {filteredPackages.length > 15 && (
+          <div className="mt-4">
+            <button
+              onClick={handleShowMoreToggle}
+              className="px-4 py-2 bg-themeColor text-white rounded-lg"
+            >
+              {showMore ? "Show Less" : "Show More"}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

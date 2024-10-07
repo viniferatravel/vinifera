@@ -66,13 +66,20 @@ export async function POST(request) {
     try {
       const { name, email, number, city, adults, date, query, termsAgreed, updatesAgreed } = payload;
 
-      const validateEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-      };
+      // const validateEmail = (email) => {
+      //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      //   return emailRegex.test(email);
+      // };
 
-      if (!validateEmail(email)) {
-        return NextResponse.json({ status: 401, message: 'Invalid email address' });
+      // if (!validateEmail(email)) {
+      //   return NextResponse.json({ status: 401, message: 'Invalid email address' });
+      // }
+
+      if (!/^\d{10}$/.test(number)) {
+        return NextResponse.json({
+          status: 402,
+          message: "Number must be exactly 10 digits and contain only numeric values"
+        });
       }
 
       await transporter.sendMail({
@@ -117,15 +124,15 @@ export async function POST(request) {
 
       const { name, email, number, services, query } = payload;
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        return NextResponse.json({ status: 400, message: "Invalid email format" });
-      }
+      // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // if (!emailRegex.test(email)) {
+      //   return NextResponse.json({ status: 400, message: "Invalid email format" });
+      // }
 
-      const findEmail = await PassportEnquiry.findOne({ email });
-      if (findEmail) {
-        return NextResponse.json({ status: 401, message: "Email is already present" });
-      }
+      // const findEmail = await PassportEnquiry.findOne({ email });
+      // if (findEmail) {
+      //   return NextResponse.json({ status: 401, message: "Email is already present" });
+      // }
 
       if (!/^\d{12}$/.test(number)) {
         return NextResponse.json({
@@ -180,22 +187,22 @@ export async function POST(request) {
         date,
         queries } = payload;
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        return NextResponse.json({ status: 400, message: "Invalid email format" });
-      }
-
-      const findEmail = await CorporateEnquiry.findOne({ email });
-      if (findEmail) {
-        return NextResponse.json({ status: 401, message: "Email is already present" });
-      }
-
-      // if (!/^\d{12}$/.test(number)) {
-      //   return NextResponse.json({
-      //     status: 402,
-      //     message: "Number must be exactly 10 digits and contain only numeric values"
-      //   });
+      // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // if (!emailRegex.test(email)) {
+      //   return NextResponse.json({ status: 400, message: "Invalid email format" });
       // }
+
+      // const findEmail = await CorporateEnquiry.findOne({ email });
+      // if (findEmail) {
+      //   return NextResponse.json({ status: 401, message: "Email is already present" });
+      // }
+
+      if (!/^\d{12}$/.test(number)) {
+        return NextResponse.json({
+          status: 402,
+          message: "Number must be exactly 10 digits and contain only numeric values"
+        });
+      }
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -243,15 +250,15 @@ export async function POST(request) {
 
       const { name, email, number, feedback, feedropdown } = payload;
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        return NextResponse.json({ status: 400, message: "Invalid email format" });
-      }
+      // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // if (!emailRegex.test(email)) {
+      //   return NextResponse.json({ status: 400, message: "Invalid email format" });
+      // }
 
-      const findEmail = await Feedback.findOne({ email });
-      if (findEmail) {
-        return NextResponse.json({ status: 401, message: "Email is already present" });
-      }
+      // const findEmail = await Feedback.findOne({ email });
+      // if (findEmail) {
+      //   return NextResponse.json({ status: 401, message: "Email is already present" });
+      // }
 
       if (!/^\d{12}$/.test(number)) {
         return NextResponse.json({
@@ -296,22 +303,22 @@ export async function POST(request) {
 
       const { name, email, number, services, query } = payload;
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        return NextResponse.json({ status: 400, message: "Invalid email format" });
-      }
-
-      const findEmail = await PassportEnquiry.findOne({ email });
-      if (findEmail) {
-        return NextResponse.json({ status: 401, message: "Email is already present" });
-      }
-
-      // if (!/^\d{10}$/.test(number)) {
-      //   return NextResponse.json({
-      //     status: 402,
-      //     message: "Number must be exactly 10 digits and contain only numeric values"
-      //   });
+      // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // if (!emailRegex.test(email)) {
+      //   return NextResponse.json({ status: 400, message: "Invalid email format" });
       // }
+
+      // const findEmail = await PassportEnquiry.findOne({ email });
+      // if (findEmail) {
+      //   return NextResponse.json({ status: 401, message: "Email is already present" });
+      // }
+
+      if (!/^\d{10}$/.test(number)) {
+        return NextResponse.json({
+          status: 402,
+          message: "Number must be exactly 10 digits and contain only numeric values"
+        });
+      }
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,

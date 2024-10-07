@@ -212,7 +212,7 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
               required
             />
             <label className="text-sm">
-              I authorize vinifera.com to contact me and have read the Terms and
+              I authorize viniferaa.com to contact me and have read the Terms and
               Conditions.
             </label>
           </div>

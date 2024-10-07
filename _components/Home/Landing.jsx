@@ -27,7 +27,7 @@ const Landing = () => {
             <motion.span initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0 }}>
-              A Hassle Free
+              A Hassle Freee
             </motion.span>
             <motion.span initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

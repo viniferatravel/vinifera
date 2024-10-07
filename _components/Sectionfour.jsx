@@ -1,8 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 
 const Sectionfour = (props) => {
+    const router = useRouter()
     return (
         <div>
             <div className='w-[95%] m-auto px-4 py-10 relative'>

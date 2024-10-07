@@ -113,13 +113,18 @@ const SelectMonth = () => {
 
                       <div className="flex justify-start items-center gap-2">
                         <AlarmClockCheck className="w-[15px] h-[15px] text-[#ff0000]" />
-                        {fetchcard.length > 0 && fetchcard[0].tour_itinerary ? (
+
+                        <p className="text-sm flex justify-center items-center">
+                            {tour.tour_itinerary.days}D/{tour.tour_itinerary.nights}N
+                          </p>
+
+                        {/* {fetchcard.length > 0 && fetchcard.tour_itinerary ? (
                           <p className="text-sm flex justify-center items-center">
-                            {fetchcard[0].tour_itinerary.days}D/{fetchcard[0].tour_itinerary.nights}N
+                            {fetchcard.tour_itinerary.days}D/{fetchcard.tour_itinerary.nights}N
                           </p>
                         ) : (
                           null
-                        )}
+                        )} */}
                       </div>
                     </div>
                   </div>

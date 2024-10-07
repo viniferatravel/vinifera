@@ -352,7 +352,7 @@ const Tour = ({ slug }) => {
                           <div className="font-semibold w-full lg:w-[22%]">
                             <p> Highlights :</p>
                           </div>
-                          <div className="flex w-full lg:w-[75%] justify-start flex-wrap gap-1 overflow-y-scroll h-32">
+                          <div className="flex w-full lg:w-[75%] justify-start flex-wrap gap-1 overflow-y-auto h-32">
                             {tour.highlights.map((highlight, index) => (
                               <div
                                 key={index}
@@ -361,7 +361,7 @@ const Tour = ({ slug }) => {
                                 <div className="w-[5%] flex justify-start">
                                   <Dot />
                                 </div>
-                                <div className="w-[90%] flex justify-start items-center">
+                                <div className="w-[90%] flex justify-start">
                                   <p>{highlight}</p>
                                 </div>
                               </div>

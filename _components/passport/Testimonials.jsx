@@ -2,8 +2,20 @@ import React, { useState } from 'react'
 import IMAGES from "@/public/image";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import GuestModal from "@/_components/packages/Modal";
 
 const Testimonials = () => {
+
+
+    const [passportClickModal, setPassportClickModal] = useState(false);
+
+    const handleClosePassportModal = (val) => {
+        setPassportClickModal(val);
+    };
+
+    const passportConnect = () => {
+        setPassportClickModal(true);
+    };
 
     const [hoveredCard, setHoveredCard] = useState(null); // State to track which card is hovered
 
@@ -55,9 +67,14 @@ const Testimonials = () => {
                         </p>
                     </div>
 
-                    <button className="bg-themeColor px-5 py-3 mt-10 rounded-full text-white font-medium">
+                    <button className="bg-themeColor px-5 py-3 mt-10 rounded-full text-white font-medium" onClick={passportConnect}>
                         Connect Now
                     </button>
+                    <GuestModal
+                        passportClickModal={passportClickModal}
+                        onClosePassportModal={handleClosePassportModal}
+                        action={"passport"}
+                    />
                 </motion.div>
 
                 <div className='w-full lg:w-[55%] flex flex-col justify-start gap-5 lg:block mt-8 lg:mt-0'>
@@ -81,11 +98,9 @@ const Testimonials = () => {
                                 </div>
                                 <div className='w-[80%]'>
                                     <p className='text-gray-600'>
-                                        Our team will carefully review your submitted documents to
-                                        ensure everything is complete and meets the necessary
-                                        requirements for your application.
+                                        Vinifera Tours and Travels made the entire passport process so smooth! I was dreading all the paperwork, but they took care of everything, and I had my passport in no time.
                                     </p>
-                                    <p className='text-end mt-2 text-gray-600'>- Suzen Awasthi</p>
+                                    <p className='text-end mt-2 text-gray-600'>- Arjun Malhotra</p>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +121,7 @@ const Testimonials = () => {
                             <div className='flex justify-start item-center w-full gap-3 px-2 py-3'>
                                 <div className='relative size-24 rounded-full overflow-hidden'>
                                     <Image
-                                        src={IMAGES.profile}
+                                        src={IMAGES.profile1}
                                         alt='contact-landing'
                                         fill
                                         className='object-cover w-full h-full'
@@ -114,11 +129,9 @@ const Testimonials = () => {
                                 </div>
                                 <div className='w-[80%]'>
                                     <p className='text-gray-600'>
-                                        Our team will carefully review your submitted documents to
-                                        ensure everything is complete and meets the necessary
-                                        requirements for your application.
+                                        I am super impressed with the professionalism of Vinifera Tours and Travels. They kept me updated throughout the passport process, and I never had to worry about a thing. Thanks to them, my travel plans are now on track!
                                     </p>
-                                    <p className='text-end mt-2 text-gray-600'>- Suzen Awasthi</p>
+                                    <p className='text-end mt-2 text-gray-600'>- Rajesh Kumar</p>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +148,7 @@ const Testimonials = () => {
                             <div className='flex justify-start item-center w-full gap-3 px-2 py-3'>
                                 <div className='relative size-24 rounded-full overflow-hidden'>
                                     <Image
-                                        src={IMAGES.profile}
+                                        src={IMAGES.profile2}
                                         alt='contact-landing'
                                         fill
                                         className='object-cover w-full h-full'
@@ -143,11 +156,9 @@ const Testimonials = () => {
                                 </div>
                                 <div className='w-[80%]'>
                                     <p className='text-gray-600'>
-                                        Our team will carefully review your submitted documents to
-                                        ensure everything is complete and meets the necessary
-                                        requirements for your application.
+                                        Vinifera Tours and Travels exceeded my expectations with their passport services. The entire process was straightforward, and their team was super friendly and helpful. If you need passport assistance, they are the ones to go to!
                                     </p>
-                                    <p className='text-end mt-2 text-gray-600'>- Suzen Awasthi</p>
+                                    <p className='text-end mt-2 text-gray-600'>- Sanjay Desai</p>
                                 </div>
                             </div>
                         </div>

@@ -138,5 +138,21 @@ export async function POST(request) {
             console.error("Error during user registration:", error);
             return NextResponse.json({ status: 500, message: "An error occurred during registration" });
         }
+    } else if (payload.operation === "fetchinternational") {
+        try {
+            const fetchinternationaldata = await Package.find({ sub_category: { $in: ["INTERNATIONAL"] } });
+
+            // Check if any packages were found
+            if (fetchinternationaldata.length === 0) {
+                return NextResponse.json({ status: 404, message: "Packages not found" });
+            }
+
+            return NextResponse.json({ status: 200, message: "Fetch data successfully", data: fetchinternationaldata });
+
+
+        } catch (error) {
+            console.error("Error during user registration:", error);
+            return NextResponse.json({ status: 500, message: "An error occurred during registration" });
+        }
     }
 }

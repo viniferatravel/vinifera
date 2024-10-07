@@ -142,9 +142,9 @@ export async function POST(request) {
           <h2>Contact Form Details</h2>
           <p>Name: ${name}</p>
           <p>Email: ${email}</p>
-          <p>Number: ${number}</p>
-          <p>services: ${services}</p>
-          <p>query: ${query}</p>
+          <p>Phone Number: ${number}</p>
+          <p>Service: ${services}</p>
+          <p>Query: ${query}</p>
         `,
       });
 
@@ -200,18 +200,18 @@ export async function POST(request) {
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
-        subject: 'Your Received Passport Enquiry',
+        subject: 'Your Received Corporate Enquiry',
         html: `
           <h2>Contact Form Details</h2>
-          <p>name: ${name.toString()}</p>
-          <p>email: ${email.toString()}</p>
-          <p>phone: ${phone.toString()}</p>
-          <p>companyname: ${companyname.toString()}</p>
-          <p>noofdays: ${noofdays.toString()}</p>
-          <p>destination: ${destination.toString()}</p>
-          <p>purpose: ${purpose.toString()}</p>
-          <p>date: ${date.toString()}</p>
-          <p>queries: ${queries.toString()}</p>
+          <p>Name: ${name.toString()}</p>
+          <p>Email: ${email.toString()}</p>
+          <p>Phone No.: ${phone.toString()}</p>
+          <p>Company Name: ${companyname.toString()}</p>
+          <p>Number of days: ${noofdays.toString()}</p>
+          <p>Destination: ${destination.toString()}</p>
+          <p>Purpose: ${purpose.toString()}</p>
+          <p>Date: ${date.toString()}</p>
+          <p>Queries: ${queries.toString()}</p>
         `,
       });
 

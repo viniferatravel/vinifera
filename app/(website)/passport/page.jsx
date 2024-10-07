@@ -15,14 +15,22 @@ import { Dot } from 'lucide-react';
 import { Star } from 'lucide-react';
 import { Button } from '@nextui-org/react';
 import GuestModal from "@/_components/packages/Modal";
+import { useRouter } from 'next/navigation';
 
 const Passport = () => {
 
+    const router = useRouter()
+
     const [passportClickModal, setPassportClickModal] = useState(false);
+    const [internatioalPackage, setInternatioalPackage] = useState([]);
 
     const handleClosePassportModal = (val) => {
         setPassportClickModal(val);
-      };
+    };
+
+    const passportConnect = () => {
+        setPassportClickModal(true);
+    };
 
     const bgimage = [
         {
@@ -64,14 +72,57 @@ const Passport = () => {
                 </>
             ),
             btn: (
-                <button className="flex justify-center items-center gap-3 text-white px-4 py-3 rounded-full font-semibold bg-themeColor">
+                <><button className="flex justify-center items-center gap-3 text-white px-4 py-3 rounded-full font-semibold bg-themeColor"
+                    onClick={passportConnect}
+                >
                     Book Now
                 </button>
+
+                </>
             )
         }
     ]
 
-    const luxurydata = [
+    const luxurydata = internatioalPackage?.map((item, index) => {
+        if(index > 3) {
+
+        }else{
+            return {
+                id: item.package_id,
+                image: item.package_image[0],
+                luxurydatadescription: (
+                    <>
+                        <div className=''>
+                            <div className='flex justify-start gap-2'>
+                                <Star className='w-[20px] h-[20px] text-[#FFD700] fill-[#FFD700]' />
+                                <Star className='w-[20px] h-[20px] text-[#FFD700] fill-[#FFD700]' />
+                                <Star className='w-[20px] h-[20px] text-[#FFD700] fill-[#FFD700]' />
+                                <Star className='w-[20px] h-[20px] text-[#FFD700] fill-[#FFD700]' />
+                                <Star className='w-[20px] h-[20px] text-[#FFD700] fill-[#FFD700]' />
+                            </div>
+                            <p className='font-bold text-base mt-1 text-gray-700'>{item.package_name}</p>
+                            <p className='font-semibold text-xs'>{item.tour_itinerary.days} <span className='font-normal text-sm'>Days,</span>  {item.tour_itinerary.nights} <span className='font-normal text-sm'>Nights</span> </p>
+                        </div>
+    
+                        <div>
+                            <p className='text-sm font-semibold text-end'>Starting from</p>
+                            <div className='flex justify-end items-end'>
+                                <Button color="default" className='w-28 p-2 bg-themeColor text-white font-semibold text-lg' onClick={() => {
+                                    router.push(`/packages?id=${item.package_id}`)
+                                }}>
+                                    &#8377; 71,000
+                                </Button>
+                            </div>
+                        </div>
+                    </>
+                )
+            }
+        }
+    })
+
+    console.log("luxuryData:::::>", luxurydata)
+
+    const luxurydataa = [
         {
             id: "1",
             image: "/image/usa.jpg",
@@ -194,9 +245,31 @@ const Passport = () => {
         },
     ]
 
-    const passportConnect = () => {
-        setPassportClickModal(true);
-      };
+
+    useEffect(() => {
+        try {
+
+            let abc = async () => {
+                const response = await fetch("/api/fetchcategory", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({operation: "fetchinternational"})
+                });
+                const result = await response.json();
+                setInternatioalPackage(result.data)
+            }
+
+            abc()
+
+        } catch (error) {
+
+        }
+    }, [])
+
+
+
 
 
     return (

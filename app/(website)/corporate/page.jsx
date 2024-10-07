@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Corporateone from '@/_components/Corporatesection/Corporateone'
 import Whyus from "@/_components/Corporatesection/Whyus"
 import Luxury from "@/_components/Luxury"
@@ -8,8 +8,22 @@ import Contact from "@/_components/tickets/Contact";
 import { Dot } from 'lucide-react';
 import { Star } from 'lucide-react';
 import { Button } from '@nextui-org/react';
+import { useRouter } from 'next/navigation'
+import GuestModal from "@/_components/packages/Modal";
 
 const Corporate = () => {
+
+  const router = useRouter()
+
+  const [corporateClickModal, setCorporateClickModal] = useState(false);
+
+  const corporateConnect = () => {
+    setCorporateClickModal(true);
+  };
+
+  const handleCloseCorporateModal = (val) => {
+    setCorporateClickModal(val);
+  };
 
   const bgimage = [
     {
@@ -42,9 +56,15 @@ const Corporate = () => {
         </>
       ),
       btn: (
-        <button className="bg-white px-4 py-3 rounded-xl">
+        <><button type='button' className="bg-white px-4 py-3 rounded-xl" onClick={corporateConnect}>
           Book Now
         </button>
+          <GuestModal
+            corporateClickModal={corporateClickModal}
+            onCloseCorporateModal={handleCloseCorporateModal}
+            action={"corporate"}
+          />
+        </>
       )
     }
   ]
@@ -53,6 +73,7 @@ const Corporate = () => {
     {
       id: "1",
       image: "/image/rajasthan.jpg",
+      destiny: "rajasthan",
       luxurydatadescription: (
         <>
           <div className=''>
@@ -73,7 +94,7 @@ const Corporate = () => {
               <Button color="default" className='w-28 p-2 bg-themeColor text-white font-semibold text-lg' onClick={() => {
                 router.push(`/filterpage/rajasthan`)
               }}>
-                &#8377; 41,000
+                &#8377; 35,990
               </Button>
             </div>
           </div>
@@ -83,6 +104,7 @@ const Corporate = () => {
     {
       id: "2",
       image: "/image/goa.jpg",
+      destiny: "goa",
       luxurydatadescription: (
         <>
           <div className=''>
@@ -103,7 +125,7 @@ const Corporate = () => {
               <Button color="default" className='w-28 p-2 bg-themeColor text-white font-semibold text-lg' onClick={() => {
                 router.push(`/filterpage/goa`)
               }}>
-                &#8377; 41,000
+                &#8377; 35,000
               </Button>
             </div>
           </div>
@@ -113,6 +135,7 @@ const Corporate = () => {
     {
       id: "3",
       image: "/image/ayodhya.jpg",
+      destiny: "ayodhya",
       luxurydatadescription: (
         <>
           <div className=''>
@@ -143,6 +166,7 @@ const Corporate = () => {
     {
       id: "4",
       image: "/image/jodhpur.jpg",
+      destiny: "gujarat",
       luxurydatadescription: (
         <>
           <div className=''>
@@ -163,7 +187,7 @@ const Corporate = () => {
               <Button color="default" className='w-28 p-2 bg-themeColor text-white font-semibold text-lg' onClick={() => {
                 router.push(`/filterpage/gujarat`)
               }}>
-                &#8377; 41,000
+                &#8377; 31,990
               </Button>
             </div>
           </div>

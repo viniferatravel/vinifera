@@ -3,7 +3,7 @@
 export const siteConfig = {
   name: "Vinifera",
   description: "Make beautiful websites regardless of your design experience.",
-  favicon: "@/app/favicon.ico",
+  favicon: "/Vinifera.jpg",
   ownername: "Kamini Singh",
   phoneNumber: "7021719016",
   companyname: "Vinifera",

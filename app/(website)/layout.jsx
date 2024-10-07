@@ -8,6 +8,7 @@ import ClientLayout from "@/_components/Home/ClientLayout";
 export const metadata = {
   title: "Vinifera",
   description: "Vinifera",
+  icons: "/Vinifera.jpg"
 };
 
 export default function RootLayout({ children }) {

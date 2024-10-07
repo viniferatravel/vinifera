@@ -113,7 +113,7 @@ const AboutCards = () => {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center bg-slate-900">
+    <div className="w-full h-full flex justify-center items-center bg-red-100">
       <div className="flex w-[95%] h-full lg:h-[70vh] justify-between flex-col lg:flex-row mx-auto lg:p-10 gap-10">
         {/* Text Section */}
         <div className="flex w-full h-full flex-col gap-5 p-5 justify-between">
@@ -121,7 +121,7 @@ const AboutCards = () => {
             <h2 className="text-4xl lg:text-5xl font-semibold text-themeColor">
               10 Principles
             </h2>
-            <p className="text-lg text-white">
+            <p className="text-lg text-black">
               To live life to the fullest and to be productive and efficient at
               our workplace, as Veena World team members, we practice certain
               values that guide us in every action and at every step.
@@ -131,17 +131,17 @@ const AboutCards = () => {
           <div className="hidden lg:flex gap-5">
             <button
               onClick={scrollLeft}
-              className={`p-4 rounded-full border bg-gray-500 ${isLeftButtonDisabled ? 'opacity-50 ' : ''}`} // Disable button styling
+              className={`p-4 rounded-full border bg-white ${isLeftButtonDisabled ? 'opacity-50 ' : ''}`} // Disable button styling
               disabled={isLeftButtonDisabled} // Disable the button
             >
-              <ChevronLeft className="text-white" />
+              <ChevronLeft className="text-black" />
             </button>
             <button
               onClick={scrollRight}
-              className={`p-4 rounded-full border bg-gray-500 ${isRightButtonDisabled ? 'opacity-50 ' : ''}`} // Disable button styling
+              className={`p-4 rounded-full border bg-white ${isRightButtonDisabled ? 'opacity-50 ' : ''}`} // Disable button styling
               disabled={isRightButtonDisabled} // Disable the button
             >
-              <ChevronRight className="text-white" />
+              <ChevronRight className="text-black" />
             </button>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default AboutCards;
 const Card = ({ title, description, cardRef, isActive }) => {
   return (
     <motion.div
-      className={`flex-none w-[300px] lg:w-[410px] h-96 flex gap-10 flex-col snap-start lg:snap-none p-5 rounded-xl border`}
+      className={`flex-none w-[300px] lg:w-[410px] h-96 flex gap-10 flex-col snap-start lg:snap-none p-5 rounded-xl border bg-white text-black`}
       ref={cardRef} // Set ref on card
       initial={{ scale: 0.9, opacity: 0.5 }} // Initial state for animation
       animate={{
@@ -183,8 +183,8 @@ const Card = ({ title, description, cardRef, isActive }) => {
       }}
       transition={{ duration: 0.3 }} // Transition duration
     >
-      <h3 className="text-2xl font-bold text-white">{title}</h3>
-      <p className="text-gray-300">{description}</p>
+      <h3 className="text-2xl font-bold">{title}</h3>
+      <p className="text-gray-800">{description}</p>
     </motion.div>
   );
 };

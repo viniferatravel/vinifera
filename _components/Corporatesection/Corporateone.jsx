@@ -171,7 +171,7 @@ const Corporateone = () => {
 
         <Button
           color="default"
-          className="mt-10 md:mt-7 lg:mt-10 w-32 p-2 bg-themeColor text-white font-semibold"
+          className="mt-10 md:mt-7 lg:mt-10 w-36 p-6 text-md bg-themeColor text-white font-semibold"
           radius="full"
           onClick={corporateConnect}
         >

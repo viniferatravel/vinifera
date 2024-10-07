@@ -17,6 +17,11 @@ const Luxury = (props) => {
         },
       };
 
+
+      const handleCardClick = (destiny) => {
+        router.push(`/filterpage/${destiny}`)
+      }
+
     return (
         <motion.div initial="hidden"
         whileInView="visible"
@@ -37,7 +42,7 @@ const Luxury = (props) => {
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-8 lg:mt-10'>
 
                     {props.luxurydata && props.luxurydata.map((e, i) => (
-                        <div key={i} className='flex justify-center items-center flex-col gap-4 p-4'>
+                        <div key={i} className='flex justify-center items-center flex-col gap-4 p-4 cursor-pointer ' onClick={() => handleCardClick(e.destiny)}>
                             <div className='w-full rounded-lg h-[25vh] md:h-[18vh] lg:h-[35vh] flex justify-center items-center relative'>
                                 <Image
                                     alt="Mountains"

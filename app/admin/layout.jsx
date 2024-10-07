@@ -8,9 +8,9 @@ import NavBar from '@/_components/Admin/NavBar';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Prospera Admin',
-  description: 'Prospera Admin',
-  icons: "/faviconpms.ico",
+  title: 'Vinifera Admin',
+  description: 'Vinifera Admin',
+  icons: "/Vinifera.jpg",
 }
 
 export default function RootLayout({ children }) {

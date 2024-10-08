@@ -10,7 +10,7 @@ import { Star } from 'lucide-react';
 import { Button } from '@nextui-org/react';
 import { useRouter } from 'next/navigation'
 import GuestModal from "@/_components/packages/Modal";
-import Experience from "@/_components/corporatesection/Experience"
+import Experience from "@/_components/Corporatesection/Experience"
 import CorparatePackages from "@/_components/Corporatesection/CorparatePackages"
 import Work from "@/_components/Corporatesection/Work"
 import Accordian from '@/_components/Corporatesection/Accordian'

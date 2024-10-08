@@ -8,6 +8,8 @@ import Work from "@/_components/tickets/Work";
 import Contact from "@/_components/tickets/Contact";
 import Accordian from "@/_components/tickets/Accordian";
 import Explore from "@/_components/tickets/Explore"
+import Whychoose from "@/_components/tickets/Whychoose";
+
 
 const Page = () => {
   const contactRef = useRef(null); // Create a ref for Contact component
@@ -31,6 +33,11 @@ const Page = () => {
         {/* Pass smoothScrollTo as a prop to MultiServices */}
         <MultiServices scrollToContact={() => smoothScrollTo(contactRef)} />
         <Travel />
+      </div>
+
+      <Whychoose />
+
+      <div className="w-[95%] mx-auto flex flex-col gap-16">
         <DailyBooking />
         <Work />
         <Explore/>
@@ -39,6 +46,11 @@ const Page = () => {
           <Contact />
         </div>
         <Accordian/>
+      </div>
+      
+      {/* Use the ref in the Contact component */}
+      <div ref={contactRef}>
+        <Contact />
       </div>
     </div>
   );

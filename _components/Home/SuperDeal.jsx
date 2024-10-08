@@ -36,7 +36,7 @@ const SuperDeal = ({ allPackages }) => {
       case "item2":
         return allPackages.filter((item) => item.state === "goa");
       case "item3":
-        return allPackages.filter((item) => item.state === "ayodhya");
+        return allPackages.filter((item) => item.city === "allahabad" || item.city === "ayodhya" || item.city === "prayagraj");
       default:
         return [];
     }

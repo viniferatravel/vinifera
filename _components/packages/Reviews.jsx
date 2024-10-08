@@ -64,16 +64,30 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
     setFullSizeImageOpen(true); // Open the full-size image modal
   };
 
-  function formatDate(dateString) {
-    // Parse the input date string
-    const date = new Date(dateString);
+  // function formatDate(dateString) {
+  //   // Parse the input date string
+  //   const date = new Date(dateString);
 
-    // Options to format the date
-    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+  //   // Options to format the date
+  //   const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
 
+  //   // Use Intl.DateTimeFormat to format the date
+  //   const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(date);
+
+  //   return formattedDate;
+  // }
+
+    function formatDate(dateString) {
+    const dateObj = new Date(dateString);
+
+    // Check if the date is valid
+    if (isNaN(dateObj.getTime())) {
+        throw new Error('Invalid date provided: ' + date);
+    }
+    
     // Use Intl.DateTimeFormat to format the date
-    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(date);
-
+    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(dateObj);
+    
     return formattedDate;
   }
 

@@ -10,6 +10,10 @@ import { Star } from 'lucide-react';
 import { Button } from '@nextui-org/react';
 import { useRouter } from 'next/navigation'
 import GuestModal from "@/_components/packages/Modal";
+import Experience from "@/_components/Corporatesection/Experience"
+import CorparatePackages from "@/_components/Corporatesection/CorparatePackages"
+import Work from "@/_components/Corporatesection/Work"
+import Accordian from '@/_components/Corporatesection/Accordian'
 
 const Corporate = () => {
 
@@ -202,9 +206,13 @@ const Corporate = () => {
       <Whyus />
       <Luxury luxurydata={luxurydata} title={"Combining Luxury and Affordability"} description={"Explore amazing destinations, enjoy comfortable stays, and create lasting memories all with packages designed to fit your budget and delight every member. "} />
       <Sectionfour bgimage={bgimage} data={data} />
+      <Experience/>
+      <Work/>
+      <CorparatePackages/>
       <div className='relative w-[95%] mx-auto'>
         <Contact />
       </div>
+      <Accordian/>
 
     </div>
   )

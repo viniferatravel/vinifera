@@ -36,7 +36,7 @@ const Luxury = (props) => {
                     </div>
                 </div>
 
-                <h3 className='w-full lg:w-[60%] m-auto text-center mt-8'>{props.description}</h3>
+                <p className='w-full lg:w-[60%] m-auto text-center mt-8 text-gray-500'>{props.description}</p>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-8 lg:mt-10'>
 

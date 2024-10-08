@@ -85,7 +85,7 @@ const Contact = () => {
               type="text"
               required
               name="name"
-              placeholder="Your Name"
+              placeholder="Name"
               className="px-5 py-3 border-b border-gray-500 bg-transparent border-0 focus:outline-none"
               value={formData.name}
               onChange={handleChange}
@@ -93,7 +93,7 @@ const Contact = () => {
             <input
               type="Number"
               required
-              placeholder="Your number"
+              placeholder="Contact"
               name="phone"
               className="px-5 py-3 border-b border-gray-500 bg-transparent border-0 focus:outline-none"
               value={formData.phone}
@@ -102,7 +102,7 @@ const Contact = () => {
             <input
               type="email"
               required
-              placeholder="Your Email"
+              placeholder="Email"
               name="email"
               className="px-5 py-3 border-b border-gray-500 bg-transparent border-0 focus:outline-none"
               value={formData.email}
@@ -111,7 +111,7 @@ const Contact = () => {
             <input
               type="text"
               required
-              placeholder="Your Message"
+              placeholder="Queries"
               name="queries"
               className="px-5 py-3 border-b border-gray-500 bg-transparent border-0 focus:outline-none"
               value={formData.queries}

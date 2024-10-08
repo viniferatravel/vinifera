@@ -87,7 +87,7 @@ const Tour = ({ selectedPackage }) => {
       <div className="text-justify">
         <h2 className="text-2xl font-bold mb-4">Days Plan</h2>
         <div>
-          <Accordion defaultSelectedKeys={"1"} selectionMode="multiple">
+          <Accordion defaultSelectedKeys={"0"} selectionMode="multiple">
             {selectedPackage?.days_plan?.map((day, index) => (
 
               <AccordionItem

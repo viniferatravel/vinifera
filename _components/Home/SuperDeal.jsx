@@ -268,7 +268,7 @@ const SuperDeal = ({ allPackages }) => {
         {getData().map((card) => (
           <div
             key={card.package_id}
-            className="flex-shrink-0 w-full border-2 border-gray-300 rounded-2xl flex flex-col justify-between gap-4 h-full snap-start overflow-hidden"
+            className="flex-shrink-0 w-full border-2 border-gray-300 rounded-2xl flex flex-col justify-between gap-4 min-h-[400px] snap-start overflow-hidden"
           >
             <div className="relative h-[250px] group overflow-hidden">
               <Image

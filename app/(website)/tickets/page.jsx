@@ -48,10 +48,6 @@ const Page = () => {
         <Accordian/>
       </div>
       
-      {/* Use the ref in the Contact component */}
-      <div ref={contactRef}>
-        <Contact />
-      </div>
     </div>
   );
 };

@@ -2,6 +2,9 @@
 import IMAGES from "@/public/image";
 import React from "react";
 import Image from "next/image";
+import {motion} from "framer-motion"
+import { FaPlane } from "react-icons/fa";
+import { FaBus, FaCar, FaTrain } from "react-icons/fa6";
 
 const travelRoutes = [
   {
@@ -60,9 +63,22 @@ const travelRoutes = [
   },
 ];
 
+const sectionVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: "easeInOut" },
+    },
+  };
+
 const Explore = () => {
   return (
-    <div className="w-[95%] m-auto lg:mt-5 mb-5 xl:mt-10">
+    <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}
+        variants={sectionVariants} className="w-[95%] m-auto lg:mt-5 mb-5 xl:mt-10">
       <div>
         <div className="flex justify-center items-center mb-5">
           <div className=" inline-block text-center">
@@ -83,7 +99,7 @@ const Explore = () => {
         {travelRoutes.map((route, index) => (
           <div
             key={index}
-            className="flex items-center bg-white border p-2 rounded-lg gap-5"
+            className="flex items-center bg-white border shadow p-2 rounded-lg gap-5 group"
           >
             <Image
               src={route.image}
@@ -93,29 +109,50 @@ const Explore = () => {
               className="rounded-lg w-[30%]"
               objectFit="cover"
             />
-            <div className="w-[70%] flex flex-col justify-start items-start gap-5 h-full"> 
+            <div className="w-[70%] flex flex-col justify-start items-start gap-5 h-full">
               <h2 className="text-lg lg:text-xl font-semibold w-full text-gray-600">
                 {route.from} To {route.to}
               </h2>
+
               <div className="grid grid-cols-2 w-full gap-2">
-                <div className="flex items-center">
-                  <span className="text-sm lg:text-base">✈️ {route.flights} Flights</span>
+                <div className="flex items-center ">
+                  <p className="flex gap-3 justify-center items-center text-sm lg:text-base font-medium text-gray-500">
+                    <span className="p-1 rounded-full bg-[#f3f4f6] group-hover:shadow group-hover:bg-gray-200 ">
+                      <FaPlane className="text-themeColor" />
+                    </span>
+                    {route.flights} Flights
+                  </p>
                 </div>
                 <div className="flex items-center">
-                  <span className="text-sm lg:text-base">🚌 {route.buses} Buses</span>
+                  <p className="flex gap-3 justify-center items-center text-sm lg:text-base font-medium text-gray-500">
+                    <span className="p-1 rounded-full bg-[#f3f4f6] group-hover:shadow group-hover:bg-gray-200 ">
+                      <FaBus className="text-themeColor" />
+                    </span>
+                    {route.buses} Buses
+                  </p>
                 </div>
                 <div className="flex items-center">
-                  <span className="text-sm lg:text-base">🚆 {route.trains} Trains</span>
+                  <p className="flex gap-3 justify-center items-center text-sm lg:text-base font-medium text-gray-500">
+                    <span className="p-1 rounded-full bg-[#f3f4f6] group-hover:shadow group-hover:bg-gray-200 ">
+                      <FaTrain className="text-themeColor" />
+                    </span>
+                    {route.trains} Trains
+                  </p>
                 </div>
                 <div className="flex items-center">
-                  <span className="text-sm lg:text-base">🚗 {route.cars} Cars</span>
+                  <p className="flex gap-3 justify-center items-center text-sm lg:text-base font-medium text-gray-500">
+                    <span className="p-1 rounded-full bg-[#f3f4f6] group-hover:shadow group-hover:bg-gray-200 ">
+                      <FaCar className="text-themeColor" />
+                    </span>
+                    {route.cars} Cars
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

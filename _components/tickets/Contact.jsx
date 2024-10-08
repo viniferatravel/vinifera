@@ -74,7 +74,7 @@ const Contact = () => {
       <h2 className="text-2xl lg:text-3xl text-gray-600 font-bold border-b-4 border-themeColor">
         Contact Us
       </h2>
-      <p className="text-base lg:text-lg lg:w-[80%] text-center">
+      <p className="text-base lg:text-lg lg:w-[80%] text-center text-gray-500">
         Want a customized plan for your next vacation?
       </p>
 

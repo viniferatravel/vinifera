@@ -27,8 +27,8 @@ const Work = () => {
       >
         <div className="border-y lg:border-y-0 lg:border-x relative px-5 py-10">
           <div className="flex flex-col gap-8">
-            <h2 className="text-3xl text-center font-semibold ">
-              CONSULTATION <span className="text-7xl text-themeColor">1</span>
+            <h2 className="text-3xl text-center font-semibold text-gray-600">
+              CONSULTATION <span className="text-7xl text-themeColor ">1</span>
             </h2>
             <p className="px-5 text-gray-500">
               We start by understanding your travel needs and preferences
@@ -48,7 +48,7 @@ const Work = () => {
         </div>
         <div className="border-y lg:border-y-0 lg:border-x relative px-5 py-10">
           <div className="flex flex-col gap-8">
-            <h2 className="text-3xl text-center font-semibold">
+            <h2 className="text-3xl text-center font-semibold text-gray-600">
               PLANNING <span className="text-7xl text-themeColor">2</span>
             </h2>
             <p className="px-5 text-gray-500">
@@ -69,7 +69,7 @@ const Work = () => {
         </div>
         <div className="border-y lg:border-y-0 lg:border-x relative px-5 py-10">
           <div className="flex flex-col gap-8">
-            <h2 className="text-3xl text-center font-semibold">
+            <h2 className="text-3xl text-center font-semibold text-gray-600">
               BOOKING <span className="text-7xl text-themeColor">3</span>
             </h2>
             <p className="px-5 text-gray-500">
@@ -90,7 +90,7 @@ const Work = () => {
         </div>
         <div className="border-y lg:border-y-0 lg:border-x relative px-5 py-10">
           <div className="flex flex-col gap-8">
-            <h2 className="text-3xl text-center font-semibold">
+            <h2 className="text-3xl text-center font-semibold text-gray-600">
               SUPPORT <span className="text-7xl text-themeColor">4</span>
             </h2>
             <p className="px-5 text-gray-500">

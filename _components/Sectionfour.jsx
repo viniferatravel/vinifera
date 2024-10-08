@@ -50,7 +50,7 @@ const Sectionfour = (props) => {
                                         </div> */}
                                         {item.point}
                                     </div>
-                                    <div>
+                                    <div className='font-semibold'>
                                         {/* <button className="bg-white px-4 py-3 rounded-xl">
                                             Book Now
                                         </button> */}

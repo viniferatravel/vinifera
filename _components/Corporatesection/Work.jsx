@@ -13,7 +13,7 @@ const Work = () => {
   };
   return (
     <div className="flex flex-col gap-16 justify-center items-center ">
-      <h2 className="text-2xl lg:text-3xl text-center text-gray-600 font-bold border-b-4 border-themeColor">
+      <h2 className="text-2xl lg:text-2xl text-center text-gray-600 font-bold border-b-4 border-themeColor">
         How it works?
       </h2>
 
@@ -27,10 +27,10 @@ const Work = () => {
       >
         <div className="border-y lg:border-y-0 lg:border-x relative px-5 py-10">
           <div className="flex flex-col gap-8">
-            <h2 className="text-3xl text-center font-semibold text-gray-600">
-              CONSULTATION <span className="text-7xl text-themeColor ">1</span>
+            <h2 className="text-2xl text-center font-semibold ">
+              CONSULTATION <span className="text-7xl text-themeColor">1</span>
             </h2>
-            <p className="px-5 text-gray-500">
+            <p className="px-5 text-gray-500 text-center lg:text-start">
               We start by understanding your travel needs and preferences
               through a detailed consultation.
             </p>
@@ -48,10 +48,10 @@ const Work = () => {
         </div>
         <div className="border-y lg:border-y-0 lg:border-x relative px-5 py-10">
           <div className="flex flex-col gap-8">
-            <h2 className="text-3xl text-center font-semibold text-gray-600">
+            <h2 className="text-2xl text-center font-semibold">
               PLANNING <span className="text-7xl text-themeColor">2</span>
             </h2>
-            <p className="px-5 text-gray-500">
+            <p className="px-5 text-gray-500 text-center lg:text-start">
               We book tickets tailored to your requirements, ensuring cost
               efficiency and convenience.
             </p>
@@ -69,10 +69,10 @@ const Work = () => {
         </div>
         <div className="border-y lg:border-y-0 lg:border-x relative px-5 py-10">
           <div className="flex flex-col gap-8">
-            <h2 className="text-3xl text-center font-semibold text-gray-600">
+            <h2 className="text-2xl text-center font-semibold">
               BOOKING <span className="text-7xl text-themeColor">3</span>
             </h2>
-            <p className="px-5 text-gray-500">
+            <p className="px-5 text-gray-500 text-center lg:text-start">
               We handle all aspects of booking and reservations, providing you
               with confirmations and detailed itineraries.
             </p>
@@ -90,10 +90,10 @@ const Work = () => {
         </div>
         <div className="border-y lg:border-y-0 lg:border-x relative px-5 py-10">
           <div className="flex flex-col gap-8">
-            <h2 className="text-3xl text-center font-semibold text-gray-600">
+            <h2 className="text-2xl text-center font-semibold">
               SUPPORT <span className="text-7xl text-themeColor">4</span>
             </h2>
-            <p className="px-5 text-gray-500">
+            <p className="px-5 text-gray-500 text-center lg:text-start">
               Our team is available 24/7 to assist with any travel-related
               queries or changes.
             </p>

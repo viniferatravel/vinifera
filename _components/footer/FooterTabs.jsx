@@ -22,20 +22,20 @@ const FooterTabs = () => {
     { id: "unique", label: "Unique Stays" },
   ];
 
-  const kutchLinks = [
-    { id: 1, name: "Rann of Kutch 1", link: "#" },
-    { id: 2, name: "Rann of Kutch 2", link: "#" },
-    { id: 3, name: "Rann of Kutch 3", link: "#" },
-    { id: 4, name: "Rann of Kutch 4", link: "#" },
-    { id: 5, name: "Rann of Kutch 5", link: "#" },
-    { id: 6, name: "Rann of Kutch 6", link: "#" },
-    { id: 7, name: "Rann of Kutch 7", link: "#" },
-    { id: 8, name: "Rann of Kutch 8", link: "#" },
-    { id: 9, name: "Rann of Kutch 9", link: "#" },
-    { id: 10, name: "Rann of Kutch 10", link: "#" },
-    { id: 11, name: "Rann of Kutch 11", link: "#" },
-    { id: 12, name: "Rann of Kutch 12", link: "#" },
-  ];
+  // const kutchLinks = [
+  //   { id: 1, name: "Rann of Kutch 1", link: "#" },
+  //   { id: 2, name: "Rann of Kutch 2", link: "#" },
+  //   { id: 3, name: "Rann of Kutch 3", link: "#" },
+  //   { id: 4, name: "Rann of Kutch 4", link: "#" },
+  //   { id: 5, name: "Rann of Kutch 5", link: "#" },
+  //   { id: 6, name: "Rann of Kutch 6", link: "#" },
+  //   { id: 7, name: "Rann of Kutch 7", link: "#" },
+  //   { id: 8, name: "Rann of Kutch 8", link: "#" },
+  //   { id: 9, name: "Rann of Kutch 9", link: "#" },
+  //   { id: 10, name: "Rann of Kutch 10", link: "#" },
+  //   { id: 11, name: "Rann of Kutch 11", link: "#" },
+  //   { id: 12, name: "Rann of Kutch 12", link: "#" },
+  // ];
 
   useEffect(() => {
     const abc = async () => {
@@ -76,7 +76,7 @@ const FooterTabs = () => {
     item.sub_category.includes(activeTab.toUpperCase())
   );
 
-  const displayedPackages = showMore ? filteredPackages : filteredPackages.slice(0, 15);
+  const displayedPackages = showMore ? filteredPackages : filteredPackages.slice(0, 14);
 
   return (
     <div className="flex w-[95%] mx-auto flex-col py-10 border-b-2 gap-5">
@@ -129,9 +129,20 @@ const FooterTabs = () => {
               </p>
             </div>
           ))}
+
+          {filteredPackages.length > 14 && (
+            <div className="flex justify-start items-center">
+              <button
+                onClick={handleShowMoreToggle}
+                className="px-4 py-2 font-bold underline text-gray-600 cursor-pointer"
+              >
+                {showMore ? "Show Less" : "Show More"}
+              </button>
+            </div>
+          )}
         </div>
 
-        {filteredPackages.length > 15 && (
+        {/* {filteredPackages.length > 15 && (
           <div className="mt-4">
             <button
               onClick={handleShowMoreToggle}
@@ -140,7 +151,7 @@ const FooterTabs = () => {
               {showMore ? "Show Less" : "Show More"}
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

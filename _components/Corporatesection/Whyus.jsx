@@ -99,7 +99,7 @@ const Whyus = () => {
                 <div className="text-themeColor font-semibold text-lg text-center">
                   <p>{e.whyusheading}</p>
                 </div>
-                <div className="text-base text-center">
+                <div className="text-base text-center text-gray-500">
                   <p>{e.whyuspara}</p>
                 </div>
               </div>

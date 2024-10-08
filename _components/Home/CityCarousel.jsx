@@ -120,19 +120,19 @@ export default function CityCarousel({ allPackages }) {
   ];
 
   const handleBookNow = (region) => {
-    if(region === "Western India") {
+    if (region === "Western India") {
       router.push(`/filterpage/WEST`)
     }
 
-    if(region === "Southern India") {
+    if (region === "Southern India") {
       router.push(`/filterpage/SOUTH`)
     }
 
-    if(region === "Northern India") {
+    if (region === "Northern India") {
       router.push(`/filterpage/NORTH`)
     }
 
-    if(region === "Eastern India") {
+    if (region === "Eastern India") {
       router.push(`/filterpage/EAST`)
     }
   }

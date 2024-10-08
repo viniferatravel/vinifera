@@ -1,7 +1,7 @@
 import React from 'react'
 import IMAGES from '@/public/image';
 import Image from 'next/image'
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 import { useRouter } from 'next/navigation';
 
 const Luxury = (props) => {
@@ -11,22 +11,21 @@ const Luxury = (props) => {
     const sectionVariants = {
         hidden: { opacity: 0, y: 30 },
         visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 1, ease: "easeInOut" },
+            opacity: 1,
+            y: 0,
+            transition: { duration: 1, ease: "easeInOut" },
         },
-      };
+    };
 
-
-      const handleCardClick = (destiny) => {
+    const handleCardClick = (destiny) => {
         router.push(`/filterpage/${destiny}`)
-      }
+    }
 
     return (
         <motion.div initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false }}
-        variants={sectionVariants}>
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={sectionVariants}>
             <div className=' w-[95%] m-auto px-4 py-10'>
                 <div className='flex justify-center items-center'>
                     <div className=' inline-block text-center'>
@@ -60,7 +59,6 @@ const Luxury = (props) => {
                             </div>
                         </div>
                     ))}
-
                 </div>
             </div>
         </motion.div>

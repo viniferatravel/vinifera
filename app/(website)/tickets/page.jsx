@@ -7,6 +7,7 @@ import DailyBooking from "@/_components/tickets/DailyBooking";
 import Work from "@/_components/tickets/Work";
 import Contact from "@/_components/tickets/Contact";
 import Accordian from "@/_components/tickets/Accordian";
+import Explore from "@/_components/tickets/Explore"
 
 const Page = () => {
   const contactRef = useRef(null); // Create a ref for Contact component
@@ -32,6 +33,7 @@ const Page = () => {
         <Travel />
         <DailyBooking />
         <Work />
+        <Explore/>
         {/* Use the ref in the Contact component */}
         <div ref={contactRef}>
           <Contact />

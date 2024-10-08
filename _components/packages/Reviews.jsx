@@ -80,9 +80,11 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
     function formatDate(dateString) {
     const dateObj = new Date(dateString);
 
+      const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+
     // Check if the date is valid
     if (isNaN(dateObj.getTime())) {
-        throw new Error('Invalid date provided: ' + date);
+        throw new Error('Invalid date provided: ' + dateString);
     }
     
     // Use Intl.DateTimeFormat to format the date

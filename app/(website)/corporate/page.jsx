@@ -11,9 +11,9 @@ import { Button } from '@nextui-org/react';
 import { useRouter } from 'next/navigation'
 import GuestModal from "@/_components/packages/Modal";
 import Experience from "@/_components/corporatesection/Experience"
-import CorparatePackages from "@/_components/corporatesection/CorparatePackages"
-import Work from "@/_components/corporatesection/Work"
-import Accordian from '@/_components/corporatesection/Accordian'
+import CorparatePackages from "@/_components/Corporatesection/CorparatePackages"
+import Work from "@/_components/Corporatesection/Work"
+import Accordian from '@/_components/Corporatesection/Accordian'
 
 const Corporate = () => {
 

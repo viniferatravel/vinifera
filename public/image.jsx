@@ -41,6 +41,13 @@ const IMAGES = {
   herocardtwo:"/image/herocard2.jpg",
   herocardthree:"/image/herocard3.jpg",
   herocardfour:"/image/herocard4.jpg",
+  corparateExperience:"/image/corparateExperience.jpg",
+  corporateGoa:"/image/corporateGoa.jpg",
+  corporateGujarat:"/image/corporateGujarat.jpg",
+  corporateKerla:"/image/corporateKerla.jpg",
+  corporateSikkim:"/image/corporateSikkim.jpg",
+  corporateRajesthan:"/image/corporateRajesthan.jpg",
+
 };
 
 export default IMAGES;

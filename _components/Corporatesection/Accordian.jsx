@@ -14,181 +14,118 @@ const Accordian = () => {
 
                 <h3 className='w-full lg:w-[60%] m-auto text-center mt-8 mb-16'>For questions about passports and visas, please check the sections below for helpful information and resources. If you need further assistance, feel free to contact our support team!</h3>
 
-                <div className="w-[95%] m-auto lg:grid grid-cols-2 gap-8 hidden">
+                <div className="w-[95%] m-auto lg:grid grid-cols-2 gap-8 ">
                     <div>
                         <Accordion>
-                            <AccordionItem key="1" aria-label="Accordion 1" title="1. How can I connect with your team for assistance?">
+                            <AccordionItem key="1" aria-label="Accordion 1" title="1. What types of travel packages do you offer?">
                                 <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    You can connect with our team through our website by clicking the "Contact Us" button, where you can request a call or chat with one of our executives. We also offer offline consultations at our designated centers.
-                                </div>
-                            </AccordionItem>
+                                We provide a wide range of travel packages designed specifically for corporate clients, including:
 
-                            <AccordionItem key="2" aria-label="Accordion 2" title="2. What services do you provide for visa and passport applications?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    We provide comprehensive support for both visa and passport applications, including initial consultations, document verification, form filling, and guidance throughout the application process, both online and offline.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="3" aria-label="Accordion 3" title="3. What documents do I need to prepare for my application?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    The required documents may vary by visa type or passport service. Generally, you will need:
-                                    <ul className="list-disc list-inside">
-                                        <li>A valid passport</li>
-                                        <li>Passport-sized photograph</li>
-                                        <li>Proof of travel arrangements</li>
-                                        <li>Financial statement</li>
-                                        <li>Any additional documents specified by the relevant authority</li>
-                                    </ul>
-                                    Our executives will guide you on specific requirements during your consultation.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="4" aria-label="Accordion 4" title="4. Can I schedule a call with an executive?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    Yes! You can easily schedule a call through our website. Simply fill out the request form, and one of our executives will reach out to you at your preferred time.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="5" aria-label="Accordion 5" title="5. How long does the entire visa or passport process take?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    Processing times vary based on the type of visa or passport service requested. Typically, visa applications take 5 to 15 working days, while passport renewals may take around 10 days. Our team will provide you with estimated timelines during your consultation.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="6" aria-label="Accordion 6" title="6. What if my visa application is denied?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    If your application is denied, our executive will help you understand the reasons and guide you through the appeal process or reapplication steps to increase your chances of success.
-                                </div>
-                            </AccordionItem>
-
-                        </Accordion>
-                    </div>
-                    <div>
-                        <Accordion>
-                            <AccordionItem key="7" aria-label="Accordion 7" title="7. Do you offer in-person consultations?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    Yes, we provide in-person consultations at our designated centers. You can schedule an appointment with an executive who will assist you with your application process.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="8" aria-label="Accordion 8" title="8. How can I track my application status?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    You can track your application status by contacting our support team or through the online portal once your application is submitted. Our executives will keep you updated at every step of the process.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="9" aria-label="Accordion 9" title="9. What payment methods do you accept?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    We accept various payment methods, including credit/debit cards, net banking, and digital wallets. You can select your preferred method during the payment process.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="10" aria-label="Accordion 10" title="10. Is customer support available for my questions?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    Yes! Our customer support team is available via phone, email, and live chat to assist you with any questions or concerns regarding your visa or passport application.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="11" aria-label="Accordion 11" title="11. Can I make changes to my application after submission?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    If you need to make changes to your application, please contact our executive as soon as possible. Depending on the stage of your application, we will advise you on the best course of action.
-                                </div>
-                            </AccordionItem>
-
-                            <AccordionItem key="12" aria-label="Accordion 12" title="12. What should I do if I need urgent assistance?">
-                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                    If you require urgent assistance, please call our customer support hotline or request an immediate callback through our website. Our team will prioritize your request and assist you as quickly as possible.
-                                </div>
-                            </AccordionItem>
-                        </Accordion>
-                    </div>
-                </div>
-
-                <div className="w-[95%] m-auto grid grid-cols-1 lg:hidden">
-
-                    <Accordion >
-                        <AccordionItem key="1" aria-label="Accordion 1" title="1. How can I connect with your team for assistance?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                You can connect with our team through our website by clicking the "Contact Us" button, where you can request a call or chat with one of our executives. We also offer offline consultations at our designated centers.
-                            </div>
-                        </AccordionItem>
-
-                        <AccordionItem key="2" aria-label="Accordion 2" title="2. What services do you provide for visa and passport applications?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                We provide comprehensive support for both visa and passport applications, including initial consultations, document verification, form filling, and guidance throughout the application process, both online and offline.
-                            </div>
-                        </AccordionItem>
-
-                        <AccordionItem key="3" aria-label="Accordion 3" title="3. What documents do I need to prepare for my application?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                The required documents may vary by visa type or passport service. Generally, you will need:
                                 <ul className="list-disc list-inside">
-                                    <li>A valid passport</li>
-                                    <li>Passport-sized photograph</li>
-                                    <li>Proof of travel arrangements</li>
-                                    <li>Financial statement</li>
-                                    <li>Any additional documents specified by the relevant authority</li>
-                                </ul>
-                                Our executives will guide you on specific requirements during your consultation.
-                            </div>
-                        </AccordionItem>
+                                        <li>Team-building retreats</li>
+                                        <li>Client incentive trips</li>
+                                        <li>Corporate meetings and conferences</li>
+                                        <li>Customized leisure excursions Each package can be tailored to meet your specific needs and preferences.</li>
+                                    </ul>
+                                </div>
+                            </AccordionItem>
 
-                        <AccordionItem key="4" aria-label="Accordion 4" title="4. Can I schedule a call with an executive?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                Yes! You can easily schedule a call through our website. Simply fill out the request form, and one of our executives will reach out to you at your preferred time.
-                            </div>
-                        </AccordionItem>
+                            <AccordionItem key="2" aria-label="Accordion 2" title="2. How can I book a travel package?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Booking is simple! Browse our travel packages, select your preferred option, and complete the online booking form. Our team will review your request and reach out to finalize the details and confirm your reservation.
+                                </div>
+                            </AccordionItem>
 
-                        <AccordionItem key="5" aria-label="Accordion 5" title="5. How long does the entire visa or passport process take?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                Processing times vary based on the type of visa or passport service requested. Typically, visa applications take 5 to 15 working days, while passport renewals may take around 10 days. Our team will provide you with estimated timelines during your consultation.
-                            </div>
-                        </AccordionItem>
+                            <AccordionItem key="3" aria-label="Accordion 3" title="3. What payment methods are accepted?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                We accept various payment methods for your convenience, including:
+                                    <ul className="list-disc list-inside">
+                                        <li>Credit and debit cards</li>
+                                        <li>Bank transfers</li>
+                                        <li>UPI and other digital payment options You can choose your preferred method during checkout.</li>
+                                       
+                                    </ul>
 
-                        <AccordionItem key="6" aria-label="Accordion 6" title="6. What if my visa application is denied?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                If your application is denied, our executive will help you understand the reasons and guide you through the appeal process or reapplication steps to increase your chances of success.
-                            </div>
-                        </AccordionItem>
-                        <AccordionItem key="7" aria-label="Accordion 7" title="7. Do you offer in-person consultations?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                Yes, we provide in-person consultations at our designated centers. You can schedule an appointment with an executive who will assist you with your application process.
-                            </div>
-                        </AccordionItem>
+                                </div>
+                            </AccordionItem>
 
-                        <AccordionItem key="8" aria-label="Accordion 8" title="8. How can I track my application status?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                You can track your application status by contacting our support team or through the online portal once your application is submitted. Our executives will keep you updated at every step of the process.
-                            </div>
-                        </AccordionItem>
+                            <AccordionItem key="4" aria-label="Accordion 4" title="4. Can I customize my travel package?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Absolutely! We understand that each corporate trip is unique. You can customize your package by adding specific destinations, activities, and accommodations. Just let us know your requirements, and we’ll create a tailored itinerary for you.
+                                </div>
+                            </AccordionItem>
 
-                        <AccordionItem key="9" aria-label="Accordion 9" title="9. What payment methods do you accept?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                We accept various payment methods, including credit/debit cards, net banking, and digital wallets. You can select your preferred method during the payment process.
-                            </div>
-                        </AccordionItem>
+                            <AccordionItem key="5" aria-label="Accordion 5" title="5. What is your cancellation policy?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Our cancellation policy allows for cancellations up to [insert number of days] days before departure for a full refund. Please refer to our detailed terms and conditions for specific guidelines regarding cancellations and refunds.
+                                </div>
+                            </AccordionItem>
 
-                        <AccordionItem key="10" aria-label="Accordion 10" title="10. Is customer support available for my questions?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                Yes! Our customer support team is available via phone, email, and live chat to assist you with any questions or concerns regarding your visa or passport application.
-                            </div>
-                        </AccordionItem>
+                            <AccordionItem  className=" border-b lg:border-none" key="6" aria-label="Accordion 6" title="6. Do you offer travel insurance?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Yes, we offer travel insurance options to protect your trip from unforeseen circumstances. You can select this option during the booking process for added peace of mind.
 
-                        <AccordionItem key="11" aria-label="Accordion 11" title="11. Can I make changes to my application after submission?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                If you need to make changes to your application, please contact our executive as soon as possible. Depending on the stage of your application, we will advise you on the best course of action.
-                            </div>
-                        </AccordionItem>
+                                </div>
+                            </AccordionItem>
 
-                        <AccordionItem key="12" aria-label="Accordion 12" title="12. What should I do if I need urgent assistance?">
-                            <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                If you require urgent assistance, please call our customer support hotline or request an immediate callback through our website. Our team will prioritize your request and assist you as quickly as possible.
-                            </div>
-                        </AccordionItem>
-                    </Accordion>
+                        </Accordion>
+                    </div>
+                    <div>
+                        <Accordion>
+                            <AccordionItem key="7" aria-label="Accordion 7" title="7. How can I contact customer support?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Our dedicated customer support team is here to help! You can reach us via:
+                                <ul className="list-disc list-inside">
+                                        <li>Phone: 1800 000 000</li>
+                                        <li>Email: travels@viniferaa.com</li>
+                                        <li>Live chat on our website during business hours We’re available [insert hours of operation] to assist you with any queries.</li>
+                                       
+                                    </ul>
+                                </div>
+                            </AccordionItem>
 
+                            <AccordionItem key="8" aria-label="Accordion 8" title="8. Are your travel packages suitable for large groups?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Yes! We specialize in corporate travel for groups of all sizes. Please provide us with your group details, and we’ll design a package that meets your needs.
+                                </div>
+                            </AccordionItem>
 
+                            <AccordionItem key="9" aria-label="Accordion 9" title="9. What safety measures are in place for COVID-19?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Your safety is our priority. We follow all recommended health and safety protocols, including:
+
+                                <ul className="list-disc list-inside">
+                                        <li>Regular sanitization of vehicles and accommodations</li>
+                                        <li>Compliance with local health guidelines</li>
+                                        <li>Flexible booking options Stay informed by checking our COVID-19 updates section.</li>
+                                       
+                                    </ul>
+                                </div>
+                            </AccordionItem>
+
+                            <AccordionItem key="10" aria-label="Accordion 10" title="10. Can I receive a quote before booking?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Yes, you can request a detailed quote by filling out our inquiry form with your travel preferences. Our team will respond promptly with a customized quote tailored to your needs.
+                                </div>
+                            </AccordionItem>
+
+                            <AccordionItem key="11" aria-label="Accordion 11" title="11. Do you provide local guides during trips?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                Yes, all our packages include experienced local guides who provide valuable insights and enhance your travel experience. They ensure you make the most of your trip.
+
+                                </div>
+                            </AccordionItem>
+
+                            <AccordionItem key="12" aria-label="Accordion 12" title="12. What if I have special requests, like dietary restrictions or accessibility needs?">
+                                <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
+                                We are committed to accommodating your needs. Please inform us of any special requests at the time of booking, and we’ll do our best to ensure a comfortable experience for everyone.
+                                </div>
+                            </AccordionItem>
+                        </Accordion>
+                    </div>
                 </div>
+
+               
             </div>
 
 

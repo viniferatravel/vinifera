@@ -276,7 +276,8 @@ const SlideCards = ({ popularPackages, isLoading }) => {
         popularPackages?.map((slide, index) => (
           <div
             key={index}
-            className="flex-none w-[calc(80%-15px)] lg:w-[calc(25%-15px)] h-96 flex items-center justify-center flex-col gap-5 snap-start"
+            className="flex-none w-[calc(80%-15px)] lg:w-[calc(25%-15px)] h-96 flex items-center justify-center flex-col gap-5 snap-start cursor-pointer"
+            onClick={() => handleBookButton(slide.package_id)}
           >
             <div className="w-full h-[70%]">
               <Image

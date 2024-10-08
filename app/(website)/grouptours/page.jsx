@@ -122,11 +122,11 @@ const Page = () => {
 
       {/* Desktop view */}
       <div className="hidden lg:grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {fetchgroup.map((dest, id) => (
+        {fetchgroup?.map((dest, id) => (
           <Link
             key={id}
             href={`/filterpage/${dest.state}`}
-            className="relative group overflow-hidden rounded-lg shadow-lg"
+            className="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
           >
             <img
               src={dest.package_image[0]}

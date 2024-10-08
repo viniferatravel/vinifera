@@ -653,8 +653,8 @@ const ExclusiveTours = () => {
                   },
                 }}
               >
-                {section.packages.map((slide, index) => (
-                  <SwiperSlide key={index} onClick={() => handleCardClick(slide.package_id)}>
+                {section.packages?.map((slide, index) => (
+                  <SwiperSlide key={index} onClick={() => handleCardClick(slide.package_id)} className="cursor-pointer">
                     <motion.div
                       initial="hidden"
                       whileInView="visible"

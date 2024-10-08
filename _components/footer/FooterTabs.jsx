@@ -60,9 +60,9 @@ const FooterTabs = () => {
   const handleCardClick = (id) => {
     if (id) {
       router.push(`/packages?id=${id}`)
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1000);
     } else {
       console.error("No package ID provided");
     }

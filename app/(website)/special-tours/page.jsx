@@ -108,6 +108,10 @@ const SpecialTours = () => {
     router.push(`/packages?id=${id}`)
   }
 
+  const isNotSpecialCategory = (cat) => {
+    return cat.trim().split(' ').pop().toUpperCase() !== 'SPECIAL';
+  };
+
   return (
     <div>
       {/* Header Section */}
@@ -156,121 +160,136 @@ const SpecialTours = () => {
           <div className="bg-gray-200 h-52 w-full rounded-xl"></div>
         </div>
       ) : (
-        <div className="sticky top-20 bg-white border-b z-30 overflow-x-auto">
-          <ul className="flex justify-center">
-            {sections.map((section, index) => (
-              <li key={index} className="px-2 py-5">
-                <button
-                  onClick={() => handleCategoryClick(index)}
-                  className={`p-2 pb-2 border-b-2 text-xs md:text-base ${activeCategory === section.category
-                      ? "text-red-500 border-themeColor"
-                      : ""
-                    }`}
-                >
-                  {section.category}
-                </button>
-              </li>
-            ))}
-          </ul>
+        <div className="sticky top-20 bg-white z-30 px-8 justify-center items-center">
+          <div className="sticky top-20 bg-white  px-8 w-[100%] border-b overflow-x-auto">
+            <ul className="flex justify-start flex-nowrap ">
+              {sections?.map((section, index) => {
+                if (isNotSpecialCategory(section.category) === true) {
+                  return null
+                }
+
+                return (
+                  <li key={index} className="px-2 py-5">
+                    <button
+                      onClick={() => handleCategoryClick(index)}
+                      className={`p-2 pb-2 border-b-2 text-xs md:text-base ${activeCategory === section.category
+                        ? "text-red-500 border-themeColor"
+                        : ""
+                        } whitespace-nowrap`}
+                    >
+                      {isNotSpecialCategory(section.category) === true ? null : section.category}
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         </div>
       )}
 
       {/* Sections with Swiper */}
       <div>
-        {sections.map((section, index) => (
-          <div
-            key={index}
-            ref={sectionRefs.current[index]}
-            className="h-full px-4 py-8 flex flex-col gap-8 w-full lg:w-[95%] mx-auto"
-          >
-            <div className="flex justify-between items-center">
-              <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-4">
-                {section.category}
-              </h2>
-              <div className="flex justify-center items-center">
-                <Button
-                  className="bg-themeColor text-white font-semibold hidden lg:flex"
-                  onClick={() => handleViewAll(section.category)}
-                >
-                  View all
-                </Button>
-              </div>
-            </div>
-            {loading ? (
-              <div className="flex gap-4">
-                {/* Skeleton Loader */}
-                {[...Array(4)].map((_, index) => (
-                  <div
-                    key={index}
-                    className="animate-pulse w-60 h-80 bg-gray-100 rounded-2xl flex flex-col justify-between p-4"
-                  >
-                    <div className="bg-gray-300 h-52 w-full rounded-xl"></div>
-                    <div className="bg-gray-300 h-5 w-3/4 rounded"></div>
-                    <div className="bg-gray-300 h-4 w-1/2 rounded"></div>
-                    <div className="bg-gray-300 h-4 w-1/3 rounded"></div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <Swiper
-                slidesPerView={1.2}
-                spaceBetween={20}
-                navigation={true}
-                modules={[Navigation]}
-                className="placesSwiperPackage"
-                breakpoints={{
-                  640: {
-                    slidesPerView: 2.3,
-                    spaceBetween: 20,
-                  },
-                  768: {
-                    slidesPerView: 2.3,
-                    spaceBetween: 20,
-                  },
-                  1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 30,
-                  },
-                }}
-              >
-                {section.packages.map((slide, index) => (
-                  <SwiperSlide key={index} onClick={() => handleCardClick(slide.package_id)} className="cursor-pointer">
-                    <motion.div
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: false }}
-                      variants={sectionVariants}
-                      className="w-full h-80 flex items-center justify-center flex-col gap-2 snap-start border rounded-2xl p-2 bg-gray-50 shadow"
-                    >
-                      <div className="w-full min-h-52 overflow-hidden relative group rounded-xl">
-                        <Image
-                          src={slide.package_image[0]}
-                          alt={slide.package_name}
-                          height={500}
-                          width={500}
-                          className="h-full w-full object-fill transition-all group-hover:scale-105 aspect-[300/300] "
-                        />
-                      </div>
+        {sections?.map((section, index) => {
 
-                      <div className="w-full text-left p-2 h-full">
-                        <h3 className="text-lg font-bold">
-                          {slide.package_name}
-                        </h3>
-                        <div className="text-sm">{slide.location}</div>
-                        <div className="flex justify-between">
-                          <div className="flex gap-2 justify-center items-baseline">
-                            <p className="text-gray-700 text-[12px]">Starts from </p><p className="text-themeColor">{slide.price + "*"}</p>
-                          </div>
-                          <p className="text-gray-700">{`${slide.tour_itinerary.days} Days, ${slide.tour_itinerary.nights} Nights`}</p>
+          if (isNotSpecialCategory(section.category)) {
+            return null
+          }
+
+          return (
+            <div
+              key={index}
+              ref={sectionRefs.current[index]}
+              className="h-full px-4 py-8 flex flex-col gap-8 w-full lg:w-[95%] mx-auto"
+            >
+              <div className="flex justify-between items-center">
+                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-4">
+                  {section.category}
+                </h2>
+                <div className="flex justify-center items-center">
+                  <Button
+                    className="bg-themeColor text-white font-semibold hidden lg:flex"
+                    onClick={() => handleViewAll(section.category)}
+                  >
+                    View all
+                  </Button>
+                </div>
+              </div>
+              {loading ? (
+                <div className="flex gap-4">
+                  {/* Skeleton Loader */}
+                  {[...Array(4)].map((_, index) => (
+                    <div
+                      key={index}
+                      className="animate-pulse w-60 h-80 bg-gray-100 rounded-2xl flex flex-col justify-between p-4"
+                    >
+                      <div className="bg-gray-300 h-52 w-full rounded-xl"></div>
+                      <div className="bg-gray-300 h-5 w-3/4 rounded"></div>
+                      <div className="bg-gray-300 h-4 w-1/2 rounded"></div>
+                      <div className="bg-gray-300 h-4 w-1/3 rounded"></div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <Swiper
+                  slidesPerView={1.2}
+                  spaceBetween={20}
+                  navigation={true}
+                  modules={[Navigation]}
+                  className="placesSwiperPackage"
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 2.3,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 2.3,
+                      spaceBetween: 20,
+                    },
+                    1024: {
+                      slidesPerView: 4,
+                      spaceBetween: 30,
+                    },
+                  }}
+                >
+                  {section.packages.map((slide, index) => (
+                    <SwiperSlide key={index} onClick={() => handleCardClick(slide.package_id)} className="cursor-pointer">
+                      <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false }}
+                        variants={sectionVariants}
+                        className="w-full h-80 flex items-center justify-center flex-col gap-2 snap-start border rounded-2xl p-2 bg-gray-50 shadow"
+                      >
+                        <div className="w-full min-h-52 overflow-hidden relative group rounded-xl">
+                          <Image
+                            src={slide.package_image[0]}
+                            alt={slide.package_name}
+                            height={500}
+                            width={500}
+                            className="h-full w-full object-fill transition-all group-hover:scale-105 aspect-[300/300] "
+                          />
                         </div>
-                      </div>
-                    </motion.div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
-          </div>
-        ))}
+
+                        <div className="w-full text-left p-2 h-full">
+                          <h3 className="text-lg font-bold">
+                            {slide.package_name}
+                          </h3>
+                          <div className="text-sm">{slide.location}</div>
+                          <div className="flex justify-between">
+                            <div className="flex gap-2 justify-center items-baseline">
+                              <p className="text-gray-700 text-[12px]">Starts from </p><p className="text-themeColor">{slide.price + "*"}</p>
+                            </div>
+                            <p className="text-gray-700">{`${slide.tour_itinerary.days} Days, ${slide.tour_itinerary.nights} Nights`}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              )}
+            </div>
+          )
+        })}
       </div>
     </div>
   );

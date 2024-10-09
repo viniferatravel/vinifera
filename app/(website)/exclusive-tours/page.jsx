@@ -522,7 +522,7 @@ const ExclusiveTours = () => {
   };
 
   const handleCardClick = (id) => {
-    router.push(`/packages?id=${id}`)
+    router.push(`/packages/${id}`)
   }
 
   const isSpecialCategory = (cat) => {

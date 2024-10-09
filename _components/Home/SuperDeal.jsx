@@ -43,7 +43,7 @@ const SuperDeal = ({ allPackages }) => {
   };
 
   const handleViewDetails = (id) => {
-    router.push(`packages?id=${id}`);
+    router.push(`packages/${id}`);
   };
 
   const handleCloseEnquiryModal = (val) => {

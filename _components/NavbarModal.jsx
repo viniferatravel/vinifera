@@ -95,7 +95,7 @@ const NavbarModal = ({ isOpen, onOpenChange }) => {
   }, [search, links]);
 
   const handlepackage = (package_id) => {
-    router.push(`/packages?id=${package_id}`)
+    router.push(`/packages/${package_id}`)
     onOpenChange()
   }
 

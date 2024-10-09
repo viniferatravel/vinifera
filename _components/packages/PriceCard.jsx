@@ -145,7 +145,7 @@ const PriceCard = ({ selectedPackage }) => {
               <Phone className="size-5" />
             </div>
             <p>
-              Call Us for details
+              Call Us for details&nbsp;
               <span className="text-base font-semibold cursor-pointer">
                 1800 266 1100
               </span>

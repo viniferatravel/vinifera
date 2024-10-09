@@ -192,7 +192,7 @@ const Tour = ({ slug }) => {
   }, [price, originaldata]);
 
   const handlepackage = (package_id) => {
-    router.push(`/packages?id=${package_id}`);
+    router.push(`/packages/${package_id}`);
   };
 
   function capitalizeWords(sentence) {

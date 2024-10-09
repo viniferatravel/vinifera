@@ -12,10 +12,9 @@ const Accordian = () => {
                     </div>
                 </div>
 
-                <h3 className='w-full lg:w-[60%] m-auto text-center mt-8 mb-16'>
-                    For questions about passports and visas, please check the sections below for helpful information and resources. 
-                    If you need further assistance, feel free to contact our support team!
-                </h3>
+                <p className='w-full lg:w-[60%] m-auto text-center mt-8 mb-16'>
+                Frequently Asked Questions to Enhance Your Ticket Booking Experience and Ensure Smooth Travel Plans
+                </p>
 
                 <div className="w-[95%] m-auto lg:grid grid-cols-2 gap-8 ">
                     <div>

@@ -85,7 +85,10 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
     
     return formattedDate;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> fe9c219892bad85426d53fcecb750ff0a850e798
 
   return (
     <>

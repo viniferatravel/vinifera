@@ -16,7 +16,7 @@ const Landing = () => {
 
   return (
     <div className="w-full">
-      <div className="relative h-[70vh] w-full">
+      <div className="relative h-[90vh] w-full">
         <video
           autoPlay
           loop
@@ -79,11 +79,11 @@ const Landing = () => {
             </div>
           </div>
         </div>
-        <div className="hidden lg:flex absolute -bottom-36 left-0 w-full ">
+        {/* <div className="hidden lg:flex absolute -bottom-36 left-0 w-full ">
           <LandingCards />
-        </div>
+        </div> */}
       </div>
-      <div className="lg:hidden flex w-full ">
+      <div className="mt-0 lg:mt-10 flex w-full ">
         <LandingCards />
       </div>
     </div>

@@ -39,7 +39,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col w-full gap-0 lg:gap-32">
+    <div className="flex flex-col w-full gap-0">
       <Landing />
       
       <div className="w-[95%] mx-auto flex flex-col gap-16">

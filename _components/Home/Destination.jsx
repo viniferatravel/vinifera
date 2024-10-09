@@ -28,7 +28,7 @@ const Destination = () => {
           {destinations.slice(0, 1).map((destination, index) => (
             <div
               key={index}
-              className="border relative col-span-2 rounded-xl hover:scale-105 hover:transition-all hover:duration-500 overflow-hidden"
+              className="border relative col-span-2 rounded-xl hover:scale-[1.01] hover:transition-all  hover:duration-1000 overflow-hidden"
             >
               <Image
                 src={destination.image}
@@ -45,7 +45,7 @@ const Destination = () => {
           {destinations.slice(1, 3).map((destination, index) => (
             <div
               key={index}
-              className="border relative col-span-1 rounded-xl hover:scale-105 hover:transition-all hover:duration-500 overflow-hidden"
+              className="border relative col-span-1 rounded-xl hover:scale-[1.01] hover:transition-all  hover:duration-1000 overflow-hidden"
             >
               <Image
                 src={destination.image}
@@ -64,7 +64,7 @@ const Destination = () => {
           {destinations.slice(3, 4).map((destination, index) => (
             <div
               key={index}
-              className="border relative col-span-1 rounded-xl hover:scale-105 hover:transition-all hover:duration-500 overflow-hidden"
+              className="border relative col-span-1 rounded-xl hover:scale-[1.01] hover:transition-all  hover:duration-1000 overflow-hidden"
             >
               <Image
                 src={destination.image}
@@ -83,7 +83,7 @@ const Destination = () => {
           {destinations.slice(4).map((destination, index) => (
             <div
               key={index}
-              className="border relative col-span-1 rounded-xl hover:scale-105 hover:transition-all hover:duration-500 overflow-hidden"
+              className="border relative col-span-1 rounded-xl hover:scale-[1.01] hover:transition-all  hover:duration-1000 overflow-hidden"
             >
               <Image
                 src={destination.image}

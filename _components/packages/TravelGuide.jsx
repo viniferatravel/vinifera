@@ -46,7 +46,7 @@ const TravelGuide = ({ selectedPackage, selectedPackageReviews }) => {
       {/* Navigation Menu */}
       <div className="sticky top-[75px] lg:top-20 left-0 w-full  text-black py-5 z-10 bg-white border-y overflow-x-auto ">
         <ul className="flex justify-between w-full px-2 ">
-          {["Highlights", "Tour Itinerary", "Hotel", "Policy", "Review"].map(
+          {["Highlights", "Tour Itinerary", "Hotel", "Policy", "Review"]?.map(
             (title, index) => (
               <li
                 key={index}

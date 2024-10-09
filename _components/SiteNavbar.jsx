@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { usePathname } from 'next/navigation';
+import { Button } from "@nextui-org/react";
 
 const NavLinks = ({ closeNavbar, lastSegment }) => {
 
@@ -244,6 +245,24 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     ))
   }, [specialpackagedata, lastSegment])
 
+  const isSpecialCategory = (cat) => {
+    // Check if the last word of the category is "SPECIAL"
+    return cat.trim().split(' ').pop().toUpperCase() === 'SPECIAL';
+  };
+
+  const isNotSpecialCategory = (cat) => {
+    // Check if the last word of the category is NOT "SPECIAL"
+    return cat.trim().split(' ').pop().toUpperCase() !== 'SPECIAL';
+  };
+
+  const handleAllExclusive = () => {
+    router.push(`/exclusive-tours`)
+  }
+
+  const handleAllSpecial = () => {
+    router.push(`/special-tours`)
+  }
+
 
 
   return (
@@ -405,7 +424,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
                       } else {
                         return (
-                          <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-500 text-sm cursor-pointer"}>
+                          <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-600 text-sm cursor-pointer"}>
                             {cat}
                           </p>
                         );
@@ -448,7 +467,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
                       } else {
                         return (
-                          <p key={`${index}-${catIndex}`} onClick={() => handlespecialpackage(cat)} className={navAction === "special" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-500 text-sm cursor-pointer"}>
+                          <p key={`${index}-${catIndex}`} onClick={() => handlespecialpackage(cat)} className={navAction === "special" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-600 text-sm cursor-pointer"}>
                             {cat}
                           </p>
                         );
@@ -548,28 +567,28 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-16 left-0 right-0 w-[80%] m-auto grid grid-cols-2 h-[60vh] overflow-y-auto rounded-lg bg-white"
+            className="absolute top-16 left-0 right-0 w-[80%] m-auto grid grid-cols-2 h-[60vh] rounded-lg bg-white pb-6 shadow-[rgba(0,0,0,0.15)_1.95px_1.95px_2.6px]"
             onMouseEnter={() => setShowTripsContent(true)}
             onMouseLeave={() => setShowTripsContent(false)}
           >
-            <div className="rounded-s-lg rounded-b-lg px-4 py-2 ">
-              <p className="text-center p-2 text-2xl font-semibold ">DOMESTIC</p>
-              <div className="grid grid-cols-2 gap-2 mt-3">
+            <div className="rounded-s-lg rounded-b-lg px-8 py-2 ">
+              <p className="text-left p-2 text-xl font-bold pt-6 border-b pb-3 text-black ">DOMESTIC</p>
+              <div className="grid grid-cols-2 gap-4 mt-3 pt-2 overflow-y-auto ">
                 {noninternational && noninternational.map((e, i) => (
-                  <div key={i} className="w-full flex justify-center items-center flex-col p-2 gap-3 rounded-lg">
-                    <p className="w-full text-sm cursor-pointer text-gray-500" onClick={() => handlenoninternational(e.state)}>
+                  <div key={i} className="w-full flex justify-center items-center flex-col p-2 gap-3 rounded-lg hover:bg-red-200 text-gray-600">
+                    <p className="w-full text-sm cursor-pointer" onClick={() => handlenoninternational(e.state)}>
                       {e.state}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="py-2 px-10 rounded-r-lg rounded-b-lg">
-              <p className="text-center p-2 text-2xl font-semibold">INTERNATIONAL</p>
-              <div className="grid grid-cols-2 gap-2 mt-3">
+            <div className="py-2 px-8 rounded-r-lg rounded-b-lg ">
+              <p className="text-left p-2 text-xl font-bold pt-6 border-b pb-3 text-black ">INTERNATIONAL</p>
+              <div className="grid grid-cols-2 gap-4 mt-3 pt-2 ">
                 {international && international.map((e, i) => (
-                  <div key={i} className="w-full flex justify-start items-center flex-col p-2 gap-3 rounded-lg">
-                    <p className="w-full text-sm cursor-pointer text-gray-500" onClick={() => handleinternationaldata(e.state)}>{e.state}</p>
+                  <div key={i} className="w-full flex justify-start items-center flex-col p-2 gap-3 rounded-lg hover:bg-red-200 text-gray-600">
+                    <p className="w-full text-sm cursor-pointer" onClick={() => handleinternationaldata(e.state)}>{e.state}</p>
                   </div>
                 ))}
               </div>
@@ -588,11 +607,14 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
             onMouseLeave={() => setShowPackagesContent(false)}
           >
             <div className="rounded-s-lg rounded-b-lg w-[25%] px-4 py-5">
-              <div className="py-4 px-2 flex justify-start flex-col gap-3 bg-gray-200 rounded-lg">
-                <p className="font-extrabold">SPECIALLY TOURS</p>
+              <div className="py-4 px-2 flex justify-start flex-col gap-3 bg-red-50 rounded-xl">
+                <p className="font-bold text-lg">EXCLUSIVE TOURS</p>
                 <p className="font-normal text-sm leading-relaxed">
-                  Specialty tours are designed to cater to specific interests and passions, offering unique and immersive experiences that go beyond the typical tourist activities. Here are some types of specialty tours.
+                  Exclusive tours offer a premium and highly personalized travel experience for those seeking privacy, luxury, and uniqueness. Ideal for those who want to explore the world in style and comfort, with every detail taken care of.
                 </p>
+                <Button className="bg-blue-50 text-black font-semibold" onClick={handleAllExclusive}>
+                  View All Exclusive Tours
+                </Button>
               </div>
             </div>
             <div className="w-[75%] py-5 px-10 rounded-r-lg rounded-b-lg">
@@ -602,11 +624,11 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
                     if (!uniqueCategories.has(cat)) {
                       uniqueCategories.add(cat);
-                      if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST") {
+                      if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "SPECIAL" || isSpecialCategory(cat)) {
 
                       } else {
                         return (
-                          <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-500 text-sm cursor-pointer"}>
+                          <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-sm cursor-pointer p-2 hover:bg-red-200 text-gray-600 rounded-lg"}>
                             {cat}
                           </p>
                         );
@@ -631,11 +653,14 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
             onMouseLeave={() => setShowspecialContent(false)}
           >
             <div className="rounded-s-lg rounded-b-lg w-[25%] px-4 py-5 ">
-              <div className="py-4 px-2 flex justify-start flex-col gap-3 bg-gray-200 rounded-lg">
-                <p className="font-extrabold">SPECIAL TOURS</p>
+              <div className="py-4 px-2 flex justify-start flex-col gap-3 bg-red-50 rounded-lg">
+                <p className="font-bold text-lg">SPECIAL TOURS</p>
                 <p className="font-normal text-sm leading-relaxed">
                   Specialty tours are designed to cater to specific interests and passions, offering unique and immersive experiences that go beyond the typical tourist activities. Here are some types of specialty tours.
                 </p>
+                <Button className="bg-blue-50 text-black font-semibold" onClick={handleAllSpecial}>
+                  View All Special Tours
+                </Button>
               </div>
             </div>
             <div className="w-[75%] py-5 px-10 rounded-r-lg rounded-b-lg">
@@ -645,11 +670,11 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
                     // Check if the category has been added to the Set
                     if (!uniqueCategories.has(cat)) {
                       uniqueCategories.add(cat); // Add category to the Set
-                      if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST") {
+                      if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
 
                       } else {
                         return (
-                          <p key={`${index}-${catIndex}`} onClick={() => handlespecialpackage(cat)} className={navAction === "special" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-500 text-sm cursor-pointer"}>
+                          <p key={`${index}-${catIndex}`} onClick={() => handlespecialpackage(cat)} className={navAction === "special" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-sm cursor-pointer p-2 rounded-lg hover:bg-red-200 text-gray-600 "}>
                             {cat}
                           </p>
                         );
@@ -932,11 +957,10 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
   // }, [lastSegment, links]);
 
 
-  useEffect(() => {
-    if (navAction) {
-      console.log("navAction::::::>", navAction)
-    }
-  }, [navAction])
+  const isSpecialCategory = (cat) => {
+    // Check if the last word of the category is "SPECIAL"
+    return cat.trim().split(' ').pop().toUpperCase() === 'SPECIAL';
+  };
 
 
   return (
@@ -1170,7 +1194,7 @@ const Navbar = () => {
               }`}
             onClick={openModal}
           >
-            <Search className="size-4 text-gray-500 cursor-pointer" />
+            <Search className="size-4 text-gray-600 cursor-pointer" />
             <p className="text-gray-400 text-sm">Search &quot;{currentPlace}&quot;</p>
           </div>
           <div className="flex gap-5 items-center justify-center">
@@ -1187,7 +1211,7 @@ const Navbar = () => {
           className="lg:flex justify-center items-center border py-1 px-3 gap-5 rounded-md hidden"
           onClick={openModal}
         >
-          <Search className="size-4 text-gray-500 cursor-pointer" />
+          <Search className="size-4 text-gray-600 cursor-pointer" />
           <input
             className="border-none focus:ring-0 focus:outline-none text-gray-400 text-base"
             type="text"

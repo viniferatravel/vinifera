@@ -86,6 +86,7 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
     return formattedDate;
 }
 
+
   return (
     <>
 
@@ -96,7 +97,7 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
             <StarRating rating={selectedPackageReviews[0]?.rating} />
           </div>
         </div>
-        <div className="flex shadow-md rounded-xl border gap-3 p-8 flex-col lg:w-full">
+        <div className="flex shadow-md rounded-xl border gap-3 p-8 flex-col lg:w-full bg-red-50">
           <Swiper
             slidesPerView={2}
             spaceBetween={30}
@@ -121,8 +122,8 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
             {selectedPackageReviews?.map((item, index) => {
               return (
                 <SwiperSlide key={index} className="">
-                  <div className="flex flex-col gap-5 mx-auto border-gray-200 bg-white">
-                    <div className="border w-full p-4 rounded-lg shadow-lg">
+                  <div className="flex flex-col gap-5 mx-auto  bg-white rounded-lg">
+                    <div className="w-full p-4 rounded-lg shadow-lg bg-white">
                       <h2 className="text-black mb-4 text-xl font-semibold">
                         {item?.tagline}
                       </h2>

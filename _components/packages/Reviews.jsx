@@ -65,17 +65,27 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
   };
 
   function formatDate(dateString) {
-    // Parse the input date string
-    const date = new Date(dateString);
+    // Check if dateString is not empty and is a valid string
+    if (!dateString || typeof dateString !== 'string') {
+        console.warn('Invalid or empty date string provided');
+        return 'Invalid date';
+    }
 
-    // Options to format the date
-    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    const dateObj = new Date(dateString);
+
+    // Check if the date is valid
+    if (isNaN(dateObj.getTime())) {
+        console.warn('Invalid date provided: ' + dateString);
+        return 'Invalid date';
+    }
 
     // Use Intl.DateTimeFormat to format the date
-    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(date);
-
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }; // Customize as needed
+    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(dateObj);
+    
     return formattedDate;
-  }
+}
+
 
   return (
     <>

@@ -208,7 +208,7 @@ const Packages = () => {
                 {/* Accordion for FAQs */}
                 <div className="mt-4">
                   <Accordion isCompact>
-                    {filteredFAQs.map((item, index) => {
+                    {filteredFAQs?.map((item, index) => {
                       return (
                         <AccordionItem
                           key={index}

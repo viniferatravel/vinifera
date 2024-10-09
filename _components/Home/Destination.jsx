@@ -120,7 +120,7 @@ const Destination = () => {
         ))}
       </div>
 
-      <div></div>
+     
     </div>
   );
 };

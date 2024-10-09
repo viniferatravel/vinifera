@@ -1,5 +1,5 @@
 const VIDEOS = {
-    heroVideo: './video/Herobg.mp4',
+    heroLanding: './video/heroLanding.mp4',
 }
 
 export default VIDEOS;

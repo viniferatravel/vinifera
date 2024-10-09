@@ -10,6 +10,7 @@ import ScrollCards from "@/_components/Home/ScrollCards";
 import Destination from "@/_components/Home/Destination"
 
 
+
 export default function Home() {
   const [allPackages, setAllPackages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,8 +39,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col w-full gap-16">
+    <div className="flex flex-col w-full gap-0 lg:gap-32">
       <Landing />
+      
       <div className="w-[95%] mx-auto flex flex-col gap-16">
         <ScrollCards />
         <Destination/>

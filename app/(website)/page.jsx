@@ -42,7 +42,7 @@ export default function Home() {
     <div className="flex flex-col w-full gap-0">
       <Landing />
       
-      <div className="w-[95%] mx-auto flex flex-col gap-16">
+      <div className="w-[95%] mx-auto flex flex-col gap-16 md:gap-24">
         <ScrollCards />
         <Destination/>
         <div ref={specialPackageRef}>

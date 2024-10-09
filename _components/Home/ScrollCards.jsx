@@ -29,7 +29,7 @@ const HomePage = () => {
       <div className="h-full  w-[95%] mx-auto flex justify-center items-center flex-col lg:flex-row gap-5 ">
         <div className="flex flex-col w-full lg:w-[50%] justify-center h-full items-center gap-10 ">
           <div className="flex justify-start w-full ">
-            <h1 className="text-2xl lg:text-4xl font-semibold">Best Packages across India!</h1>
+            <h1 className="text-2xl lg:text-4xl font-semibold text-gray-600">Best Packages across India!</h1>
           </div>
           <div className="flex flex-col gap-8">
             <div className="flex  gap-5">
@@ -122,7 +122,7 @@ const HomePage = () => {
         </div>
         <div className="flex flex-col w-full lg:w-[50%] justify-center h-full items-center gap-10 ">
           <div className="flex justify-start w-full ">
-            <h1 className="text-2xl lg:text-4xl font-semibold">Adventure Awaits</h1>
+            <h1 className="text-2xl lg:text-4xl font-semibold text-gray-600">Adventure Awaits</h1>
           </div>
           <div className="flex flex-col gap-8 w-full">
             <div className="flex gap-5">

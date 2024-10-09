@@ -548,16 +548,16 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-16 left-0 right-0 w-[80%] m-auto grid grid-cols-2 h-[60vh] overflow-y-auto rounded-lg bg-white"
+            className="absolute top-16 left-0 right-0 w-[80%] m-auto grid grid-cols-2 h-[60vh] overflow-y-auto rounded-lg bg-white pb-6 shadow-[rgba(0,0,0,0.15)_1.95px_1.95px_2.6px]"
             onMouseEnter={() => setShowTripsContent(true)}
             onMouseLeave={() => setShowTripsContent(false)}
           >
-            <div className="rounded-s-lg rounded-b-lg px-4 py-2 ">
-              <p className="text-center p-2 text-2xl font-semibold ">DOMESTIC</p>
-              <div className="grid grid-cols-2 gap-2 mt-3">
+            <div className="rounded-s-lg rounded-b-lg px-4 py-2">
+              <p className="text-left p-2 text-xl font-semibold pt-6 border-b pb-3 text-gray-700">DOMESTIC</p>
+              <div className="grid grid-cols-2 gap-4 mt-3 pt-2">
                 {noninternational && noninternational.map((e, i) => (
-                  <div key={i} className="w-full flex justify-center items-center flex-col p-2 gap-3 rounded-lg">
-                    <p className="w-full text-sm cursor-pointer text-gray-500" onClick={() => handlenoninternational(e.state)}>
+                  <div key={i} className="w-full flex justify-center items-center flex-col p-2 gap-3 rounded-lg hover:bg-red-200 text-gray-500">
+                    <p className="w-full text-sm cursor-pointer" onClick={() => handlenoninternational(e.state)}>
                       {e.state}
                     </p>
                   </div>
@@ -565,11 +565,11 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
               </div>
             </div>
             <div className="py-2 px-10 rounded-r-lg rounded-b-lg">
-              <p className="text-center p-2 text-2xl font-semibold">INTERNATIONAL</p>
-              <div className="grid grid-cols-2 gap-2 mt-3">
+              <p className="text-left p-2 text-xl font-semibold pt-6 border-b pb-3 text-gray-700">INTERNATIONAL</p>
+              <div className="grid grid-cols-2 gap-4 mt-3 pt-2">
                 {international && international.map((e, i) => (
-                  <div key={i} className="w-full flex justify-start items-center flex-col p-2 gap-3 rounded-lg">
-                    <p className="w-full text-sm cursor-pointer text-gray-500" onClick={() => handleinternationaldata(e.state)}>{e.state}</p>
+                  <div key={i} className="w-full flex justify-start items-center flex-col p-2 gap-3 rounded-lg hover:bg-red-200 text-gray-500">
+                    <p className="w-full text-sm cursor-pointer" onClick={() => handleinternationaldata(e.state)}>{e.state}</p>
                   </div>
                 ))}
               </div>
@@ -606,7 +606,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
                       } else {
                         return (
-                          <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-500 text-sm cursor-pointer"}>
+                          <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-sm cursor-pointer p-2 hover:bg-red-200 text-gray-500 rounded-lg"}>
                             {cat}
                           </p>
                         );
@@ -649,7 +649,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
                       } else {
                         return (
-                          <p key={`${index}-${catIndex}`} onClick={() => handlespecialpackage(cat)} className={navAction === "special" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-500 text-sm cursor-pointer"}>
+                          <p key={`${index}-${catIndex}`} onClick={() => handlespecialpackage(cat)} className={navAction === "special" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-sm cursor-pointer p-2 rounded-lg hover:bg-red-200 text-gray-500 "}>
                             {cat}
                           </p>
                         );

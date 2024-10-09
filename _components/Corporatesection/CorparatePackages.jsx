@@ -1,5 +1,7 @@
 import IMAGES from "@/public/image";
-import React from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 // Example data array
 const packageData = [
@@ -41,6 +43,50 @@ const packageData = [
 ];
 
 const CorporatePackages = () => {
+
+  const router = useRouter();
+
+  const [links, setlinks] = useState([]);
+  console.log(links, "links");
+
+  const [international, setinternational] = useState([]);
+  console.log(international, "international");
+
+  const [noninternational, setnoninternational] = useState([]);
+  console.log(noninternational, "noninternational");
+
+  useEffect(() => {
+    if (links) {
+      const internationaldata = links.filter(link => link.sub_category.includes("INTERNATIONAL")).slice(0, 3);
+      console.log(internationaldata, "internationaldata checl");
+
+      const noninternationaldata = links.filter(link => !link.sub_category.includes("INTERNATIONAL")).slice(0, 2);
+      console.log(noninternationaldata, "noninternationaldata check");
+
+      setinternational(internationaldata);
+      setnoninternational(noninternationaldata)
+    }
+
+  }, [links]);
+
+  useEffect(() => {
+    async function getdata() {
+      const response = await axios.post("/api/fetchcategory", {
+        operation: "fetchallpackage",
+      });
+      // console.log(response.data.fetchalldata, "check response");
+      setlinks(response.data.fetchalldata);
+    }
+    getdata();
+  }, []);
+
+  const mergedata = [...international, ...noninternational]
+  console.log(mergedata, "mergedata");
+
+  const handleclick = (id) => {
+    router.push(`/filterpage/${id}`)
+  }
+
   return (
     <div className="w-[95%] mx-auto my-10 py-10 flex flex-col gap-5">
       {/* Section Heading */}
@@ -57,14 +103,15 @@ const CorporatePackages = () => {
 
       {/* Cards Section with Scroll Snapping */}
       <div className="flex lg:overflow-hidden overflow-x-scroll scroll-smooth whitespace-nowrap gap-4 hide-scrollbar-x scroll-snap-x snap-mandatory">
-        {packageData.map((pkg, index) => (
+        {mergedata.map((pkg, index) => (
           <div
             key={index}
             className="flex-none w-[calc(80%-16px)] md:w-[calc(40%-16px)] lg:w-[calc(20%-16px)] h-96 flex items-center justify-center flex-col gap-5 snap-start"
+            onClick={() => handleclick(pkg.state)}
           >
             <div className="relative group rounded-2xl overflow-hidden w-full">
               <img
-                src={pkg.image}
+                src={pkg.package_image[0]}
                 width={300}
                 height={300}
                 alt={pkg.destination}
@@ -73,15 +120,15 @@ const CorporatePackages = () => {
               />
               <div className="absolute inset-0 bg-black/30 flex justify-between items-end p-3 text-white group-hover:bg-black/20 transition-all">
                 <div className="flex justify-start items-start flex-col">
-                  <h3 className="text-base font-bold">{pkg.destination}</h3>
+                  <h3 className="text-base font-bold">{pkg.state}</h3>
                   <p className="text-xs">
-                    <span className="font-semibold">{pkg.days}</span> Days{" "}
-                    <span className="font-semibold">{pkg.nights}</span> Nights
+                    <span className="font-semibold">{pkg.tour_itinerary.days}</span> Days{" "}
+                    <span className="font-semibold">{pkg.tour_itinerary.nights}</span> Nights
                   </p>
                 </div>
                 <div className="flex justify-start items-center flex-col">
                   <p className="text-xs">Starts From</p>
-                  <h3 className="text-base font-bold">{pkg.price}</h3>
+                  <h3 className="text-base font-bold">&#8377; {pkg.price}</h3>
                 </div>
               </div>
             </div>

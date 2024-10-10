@@ -47,6 +47,15 @@ const IMAGES = {
   corporateKerla:"/image/corporateKerla.jpg",
   corporateSikkim:"/image/corporateSikkim.jpg",
   corporateRajesthan:"/image/corporateRajesthan.jpg",
+  landingCatOne:"/image/landingCatOne.jpg",
+  landingCatTwo:"/image/landingCatTwo.jpg",
+  landingCatThree:"/image/landingCatThree.jpg",
+  landingCatFour:"/image/landingCatFour.jpg",
+  landingCatFive:"/image/landingCatFive.jpg",
+  landingCatSix:"/image/landingCatSix.jpg",
+  landingCatSeven:"/image/landingCatSeven.jpg",
+  landingCatEight:"/image/landingCatEight.jpg",
+
 
 };
 

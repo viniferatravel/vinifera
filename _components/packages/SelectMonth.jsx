@@ -46,11 +46,7 @@ const SelectMonth = () => {
 
   const handlepackage = (id) => {
     if (id) {
-      router.push(`/packages?id=${id}`);
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      router.push(`/packages/${id}`);
     } else {
       console.error("No package ID provided");
     }

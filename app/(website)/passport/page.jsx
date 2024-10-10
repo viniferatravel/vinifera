@@ -108,7 +108,7 @@ const Passport = () => {
                             <p className='text-sm font-semibold text-end'>Starting from</p>
                             <div className='flex justify-end items-end'>
                                 <Button color="default" className='w-28 p-2 bg-themeColor text-white font-semibold text-lg' onClick={() => {
-                                    router.push(`/packages?id=${item.package_id}`)
+                                    router.push(`/packages/${item.package_id}`)
                                 }}>
                                     &#8377; 71,000
                                 </Button>

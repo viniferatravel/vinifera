@@ -125,7 +125,7 @@
 //   const router = useRouter()
 
 //   const handleBookButton = (id) => {
-//     router.push(`/packages?id=${id}`)
+//     router.push(`/packages/${id}`)
 //   }
 
 //   return (
@@ -246,7 +246,7 @@ const SlideCards = ({ popularPackages, isLoading }) => {
   const router = useRouter();
 
   const handleBookButton = (id) => {
-    router.push(`/packages?id=${id}`);
+    router.push(`/packages/${id}`);
   };
 
  

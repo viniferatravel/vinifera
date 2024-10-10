@@ -59,10 +59,7 @@ const FooterTabs = () => {
 
   const handleCardClick = (id) => {
     if (id) {
-      router.push(`/packages?id=${id}`)
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      router.push(`/packages/${id}`)
     } else {
       console.error("No package ID provided");
     }
@@ -115,7 +112,7 @@ const FooterTabs = () => {
       {/* Tabs Content */}
       <div className="mt-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4">
-          {displayedPackages.map((link) => (
+          {displayedPackages?.map((link) => (
             <div
               key={link.package_id}
               className="flex items-center p-1 lg:p-1 rounded-lg text-start hover:bg-gray-100 gap-2 bg-white border shadow-sm cursor-pointer"

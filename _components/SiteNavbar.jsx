@@ -1335,7 +1335,7 @@ setTimeout(() => {
         <div className="lg:block hidden">
 
           <div className="bg-themeColor text-white rounded-full size-6 p-4 flex justify-center items-center shadow-lg">
-            <button className="" onClick={() => {
+            <button  onClick={() => {
               router.push(`/filterpage/ALL`)
             }}>
               <ArrowRight strokeWidth={3} />

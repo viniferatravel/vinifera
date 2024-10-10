@@ -17,15 +17,16 @@ const Landing = ({ allPackages }) => {
   return (
     <div className="w-full">
       <div className="relative h-[90vh] w-full">
+        
         <video
           autoPlay
           loop
           muted
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover" // Use absolute positioning
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         >
           <source src={VIDEOS.heroLanding} type="video/mp4" />
-          <track src={VIDEOS.heroLanding} />
           Your browser does not support the video tag.
         </video>
 
@@ -84,7 +85,7 @@ const Landing = ({ allPackages }) => {
         </div> */}
       </div>
       <div className="mt-0 lg:mt-10 flex w-full ">
-        <LandingCards allPackages={allPackages}/>
+        <LandingCards allPackages={allPackages} />
       </div>
     </div>
   );

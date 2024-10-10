@@ -160,7 +160,7 @@ export default function CityCarousel({ allPackages }) {
                   <Image
                     src={tour.image}
                     alt={`Slide ${index + 1}`}
-                    layout="fill"
+                    fill
                     className="object-cover w-full h-full"
 
                   />
@@ -213,7 +213,7 @@ export default function CityCarousel({ allPackages }) {
                   <Image
                     src={tour.image}
                     alt={`Slide ${index + 1}`}
-                    layout="fill"
+                    fill
                     className="object-cover w-full h-full"
 
                   />

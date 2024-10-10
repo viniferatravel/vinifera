@@ -123,6 +123,7 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
                 alt={`connntact`}
                 width={600}
                 height={600}
+                layout="responsive"
                 className="object-scale-down w-[100%] h-[100%] rounded-full"
               />
             </div>

@@ -17,7 +17,7 @@ const destinations = [
 const Destination = () => {
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
-      <h2 className="text-2xl lg:text-3xl text-gray-600 font-bold underline decoration-themeColor">
+      <h2 className="text-2xl lg:text-3xl text-gray-600 font-bold underline decoration-themeColor text-center">
       Top Trending International Tourist Destinations
       </h2>
       <p className="text-base lg:text-lg lg:w-[80%] text-center">

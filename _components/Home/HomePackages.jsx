@@ -34,7 +34,7 @@ const HomePackages = ({ allPackages }) => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={sectionVariants}
-      className="flex flex-col gap-8 justify-center items-center"
+      className="flex flex-col gap-8 justify-center items-center mb-16"
     >
       <h2 className="text-2xl lg:text-3xl text-gray-600 font-bold border-b-4 border-themeColor">
         Beautiful Places around India
@@ -64,7 +64,7 @@ const HomePackages = ({ allPackages }) => {
           />
           <div className="absolute top-0 left-0 p-3 flex flex-col justify-between w-full h-full">
             <div className=" flex justify-end w-full">
-              <span className="bg-white rounded-md px-2 py-1">
+              <span className="bg-white rounded-md px-2 py-1 font-medium text-gray-600">
                 {
                   allPackages?.filter((item) =>
                     item.sub_category.includes("WEST")
@@ -96,7 +96,7 @@ const HomePackages = ({ allPackages }) => {
             />
             <div className="absolute top-0 left-0 p-3 flex flex-col justify-between w-full h-full">
               <div className=" flex justify-end w-full">
-                <span className="bg-white rounded-md px-2 py-1">
+                <span className="bg-white rounded-md px-2 py-1 font-medium text-gray-600">
                   {
                     allPackages?.filter((item) =>
                       item.sub_category.includes("NORTH")
@@ -106,7 +106,7 @@ const HomePackages = ({ allPackages }) => {
                 </span>
               </div>
               <div className="flex items-center">
-                <span className="text-xl text-white font-semibold">Peace of North</span>
+                <span className="text-xl text-white font-semibold ">Peace of North</span>
               </div>
             </div>
           </motion.div>
@@ -127,7 +127,7 @@ const HomePackages = ({ allPackages }) => {
             />
             <div className="absolute top-0 left-0 p-3 flex flex-col justify-between w-full h-full">
               <div className=" flex justify-end w-full">
-                <span className="bg-white rounded-md px-2 py-1">
+                <span className="bg-white rounded-md px-2 py-1 font-medium text-gray-600">
                   {
                     allPackages?.filter((item) =>
                       item.sub_category.includes("SOUTH")
@@ -160,7 +160,7 @@ const HomePackages = ({ allPackages }) => {
           />
           <div className="absolute top-0 left-0 p-3 flex flex-col justify-between w-full h-full">
             <div className=" flex justify-end w-full">
-              <span className="bg-white rounded-md px-2 py-1">
+              <span className="bg-white rounded-md px-2 py-1 font-medium text-gray-600">
                 {
                   allPackages?.filter((item) =>
                     item.sub_category.includes("EAST")

@@ -4,12 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import "swiper/css/autoplay"; // Import autoplay styles
+import { Navigation, Autoplay } from "swiper/modules"; // Import Autoplay module
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion"; // Import Framer Motion
 import "@/_components/Carousel.css"; // Assuming custom styles here
 
 const AboutCards = () => {
+ 
   const cards = [
     {
       title: "Transparency",
@@ -82,14 +84,13 @@ const AboutCards = () => {
       textColor: "text-gray-500",
     },
   ];
-
   // State to track swiper position
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0); // Track the active slide index
 
   return (
-    <div className=" bg-gray-100 py-32 ">
+    <div className="bg-gray-100 py-32 ">
       <div className="w-[95%] mx-auto flex flex-col lg:flex-row justify-center items-center gap-16 lg:gap-5 h-full">
         <div className="w-full lg:w-[50%] flex flex-col items-center h-full">
           {/* Custom Navigation Buttons */}
@@ -97,7 +98,7 @@ const AboutCards = () => {
             <h2 className="text-4xl lg:text-5xl font-semibold text-gray-600">
               10 Principles
             </h2>
-            <p className="text-base lg;text-lg text-gray-600 w-full lg:w-[70%] mb-0 lg:mb-12 xl:mb-16">
+            <p className="text-base lg:text-lg text-gray-600 w-full lg:w-[70%] mb-0 lg:mb-12 xl:mb-16">
               To live life to the fullest and to be productive and efficient at
               our workplace, as Veena World team members, we practice certain
               values that guide us in every action and at every step.
@@ -130,10 +131,14 @@ const AboutCards = () => {
               nextEl: ".swiper-next",
               prevEl: ".swiper-prev",
             }}
+            autoplay={{
+              delay: 4000, // Auto-scroll delay in milliseconds
+              disableOnInteraction: false, // Continue autoplay after interaction
+            }}
             style={{
               "--swiper-navigation-size": "20px",
             }}
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]} // Include Autoplay module
             breakpoints={{
               0: { slidesPerView: 1.5 },
               768: { slidesPerView: 1.5 },
@@ -149,8 +154,7 @@ const AboutCards = () => {
             {cards.map((card, index) => (
               <SwiperSlide key={index}>
                 <motion.div
-                  className={`w-full h-72 md:h-80  rounded-lg overflow-hidden shadow-lg bg-gradient-to-br  from-white via-white ${card.color}`}
-
+                  className={`w-full h-72 md:h-80 rounded-lg overflow-hidden shadow-lg bg-gradient-to-br from-white via-white ${card.color}`}
                   initial={{ scale: 0.9, opacity: 0.5 }}
                   animate={
                     index === activeIndex
@@ -161,7 +165,7 @@ const AboutCards = () => {
                 >
                   <div className="p-4 flex flex-col justify-center items-center w-full h-full gap-5 lg:gap-10">
                     <h3
-                      className={`text-lg  md:text-xl font-semibold ${card.textColor} lg:text-2xl text-start w-full`}
+                      className={`text-lg md:text-xl font-semibold ${card.textColor} lg:text-2xl text-start w-full`}
                     >
                       {card.title}
                     </h3>

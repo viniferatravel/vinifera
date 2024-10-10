@@ -26,12 +26,9 @@ const LandingCards = ({ allPackages }) => {
     <div className="w-full">
      
       <div className="flex overflow-x-auto snap-x snap-mandatory p-5 gap-4 w-[95%] lg:w-full mx-auto hide-scrollbar-x">
-<<<<<<< HEAD
+
         {destinations.map((item,index) => (
-=======
-        {destinations?.map((item) => (
->>>>>>> 3b73a622dab5c25515977d81327b5fe44866201e
-        
+
           <div
             key={index}
             className="relative flex-none w-[calc(50%-16px)] md:w-[calc(30%-16px)] lg:w-[calc(100%/8-16px)] md:h-full flex items-center justify-center flex-col snap-start cursor-pointer overflow-hidden h-full bg-white border shadow-lg"

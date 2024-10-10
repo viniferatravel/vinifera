@@ -111,18 +111,13 @@ const Destination = ({ allPackages }) => {
       </div>
 
       <div className="lg:hidden flex overflow-x-auto snap-x snap-mandatory p-5 gap-4 w-full mx-auto hide-scrollbar-x">
-<<<<<<< HEAD
-        {destinations.map((item,index) => (
-          <div
-            key={index}
-            className="relative flex-none w-[calc(80%-16px)] md:w-[calc(40%-16px)] h-72 md:h-96 flex items-center justify-center flex-col gap-5 snap-start cursor-pointer rounded-xl overflow-hidden lg:hidden "
-=======
+
         {destinations?.map((item) => (
           <div
             key={item.id}
             className="relative flex-none w-[calc(80%-16px)] md:w-[calc(40%-16px)] h-72 md:h-96 flex items-center justify-center flex-col gap-5 snap-start cursor-pointer rounded-xl overflow-hidden lg:hidden"
             onClick={() => router.push(`/filterpage/${item.state}`)}
->>>>>>> 3b73a622dab5c25515977d81327b5fe44866201e
+
           >
             <Image
               src={item.package_image[1]}

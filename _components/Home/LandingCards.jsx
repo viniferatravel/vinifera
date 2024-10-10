@@ -1,8 +1,12 @@
 import IMAGES from "@/public/image";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-const LandingCards = () => {
+const LandingCards = ({ allPackages }) => {
+
+  const router = useRouter();
+
   const destinations = [
     { image: IMAGES.landingCatOne, name: "Beach",},
     { image: IMAGES.landingCatTwo, name: "Mountains",},
@@ -13,6 +17,11 @@ const LandingCards = () => {
     { image: IMAGES.landingCatSeven, name: "Culinary",},
     { image: IMAGES.landingCatEight, name: "Hiking",},
   ];
+
+  const handleExperienceClick = (name) => {
+    router.push(`/filterpage/${name.toLowerCase()}`)
+  }
+
   return (
     <div className="w-full">
      
@@ -22,6 +31,7 @@ const LandingCards = () => {
           <div
             key={item.id}
             className="relative flex-none w-[calc(50%-16px)] md:w-[calc(30%-16px)] lg:w-[calc(100%/8-16px)] md:h-full flex items-center justify-center flex-col snap-start cursor-pointer overflow-hidden h-full bg-white border shadow-lg"
+            onClick={() => handleExperienceClick(item.name)}
           >
             <div className="relative w-full aspect-square">
 

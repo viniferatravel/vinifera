@@ -62,7 +62,7 @@ const TestCard = ({ packageReviews, allPackages }) => {
 
       setReviewRegions(abc);
     }
-  }, [allPackages]);
+  }, [allPackages, uniquiId]);
 
   useEffect(() => {
     if (selectedRegion) {

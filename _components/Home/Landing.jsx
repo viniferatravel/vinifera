@@ -7,7 +7,7 @@ import GuestModal from "@/_components/packages/Modal";
 import LandingCards from "./LandingCards";
 import VIDEOS from "@/public/video";
 
-const Landing = () => {
+const Landing = ({ allPackages }) => {
   const [enquiryClickModal, setEnquiryClickModal] = useState(false);
 
   const handleCloseEnquiryModal = (val) => {
@@ -84,7 +84,7 @@ const Landing = () => {
         </div> */}
       </div>
       <div className="mt-0 lg:mt-10 flex w-full ">
-        <LandingCards />
+        <LandingCards allPackages={allPackages}/>
       </div>
     </div>
   );

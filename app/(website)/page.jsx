@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full gap-0">
-      <Landing />
+      <Landing allPackages={allPackages}/>
       
       <div className="w-[95%] mx-auto flex flex-col gap-16">
         <ScrollCards />

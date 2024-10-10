@@ -90,6 +90,7 @@ const Passport = () => {
             return {
                 id: item.package_id,
                 image: item.package_image[0],
+                destiny: item.state,
                 luxurydatadescription: (
                     <>
                         <div className=''>
@@ -115,7 +116,7 @@ const Passport = () => {
                             </div>
                         </div>
                     </>
-                )
+                ),
             }
         }
     })

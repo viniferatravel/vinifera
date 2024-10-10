@@ -231,7 +231,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
       })
     }
 
-    if(lastSegment === "") {
+    if (lastSegment === "") {
       setNavAction("")
     }
 
@@ -1166,12 +1166,12 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
                     if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "SPECIAL" || isSpecialCategory(cat)) {
 
                     } else {
-                    return (
-                      <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 p-3 cursor-pointer" : "p-3 cursor-pointer"}>
-                        {cat}
-                      </p>
-                    );
-                  }
+                      return (
+                        <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 p-3 cursor-pointer" : "p-3 cursor-pointer"}>
+                          {cat}
+                        </p>
+                      );
+                    }
                   }
                   return null; // Skip rendering if the category is already present
                 })
@@ -1279,16 +1279,23 @@ const Navbar = () => {
 
   const closeNavbar = () => setOpen(false);
 
+
+
   return (
     <nav className="bg-white border-b sticky top-0 z-50 w-full ">
       <div className="flex items-center font-medium justify-between w-[95%] mx-auto">
 
         <div className="z-50 p-5 lg:w-auto w-full flex justify-between bg-white lg:bg-transparent">
 
-          <Link href="/" className="flex items-end relative lg:w-[100px]">
+          <div onClick={() => {
+router.push(`/`)
+setTimeout(() => {
+  window.location.reload();
+}, 1000);
+          }} className="flex items-end relative lg:w-[100px] cursor-pointer">
             <Image src={IMAGES.viniferaLogo} width={50} height={50} className="h-10 w-10 " />
             <p className="hidden text-themeColor text-xl absolute bottom-0 right-3 lg:flex item-end justify-end">inifera</p>
-          </Link>
+          </div>
 
           <div
             className={`lg:hidden justify-start items-center border py-1 px-3 rounded-md flex select-none min-w-[170px] md:w-[80%] md:m-auto text-start gap-2 ${open ? "hidden" : "block"

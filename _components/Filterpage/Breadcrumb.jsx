@@ -547,6 +547,104 @@ const statesInfo = {
         naturalAttraction: "the Himalayas and cold deserts",
         festival: "Hemis Festival",
     },
+    "Jammu And Kashmir": {
+        nickname: "Paradise on Earth",
+        features: [
+            "snow-capped mountains",
+            "lush valleys",
+            "picturesque landscapes"
+        ],
+        rulers: "the Dogra dynasty",
+        attractions: [
+            "Dal Lake",
+            "Gulmarg",
+            "Vaishno Devi"
+        ],
+        naturalAttraction: "the Himalayas and alpine meadows",
+        festival: "Tulip Festival"
+    },
+    "Nepal": {
+        nickname: "The Land of the Himalayas",
+        features: [
+            "majestic mountains",
+            "vibrant culture",
+            "ancient temples"
+        ],
+        rulers: "the Shah dynasty",
+        attractions: [
+            "Mount Everest",
+            "Kathmandu Valley",
+            "Chitwan National Park"
+        ],
+        naturalAttraction: "the Himalayas and diverse landscapes",
+        festival: "Dashain Festival"
+    },
+    "Japan": {
+        nickname: "The Land of the Rising Sun",
+        features: [
+            "cherry blossoms",
+            "advanced technology",
+            "ancient temples"
+        ],
+        rulers: "the Yamato dynasty",
+        attractions: [
+            "Mount Fuji",
+            "Tokyo Skytree",
+            "Kyoto's Kinkaku-ji"
+        ],
+        naturalAttraction: "the Japanese Alps and hot springs",
+        festival: "Cherry Blossom Festival (Hanami)"
+    },
+    "United Kingdom": {
+        nickname: "The Land of Royals",
+        features: [
+            "historic castles",
+            "rolling countryside",
+            "cultural landmarks"
+        ],
+        rulers: "the House of Windsor",
+        attractions: [
+            "Buckingham Palace",
+            "Stonehenge",
+            "Edinburgh Castle"
+        ],
+        naturalAttraction: "the Scottish Highlands and Lake District",
+        festival: "Notting Hill Carnival"
+    },
+    "Mauritius": {
+        "nickname": "The Star and Key of the Indian Ocean",
+        "features": [
+            "pristine beaches",
+            "coral reefs",
+            "vibrant multicultural heritage"
+        ],
+        "rulers": "the French and British colonial empires",
+        "attractions": [
+            "Le Morne Brabant",
+            "Chamarel Seven Colored Earths",
+            "Île aux Cerfs"
+        ],
+        "naturalAttraction": "the Indian Ocean and lush tropical forests",
+        "festival": "Cavadee Festival"
+    },
+    "Thailand": {
+        "nickname": "The Land of Smiles",
+        "features": [
+            "breathtaking beaches",
+            "rich cultural heritage",
+            "delicious street food"
+        ],
+        "rulers": "the Chakri dynasty",
+        "attractions": [
+            "Grand Palace",
+            "Wat Pho",
+            "Phang Nga Bay"
+        ],
+        "naturalAttraction": "the Andaman Sea and lush jungles",
+        "festival": "Songkran Festival"
+    }
+
+
 };
 
 const Breadcrumb = ({ slug, category }) => {
@@ -569,7 +667,7 @@ const Breadcrumb = ({ slug, category }) => {
             return (
                 <p className='mt-2 text-justify'>
                     Discover the timeless beauty of {selectedState}, {stateInfo?.nickname}!
-                    Known for its {stateInfo?.features.join(", ")}, {selectedState} has been shaped by {stateInfo?.rulers}, leaving behind
+                    Known for its {stateInfo?.features.join(", ")}, {selectedState} has been shaped by {stateInfo?.rulers}, leaving behind&nbsp;
                     {stateInfo?.attractions.join(", ")}. Immerse yourself in
                     its natural splendor, where you can enjoy {stateInfo?.naturalAttraction}.
                     Don’t miss out on the famous {stateInfo?.festival} festival, which brings
@@ -584,12 +682,12 @@ const Breadcrumb = ({ slug, category }) => {
     };
 
     const generateCityParagraph = (city) => {
-        if(city === "All") {
+        if (city === "All") {
             city = "All tour packages"
         }
         return (
             <p className='mt-2 text-justify'>
-                Welcome to {city}, a vibrant tapestry of culture, history, and modernity. Known for its unique blend of traditions and contemporary living, {city} offers an exciting array of experiences for every traveler. Wander through bustling markets filled with colorful crafts, savor the diverse culinary delights that reflect the rich heritage of the region, and explore historic landmarks that narrate tales of the past. Whether you’re captivated by the serene beauty of its parks, the lively spirit of its festivals, or the warmth of its people, {city} invites you to discover the heart of India, where every corner has a story to tell.
+                Welcome to {city}, a vibrant tapestry of culture, history, and modernity. Known for its unique blend of traditions and contemporary living, {city} offers an exciting array of experiences for every traveler. Wander through bustling markets filled with colorful crafts, savor the diverse culinary delights that reflect the rich heritage of the region, and explore historic landmarks that narrate tales of the past. Whether you’re captivated by the serene beauty of its parks, the lively spirit of its festivals, or the warmth of its people, {city} invites you to explore its heart, where every corner holds a new story waiting to be discovered.
             </p>
         );
     };

@@ -212,34 +212,6 @@ const Tour = ({ slug }) => {
     setEnquiryClickModal(val);
   };
 
-  useEffect(() => {
-    if (fetchfiltertourdata.length === 0) {
-      const abc = async () => {
-        try {
-          const response = await fetch("/api/fetchcategory", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          const result = await response.json();
-
-          setfetchfiltertourdata(
-            result?.result?.filter((item) =>
-              item.sub_category.includes(slug.toUpperCase())
-            )
-          );
-          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("BEACH", "WINTER")));
-
-        } catch (error) {
-          // console.log(error)
-        }
-      }
-      abc()
-    }
-  }, [])
-
-
   return (
     <div>
       <div className="w-[95%] m-auto">

@@ -177,7 +177,11 @@ export default function CityCarousel({ allPackages }) {
                     </div>
                     <div className="flex flex-col gap-1 mb-4 lg:gap-5">
                       <div className="flex gap-1 lg:gap-5 justify-center items-center">
-                        {tour.destinations.map((destination, i) => (
+                        {tour.destinations.map((destination, i) => {
+                          if(i > 2) {
+                            return null
+                          }
+                          return (
                           <React.Fragment key={i}>
                             <p className="lg:text-xl text-blue-200 font-medium">
                               {destination}
@@ -186,7 +190,7 @@ export default function CityCarousel({ allPackages }) {
                               <DotIcon className="text-white" />
                             )}
                           </React.Fragment>
-                        ))}
+                        )})}
                       </div>
                       <div>
                         <p className="lg:text-xl text-white font-medium">
@@ -227,14 +231,14 @@ export default function CityCarousel({ allPackages }) {
                     <div className="flex flex-col gap-1 mb-4 lg:gap-5">
                       <div className="flex gap-x-2 lg:gap-x-5 justify-left items-center">
                         {tour.destinations.map((destination, i) => {
-                          if (index <= 3) {
+                          if (i <= 2) {
                             return (
                               <div key={i} className="flex items-center">
                                 <p className="lg:text-xl text-blue-200 font-medium">
                                   {capitalizeWords(destination)}
                                 </p>
                                 {/* Render the DotIcon only if it's not the last destination */}
-                                {i < tour.destinations.length - 1 && (
+                                {i < 2 && (
                                   <DotIcon className="text-white mx-1 lg:mx-2" />
                                 )}
                               </div>

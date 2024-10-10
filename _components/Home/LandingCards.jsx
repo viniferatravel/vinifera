@@ -8,25 +8,25 @@ const LandingCards = ({ allPackages }) => {
   const router = useRouter();
 
   const destinations = [
-    { image: IMAGES.landingCatOne, name: "Beach",},
-    { image: IMAGES.landingCatTwo, name: "Mountains",},
-    { image: IMAGES.landingCatThree, name: "Trekking",},
-    { image: IMAGES.landingCatFour, name: "Desert Safari",},
-    { image: IMAGES.landingCatFive, name: "Spiritual",},
-    { image: IMAGES.landingCatSix, name: "Cultural",},
-    { image: IMAGES.landingCatSeven, name: "Culinary",},
-    { image: IMAGES.landingCatEight, name: "Hiking",},
+    { image: IMAGES.landingCatOne, name: "BEACHES", label: "Beach"},
+    { image: IMAGES.landingCatTwo, name: "MOUNTAINS", label: "Mountains"},
+    { image: IMAGES.landingCatThree, name: "JUNGLE SAFARI", label: "Jungle Safari"},
+    { image: IMAGES.landingCatFour, name: "DESERT", label: "Desert"},
+    { image: IMAGES.landingCatFive, name: "SPIRITUAL", label: "Spiritual"},
+    { image: IMAGES.landingCatSix, name: "CULTURAL", label: "Cultural"},
+    { image: IMAGES.landingCatSeven, name: "CULINARY", label: "Culinary"},
+    { image: IMAGES.landingCatEight, name: "HIKING & TREKKING", label: "Hiking & Trekking"},
   ];
 
   const handleExperienceClick = (name) => {
-    router.push(`/filterpage/${name.toLowerCase()}`)
+    router.push(`/filterpage/${name.toUpperCase()}`)
   }
 
   return (
     <div className="w-full">
      
       <div className="flex overflow-x-auto snap-x snap-mandatory p-5 gap-4 w-[95%] lg:w-full mx-auto hide-scrollbar-x">
-        {destinations.map((item) => (
+        {destinations?.map((item) => (
         
           <div
             key={item.id}
@@ -35,9 +35,9 @@ const LandingCards = ({ allPackages }) => {
           >
             <div className="relative w-full aspect-square">
 
-            <Image src={item.image} alt={`category-${item.name}`} fill className=" object-cover p-2"/>
+            <Image src={item.image} alt={`category-${item.label}`} fill className=" object-cover p-2"/>
             </div>
-            <span className="pb-2 font-semibold">{item.name}</span>
+            <span className="pb-2 font-semibold">{item.label}</span>
           </div>
           
         ))}

@@ -228,7 +228,7 @@ const Tour = ({ slug }) => {
               <div className="w-full flex justify-between items-center">
                 <div className="w-full lg:w-[55%]">
                   {/* <p className='font-semibold'> {slugfield} Packages (6 Tours Option)</p> */}
-                  <p className="font-semibold mt-2 text-xl">
+                  <p className="font-semibold mt-2 text-xl text-gray-600">
                     {capitalizeWords(slug)}
                     {slug.includes("TOUR") ? "" : " Tour"}(
                     {fetchfiltertourdata?.length} Tour Option)

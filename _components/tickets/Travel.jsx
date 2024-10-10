@@ -15,7 +15,7 @@ const Travel = () => {
         <Image
           src={IMAGES.tickettravel}
           alt=""
-          layout="fill"
+          fill
           className="object-cover w-full h-full "
         />
       <div className="absolute top-0 left-0 bg-black/30 w-full h-full rounded-3xl flex justify-center items-center">

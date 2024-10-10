@@ -1282,8 +1282,8 @@ const Navbar = () => {
         <div className="z-50 p-5 lg:w-auto w-full flex justify-between bg-white lg:bg-transparent">
 
           <Link href="/" className="flex items-end relative lg:w-[100px]">
-            <Image src={IMAGES.viniferaLogo} width={50} height={50} className="h-10 w-10 " />
-            <p className="hidden text-themeColor text-xl absolute bottom-0 right-3 lg:flex item-end justify-end">inifera</p>
+            <Image src={IMAGES.viniferaLogo} alt="vinifera-logo" width={50} height={50} className="h-10 w-10 " />
+            <p className="hidden text-themeColor bg-white text-xl absolute bottom-0 right-3 lg:flex item-end justify-end">inifera</p>
           </Link>
 
           <div
@@ -1324,7 +1324,7 @@ const Navbar = () => {
         <div className="lg:block hidden">
 
           <div className="bg-themeColor text-white rounded-full size-6 p-4 flex justify-center items-center shadow-lg">
-            <button className="" onClick={() => {
+            <button  onClick={() => {
               router.push(`/filterpage/ALL`)
             }}>
               <ArrowRight strokeWidth={3} />

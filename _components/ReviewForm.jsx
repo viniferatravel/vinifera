@@ -388,7 +388,7 @@ const ReviewForm = () => {
                                     <Image
                                         src={image}
                                         alt={`Carousel ${index}`}
-                                        layout="fill"
+                                       fill
                                         objectFit="cover"
                                         className="rounded-lg"
                                     />
@@ -410,7 +410,7 @@ const ReviewForm = () => {
                                     <Image
                                         src={image}
                                         alt={`Carousel ${index}`}
-                                        layout="fill"
+                                        fill
                                         objectFit="cover"
                                         className="rounded-lg"
                                     />

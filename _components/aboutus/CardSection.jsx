@@ -52,18 +52,14 @@ const CardSection = () => {
         <div className="flex justify-center items-center flex-col gap-10 w-full py-10 ">
           <div>
             <h1 className="text-4xl font-semibold w-full  text-center">
-              One-stop platform - everything you need{" "}
-            </h1>
-            <h1 className="text-4xl font-semibold w-full  text-center">
-              {" "}
-              you need to <span className="text-themeColor">
-                grow on social.
+            One Stop Platform for all your {" "}
+               <span className="text-themeColor">
+               travel needs
               </span>{" "}
             </h1>
           </div>
           <p className="text-gray-500 w-full lg:w-[50%] text-center">
-            We give you everything you need to build a dedicated fanbase,
-            nurture your audience, create leads, and grow your business.
+          We at Vinifera strive to be your one stop solution for all your travel needs, With a rich experience in the industry you can rest assure and trust us with all your travel concerns
           </p>
           <div className="relative flex justify-center items-center w-full ">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">

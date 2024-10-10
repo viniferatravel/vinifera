@@ -840,7 +840,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
                     <Image
                       src={image}
                       alt={`Carousel ${index}`}
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       className="rounded-lg"
                     />
@@ -862,7 +862,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
                     <Image
                       src={image}
                       alt={`Carousel ${index}`}
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       className="rounded-lg"
                     />
@@ -892,7 +892,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
                       <Image
                         src={place.image}
                         alt={place.name}
-                        layout="fill"
+                        fill
                         objectFit="cover"
                         className="rounded-lg w-full h-full" />
                     </div>

@@ -160,7 +160,7 @@ const Page = () => {
                 // alt={dest.name}
                 className="w-full h-full object-cover transition-all group-hover:scale-105 aspect-[300/400] lg:aspect-[300/300] "
               />
-              <div className="absolute inset-0  flex items-start justify-end p-4 text-white flex-col bg-black/30 hover:bg-black/40">
+              <div className="absolute inset-0  flex items-start justify-end p-2 text-white flex-col bg-black/30 hover:bg-black/40">
                 <div>
                   <h3 className="text-lg font-bold">{capitalizeWords(dest.state)}</h3>
                 </div>

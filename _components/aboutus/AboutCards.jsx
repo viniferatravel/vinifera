@@ -1,168 +1,176 @@
 "use client";
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import React, { useRef, useState } from "react";
-import { motion } from "framer-motion"; // Import motion from framer-motion
+import { motion } from "framer-motion"; // Import Framer Motion
+import "@/_components/Carousel.css"; // Assuming custom styles here
 
 const AboutCards = () => {
-  const cardContainerRef = useRef(null);
-  const cardRef = useRef(null); // Ref for individual card
-  const [activeCardIndex, setActiveCardIndex] = useState(0); // State for active card index
-
-  // State for button disabled status
-  const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(true);
-  const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
-
-  // Sample card data
-  const cardData = [
+  const cards = [
     {
-      id: 1,
-      title: "Lord Krishna - The Teacher",
+      title: "Transparency",
       description:
-        "Learn from the past, have a stronghold on the present and never lose sight of the future.",
+        "We believe in open communication. From booking to your return, we provide clear information about fees, terms, and conditions—so you know exactly what to expect.",
+      color: "to-red-500",
+      textColor: "text-red-500",
     },
     {
-      id: 2,
-      title: "“Make it Easy” for Everyone",
-      description: "Team Guests Associates Family",
-    },
-    {
-      id: 3,
-      title: "“Six Thinking Hats” for decision making",
+      title: "Customer Service",
       description:
-        "Simply put, the blue hat manages the meeting, the white hat pulls all the information on the table, the red hat pulls all the feelings on the table, the black hat finds risks, the yellow hat finds optimistic solutions and the green hat creates new ideas.",
+        "Our dedicated support team is here for you. Whether you have questions before you book or need assistance during your trip, we’re just a call, click, or message away.",
+      color: "to-blue-500",
+      textColor: "text-blue-500",
     },
     {
-      id: 4,
-      title: "“6W2H” for project planning",
+      title: "Respect for Your Privacy",
       description:
-        "What | Where | When | Why | Whom | How | HurdlesA set of questions, which must be answered to ensure smooth start, process and completion of a project.",
+        "Your personal information is safe with us. We adhere to strict data protection practices and are transparent about how we collect and use your data.",
+      color: "to-green-500",
+      textColor: "text-green-500",
     },
     {
-      id: 5,
-      title: "Muda & Kaizen",
+      title: "Fair Pricing",
       description:
-        "Identify and eliminate wasteful actions (Muda) for improved productivity. Use Kaizen for continuous improvement in processes.",
+        "At Vinifera, we ensure that our pricing is not only competitive but also free from hidden fees. Our price-match guarantee gives you peace of mind when planning your adventures.",
+      color: "to-yellow-500",
+      textColor: "text-yellow-500",
     },
     {
-      id: 6,
-      title: "“The rule of ONE”",
+      title: "Sustainability",
       description:
-        "One task at a time. One set of complete & clear instructions saves time and avoids confusion. One percent saving leads to mega savings in the long run.",
+        "We care about our planet. We promote eco-friendly travel options and work with partners who share our commitment to sustainable and responsible tourism.",
+      color: "to-purple-500",
+      textColor: "text-purple-500",
     },
     {
-      id: 7,
-      title: "“Cow” for problem solving",
+      title: "Cultural Sensitivity",
       description:
-        "When the cow falls into the ditch...don’t blame or find how. First get the cow out of the ditch then check how the cow went into the ditch and take measures so that the same cow or any other cow doesn’t go into the ditch again. First solve the problem, then find the root cause, and eventually implement preventive measures.",
+        "We celebrate diversity and encourage respectful travel. Our resources will help you understand local customs and traditions, ensuring a meaningful experience in every destination.",
+      color: "to-pink-500",
+      textColor: "text-pink-500",
     },
     {
-      id: 8,
-      title: "Cheap vs Amazing",
+      title: "Your Voice Matters",
       description:
-        "Don’t look for the cheapest way of doing things; look for the most amazing ways to do it!",
+        "We value your feedback. Share your experiences with us, and help us improve our services. Your satisfaction is our priority.",
+      color: "to-teal-500",
+      textColor: "text-teal-500",
     },
     {
-      id: 9,
-      title: "Make People Happy",
-      description: "My business is making people happy” - Walt Disney",
-    },
-    {
-      id: 10,
-      title: "When in doubt, we ask...",
+      title: "Flexibility and Understanding",
       description:
-        "Are we legally right? Are we ethically right? Are we morally right?",
+        "Life can be unpredictable, and we get that. Our flexible booking and cancellation policies are designed to accommodate your changing plans, providing you with the support you need.",
+      color: "to-orange-500",
+      textColor: "text-orange-500",
+    },
+    {
+      title: "Ethical Partnerships",
+      description:
+        "We collaborate with vendors and suppliers who adhere to ethical business practices, ensuring fair labor and safe working conditions for all involved in your journey.",
+      color: "to-indigo-500",
+      textColor: "text-indigo-500",
+    },
+    {
+      title: "Continuous Improvement",
+      description:
+        "We are always evolving. By staying updated on industry trends and investing in new technologies, we strive to enhance your travel experience continuously.",
+      color: "to-gray-500",
+      textColor: "text-gray-500",
     },
   ];
 
-  // Update active card index and button disabled status based on scroll position
-  const updateActiveCardIndex = () => {
-    if (cardContainerRef.current) {
-      const scrollLeft = cardContainerRef.current.scrollLeft;
-      const cardWidth = cardRef.current.offsetWidth + 20; // Including gap between cards
-      const newIndex = Math.round(scrollLeft / cardWidth); // Determine active index based on scroll
-      setActiveCardIndex(Math.max(0, Math.min(newIndex, cardData.length - 1))); // Clamp index within bounds
-      
-      // Update button disabled states
-      setIsLeftButtonDisabled(newIndex === 0); // Disable left button if on first card
-      setIsRightButtonDisabled(newIndex === cardData.length - 1); // Disable right button if on last card
-    }
-  };
-
-  // Scroll to the left
-  const scrollLeft = () => {
-    if (cardContainerRef.current && cardRef.current) {
-      const cardWidth = cardRef.current.offsetWidth + 20; // Including gap between cards
-      cardContainerRef.current.scrollBy({
-        left: -cardWidth,
-        behavior: "smooth",
-      });
-      setTimeout(updateActiveCardIndex, 300); // Delay to allow scroll to complete
-    }
-  };
-
-  // Scroll to the right
-  const scrollRight = () => {
-    if (cardContainerRef.current && cardRef.current) {
-      const cardWidth = cardRef.current.offsetWidth + 20; // Including gap between cards
-      cardContainerRef.current.scrollBy({
-        left: cardWidth,
-        behavior: "smooth",
-      });
-      setTimeout(updateActiveCardIndex, 300); // Delay to allow scroll to complete
-    }
-  };
+  // State to track swiper position
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0); // Track the active slide index
 
   return (
-    <div className="w-full h-full flex justify-center items-center bg-red-100">
-      <div className="flex w-[95%] h-full lg:h-[70vh] justify-between flex-col lg:flex-row mx-auto lg:p-10 gap-10">
-        {/* Text Section */}
-        <div className="flex w-full h-full flex-col gap-5 p-5 justify-between">
-          <div className="flex flex-col gap-10">
-            <h2 className="text-4xl lg:text-5xl font-semibold text-themeColor">
+    <div className=" bg-gray-100 py-32 ">
+      <div className="w-[95%] mx-auto flex flex-col lg:flex-row justify-center items-center gap-16 lg:gap-5 h-full">
+        <div className="w-full lg:w-[50%] flex flex-col items-center h-full">
+          {/* Custom Navigation Buttons */}
+          <div className="flex flex-col gap-10 h-full">
+            <h2 className="text-4xl lg:text-5xl font-semibold text-gray-600">
               10 Principles
             </h2>
-            <p className="text-lg text-black">
+            <p className="text-base lg;text-lg text-gray-600 w-full lg:w-[70%] mb-0 lg:mb-12 xl:mb-16">
               To live life to the fullest and to be productive and efficient at
               our workplace, as Veena World team members, we practice certain
               values that guide us in every action and at every step.
             </p>
-          </div>
-          {/* Navigation Buttons */}
-          <div className="hidden lg:flex gap-5">
-            <button
-              onClick={scrollLeft}
-              className={`p-4 rounded-full border bg-white ${isLeftButtonDisabled ? 'opacity-50 ' : ''}`} // Disable button styling
-              disabled={isLeftButtonDisabled} // Disable the button
-            >
-              <ChevronLeft className="text-black" />
-            </button>
-            <button
-              onClick={scrollRight}
-              className={`p-4 rounded-full border bg-white ${isRightButtonDisabled ? 'opacity-50 ' : ''}`} // Disable button styling
-              disabled={isRightButtonDisabled} // Disable the button
-            >
-              <ChevronRight className="text-black" />
-            </button>
+            <div className="hidden md:flex gap-5 ">
+              <button
+                className={`swiper-prev p-2 rounded-full bg-gray-300 text-gray-500 ${
+                  isBeginning ? "opacity-50 " : ""
+                }`}
+                disabled={isBeginning}
+              >
+                <ChevronLeft className="w-6 h-6 " />
+              </button>
+              <button
+                className={`swiper-next p-2 rounded-full bg-gray-300 text-gray-500 ${
+                  isEnd ? "opacity-50 " : ""
+                }`}
+                disabled={isEnd}
+              >
+                <ChevronRight className="w-6 h-6 " />
+              </button>
+            </div>
           </div>
         </div>
+        <div className="w-full lg:w-[50%] h-auto relative">
+          <Swiper
+            spaceBetween={20}
+            slidesPerGroup={1}
+            navigation={{
+              nextEl: ".swiper-next",
+              prevEl: ".swiper-prev",
+            }}
+            style={{
+              "--swiper-navigation-size": "20px",
+            }}
+            modules={[Navigation]}
+            breakpoints={{
+              0: { slidesPerView: 1.5 },
+              768: { slidesPerView: 1.5 },
+              1024: { slidesPerView: 1.5 },
+            }}
+            className="mySwiper"
+            onSlideChange={(swiper) => {
+              setActiveIndex(swiper.activeIndex); // Set active slide index
+              setIsBeginning(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
+            }}
+          >
+            {cards.map((card, index) => (
+              <SwiperSlide key={index}>
+                <motion.div
+                  className={`w-full h-72 md:h-80  rounded-lg overflow-hidden shadow-lg bg-gradient-to-br  from-white via-white ${card.color}`}
 
-        {/* Card Slider Section */}
-        <div
-          className="flex overflow-x-scroll lg:overflow-hidden relative w-full hide-scrollbar-x snap-x snap-mandatory lg:snap-none scroll-smooth"
-          ref={cardContainerRef}
-          onScroll={updateActiveCardIndex} // Update active card on scroll
-        >
-          <div className="flex transition-transform duration-500 ease-in-out gap-x-5 py-5">
-            {cardData.map((card, index) => (
-              <Card
-                key={card.id}
-                title={card.title}
-                description={card.description}
-                cardRef={cardRef}
-                isActive={index === activeCardIndex} // Check if the card is active
-              />
+                  initial={{ scale: 0.9, opacity: 0.5 }}
+                  animate={
+                    index === activeIndex
+                      ? { scale: 1, opacity: 1 } // Active card full size and opacity
+                      : { scale: 0.9, opacity: 0.5 } // Inactive cards smaller and less opaque
+                  }
+                  transition={{ duration: 0.5 }} // Animation duration
+                >
+                  <div className="p-4 flex flex-col justify-center items-center w-full h-full gap-5 lg:gap-10">
+                    <h3
+                      className={`text-lg  md:text-xl font-semibold ${card.textColor} lg:text-2xl text-start w-full`}
+                    >
+                      {card.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">{card.description}</p>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </div>
     </div>
@@ -170,21 +178,3 @@ const AboutCards = () => {
 };
 
 export default AboutCards;
-
-const Card = ({ title, description, cardRef, isActive }) => {
-  return (
-    <motion.div
-      className={`flex-none w-[300px] lg:w-[410px] h-96 flex gap-10 flex-col snap-start lg:snap-none p-5 rounded-xl border bg-white text-black`}
-      ref={cardRef} // Set ref on card
-      initial={{ scale: 0.9, opacity: 0.5 }} // Initial state for animation
-      animate={{
-        scale: isActive ? 1 : 0.9, // Scale up when active, scale down when inactive
-        opacity: isActive ? 1 : 0.5, // Opacity changes for active and inactive states
-      }}
-      transition={{ duration: 0.3 }} // Transition duration
-    >
-      <h3 className="text-2xl font-bold">{title}</h3>
-      <p className="text-gray-800">{description}</p>
-    </motion.div>
-  );
-};

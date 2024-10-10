@@ -39,9 +39,7 @@ const Filterpage = ({ params }) => {
                 console.error("Error fetching data:", error);
               }
         }
-
         fetchData()
-
 
     }, [params.slug])
 

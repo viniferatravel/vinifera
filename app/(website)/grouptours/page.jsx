@@ -8,7 +8,13 @@ import Image from "next/image";
 const Page = () => {
 
   const [fetchgroup, setfetchgroup] = useState([]);
-  // console.log(fetchgroup, "fetchgroup");
+  console.log(fetchgroup, "fetchgroup");
+
+  const [international, setinternational] = useState([]);
+  console.log(international, "international");
+
+  const [noninternational, setnoninternational] = useState([]);
+  console.log(noninternational, "noninternational");
 
   useEffect(() => {
     async function getData() {
@@ -16,6 +22,7 @@ const Page = () => {
         operation: "fetchallpackage",
       });
       const rawData = response.data.fetchalldata;
+      console.log(rawData, "rawData");
       const stateMap = {};
 
       // Loop through the raw data to process it
@@ -47,6 +54,17 @@ const Page = () => {
       const filteredData = Object.values(stateMap);
       // console.log(filteredData, "Filtered Data");
       setfetchgroup(filteredData);
+
+      const international = filteredData.filter((pkg) =>
+        pkg.sub_category.includes("INTERNATIONAL")
+      );
+      const nonInternational = filteredData.filter((pkg) =>
+        !pkg.sub_category.includes("INTERNATIONAL")
+      );
+
+      setinternational(international);
+      setnoninternational(nonInternational);
+
     }
     getData();
   }, []);
@@ -70,11 +88,11 @@ const Page = () => {
         <div className="w-full lg:w-[60%] flex-col flex justify-center gap-5 lg:gap-8">
           <div className="flex flex-col gap-3 lg:gap-5">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-themeColor">Group Tours</h2>
-            <h3 className="text-xl md:text-2xl font-medium">
+            <h3 className="text-xl md:text-2xl font-medium text-gray-600">
               Creating Lasting Memories Together
             </h3>
           </div>
-          <p className="text-justify text-gray-700">
+          <p className="text-justify text-gray-500">
             Creating cherished memories together is what we hold close to our
             hearts at Vinifera Tours. Our group tour packages offer journeys to
             global destinations ensuring comfort, excitement and a sense of
@@ -102,10 +120,10 @@ const Page = () => {
 
       <div className="flex flex-col gap-3">
         <h2 className="text-2xl md:text-3xl font-bold text-themeColor">Indian Group Tours</h2>
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium ">
+        <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-600">
           Breathe in the Beauty of Incredible India
         </h3>
-        <p className="text-justify text-gray-700">
+        <p className="text-justify text-gray-500">
           Experience the diverse wonders of India with our exclusive group tour
           packages that cover the snow-capped peaks of the Himalayas, the
           sun-kissed beaches of Goa, the majestic forts of Rajasthan and the
@@ -120,40 +138,49 @@ const Page = () => {
         </p>
       </div>
 
-      {/* Desktop view */}
-      <div className="hidden lg:grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {fetchgroup?.map((dest, id) => (
-          <Link
-            key={id}
-            href={`/filterpage/${dest.state}`}
-            className="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
-          >
-            <img
-              src={dest.package_image[0]}
-              width={300}
-              height={300}
-              // alt={dest.name}
-              className="w-full h-full object-cover transition-all group-hover:scale-105 aspect-[300/400] lg:aspect-[300/300] "
-            />
-            <div className="absolute inset-0  flex items-start justify-end p-4 text-white flex-col bg-black/30 hover:bg-black/40">
-              <div>
-                <h3 className="text-lg font-bold">{capitalizeWords(dest.state)}</h3>
-              </div>
-              <div className="flex gap-0 lg:gap-5 flex-col lg:flex-row lg:justify-between lg:items-center">
-                <p className="flex justify-center items-center text-sm">
-                  Price: <span className="text-sm font-extrabold"> &#8377; {dest.price}</span>
+      {/* Domestic packages Desktop view */}
+      <div className="flex flex-col gap-11">
+        <div>
+          <h4 className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-600">
+            Domestic packages
+          </h4>
+        </div>
 
-                </p>
-                <span className="text-sm font-extrabold">{dest.tourCount} tours</span>
+        <div className="hidden lg:grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {noninternational?.map((dest, id) => (
+            <Link
+              key={id}
+              href={`/filterpage/${dest.state}`}
+              className="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
+            >
+              <img
+                src={dest.package_image[0]}
+                width={300}
+                height={300}
+                // alt={dest.name}
+                className="w-full h-full object-cover transition-all group-hover:scale-105 aspect-[300/400] lg:aspect-[300/300] "
+              />
+              <div className="absolute inset-0  flex items-start justify-end p-4 text-white flex-col bg-black/30 hover:bg-black/40">
+                <div>
+                  <h3 className="text-lg font-bold">{capitalizeWords(dest.state)}</h3>
+                </div>
+                <div className="flex gap-0 lg:gap-5 flex-col lg:flex-row lg:justify-between lg:items-center">
+                  <p className="flex justify-center items-center text-sm">
+                    Price: <span className="text-sm font-extrabold"> &#8377; {dest.price}</span>
+
+                  </p>
+                  <span className="text-sm font-extrabold">{dest.tourCount} tours</span>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
 
-      {/* {mobile view} */}
+
+      {/* {Domestic packages mobile view} */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:hidden">
-        {fetchgroup.map((dest, id) => (
+        {noninternational.map((dest, id) => (
           <Link
             key={id}
             href={`/filterpage/${dest.state}`}
@@ -175,6 +202,78 @@ const Page = () => {
           </Link>
         ))}
       </div>
+
+      {/* International packages Desktop view */}
+      <div className="lg:flex flex-col gap-11 hidden">
+        <div>
+          <h4 className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-600">
+            International packages
+          </h4>
+        </div>
+        <div className="hidden lg:grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {international?.map((dest, id) => (
+            <Link
+              key={id}
+              href={`/filterpage/${dest.state}`}
+              className="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
+            >
+              <img
+                src={dest.package_image[0]}
+                width={300}
+                height={300}
+                // alt={dest.name}
+                className="w-full h-full object-cover transition-all group-hover:scale-105 aspect-[300/400] lg:aspect-[300/300] "
+              />
+              <div className="absolute inset-0  flex items-start justify-end p-2 text-white flex-col bg-black/30 hover:bg-black/40">
+                <div>
+                  <h3 className="text-lg font-bold">{capitalizeWords(dest.state)}</h3>
+                </div>
+                <div className="flex gap-0 lg:gap-5 flex-col lg:flex-row lg:justify-between lg:items-center">
+                  <p className="flex justify-center items-center text-sm">
+                    Price: <span className="text-sm font-extrabold"> &#8377; {dest.price}</span>
+
+                  </p>
+                  <span className="text-sm font-extrabold">{dest.tourCount} tours</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+
+      {/* {International packages mobile view} */}
+      <div className="flex flex-col gap-5 mt-5 lg:hidden">
+        <div>
+          <h4 className="text-2xl md:text-3xl font-medium text-gray-600">
+            International packages
+          </h4>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
+          {international.map((dest, id) => (
+            <Link
+              key={id}
+              href={`/filterpage/${dest.state}`}
+              className="relative group overflow-hidden rounded-lg shadow-lg"
+            >
+              <div className="w-full h-32 rounded-lg">
+                <img
+                  src={dest.package_image[0]}
+                  // alt={dest.name}
+                  className="w-full h-full object-cover transition-all group-hover:scale-105 aspect-[300/400] lg:aspect-[300/300] "
+                />
+              </div>
+
+              <div className="py-1 px-2">
+                <p className="text-sm font-bold">{capitalizeWords(dest.state)}</p>
+                <p className="mt-1 text-sm ">Starting: <span className="font-bold">&#8377; {dest.price}</span></p>
+                <p className="mt-1 text-sm ">{dest.tourCount} Tours</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 };

@@ -652,7 +652,7 @@ const Breadcrumb = ({ slug, category }) => {
     console.log(slug, "check props");
 
     const [fetchfilterdata, setfetchfilterdata] = useState([]);
-    console.log(fetchfilterdata, "fetchfilterdata")
+    console.log(fetchfilterdata, "fetchfilterdata");
 
     const renderDynamicParagraph = (selectedState) => {
 
@@ -665,7 +665,7 @@ const Breadcrumb = ({ slug, category }) => {
             return false
         } else {
             return (
-                <p className='mt-2 text-justify'>
+                <p className='mt-2 text-justify text-gray-500'>
                     Discover the timeless beauty of {selectedState}, {stateInfo?.nickname}!
                     Known for its {stateInfo?.features.join(", ")}, {selectedState} has been shaped by {stateInfo?.rulers}, leaving behind&nbsp;
                     {stateInfo?.attractions.join(", ")}. Immerse yourself in
@@ -723,32 +723,7 @@ const Breadcrumb = ({ slug, category }) => {
 
         getData();
     }, [slug]);
-
-
-    // useEffect(() => {
-    //         async function getData() {
-    //             const response = await axios.post("/api/fetchcategory", {
-    //                 operation: "fetchdatacitywise",
-    //                 city: slug,
-    //             })
-    //             console.log(response.data.fetchcitydata, "check response");
-    //             setfetchfilterdata(response.data.fetchcitydata)
-    //         }
-    //         getData()
-    // }, [slug]);
-
-    // useEffect(() => {
-    //     async function getData() {
-    //         const response = await axios.post("/api/fetchcategory", {
-    //             operation: "fetchdatacategorieswise",
-    //             category: slug,
-    //         })
-    //         console.log(response.data.packages, "check response");
-    //         setfetchfilterdata(response.data.packages)
-    //     }
-    //     getData()
-    // }, [slug])
-
+    
     const [hidesection, sethidesection] = useState(false);
     console.log(hidesection, "hidesection");
 
@@ -769,20 +744,18 @@ const Breadcrumb = ({ slug, category }) => {
             <div className=' w-[95%] m-auto'>
                 <div className='w-full pt-2 pb-2'>
                     {console.log("capitalizeWords(slug)", capitalizeWords(slug))}
-                    <p className='text-sm md:text-base'>Group-Tours / {capitalizeWords(slug)}</p>
+                    <p className='text-sm md:text-base text-gray-600'>Group-Tours / {capitalizeWords(slug)}</p>
                 </div>
 
                 <div className='w-full py-2'>
-                    <h1 className='text-2xl md:text-4xl font-semibold'>{capitalizeWords(slug)} {slug.includes("TOUR") ? "" : "Tour"} Packages</h1>
+                    <h1 className='text-2xl md:text-4xl font-semibold text-gray-600'>{capitalizeWords(slug)} {slug.includes("TOUR") ? "" : "Tour"} Packages</h1>
                     {/* {fetchfilterdata && fetchfilterdata.map((tour, index) => (
                         <p key={index} className='mt-2'>{tour.tour_itinerary?.state_description || "No description available"}</p>
                     ))}  */}
 
 
                     {category?.description === "" || category?.description === undefined ? renderDynamicParagraph(capitalizeWords(slug)) === false ? generateCityParagraph(capitalizeWords(slug)) : renderDynamicParagraph(capitalizeWords(slug))
-                        : <p key={""} className='mt-2 text-justify'>{category?.description}</p>}
-
-
+                        : <p key={""} className='mt-2 text-justify text-gray-500'>{category?.description}</p>}
 
                     {/* <p className='text-base mt-2 font-medium'>Timeless historical tales in every fort and heritage site and the echoing calls of the wild witnessed in India’s Heart!</p> */}
                     {/* <p className='mt-2'>The treasure trove of history, culture and nature, Madhya Pradesh is renowned ‘The Heart of India’. Situated right in the centre, Madhya Pradesh has been ruled by many of the most prominent dynasties of India who have left their marks here, which are evident in the architecture,culture and lifestyle. Madhya Pradesh has a plethora of attractions from historical places whose roots can be traced back to the Stone - age, prominent temples and pilgrimage sites, as well as an ... <span className='mt-2 text-sm text-red-600 font-semibold cursor-pointer' onClick={() => readmore()}>{hidesection ? 'Read less' : 'Read more'}</span></p>
@@ -791,8 +764,6 @@ const Breadcrumb = ({ slug, category }) => {
                         <p className='mt-2'>Submerge in the core beauty of the country, where the past still lives, with Vinifera’s Madhya Pradesh holiday packages. The spiritual and cultural legacy of nearly every religion can be found here. Innumerable monuments, intricately carved temples, caves, stupas, forts and palaces are dotted all over the state. Blessed with natural wonders, the state has everything, from mighty mountain ranges to meandering rivers to miles of verdant forests, offering unique and exciting wildlife safaris that are full of tiger spotting. Some of the most sacred cities and ghats are here in this state, and it is the host of the most sacred festival in the country, ‘Kumbh Mela’. With Vinifera’s Madhya Pradesh tour packages, you can experience the gist of the entire country in one place, in its heart. </p>
                     } */}
                 </div>
-
-
             </div>
         </div>
     )

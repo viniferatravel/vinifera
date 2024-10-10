@@ -44,7 +44,7 @@ export default function Home() {
       
       <div className="w-[95%] mx-auto flex flex-col gap-16 md:gap-24">
         <ScrollCards />
-        <Destination/>
+        <Destination allPackages={allPackages}/>
         <div ref={specialPackageRef}>
           <PopularCarousel
             popularPackages={allPackages.filter((item) =>

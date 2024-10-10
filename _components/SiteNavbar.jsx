@@ -231,6 +231,10 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
       })
     }
 
+    if(lastSegment === "") {
+      setNavAction("")
+    }
+
   }, [lastSegment, links, noninternational, international]);
 
 

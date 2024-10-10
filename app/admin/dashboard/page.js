@@ -240,9 +240,10 @@ const Dashboard = () => {
 
   // useEffect(() => {
   //   if (selectedCategory) {
-  //     const filteredPackages = allPackages.find((item) => item.category === selectedCategory)
+  //     const filteredPackages = allPackages?.filter((item) => item.category === selectedCategory)
+  //     setfilt
   //   }
-  // }, [selectedCategory])
+  // }, [allPackages, selectedCategory])
 
 
   return (<>
@@ -276,7 +277,7 @@ const Dashboard = () => {
           }}
         >
           <AutocompleteItem key={"ALL"} value={"ALL"}>{"ALL"}</AutocompleteItem>
-          {categoryList.map((item) => {
+          {categoryList?.map((item) => {
             return (
               <AutocompleteItem key={item.category_name} value={item.category_name}>{item.category_name}</AutocompleteItem>
             )
@@ -304,7 +305,11 @@ const Dashboard = () => {
               }
 
               if (selectedCategory !== "ALL") {
-                filteredPackages = filteredPackages.filter((item) => item.category === selectedCategory)
+                filteredPackages = allPackages.filter((item) => item.category.includes(selectedCategory))
+
+                if(filteredPackages.length === 0) {
+                  filteredPackages = allPackages.filter((item) => item.sub_category.includes(selectedCategory))
+                }
               }
 
               return (

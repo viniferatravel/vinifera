@@ -127,7 +127,7 @@ const Tour = ({ selectedPackage }) => {
         <h1 className="text-2xl font-bold mb-4">Tour Information</h1>
 
         {/* Notes Section */}
-        {selectedPackage?.notes?.length > 0 && (
+        {selectedPackage?.notes?.length > 0 && !selectedPackage?.notes?.includes("") && (
           <section className="mb-6 w-full">
             <h2 className="text-xl font-semibold mb-2">Notes:</h2>
             <ul className="list-disc pl-5 space-y-2">
@@ -142,7 +142,7 @@ const Tour = ({ selectedPackage }) => {
 
 
         {/* Special Notes Section */}
-        {selectedPackage?.special_notes?.length > 0 && (
+        {selectedPackage?.special_notes?.length > 0 && !selectedPackage?.special_notes?.includes("") && (
           <section className="mb-6 w-full">
             <h2 className="text-xl font-semibold mb-2">Special Notes:</h2>
             <ul className="list-disc pl-5 space-y-2">
@@ -160,7 +160,7 @@ const Tour = ({ selectedPackage }) => {
 
 
         {/* Our Speciality */}
-        {selectedPackage?.our_speciality?.length > 0 && (
+        {selectedPackage?.our_speciality?.length > 0 && !selectedPackage?.our_speciality?.includes("") && (
           <section className="mb-6 w-full">
             <h2 className="text-xl font-semibold mb-2">Our Specialty:</h2>
             <ul className="list-disc pl-5 space-y-2">
@@ -210,7 +210,7 @@ const Tour = ({ selectedPackage }) => {
         )} */}
 
         {/* Important Notes */}
-        {selectedPackage?.important_notes?.length > 0 && (
+        {selectedPackage?.important_notes?.length > 0 && !selectedPackage?.important_notes?.includes("") && (
           <section className="mb-2 w-full">
             <h2 className="text-xl font-semibold mb-2">Important Notes:</h2>
             <ul className="list-disc pl-5 space-y-2">

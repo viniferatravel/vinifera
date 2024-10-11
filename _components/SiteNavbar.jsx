@@ -17,28 +17,25 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   const router = useRouter();
 
   const [links, setlinks] = useState([]);
-  // console.log(links, "links");
+
 
   const [international, setinternational] = useState([]);
-  // console.log(international, "international");
+
 
   const [noninternational, setnoninternational] = useState([]);
-  // console.log(noninternational, "noninternational");
+
 
   const [packagedata, setpackagedata] = useState([]);
-  // console.log(packagedata, "packagedata");
+
 
   const [specialpackagedata, setspecialpackagedata] = useState([]);
-  console.log(specialpackagedata, "specialpackagedata");
 
-  // const [activeIndex, setActiveIndex] = useState(0);
-  // console.log(activeIndex, "activeIndex");
 
   const [exclusiveData, setexclusiveData] = useState('');
-  // console.log(exclusiveData, "exclusiveData");
+
 
   const [specialCategory, setspecialCategory] = useState('');
-  // console.log(specialCategory, "specialCategory");
+
 
   const [showTripsContent, setShowTripsContent] = useState(false);
   const [showPackagesContent, setShowPackagesContent] = useState(false);
@@ -47,8 +44,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   const [navAction, setNavAction] = useState("");
 
   useEffect(() => {
-    const categories = links.map(link => link.category);
-    // console.log(categories, "categories");
+    const categories = links?.map(link => link.category);
 
     const exclusiveData = categories.flat().find(item => item === "EXCLUSIVE");
     setexclusiveData(exclusiveData);
@@ -58,10 +54,8 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
     if (links) {
       const internationaldata = links.filter(link => link.sub_category.includes("INTERNATIONAL"));
-      console.log(internationaldata, "internationaldata checl");
 
       const noninternationaldata = links.filter(link => !link.sub_category.includes("INTERNATIONAL"));
-      console.log(noninternationaldata, "noninternationaldata check");
 
       setinternational(internationaldata);
       setnoninternational(noninternationaldata)
@@ -74,7 +68,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
       const response = await axios.post("/api/fetchcategory", {
         operation: "fetchallpackage",
       });
-      // console.log(response.data.fetchalldata, "check response");
       setlinks(response.data.fetchalldata);
     }
     getdata();
@@ -87,7 +80,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
           operation: "fetchdatacategorieswise",
           category: exclusiveData,
         });
-        // console.log(response.data.packages, "check packages");
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "EXCLUSIVE")
@@ -106,13 +98,11 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
           operation: "fetchdatacategorieswise",
           category: specialCategory,
         });
-        // console.log(response.data.packages, "check packages");
 
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "SPECIAL")
         }));
-        // console.log(filteredPackages, "filteredPackages");
 
         setspecialpackagedata(filteredPackages);
       }
@@ -127,16 +117,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   };
 
   const uniqueCategories = new Set();
-
-  // const handlecity = (uniqueCity) => {
-  //   setNavAction("trip")
-  //   router.push(`/filterpage/${uniqueCity}`)
-  // }
-
-  // const handlestate = (uniqueState) => {
-  //   setNavAction("trip")
-  //   router.push(`/filterpage/${uniqueState}`)
-  // }
 
   const handlenoninternational = (state) => {
     setNavAction("trip")
@@ -173,8 +153,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     router.push(`/passport`);
   }
 
-
-
   useEffect(() => {
     if (lastSegment === "corporate" || lastSegment === "passport" || lastSegment === "tickets") {
       setNavAction("")
@@ -193,28 +171,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
 
   useEffect(() => {
-
-    // const stateForActive = Array.from(new Set(links.map((trip) => trip.state)))
-
-    // if (stateForActive.some((state) => state.toLowerCase() === lastSegment)) {
-    //   setNavAction("trip");
-    // }
-
-    // if (links.some((trip) => trip.city === lastSegment)) {
-    //   setNavAction("trip");
-    // }
-
-    // stateForActive.map((uniqueState, index) => {
-    //   const isStateSelected = links.some(trip => trip.state === uniqueState && trip.city === lastSegment);
-
-    //   if (isStateSelected) {
-    //     setActiveIndex(index);
-    //   }
-    // }) 
-
-
-
-
 
     noninternational && [...new Set(noninternational.map((e) => e.state))].map((state, i) => {
       if (state === lastSegment) {
@@ -262,9 +218,9 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     const uniqueCategoriess = new Set();
     specialpackagedata?.map((packageItem, index) => (
       packageItem.category.map((cat, catIndex) => {
-        // Check if the category has been added to the Set
+      
         if (!uniqueCategoriess.has(cat)) {
-          uniqueCategoriess.add(cat); // Add category to the Set
+          uniqueCategoriess.add(cat);
           if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
 
           } else {
@@ -292,220 +248,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
   return (
     <>
-
-      {/* <div onMouseLeave={handleMouseLeave}>
-        <div className="text-left md:cursor-pointer group grid grid-cols-1 lg:grid-cols-6 px-0 md:px-3">
-          <p
-            onMouseEnter={() => {
-              setShowTripsContent(true);
-              setShowPackagesContent(false);
-              setShowspecialContent(false);
-            }}
-            className={navAction === "trip" ? `text-red-400 p-5 flex gap-1 md:justify-start items-center lg:justify-center ${showTripsContent ? 'bg-gray-100' : ''}` : `p-5 flex gap-1 md:justify-start items-center lg:justify-center ${showTripsContent ? 'bg-gray-100' : ''}`}
-          >
-            TRIPS
-            <span className="ml-2">
-              {showTripsContent ? (
-                <ChevronUp className="transition-transform duration-200" />
-              ) : (
-                <ChevronDown className="transition-transform duration-200" />
-              )}
-            </span>
-          </p>
-          <p
-            onMouseEnter={() => {
-              setShowPackagesContent(true);
-              setShowTripsContent(false);
-              setShowspecialContent(false);
-            }}
-            className={navAction === "exclusive" ? `text-red-400 p-5 flex gap-1 md:justify-start items-center lg:justify-center ${showPackagesContent ? 'bg-gray-100' : ''}` : `p-5 flex gap-1 md:justify-start items-center lg:justify-center ${showPackagesContent ? 'bg-gray-100' : ''}`}
-          >
-            PACKAGES
-            <span className="ml-2">
-              {showPackagesContent ? (
-                <ChevronUp className="transition-transform duration-200" />
-              ) : (
-                <ChevronDown className="transition-transform duration-200" />
-              )}
-            </span>
-          </p>
-          <p
-            onMouseEnter={() => {
-              setShowspecialContent(true);
-              setShowTripsContent(false);
-              setShowPackagesContent(false);
-            }}
-            className={navAction === "special" ? `text-red-400 p-5 flex gap-1 md:justify-start items-center lg:justify-center ${showspecialContent ? 'bg-gray-100' : ''}` : `p-5 flex gap-1 md:justify-start items-center lg:justify-center ${showspecialContent ? 'bg-gray-100' : ''}`}
-          >
-            SPECIAL
-            <span className="ml-2">
-              {showspecialContent ? (
-                <ChevronUp className="transition-transform duration-200" />
-              ) : (
-                <ChevronDown className="transition-transform duration-200" />
-              )}
-            </span>
-          </p>
-          <p
-            onMouseEnter={() => {
-              setShowspecialContent(false);
-              setShowTripsContent(false);
-              setShowPackagesContent(false);
-            }}
-            onClick={handleCorporatePage}
-            className={lastSegment === "corporate" ? "p-5 flex md:justify-start items-center lg:justify-center text-red-400" : "p-5 flex md:justify-start items-center lg:justify-center"}>CORPORATE</p>
-          <p
-            onMouseEnter={() => {
-              setShowspecialContent(false);
-              setShowTripsContent(false);
-              setShowPackagesContent(false);
-            }}
-            onClick={handlePassportPage}
-            className={lastSegment === "passport" ? "p-5 flex md:justify-start items-center lg:justify-center text-red-400" : "p-5 flex md:justify-start items-center lg:justify-center"}>PASSPORT</p>
-          <p
-            onMouseEnter={() => {
-              setShowspecialContent(false);
-              setShowTripsContent(false);
-              setShowPackagesContent(false);
-            }}
-            onClick={handleTicketsPage}
-            className={lastSegment === "tickets" ? "p-5 flex md:justify-start items-center lg:justify-center text-red-400" : "p-5 flex md:justify-start items-center lg:justify-center"}>TICKETS</p>
-        </div>
-
-        {showTripsContent && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className="absolute top-16 left-0 right-0 w-[80%] m-auto flex justify-start h-[60vh] rounded-lg bg-white"
-            onMouseEnter={() => setShowTripsContent(true)}
-            onMouseLeave={() => setShowTripsContent(false)}
-          >
-            <div className="rounded-s-lg rounded-b-lg w-[25%] px-4 py-2 bg-gray-200">
-              <p className="text-center p-2 text-2xl font-semibold">TRIP STATES</p>
-              {links &&
-                Array.from(new Set(links.map((trip) => trip.state))) // Filter unique states
-                  .map((uniqueState, stateIndex) => (
-                    <div
-                      key={stateIndex}
-                      onMouseEnter={() => setActiveIndex(stateIndex)} // Set active index on hover
-                      className={`w-full flex justify-start items-center flex-col p-2 gap-3 rounded-lg ${activeIndex === stateIndex ? 'bg-gray-600 text-white font-semibold' : ''
-                        }`}
-                    >
-                      <p className="w-full text-sm cursor-pointer" onClick={() => handlestate(uniqueState)}>{uniqueState}</p>
-                    </div>
-                  ))}
-            </div>
-            <div className="w-[75%] py-2 px-10 bg-gray-100 rounded-r-lg rounded-b-lg">
-              <p className="text-center p-2 text-2xl font-semibold">TRIP CITIES</p>
-              {links[activeIndex] && (
-                <div className="w-full grid grid-cols-4 gap-4 p-2">
-                  {Array.from(
-                    new Set(
-                      links
-                        .filter((trip) => trip.state === Array.from(new Set(links.map((trip) => trip.state)))[activeIndex]) // Filter by active state
-                        .map((trip) => trip.city) // Get cities for the active state
-                    )
-                  ).map((uniqueCity, cityIndex) => {
-                    return (
-                      <p key={cityIndex} className={navAction === "trip" && lastSegment === uniqueCity ? "text-red-400 text-sm cursor-pointer" : "text-gray-600 text-sm cursor-pointer"} onClick={() => handlecity(uniqueCity)}>
-                        {uniqueCity}
-                      </p>
-                    )
-                  })}
-                </div>
-              )}
-            </div>
-          </motion.div>
-        )}
-
-        {showPackagesContent && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }} //
-            className="absolute top-16 left-0 right-0 w-[80%] m-auto flex justify-start h-auto rounded-lg bg-white"
-            onMouseEnter={() => setShowPackagesContent(true)}
-            onMouseLeave={() => setShowPackagesContent(false)}
-          >
-            <div className="rounded-s-lg rounded-b-lg w-[25%] px-4 py-5">
-              <div className="py-4 px-2 flex justify-start flex-col gap-3 bg-gray-200 rounded-lg">
-                <p className="font-extrabold">SPECIALLY TOURS</p>
-                <p className="font-normal text-sm leading-relaxed">
-                  Specialty tours are designed to cater to specific interests and passions, offering unique and immersive experiences that go beyond the typical tourist activities. Here are some types of specialty tours.
-                </p>
-              </div>
-            </div>
-            <div className="w-[75%] py-5 px-10 rounded-r-lg rounded-b-lg">
-              <div className="w-full grid grid-cols-3 gap-4 py-4 px-2">
-                {packagedata?.map((packageItem, index) => (
-                  packageItem?.category.map((cat, catIndex) => {
-
-                    if (!uniqueCategories.has(cat)) {
-                      uniqueCategories.add(cat);
-                      if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST") {
-
-                      } else {
-                        return (
-                          <p key={`${index}-${catIndex}`} onClick={() => handlepackage(cat)} className={navAction === "exclusive" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-600 text-sm cursor-pointer"}>
-                            {cat}
-                          </p>
-                        );
-                      }
-                    }
-                    return null;
-                  })
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {showspecialContent && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }} //
-            className="absolute top-16 left-0 right-0 w-[80%] m-auto flex justify-start h-auto rounded-lg bg-white"
-            onMouseEnter={() => setShowspecialContent(true)}
-            onMouseLeave={() => setShowspecialContent(false)}
-          >
-            <div className="rounded-s-lg rounded-b-lg w-[25%] px-4 py-5 ">
-              <div className="py-4 px-2 flex justify-start flex-col gap-3 bg-gray-200 rounded-lg">
-                <p className="font-extrabold">SPECIAL TOURS</p>
-                <p className="font-normal text-sm leading-relaxed">
-                  Specialty tours are designed to cater to specific interests and passions, offering unique and immersive experiences that go beyond the typical tourist activities. Here are some types of specialty tours.
-                </p>
-              </div>
-            </div>
-            <div className="w-[75%] py-5 px-10 rounded-r-lg rounded-b-lg">
-              <div className="w-full grid grid-cols-3 gap-4 py-4 px-2">
-                {specialpackagedata.map((packageItem, index) => (
-                  packageItem.category.map((cat, catIndex) => {
-                    // Check if the category has been added to the Set
-                    if (!uniqueCategories.has(cat)) {
-                      uniqueCategories.add(cat); // Add category to the Set
-                      if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST") {
-
-                      } else {
-                        return (
-                          <p key={`${index}-${catIndex}`} onClick={() => handlespecialpackage(cat)} className={navAction === "special" && cat === lastSegment ? "text-red-400 text-sm cursor-pointer" : "text-gray-600 text-sm cursor-pointer"}>
-                            {cat}
-                          </p>
-                        );
-                      }
-                    }
-                    return null; // Don't render if the category is already present
-                  })
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </div> */}
 
       <div onMouseLeave={handleMouseLeave}>
         <div className="text-left md:cursor-pointer group grid grid-cols-1 lg:grid-cols-6 px-0 md:px-3">
@@ -701,9 +443,9 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
               <div className="w-full grid grid-cols-3 gap-4 py-4 px-2">
                 {specialpackagedata.map((packageItem, index) => (
                   packageItem.category.map((cat, catIndex) => {
-                    // Check if the category has been added to the Set
+                    
                     if (!uniqueCategories.has(cat)) {
-                      uniqueCategories.add(cat); // Add category to the Set
+                      uniqueCategories.add(cat);
                       if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
 
                       } else {
@@ -714,7 +456,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
                         );
                       }
                     }
-                    return null; // Don't render if the category is already present
+                    return null;
                   })
                 ))}
               </div>
@@ -729,27 +471,26 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
 
   const [links, setlinks] = useState([]);
-  // console.log(links, "links");
+
 
   const [international, setinternational] = useState([]);
-  // console.log(international, "international");
+
 
   const [noninternational, setnoninternational] = useState([]);
-  // console.log(noninternational, "noninternational");
+
 
   const router = useRouter();
 
   const [packagedata, setpackagedata] = useState([]);
-  // console.log(packagedata, "packagedata");
+
 
   const [specialpackagedata, setspecialpackagedata] = useState([]);
-  // console.log(specialpackagedata, "specialpackagedata");
+
 
   const [exclusiveData, setexclusiveData] = useState('');
-  // console.log(exclusiveData, "exclusiveData");
+
 
   const [specialCategory, setspecialCategory] = useState('');
-  // console.log(specialCategory, "specialCategory");
 
 
   const [selectedState, setSelectedState] = useState(null);
@@ -765,7 +506,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
       const response = await axios.post("/api/fetchcategory", {
         operation: "fetchallpackage",
       });
-      // console.log(response.data.fetchalldata, "check response");
+
       setlinks(response.data.fetchalldata);
     }
     getdata();
@@ -773,7 +514,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
 
   useEffect(() => {
     const categories = links.map(link => link.category);
-    // console.log(categories, "categories");
+
 
     const exclusiveData = categories.flat().find(item => item === "EXCLUSIVE");
     setexclusiveData(exclusiveData);
@@ -783,10 +524,8 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
 
     if (links) {
       const internationaldata = links.filter(link => link.sub_category.includes("INTERNATIONAL"));
-      // console.log(internationaldata, "internationaldata checl");
 
       const noninternationaldata = links.filter(link => !link.sub_category.includes("INTERNATIONAL"));
-      // console.log(noninternationaldata, "noninternationaldata check");
 
       setinternational(internationaldata);
       setnoninternational(noninternationaldata)
@@ -801,7 +540,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
           operation: "fetchdatacategorieswise",
           category: exclusiveData,
         });
-        // console.log(response.data.packages, "check packages");
+   
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "EXCLUSIVE")
@@ -820,13 +559,13 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
           operation: "fetchdatacategorieswise",
           category: specialCategory,
         });
-        // console.log(response.data.packages, "check packages");
+       
 
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "SPECIAL")
         }));
-        // console.log(filteredPackages, "filteredPackages");
+   
 
         setspecialpackagedata(filteredPackages);
       }
@@ -838,10 +577,6 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
     setShowTripsContent(!showTripsContent);
     setSelectedState(null);
   };
-
-  // const handleStateClick = (state) => {
-  //   setSelectedState(state === selectedState ? null : state);
-  // };
 
   const [flgtrue, setflgtrue] = useState(false);
 
@@ -862,11 +597,6 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
   const handlespecialitem = () => {
     setShowspecialContent(!showspecialContent)
   }
-
-  // const handlecity = (city) => {
-  //   router.push(`/filterpage/${city}`)
-  //   closeNavbar();
-  // }
 
   const handlepackage = (cat) => {
     const encodedCategory = encodeURIComponent(cat);
@@ -927,31 +657,6 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
       .join(" ");
   }
 
-
-  // useEffect(() => {
-
-  //   const stateForActive = Array.from(new Set(links.map((trip) => trip.state)))
-
-  //   if (stateForActive.some((state) => state.toLowerCase() === lastSegment)) {
-  //     setNavAction("trip");
-  //     setShowTripsContent(true)
-  //   }
-
-  //   if (links.some((trip) => trip.city === lastSegment)) {
-  //     setNavAction("trip");
-  //     setShowTripsContent(true)
-  //   }
-
-  //   stateForActive.map((uniqueState, index) => {
-  //     const isStateSelected = links.some(trip => trip.state === uniqueState && trip.city === lastSegment);
-
-  //     if (isStateSelected) {
-  //       setSelectedState(uniqueState);
-  //     }
-  //   })
-  // }, [lastSegment, links]);
-
-
   const isSpecialCategory = (cat) => {
 
     return cat.trim().split(' ').pop().toUpperCase() === 'SPECIAL';
@@ -964,26 +669,6 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
 
 
   useEffect(() => {
-
-    //   const stateForActive = Array.from(new Set(links.map((trip) => trip.state)))
-
-    //   if (stateForActive.some((state) => state.toLowerCase() === lastSegment)) {
-    //     setNavAction("trip");
-    //     setShowTripsContent(true)
-    //   }
-
-    //   if (links.some((trip) => trip.city === lastSegment)) {
-    //     setNavAction("trip");
-    //     setShowTripsContent(true)
-    //   }
-
-    //   stateForActive.map((uniqueState, index) => {
-    //     const isStateSelected = links.some(trip => trip.state === uniqueState && trip.city === lastSegment);
-
-    //     if (isStateSelected) {
-    //       setSelectedState(uniqueState);
-    //     }
-    //   })
 
 
     noninternational && [...new Set(noninternational.map((e) => e.state))].map((state, i) => {
@@ -1066,52 +751,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
             )}
           </div>
 
-          {/* {showTripsContent && (
-            links && (
-              <div className="border border-red-100 rounded-lg">
-                {Array.from(new Set(links.map(trip => trip.state))).map((uniqueState, index) => {
-                  // Check if any city in the current state is selected
-                  const isStateSelected = links.some(trip => trip.state === uniqueState && trip.city === lastSegment);
 
-
-                  return (
-                    <div key={index} className="p-3">
-                      <h1
-                        className={
-                          navAction === "trip" && (uniqueState === lastSegment || isStateSelected)
-                            ? "text-red-400 cursor-pointer"
-                            : "cursor-pointer"
-                        }
-                        onClick={() => handleStateClick(uniqueState)}
-                      >
-                        {capitalizeWords(uniqueState)}
-                      </h1>
-
-                      {selectedState === uniqueState && (
-                        <div className="mt-3 flex flex-col justify-start gap-1 rounded-lg border bg-gray-100">
-                          {links
-                            .filter(trip => trip.state === uniqueState)
-                            .map((trip, idx) => (
-                              <p
-                                key={idx}
-                                onClick={() => handlecity(trip.city)}
-                                className={
-                                  navAction === "trip" && trip.city === lastSegment
-                                    ? "text-red-400 p-2 cursor-pointer"
-                                    : "p-2 cursor-pointer"
-                                }
-                              >
-                                {capitalizeWords(trip.city)}
-                              </p>
-                            ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            )
-          )} */}
 
           {showTripsContent && (
             <div className="border border-red-100 rounded-lg">
@@ -1159,7 +799,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
 
           {showPackagesContent && (
             <div className="border border-red-100 rounded-lg"> {/* Single border for all categories */}
-              {packagedata.map((packageItem, index) => (
+              {packagedata?.map((packageItem, index) => (
                 packageItem.category.map((cat, catIndex) => {
                   if (!uniqueCategories.has(cat)) {
                     uniqueCategories.add(cat);
@@ -1173,7 +813,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
                       );
                     }
                   }
-                  return null; // Skip rendering if the category is already present
+                  return null;
                 })
               ))}
             </div>
@@ -1191,7 +831,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
 
           {showspecialContent && (
             <div className="border border-red-100 rounded-lg"> {/* Single border for all special categories */}
-              {specialpackagedata.map((packageItem, index) => (
+              {specialpackagedata?.map((packageItem, index) => (
                 packageItem.category.map((cat, catIndex) => {
 
 
@@ -1208,7 +848,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
                     }
                   }
 
-                  return null; // Skip rendering if the category is already present
+                  return null;
                 })
               ))}
             </div>
@@ -1272,10 +912,10 @@ const Navbar = () => {
         setCurrentPlace(places[nextIndex]);
         return nextIndex;
       });
-    }, 2000); // Change text every 2 seconds
+    }, 2000);
 
-    return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, []);
+    return () => clearInterval(interval);
+  }, [places]);
 
   const closeNavbar = () => setOpen(false);
 
@@ -1288,12 +928,12 @@ const Navbar = () => {
         <div className="z-50 p-5 lg:w-auto w-full flex justify-between bg-white lg:bg-transparent">
 
           <div onClick={() => {
-router.push(`/`)
-setTimeout(() => {
-  window.location.reload();
-}, 1000);
+            router.push(`/`)
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           }} className="flex items-end relative lg:w-[100px] cursor-pointer">
-            <Image src={IMAGES.viniferaLogo} width={50} height={50} className="h-10 w-10 " />
+            <Image alt="viniferalogo" src={IMAGES.viniferaLogo} width={50} height={50} className="h-10 w-10 " />
             <p className="hidden text-themeColor text-xl absolute bottom-0 right-3 lg:flex item-end justify-end">inifera</p>
           </div>
 
@@ -1335,7 +975,7 @@ setTimeout(() => {
         <div className="lg:block hidden">
 
           <div className="bg-themeColor text-white rounded-full size-6 p-4 flex justify-center items-center shadow-lg">
-            <button  onClick={() => {
+            <button onClick={() => {
               router.push(`/filterpage/ALL`)
             }}>
               <ArrowRight strokeWidth={3} />

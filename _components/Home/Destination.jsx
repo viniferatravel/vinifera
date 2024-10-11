@@ -24,10 +24,10 @@ const Destination = ({ allPackages }) => {
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
       <h2 className="text-2xl lg:text-3xl text-gray-600 font-bold underline decoration-themeColor text-center">
-      Top Trending International Tourist Destinations
+        Top Trending International Tourist Destinations
       </h2>
       <p className="text-base lg:text-lg lg:w-[80%] text-center">
-      You only live once—make it unforgettable! Explore breathtaking landscapes and vibrant cultures at these must-visit international destinations!
+        You only live once—make it unforgettable! Explore breathtaking landscapes and vibrant cultures at these must-visit international destinations!
       </p>
       <div className="hidden lg:flex gap-3 w-full">
         <div className="min-h-[500px] grid grid-cols-2 gap-4 w-full">
@@ -37,12 +37,15 @@ const Destination = ({ allPackages }) => {
               className="border relative col-span-2 rounded-xl hover:scale-[1.01] hover:transition-all  hover:duration-1000 overflow-hidden cursor-pointer"
               onClick={() => router.push(`/filterpage/${destination.state}`)}
             >
+
               <Image
                 src={destination.package_image[2]}
                 alt={`Destination ${index + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="w-full h-full object-cover"
               />
+
               <div className="absolute top-0 left-0  w-full h-full bg-black/20 flex flex-col p-5 justify-end">
                 <h2 className="text-white font-semibold text-lg">{destination.package_name}</h2>
                 <p className="text-white">Starting {destination.price} pp </p>
@@ -55,12 +58,15 @@ const Destination = ({ allPackages }) => {
               className="border relative col-span-1 rounded-xl hover:scale-[1.01] hover:transition-all  hover:duration-1000 overflow-hidden cursor-pointer"
               onClick={() => router.push(`/filterpage/${destination.state}`)}
             >
+
               <Image
                 src={destination.package_image[0]}
                 alt={`Destination ${index + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="w-full h-full object-cover"
               />
+
               <div className="absolute top-0 left-0  w-full h-full bg-black/20 flex flex-col p-5 justify-end">
                 <h2 className="text-white font-semibold text-lg">{destination.package_name}</h2>
                 <p className="text-white">Starting {destination.price} pp </p>
@@ -76,11 +82,13 @@ const Destination = ({ allPackages }) => {
               onClick={() => router.push(`/filterpage/${destination.state}`)}
             >
               <Image
-                src={destination.package_image[1]}
+                src={destination.package_image[0]}
                 alt={`Destination ${index + 4}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="w-full h-full object-cover"
               />
+
               <div className="absolute top-0 left-0  w-full h-full bg-black/20 flex flex-col p-5 justify-end">
                 <h2 className="text-white font-semibold text-lg">{destination.package_name}</h2>
                 <p className="text-white">Starting {destination.price} pp </p>
@@ -99,8 +107,10 @@ const Destination = ({ allPackages }) => {
                 src={destination.package_image[2]}
                 alt={`Destination ${index + 5}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="w-full h-full object-cover"
               />
+
               <div className="absolute top-0 left-0  w-full h-full bg-black/20 flex flex-col p-5 justify-end">
                 <h2 className="text-white font-semibold text-lg">{destination.package_name}</h2>
                 <p className="text-white">Starting {destination.price} pp </p>
@@ -112,19 +122,21 @@ const Destination = ({ allPackages }) => {
 
       <div className="lg:hidden flex overflow-x-auto snap-x snap-mandatory p-5 gap-4 w-full mx-auto hide-scrollbar-x">
 
-        {destinations?.map((item) => (
+        {destinations?.map((item, index) => (
           <div
-            key={item.id}
+            key={index}
             className="relative flex-none w-[calc(80%-16px)] md:w-[calc(40%-16px)] h-72 md:h-96 flex items-center justify-center flex-col gap-5 snap-start cursor-pointer rounded-xl overflow-hidden lg:hidden"
             onClick={() => router.push(`/filterpage/${item.state}`)}
 
           >
             <Image
               src={item.package_image[1]}
-              alt={`Destination`}
+              alt="Destination"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="w-full h-full object-cover"
             />
+
             <div className="absolute top-0 left-0  w-full h-full bg-black/20 flex flex-col p-5 justify-end">
               <h2 className="text-white font-semibold text-lg">{item.package_name}</h2>
               <p className="text-white">Starting {item.price} pp </p>
@@ -133,7 +145,7 @@ const Destination = ({ allPackages }) => {
         ))}
       </div>
 
-     
+
     </div>
   );
 };

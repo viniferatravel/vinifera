@@ -31,14 +31,14 @@ const SelectMonth = () => {
   };
 
   const [fetchcard, setfetchcard] = useState([]);
-  // console.log(fetchcard, "fetchcard");
+
 
   useEffect(() => {
     async function getData() {
       const response = await axios.post("/api/fetchcategory", {
         operation: "fetchcardpackage"
       })
-      // console.log(response.data.fetchsortdata, "check data");
+     
       setfetchcard(response.data.fetchsortdata);
     }
     getData()
@@ -51,7 +51,7 @@ const SelectMonth = () => {
       console.error("No package ID provided");
     }
   };
-  
+
 
   return (
     <div className=" p-5 rounded-xl shadow-xl bg-white border flex flex-col gap-5">
@@ -82,19 +82,21 @@ const SelectMonth = () => {
           <div className="flex gap-5 lg:flex-col lg:gap-5">
 
             <div className="grid grid-cols-1 gap-4 mt-5 cursor-pointer">
-              {fetchcard && fetchcard.map((tour,index) => (
-                <div key={index} className=" grid grid-cols-3 gap-5 p-2 border rounded-xl shadow-md"  onClick={() => handlepackage(tour?.package_id)}>
-                  <div className=" h-[5rem] relative col-span-1"> 
+              {fetchcard && fetchcard.map((tour, index) => (
+                <div key={index} className=" grid grid-cols-3 gap-5 p-2 border rounded-xl shadow-md" onClick={() => handlepackage(tour?.package_id)}>
+                  <div className=" h-[5rem] relative col-span-1">
                     <div className='relative h-[5rem] rounded-md'>
                       <Image
                         alt={tour.package_name}
                         src={tour.package_image[0]}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         style={{
                           objectFit: 'cover'
                         }}
                         className="rounded-md"
                       />
+
                     </div>
                   </div>
 
@@ -111,8 +113,8 @@ const SelectMonth = () => {
                         <AlarmClockCheck className="w-[15px] h-[15px] text-[#ff0000]" />
 
                         <p className="text-sm flex justify-center items-center">
-                            {tour.tour_itinerary.days}D/{tour.tour_itinerary.nights}N
-                          </p>
+                          {tour.tour_itinerary.days}D/{tour.tour_itinerary.nights}N
+                        </p>
 
                         {/* {fetchcard.length > 0 && fetchcard.tour_itinerary ? (
                           <p className="text-sm flex justify-center items-center">

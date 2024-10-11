@@ -649,23 +649,21 @@ const statesInfo = {
 
 const Breadcrumb = ({ slug, category }) => {
 
-    console.log(slug, "check props");
-
     const [fetchfilterdata, setfetchfilterdata] = useState([]);
-    console.log(fetchfilterdata, "fetchfilterdata");
+
 
     const renderDynamicParagraph = (selectedState) => {
 
 
         const stateInfo = statesInfo[selectedState];
 
-        console.log("selectedState::::>", stateInfo)
+        
 
         if (stateInfo === undefined) {
             return false
         } else {
             return (
-                <p className='mt-2 text-justify text-gray-500'>
+                <p className='mt-2 text-justify text-gray-500 text-[15px]'>
                     Discover the timeless beauty of {selectedState}, {stateInfo?.nickname}!
                     Known for its {stateInfo?.features.join(", ")}, {selectedState} has been shaped by {stateInfo?.rulers}, leaving behind&nbsp;
                     {stateInfo?.attractions.join(", ")}. Immerse yourself in
@@ -686,7 +684,7 @@ const Breadcrumb = ({ slug, category }) => {
             city = "All tour packages"
         }
         return (
-            <p className='mt-2 text-justify'>
+            <p className='mt-2 text-justify text-[15px]'>
                 Welcome to {city}, a vibrant tapestry of culture, history, and modernity. Known for its unique blend of traditions and contemporary living, {city} offers an exciting array of experiences for every traveler. Wander through bustling markets filled with colorful crafts, savor the diverse culinary delights that reflect the rich heritage of the region, and explore historic landmarks that narrate tales of the past. Whether you’re captivated by the serene beauty of its parks, the lively spirit of its festivals, or the warmth of its people, {city} invites you to explore its heart, where every corner holds a new story waiting to be discovered.
             </p>
         );
@@ -695,7 +693,7 @@ const Breadcrumb = ({ slug, category }) => {
     useEffect(() => {
         async function getData() {
             try {
-                // Make both requests simultaneously
+              
                 const [cityResponse, categoryResponse] = await Promise.all([
                     axios.post("/api/fetchcategory", {
                         operation: "fetchdatacitywise",
@@ -707,17 +705,17 @@ const Breadcrumb = ({ slug, category }) => {
                     })
                 ]);
 
-                // Check the responses and decide which one to use
+                
                 if (cityResponse.data.fetchcitydata && cityResponse.data.fetchcitydata.length > 0) {
-                    console.log(cityResponse.data.fetchcitydata, "check city response");
+              
                     setfetchfilterdata(cityResponse.data.fetchcitydata);
                 } else if (categoryResponse.data.packages && categoryResponse.data.packages.length > 0) {
-                    console.log(categoryResponse.data.packages, "check category response");
+          
                     setfetchfilterdata(categoryResponse.data.packages);
                 }
 
             } catch (error) {
-                console.error("Error fetching data", error);
+                
             }
         }
 
@@ -725,7 +723,7 @@ const Breadcrumb = ({ slug, category }) => {
     }, [slug]);
     
     const [hidesection, sethidesection] = useState(false);
-    console.log(hidesection, "hidesection");
+ 
 
     const readmore = () => {
         sethidesection(hidesection === false ? true : false);
@@ -733,36 +731,28 @@ const Breadcrumb = ({ slug, category }) => {
 
     function capitalizeWords(sentence) {
         return sentence
-            .toLowerCase() // Convert the whole sentence to lowercase
-            .split(" ") // Split the sentence by spaces into an array of words
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
-            .join(" "); // Join the words back into a sentence
+            .toLowerCase()
+            .split(" ") 
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) 
+            .join(" "); 
     }
 
     return (
         <div>
             <div className=' w-[95%] m-auto'>
                 <div className='w-full pt-2 pb-2'>
-                    {console.log("capitalizeWords(slug)", capitalizeWords(slug))}
+             
                     <p className='text-sm md:text-base text-gray-600'>Group-Tours / {capitalizeWords(slug)}</p>
                 </div>
 
                 <div className='w-full py-2'>
                     <h1 className='text-2xl md:text-4xl font-semibold text-gray-600'>{capitalizeWords(slug)} {slug.includes("TOUR") ? "" : "Tour"} Packages</h1>
-                    {/* {fetchfilterdata && fetchfilterdata.map((tour, index) => (
-                        <p key={index} className='mt-2'>{tour.tour_itinerary?.state_description || "No description available"}</p>
-                    ))}  */}
+
 
 
                     {category?.description === "" || category?.description === undefined ? renderDynamicParagraph(capitalizeWords(slug)) === false ? generateCityParagraph(capitalizeWords(slug)) : renderDynamicParagraph(capitalizeWords(slug))
-                        : <p key={""} className='mt-2 text-justify text-gray-500'>{category?.description}</p>}
+                        : <p key={""} className='mt-2 text-justify text-gray-500 text-[15px]'>{category?.description}</p>}
 
-                    {/* <p className='text-base mt-2 font-medium'>Timeless historical tales in every fort and heritage site and the echoing calls of the wild witnessed in India’s Heart!</p> */}
-                    {/* <p className='mt-2'>The treasure trove of history, culture and nature, Madhya Pradesh is renowned ‘The Heart of India’. Situated right in the centre, Madhya Pradesh has been ruled by many of the most prominent dynasties of India who have left their marks here, which are evident in the architecture,culture and lifestyle. Madhya Pradesh has a plethora of attractions from historical places whose roots can be traced back to the Stone - age, prominent temples and pilgrimage sites, as well as an ... <span className='mt-2 text-sm text-red-600 font-semibold cursor-pointer' onClick={() => readmore()}>{hidesection ? 'Read less' : 'Read more'}</span></p>
-
-                    {hidesection &&
-                        <p className='mt-2'>Submerge in the core beauty of the country, where the past still lives, with Vinifera’s Madhya Pradesh holiday packages. The spiritual and cultural legacy of nearly every religion can be found here. Innumerable monuments, intricately carved temples, caves, stupas, forts and palaces are dotted all over the state. Blessed with natural wonders, the state has everything, from mighty mountain ranges to meandering rivers to miles of verdant forests, offering unique and exciting wildlife safaris that are full of tiger spotting. Some of the most sacred cities and ghats are here in this state, and it is the host of the most sacred festival in the country, ‘Kumbh Mela’. With Vinifera’s Madhya Pradesh tour packages, you can experience the gist of the entire country in one place, in its heart. </p>
-                    } */}
                 </div>
             </div>
         </div>

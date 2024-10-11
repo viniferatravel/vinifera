@@ -91,12 +91,12 @@ const Explore = () => {
 
         <p className="w-full lg:w-[60%] m-auto text-center mt-8 mb-16 text-gray-500">
           Choose from popular destinations across India and discover the best
-          travel modes. Enjoy a seamless journey while exploring the country's
+          travel modes. Enjoy a seamless journey while exploring the country&apos;s
           rich culture and breathtaking landscapes.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {travelRoutes.map((route, index) => (
+        {travelRoutes?.map((route, index) => (
           <div
             key={index}
             className="flex items-center bg-white border shadow p-2 rounded-lg gap-5 group"

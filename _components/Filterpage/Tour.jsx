@@ -19,7 +19,6 @@ import GuestModal from "@/_components/packages/Modal";
 import EmailModal from "@/_components/EmailModal"
 
 const Tour = ({ slug }) => {
-  // console.log(slug, "check props");
 
   const [enquiryClickModal, setEnquiryClickModal] = useState(false);
   const [selectedTour, setSelectedTour] = useState({});
@@ -28,16 +27,16 @@ const Tour = ({ slug }) => {
   const router = useRouter();
 
   const [fetchfiltertourdata, setfetchfiltertourdata] = useState([]);
-  // console.log(fetchfiltertourdata, "fetchfiltertourdata");
+
 
   const [originaldata, setoriginaldata] = useState([]);
-  // console.log(originaldata, "originaldata");
+
 
   const [datafetch, setdatafetch] = useState("");
-  // console.log(datafetch, "datafetch");
+
 
   const [price, setprice] = useState("");
-  // console.log(price, "price");
+
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -82,7 +81,7 @@ const Tour = ({ slug }) => {
             setoriginaldata(result.result?.filter((item) => item.sub_category.includes("BEACH", "WINTER")));
 
           } catch (error) {
-            // console.log(error)
+
           }
 
         } else {
@@ -90,7 +89,7 @@ const Tour = ({ slug }) => {
             operation: "fetchdatastatewise",
             state: slug,
           });
-          // console.log(stateResponse.data.fetchstatedata, "check state");
+
 
           setfetchfiltertourdata(stateResponse.data.fetchstatedata);
           setoriginaldata(stateResponse.data.fetchstatedata);
@@ -100,7 +99,7 @@ const Tour = ({ slug }) => {
             operation: "fetchdatacitywise",
             city: slug,
           });
-          // console.log(cityResponse.data.fetchcitydata, "check city response");
+
 
           if (cityResponse.data.fetchcitydata && cityResponse.data.fetchcitydata.length > 0) {
             const alldata = cityResponse.data.fetchcitydata;
@@ -112,7 +111,7 @@ const Tour = ({ slug }) => {
               operation: "fetchdatacategorieswise",
               category: slug,
             });
-            // console.log(categoryResponse.data.packages, "check category response");
+
 
             if (categoryResponse.data.packages && categoryResponse.data.packages.length > 0) {
               const categorydata = categoryResponse.data.packages;
@@ -132,37 +131,6 @@ const Tour = ({ slug }) => {
     }
 
     getData();
-    // async function getData() {
-    //   setLoading(true);
-    //   try {
-    //     const cityResponse = await axios.post("/api/fetchcategory", {
-    //       operation: "fetchdatacitywise",
-    //       city: slug,
-    //     });
-
-    //     if (cityResponse.data.fetchcitydata?.length > 0) {
-    //       const alldata = cityResponse.data.fetchcitydata;
-    //       setfetchfiltertourdata(alldata);
-    //       setoriginaldata(alldata);
-    //     } else {
-    //       const categoryResponse = await axios.post("/api/fetchcategory", {
-    //         operation: "fetchdatacategorieswise",
-    //         category: slug,
-    //       });
-
-    //       if (categoryResponse.data.packages?.length > 0) {
-    //         const categorydata = categoryResponse.data.packages;
-    //         setfetchfiltertourdata(categorydata);
-    //         setoriginaldata(categorydata);
-    //       }
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching data:", error);
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // }
-    // getData();
   }, [slug]);
 
   useEffect(() => {
@@ -172,7 +140,7 @@ const Tour = ({ slug }) => {
           tour.tour_itinerary && Number(tour.tour_itinerary.days) <= datafetch
         );
       });
-      // console.log(filteredData, "filteredData filter");
+
       setfetchfiltertourdata(filteredData);
     }
   }, [datafetch, originaldata]);
@@ -180,13 +148,13 @@ const Tour = ({ slug }) => {
   useEffect(() => {
     if (price) {
       const filteredData = originaldata.filter((tour) => {
-        // Ensure tour.price is a number for comparison
+
         const tourPrice = tour.price ? Number(tour.price.replace(/,/g, "")) : 0;
         const selectedPrice = price ? Number(price) : 0;
 
         return tourPrice <= selectedPrice;
       });
-      // console.log(filteredData, "filteredData filter");
+
       setfetchfiltertourdata(filteredData);
     }
   }, [price, originaldata]);
@@ -197,10 +165,10 @@ const Tour = ({ slug }) => {
 
   function capitalizeWords(sentence) {
     return sentence
-      .toLowerCase() // Convert the whole sentence to lowercase
-      .split(" ") // Split the sentence by spaces into an array of words
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
-      .join(" "); // Join the words back into a sentence
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   }
 
   const getMapSrc = (cityName, stateName) => {
@@ -227,7 +195,7 @@ const Tour = ({ slug }) => {
             <div>
               <div className="w-full flex justify-between items-center">
                 <div className="w-full lg:w-[55%]">
-                  {/* <p className='font-semibold'> {slugfield} Packages (6 Tours Option)</p> */}
+
                   <p className="font-semibold mt-2 text-xl text-gray-600">
                     {capitalizeWords(slug)}
                     {slug.includes("TOUR") ? "" : " Tour"}(
@@ -239,9 +207,9 @@ const Tour = ({ slug }) => {
               {loading ? (
                 <SkeletonCard />
               ) :
-                (fetchfiltertourdata.map((tour) => (
+                (fetchfiltertourdata.map((tour, index) => (
                   <div
-                    key={tour.id}
+                    key={index}
                     className="rounded-lg w-full mt-7 grid grid-cols-1 lg:grid-cols-4 gap-6 p-4 shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] "
                   >
                     <div className="col-span-1">
@@ -250,6 +218,7 @@ const Tour = ({ slug }) => {
                           alt={tour.package_name}
                           src={tour.package_image[0]}
                           fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="rounded-lg"
                           style={{ objectFit: "cover" }}
                         />
@@ -279,19 +248,11 @@ const Tour = ({ slug }) => {
                             ?.map((item) => capitalizeWords(item))
                             .join(", ")}
                         </p>
-
-                        {/* <div className='ml-2 p-1 rounded-md bg-gray-800'>
-                                            <p className='font-extrabold text-white text-sm'>{tour.package_name}</p>
-                                        </div> */}
                       </div>
 
                       <p className="text-xl font-semibold mt-1">
                         {tour.package_name}
                       </p>
-
-                      {/* <div className='mt-2 flex lg:mt-2 justify-start items-center gap-2'>
-                                            {tour.months}
-                                        </div> */}
 
                       <div className="mt-4 w-full flex justify-start items-center gap-5">
                         <div className="flex justify-center items-center flex-col">
@@ -386,7 +347,7 @@ const Tour = ({ slug }) => {
                       <div className="grid grid-cols-2 gap-3 mt-2">
                         <div className="w-full">
                           <p className="text-xs font-extralight">Tour Duration</p>
-                          {/* <p className='font-semibold text-base mt-2'>5D/4N</p> */}
+
                           {tour.tour_itinerary ? (
                             <p className="font-semibold text-base mt-2">
                               {tour.tour_itinerary.days}D/

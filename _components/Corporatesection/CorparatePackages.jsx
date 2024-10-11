@@ -2,45 +2,7 @@ import IMAGES from "@/public/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-
-// Example data array
-const packageData = [
-  {
-    destination: "Gujarat",
-    days: 5,
-    nights: 4,
-    price: "29,999/-",
-    image: IMAGES.corporateGujarat
-  },
-  {
-    destination: "Rajasthan",
-    days: 7,
-    nights: 6,
-    price: "35,999/-",
-    image: IMAGES.corporateRajesthan
-  },
-  {
-    destination: "Goa",
-    days: 4,
-    nights: 3,
-    price: "19,999/-",
-    image: IMAGES.corporateGoa
-  },
-  {
-    destination: "Kerala",
-    days: 6,
-    nights: 5,
-    price: "39,999/-",
-    image: IMAGES.corporateKerla
-  },
-  {
-    destination: "Sikkim",
-    days: 8,
-    nights: 7,
-    price: "45,999/-",
-    image: IMAGES.corporateSikkim
-  }
-];
+import Image from "next/image";
 
 const CorporatePackages = () => {
 
@@ -58,10 +20,10 @@ const CorporatePackages = () => {
   useEffect(() => {
     if (links) {
       const internationaldata = links.filter(link => link.sub_category.includes("INTERNATIONAL")).slice(0, 3);
-      console.log(internationaldata, "internationaldata checl");
+   
 
       const noninternationaldata = links.filter(link => !link.sub_category.includes("INTERNATIONAL")).slice(0, 2);
-      console.log(noninternationaldata, "noninternationaldata check");
+
 
       setinternational(internationaldata);
       setnoninternational(noninternationaldata)
@@ -74,7 +36,7 @@ const CorporatePackages = () => {
       const response = await axios.post("/api/fetchcategory", {
         operation: "fetchallpackage",
       });
-      // console.log(response.data.fetchalldata, "check response");
+
       setlinks(response.data.fetchalldata);
     }
     getdata();
@@ -87,6 +49,18 @@ const CorporatePackages = () => {
     router.push(`/filterpage/${id}`)
   }
 
+  function capitalizeWords(sentence) {
+    if (typeof sentence !== 'string') {
+      return '';
+    }
+
+    return sentence
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
   return (
     <div className="w-[95%] mx-auto my-10 py-10 flex flex-col gap-5">
       {/* Section Heading */}
@@ -96,7 +70,7 @@ const CorporatePackages = () => {
         </h2>
         <p className="text-gray-500 w-full lg:w-[60%] text-center">
           Discover the Power of Team Bonding on Unforgettable Corporate Tours to
-          Inspiring Destinations. Elevate your team's experience, foster
+          Inspiring Destinations. Elevate your team&apos;s experience, foster
           collaboration, and create lasting memories together!
         </p>
       </div>
@@ -106,7 +80,7 @@ const CorporatePackages = () => {
         {mergedata.map((pkg, index) => (
           <div
             key={index}
-            className="flex-none w-[calc(80%-16px)] md:w-[calc(40%-16px)] lg:w-[calc(20%-16px)] h-96 flex items-center justify-center flex-col gap-5 snap-start"
+            className="flex-none w-[calc(80%-16px)] md:w-[calc(40%-16px)] lg:w-[calc(20%-16px)] h-96 flex items-center justify-center flex-col gap-5 snap-start cursor-pointer"
             onClick={() => handleclick(pkg.state)}
           >
             <div className="relative group rounded-2xl overflow-hidden w-full">
@@ -120,7 +94,7 @@ const CorporatePackages = () => {
               />
               <div className="absolute inset-0 bg-black/30 flex justify-between items-end p-3 text-white group-hover:bg-black/20 transition-all">
                 <div className="flex justify-start items-start flex-col">
-                  <h3 className="text-base font-bold">{pkg.state}</h3>
+                  <h3 className="text-base font-bold">{capitalizeWords(pkg.state)}</h3>
                   <p className="text-xs">
                     <span className="font-semibold">{pkg.tour_itinerary.days}</span> Days{" "}
                     <span className="font-semibold">{pkg.tour_itinerary.nights}</span> Nights

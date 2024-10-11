@@ -24,19 +24,19 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 function StarRating({ rating }) {
-  // Array to store star components
+
   const stars = [];
 
-  // Loop through 1 to 5 to generate stars based on rating
+
   for (let i = 1; i <= 5; i++) {
     if (rating >= i) {
-      // If rating is greater than or equal to the current star index, show a filled star
+
       stars.push(<FaStar key={i} className="text-yellow-400 size-5" />);
     } else if (rating >= i - 0.5) {
-      // If rating is between whole numbers (e.g., 4.5), show a half star
+
       stars.push(<FaStarHalfAlt key={i} className="text-yellow-400 size-5" />);
     } else {
-      // Otherwise, show an empty star
+
       stars.push(<FaRegStar key={i} className="text-yellow-400 size-5" />);
     }
   }
@@ -61,30 +61,30 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
 
   const handleImageClick = (src) => {
     setSelectedImage(src);
-    setFullSizeImageOpen(true); // Open the full-size image modal
+    setFullSizeImageOpen(true);
   };
 
   function formatDate(dateString) {
-    // Check if dateString is not empty and is a valid string
+
     if (!dateString || typeof dateString !== 'string') {
-        console.warn('Invalid or empty date string provided');
-        return 'Invalid date';
+      console.warn('Invalid or empty date string provided');
+      return 'Invalid date';
     }
 
     const dateObj = new Date(dateString);
 
-    // Check if the date is valid
+
     if (isNaN(dateObj.getTime())) {
-        console.warn('Invalid date provided: ' + dateString);
-        return 'Invalid date';
+      console.warn('Invalid date provided: ' + dateString);
+      return 'Invalid date';
     }
 
-    // Use Intl.DateTimeFormat to format the date
+
     const options = { year: 'numeric', month: 'long', day: 'numeric' }; // Customize as needed
     const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(dateObj);
-    
+
     return formattedDate;
-}
+  }
 
 
   return (
@@ -106,47 +106,46 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
             className="reviewSwiper w-[300px] md:w-[500px] lg:w-[850px]"
             breakpoints={{
               0: {
-                slidesPerView: 1.2, 
+                slidesPerView: 1.2,
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 2, 
-                spaceBetween: 30, 
+                slidesPerView: 2,
+                spaceBetween: 30,
               },
               1024: {
                 slidesPerView: 2,
-                spaceBetween: 30, 
+                spaceBetween: 30,
               },
             }}
-          >
-            {selectedPackageReviews?.map((item, index) => {
-              return (
-                <SwiperSlide key={index} className="">
-                  <div className="flex flex-col gap-5 mx-auto  bg-white rounded-lg">
-                    <div className="w-full p-4 rounded-lg shadow-lg bg-white">
-                      <h2 className="text-black mb-4 text-xl font-semibold">
-                        {item?.tagline}
-                      </h2>
-                      <div className="container">
-                        <p className="styled-paragraph line-clamp-5 overflow-hidden">
-                          {item?.description}
-                        </p>
-                      </div>
-                      <div className="flex justify-center items-end flex-col mt-4">
-                        <p className="text-themeColor font-semibold">{item?.name}</p>
-                        <p className="text-black text-md text-[12px]">
-                          {formatDate(item?.traveled_date)}
-                        </p>
-                      </div>
-                    </div>
+          >{selectedPackageReviews?.map((item) => (
+            <SwiperSlide key={item?.id || item?.tagline || item?.name}>
+              <div className="flex flex-col gap-5 mx-auto bg-white rounded-lg">
+                <div className="w-full p-4 rounded-lg shadow-lg bg-white">
+                  <h2 className="text-black mb-4 text-xl font-semibold">
+                    {item?.tagline}
+                  </h2>
+                  <div className="container">
+                    <p className="styled-paragraph line-clamp-5 overflow-hidden">
+                      {item?.description}
+                    </p>
                   </div>
-                </SwiperSlide>
-              );
-            })}
+                  <div className="flex justify-center items-end flex-col mt-4">
+                    <p className="text-themeColor font-semibold">{item?.name}</p>
+                    <p className="text-black text-md text-[12px]">
+                      {formatDate(item?.traveled_date)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+
           </Swiper>
 
           <div className="flex items-center justify-center mt-4">
             <button
+            aria-label="See All Reviews"
               className="border-themeColor border text-themeColor hover:bg-themeColor rounded-full py-2 px-4 hover:text-white"
               onClick={onOpen}
             >
@@ -177,6 +176,7 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
                 </div>
                 <div className="flex gap-5 mt-3">
                   <button
+                  aria-label="All Review"
                     className={`text-sm py-2 px-4 border rounded-xl ${activeTab === "allReview"
                       ? "bg-red-500 text-white"
                       : "border-themeColor text-themeColor hover:bg-themeColor hover:text-white"}`}
@@ -185,6 +185,7 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
                     All Review
                   </button>
                   <button
+                   aria-label="Photo Gallery"
                     className={`text-sm py-2 px-4 border rounded-xl ${activeTab === "photoGallery"
                       ? "bg-red-500 text-white"
                       : "border-themeColor text-themeColor hover:bg-themeColor hover:text-white"}`}
@@ -196,28 +197,29 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
               </ModalHeader>
               <ModalBody className="px-7">
                 {activeTab === "allReview" && (
-                  selectedPackageReviews?.map((item) => {
-                    return (<>
-                      <div className="flex flex-col gap-5 mx-auto border-gray-200  bg-white">
-                        <div className="border w-full p-4 rounded-lg shadow-lg">
-                          <h2 className="text-black mb-4 text-xl font-semibold">
-                            {item?.tagline}
-                          </h2>
-                          <div className="container">
-                            <p className="styled-paragraph">
-                              {item?.description}
-                            </p>
-                          </div>
-                          <div className="flex justify-center items-end flex-col">
-                            <p className="text-themeColor font-semibold">
-                              {item?.name}
-                            </p>
-                            <p className="text-black text-md text-[12px]">{formatDate(item?.traveled_date)}</p>
-                          </div>
+                  selectedPackageReviews?.map((item) => (
+                    <div key={item?.id || item?.tagline || item?.name} className="flex flex-col gap-5 mx-auto border-gray-200 bg-white"> {/* Use a unique identifier for the key */}
+                      <div className="border w-full p-4 rounded-lg shadow-lg">
+                        <h2 className="text-black mb-4 text-xl font-semibold">
+                          {item?.tagline}
+                        </h2>
+                        <div className="container">
+                          <p className="styled-paragraph">
+                            {item?.description}
+                          </p>
+                        </div>
+                        <div className="flex justify-center items-end flex-col">
+                          <p className="text-themeColor font-semibold">
+                            {item?.name}
+                          </p>
+                          <p className="text-black text-md text-[12px]">
+                            {formatDate(item?.traveled_date)}
+                          </p>
                         </div>
                       </div>
-                    </>)
-                  })
+                    </div>
+                  ))
+
                 )}
                 {activeTab === "photoGallery" && (
                   <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 p-5">
@@ -234,11 +236,14 @@ const Reviews = ({ selectedPackage, selectedPackageReviews }) => {
                               width={400}
                               height={400}
                               alt={`Gallery image ${item.review_id}`}
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                               className="w-full h-full object-cover"
                               style={{
                                 aspectRatio: "3/2",
                                 objectFit: "cover",
-                              }} />
+                              }}
+                            />
+
                           </div>
                         </>)
                       })

@@ -15,7 +15,8 @@ const Sectionfour = (props) => {
                             alt="Mountains"
                             src={e.image}
                             fill
-                            className='rounded-3xl'
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="rounded-3xl"
                             style={{
                                 objectFit: 'cover',
                                 transform: 'scaleX(-1)',
@@ -34,26 +35,10 @@ const Sectionfour = (props) => {
                                         </h2>
                                     </div>
                                     <div className="flex flex-col gap-1 mb-4 lg:gap-5">
-                                        {/* <div className="flex gap-1 lg:gap-5 justify-center items-center">
-                                            <div className="lg:text-xl text-blue-200 font-medium flex justify-start items-center">
-                                                <p>Meetings</p>
-                                            </div>
-                                            <div className="lg:text-xl text-blue-200 font-medium flex justify-start items-center">
-                                                <Dot />
-                                                <p>Incentives</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p className="lg:text-xl text-white font-medium">
-                                                8 Days | 7 Nights
-                                            </p>
-                                        </div> */}
+
                                         {item.point}
                                     </div>
                                     <div className='font-semibold'>
-                                        {/* <button className="bg-white px-4 py-3 rounded-xl">
-                                            Book Now
-                                        </button> */}
                                         {item.btn}
                                     </div>
                                 </div>

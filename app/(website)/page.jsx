@@ -7,9 +7,8 @@ import SpecialPackage from "@/_components/Home/SpecialPackage";
 import SuperDeal from "@/_components/Home/SuperDeal";
 import HomePackages from "@/_components/Home/HomePackages";
 import ScrollCards from "@/_components/Home/ScrollCards";
-import Destination from "@/_components/Home/Destination"
-
-
+import Destination from "@/_components/Home/Destination";
+import FestSeason from "@/_components/Home/FestSeason";
 
 export default function Home() {
   const [allPackages, setAllPackages] = useState([]);
@@ -40,11 +39,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full gap-0">
-      <Landing allPackages={allPackages}/>
-      
+      <Landing allPackages={allPackages} />
+
       <div className="w-[95%] mx-auto flex flex-col gap-16 md:gap-24">
         <ScrollCards />
-        <Destination allPackages={allPackages}/>
+        <Destination allPackages={allPackages} />
+        <FestSeason />
         <div ref={specialPackageRef}>
           <PopularCarousel
             popularPackages={allPackages.filter((item) =>
@@ -58,12 +58,10 @@ export default function Home() {
         <CityCarousel allPackages={allPackages} />
         <SuperDeal allPackages={allPackages} />
         <HomePackages allPackages={allPackages} />
-        
       </div>
     </div>
   );
 }
-
 
 // import React from 'react'
 // import Destination from "@/_components/Home/Destination"

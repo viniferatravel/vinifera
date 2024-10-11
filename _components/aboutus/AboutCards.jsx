@@ -8,7 +8,7 @@ import "swiper/css/autoplay"; // Import autoplay styles
 import { Navigation, Autoplay } from "swiper/modules"; // Import Autoplay module
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion"; // Import Framer Motion
-import "@/_components/Carousel.css"; // Assuming custom styles here
+
 
 const AboutCards = () => {
  

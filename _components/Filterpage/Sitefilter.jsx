@@ -200,7 +200,7 @@ const Filtermodal = ({ onselectedprice }) => {
   const [minprice, setminprice] = useState(25990);
   // console.log(minprice, "minprice");
 
-  const [maxprice, setmaxprice] = useState(90326);
+  const [maxprice, setmaxprice] = useState(150000);
   // console.log(maxprice, "maxprice");
 
   const [selectedprice, setselectedprice] = useState(maxprice);
@@ -331,7 +331,7 @@ const Sitefilter = ({ onSelectedDuration, onselectedprice }) => {
   const [minprice, setminprice] = useState(25990);
   // console.log(minprice, "minprice");
 
-  const [maxprice, setmaxprice] = useState(90326);
+  const [maxprice, setmaxprice] = useState(150000);
   // console.log(maxprice, "maxprice");
 
   const [selectedprice, setselectedprice] = useState(maxprice);

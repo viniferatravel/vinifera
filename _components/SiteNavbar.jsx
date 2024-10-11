@@ -88,7 +88,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
       }
       getData();
     }
-
   }, [exclusiveData]);
 
   useEffect(() => {
@@ -127,7 +126,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     setNavAction("trip")
     router.push(`/filterpage/${state}`)
   }
-
 
   const handlepackage = (cat) => {
     setNavAction("exclusive")
@@ -169,7 +167,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     return cat.trim().split(' ').pop().toUpperCase() !== 'SPECIAL';
   };
 
-
   useEffect(() => {
 
     noninternational && [...new Set(noninternational.map((e) => e.state))].map((state, i) => {
@@ -177,7 +174,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
         setNavAction("trip")
       }
     })
-
 
     {
       international && [...new Set(international.map((e) => e.state))].map((state, i) => {
@@ -193,9 +189,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
   }, [lastSegment, links, noninternational, international]);
 
-
   useEffect(() => {
-
     const uniqueCategoriess = new Set();
     packagedata?.map((packageItem, index) => (
       packageItem?.category.map((cat, catIndex) => {
@@ -203,7 +197,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
         if (!uniqueCategoriess.has(cat)) {
           uniqueCategoriess.add(cat);
           if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "SPECIAL" || isSpecialCategory(cat)) {
-
           } else {
             if (cat === lastSegment) {
               setNavAction("exclusive")
@@ -222,7 +215,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
         if (!uniqueCategoriess.has(cat)) {
           uniqueCategoriess.add(cat);
           if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
-
           } else {
             if (cat === lastSegment) {
               setNavAction("special")
@@ -234,8 +226,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     ))
   }, [specialpackagedata, lastSegment])
 
-
-
   const handleAllExclusive = () => {
     router.push(`/exclusive-tours`)
   }
@@ -243,8 +233,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   const handleAllSpecial = () => {
     router.push(`/special-tours`)
   }
-
-
 
   return (
     <>

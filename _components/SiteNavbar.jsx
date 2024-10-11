@@ -96,7 +96,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
       }
       getData();
     }
-
   }, [exclusiveData]);
 
   useEffect(() => {
@@ -107,13 +106,11 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
           category: specialCategory,
         });
         // console.log(response.data.packages, "check packages");
-
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "SPECIAL")
         }));
         // console.log(filteredPackages, "filteredPackages");
-
         setspecialpackagedata(filteredPackages);
       }
       getData()
@@ -148,7 +145,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     router.push(`/filterpage/${state}`)
   }
 
-
   const handlepackage = (cat) => {
     setNavAction("exclusive")
     const encodedCategory = encodeURIComponent(cat);
@@ -173,8 +169,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     router.push(`/passport`);
   }
 
-
-
   useEffect(() => {
     if (lastSegment === "corporate" || lastSegment === "passport" || lastSegment === "tickets") {
       setNavAction("")
@@ -190,7 +184,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
     return cat.trim().split(' ').pop().toUpperCase() !== 'SPECIAL';
   };
-
 
   useEffect(() => {
 
@@ -212,16 +205,11 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     //   }
     // }) 
 
-
-
-
-
     noninternational && [...new Set(noninternational.map((e) => e.state))].map((state, i) => {
       if (state === lastSegment) {
         setNavAction("trip")
       }
     })
-
 
     {
       international && [...new Set(international.map((e) => e.state))].map((state, i) => {
@@ -237,9 +225,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
 
   }, [lastSegment, links, noninternational, international]);
 
-
   useEffect(() => {
-
     const uniqueCategoriess = new Set();
     packagedata?.map((packageItem, index) => (
       packageItem?.category.map((cat, catIndex) => {
@@ -247,7 +233,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
         if (!uniqueCategoriess.has(cat)) {
           uniqueCategoriess.add(cat);
           if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "SPECIAL" || isSpecialCategory(cat)) {
-
           } else {
             if (cat === lastSegment) {
               setNavAction("exclusive")
@@ -266,7 +251,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
         if (!uniqueCategoriess.has(cat)) {
           uniqueCategoriess.add(cat); // Add category to the Set
           if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
-
           } else {
             if (cat === lastSegment) {
               setNavAction("special")
@@ -278,8 +262,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     ))
   }, [specialpackagedata, lastSegment])
 
-
-
   const handleAllExclusive = () => {
     router.push(`/exclusive-tours`)
   }
@@ -287,8 +269,6 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   const handleAllSpecial = () => {
     router.push(`/special-tours`)
   }
-
-
 
   return (
     <>

@@ -17,7 +17,7 @@ const Landing = () => {
     <div className="relative h-[70vh] w-full">
       <Image
         src={IMAGES.herolanding}
-        alt=""
+        alt="herolanding"
         fill
         className="object-cover w-full h-full"
       />

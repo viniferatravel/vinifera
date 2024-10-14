@@ -91,7 +91,7 @@ export default function CityCarousel({ allPackages }) {
       destinations: citiesWest,
       days: `${catWest[0]?.tour_itinerary.days || ''} Days`,
       price: `From ₹ ${catWest[0]?.price || 'N/A'}`,
-      image: catWest[0]?.package_image[0],
+      image: catWest[0]?.package_image[3],
     },
     {
       region: "Southern India",
@@ -115,7 +115,7 @@ export default function CityCarousel({ allPackages }) {
       destinations: citiesEast,
       days: `${catEast[0]?.tour_itinerary.days || ''} Days`,
       price: `From ₹ ${catEast[0]?.price || 'N/A'}`,
-      image: catEast[0]?.package_image[0],
+      image: catEast[0]?.package_image[2],
     },
   ];
 
@@ -218,7 +218,7 @@ export default function CityCarousel({ allPackages }) {
 
                   />
                 </div>
-                <div className="absolute top-0 left-0 bg-black/45 w-full h-full rounded-3xl flex justify-center items-center">
+                <div className="absolute top-0 left-0 bg-black/20 w-full h-full rounded-3xl flex justify-center items-center">
                   <div className="m-5 lg:m-12 w-full h-full flex flex-col justify-evenly items-start">
                     <div className="pl-4 border-l-3">
                       <span className="text-lg lg:text-xl text-white font-bold">

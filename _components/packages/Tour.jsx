@@ -3,28 +3,6 @@ import { Calendar, Info, MapPin, Utensils, CookingPot, EggFried } from "lucide-r
 import { Button, Badge } from "@nextui-org/react"
 
 
-const itineraryDetails = {
-  validity: "Apr 1, 2024 TO Mar 31, 2025",
-  duration: "9 Days 8 Nights",
-  cities: [
-    { name: "Jabalpur", nights: "1N" },
-    { name: "Pachmarhi", nights: "2N" },
-    { name: "Bhimbetka" },
-    { name: "Bhojpur" },
-    { name: "Sanchi" },
-    { name: "Bhopal", nights: "2N" },
-    { name: "Ujjain" },
-    { name: "Omkareshwar" },
-    { name: "Maheshwar" },
-    { name: "Indore", nights: "3N" },
-    { name: "Mandu" },
-    { name: "Mhow" },
-  ],
-};
-
-const defaultContent =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
 const Tour = ({ selectedPackage }) => {
 
   const capitalizeFirstLetterOfEachWord = (str) => {
@@ -142,116 +120,109 @@ const Tour = ({ selectedPackage }) => {
             ))}
           </Accordion>
         </div>
-        <button className="text-red-500 font-bold mt-4">Collapse All</button>
+        {/* <button aria-label="Collapse All" className="text-red-500 font-bold mt-4">Collapse All</button> */}
       </div>
 
       <div className="w-full ">
         <h1 className="text-2xl font-bold mb-4">Tour Information</h1>
 
         {/* Notes Section */}
-        {selectedPackage?.notes?.length !== 0
-          ?
-          < section className="mb-6 w-full">
+        {selectedPackage?.notes?.length > 0 && !selectedPackage?.notes?.includes("") && (
+          <section className="mb-6 w-full">
             <h2 className="text-xl font-semibold mb-2">Notes:</h2>
             <ul className="list-disc pl-5 space-y-2">
-              {selectedPackage?.notes?.map((item, index) => {
-                return (<>
-                  <li key={index}>{item}</li>
-                </>)
-              })}
+              {selectedPackage.notes.map((item, index) => (
+                <li key={index}>
+                  {item}
+                </li>
+              ))}
             </ul>
           </section>
-          : ""
-        }
+        )}
+
 
         {/* Special Notes Section */}
-        {selectedPackage?.special_notes?.length !== 0
-          ?
+        {selectedPackage?.special_notes?.length > 0 && !selectedPackage?.special_notes?.includes("") && (
           <section className="mb-6 w-full">
             <h2 className="text-xl font-semibold mb-2">Special Notes:</h2>
             <ul className="list-disc pl-5 space-y-2">
-
-              {selectedPackage?.special_notes?.map((item, index) => {
-                return (<>
-                  <li key={index}>{item}</li>
-                </>)
+              {selectedPackage.special_notes.map((item, index) => {
+                return (
+                  <li key={index}>
+                    {item}
+                  </li>
+                );
               })}
             </ul>
           </section>
-          : ""
-        }
+        )}
+
 
 
         {/* Our Speciality */}
-        {selectedPackage?.our_speciality?.length !== 0
-          ?
+        {selectedPackage?.our_speciality?.length > 0 && !selectedPackage?.our_speciality?.includes("") && (
           <section className="mb-6 w-full">
-            <h2 className="text-xl font-semibold mb-2">Our Speciality:</h2>
+            <h2 className="text-xl font-semibold mb-2">Our Specialty:</h2>
             <ul className="list-disc pl-5 space-y-2">
-
-              {selectedPackage?.our_speciality?.map((item, index) => {
-                return (<>
-                  <li key={index}>{item}</li>
-                </>)
+              {selectedPackage.our_speciality.map((item, index) => {
+                return (
+                  <li key={index}>
+                    {item}
+                  </li>
+                );
               })}
             </ul>
           </section>
-          : ""
-        }
+        )}
+
 
 
         {/* Road Transport */}
-        {selectedPackage?.our_speciality?.length !== 0
-          ?
+        {/* {selectedPackage?.our_speciality?.length > 0 && (
           <section className="mb-6 w-full">
             <h2 className="text-xl font-semibold mb-2">Road Transport:</h2>
             <ul className="list-disc pl-5 space-y-2">
-
-              {selectedPackage?.our_speciality?.map((item, index) => {
-                return (<>
-                  <li key={index}>{item}</li>
-                </>)
+              {selectedPackage.our_speciality.map((item, index) => {
+                return (
+                  <li key={index}>
+                    {item}
+                  </li>
+                );
               })}
             </ul>
           </section>
-          : ""
-        }
+        )} */}
+
 
 
         {/* Reporting & Dropping for Joining & Leaving Guests */}
-        {selectedPackage?.our_speciality?.length !== 0
-          ?
+        {/* {selectedPackage?.our_speciality?.length > 0 && (
           <section className="mb-6 w-full">
             <h2 className="text-xl font-semibold mb-2">Reporting & Dropping for Joining & Leaving Guests:</h2>
             <ul className="list-disc pl-5 space-y-2">
-
-              {selectedPackage?.our_speciality?.map((item, index) => {
-                return (<>
-                  <li key={index}>{item}</li>
-                </>)
-              })}
+              {selectedPackage.our_speciality.map((item, index) => (
+                <li key={index}> 
+                  {item}
+                </li>
+              ))}
             </ul>
           </section>
-          : ""
-        }
-
+        )} */}
 
         {/* Important Notes */}
-        {selectedPackage?.important_notes?.length !== 0
-          ?
+        {selectedPackage?.important_notes?.length > 0 && !selectedPackage?.important_notes?.includes("") && (
           <section className="mb-2 w-full">
             <h2 className="text-xl font-semibold mb-2">Important Notes:</h2>
             <ul className="list-disc pl-5 space-y-2">
-
-              {selectedPackage?.important_notes?.map((item, index) => {
-                return (<>
-                  <li key={index}>{item}</li>
-                </>)
-              })}
+              {selectedPackage.important_notes.map((item, index) => (
+                <li key={index}>
+                  {item}
+                </li>
+              ))}
             </ul>
           </section>
-          : ""
-        }
+        )}
+
 
 
       </div>

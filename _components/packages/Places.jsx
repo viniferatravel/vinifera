@@ -14,7 +14,7 @@ import EmailModal from "@/_components/EmailModal"
 
 const Places = ({ selectedPackage }) => {
 
- 
+
 
   const [enquiryClickModal, setEnquiryClickModal] = useState(false)
 
@@ -48,7 +48,7 @@ const Places = ({ selectedPackage }) => {
           <button type="button" className="text-base font-semibold" onClick={() => setModalOpen(true)}>Email Itinerary</button>
         </div>
 
-        <EmailModal modalOpen={modalOpen} onCloseModal={handleCloseModal} selectedPackage={selectedPackage}/>
+        <EmailModal modalOpen={modalOpen} onCloseModal={handleCloseModal} selectedPackage={selectedPackage} />
 
         <div className="flex gap-3">
           <div className="flex justify-center items-center">
@@ -66,55 +66,6 @@ const Places = ({ selectedPackage }) => {
           Places You&apos;ll See
         </h2>
 
-        {/* Wrapper for cards with horizontal scroll on small devices */}
-        {/* <div className="lg:grid lg:grid-cols-3 lg:gap-5 overflow-x-auto flex gap-5 hide-scrollbar-x ">
-    {[
-      {
-        name: "Paris",
-        location: "France",
-        src: "https://assets.cntraveller.in/photos/6352a8c00831d51e5aa10703/master/pass/tokyoGettyImages-1031467664.jpeg",
-      },
-      {
-        name: "London",
-        location: "United Kingdom",
-        src: "https://assets.cntraveller.in/photos/6352a8c00831d51e5aa10703/master/pass/tokyoGettyImages-1031467664.jpeg",
-      },
-      {
-        name: "Tokyo",
-        location: "Japan",
-        src: "https://assets.cntraveller.in/photos/6352a8c00831d51e5aa10703/master/pass/tokyoGettyImages-1031467664.jpeg",
-      },
-      {
-        name: "New York",
-        location: "United States",
-        src: "https://assets.cntraveller.in/photos/6352a8c00831d51e5aa10703/master/pass/tokyoGettyImages-1031467664.jpeg",
-      },
-    ].map((dest, id) => (
-      <div
-        key={id}
-        className="flex flex-col rounded-xl shadow-lg gap-5 p-3 border min-w-[250px]" // min-w ensures cards have width when scrolling
-      >
-        <div className="flex justify-center items-center border rounded-xl overflow-hidden">
-          <Image
-            src={dest.src}
-            width={300}
-            height={200}
-            alt={dest.name}
-            className="w-full h-full object-cover transition-all group-hover:scale-105"
-            style={{ aspectRatio: "300/200", objectFit: "cover" }}
-          />
-        </div>
-
-        <div>
-          <h3 className=" text-lg font-bold">{dest.name}</h3>
-          <p className="text-sm">{dest.location}</p>
-        </div>
-      </div>
-    ))}
-  </div> */}
-
-
-
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
@@ -123,39 +74,40 @@ const Places = ({ selectedPackage }) => {
           className="placesSwiperPackage"
           breakpoints={{
             0: {
-              slidesPerView: 1.2, 
+              slidesPerView: 1.2,
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 2, 
-              spaceBetween: 30, 
+              slidesPerView: 2,
+              spaceBetween: 30,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 30, 
+              spaceBetween: 30,
             },
           }}
         >
-          {selectedPackage?.places?.map((place, index) => {
-            return (<>
-              <SwiperSlide key={index}>
+          {selectedPackage?.places?.map((place) => {
+            return (
+              <SwiperSlide key={place.id || place.name}>
                 <div className="relative w-full h-[250px] md:h-[350px] lg:h-[250px] rounded-xl overflow-hidden">
                   <Image
                     src={place.image}
-                    alt={`image ${index + 1}`}
+                    alt={`image of ${place.name}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     style={{ objectFit: 'cover' }}
                     className="rounded-xl"
                   />
-
                 </div>
-                <div className="">
+                <div>
                   <p className="text-left text-lg font-medium pt-1">{place.name}</p>
                 </div>
               </SwiperSlide>
-            </>);
+            );
           })}
         </Swiper>
+
       </div>
 
 

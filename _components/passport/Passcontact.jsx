@@ -83,7 +83,7 @@ const Passcontact = () => {
                 </div>
 
                 <div className='border border-gray-300 w-[80%] lg:w-[30%] rounded-lg p-5 relative bottom-32 lg:bottom-0 lg:translate-x-[-90px] bg-white'>
-                    <p className='mb-4 font-bold text-xl 2xl:text-2xl text-gray-600'>Let's Connect !</p>
+                    <p className='mb-4 font-bold text-xl 2xl:text-2xl text-gray-600'>Let&apos;s Connect !</p>
                     <form className='w-full flex flex-col justify-start gap-4'>
                         <div className='flex flex-col justify-start gap-1'>
                             <input

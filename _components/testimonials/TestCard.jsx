@@ -42,7 +42,8 @@ const TestCard = ({ packageReviews, allPackages }) => {
   const uniquePackagesSet = new Set(
     packageReviews?.map((review) => review.package_id)
   );
-  const uniquiId = [...uniquePackagesSet];
+  // const uniquiId = [...uniquePackagesSet];
+  const [uniquiId, setUniquiId] = useState([...uniquePackagesSet]);
   const [serchInput, setSerchInput] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
@@ -76,7 +77,7 @@ const TestCard = ({ packageReviews, allPackages }) => {
         packageReviews?.filter((item) => abc.includes(item.package_id))
       );
     }
-  }, [selectedRegion]);
+  }, [allPackages, packageReviews, selectedRegion]);
 
   useEffect(() => {
     if (packageReviews?.length > 0) {
@@ -117,7 +118,7 @@ const TestCard = ({ packageReviews, allPackages }) => {
     } else {
       setFilteredReviews(packageReviews);
     }
-  }, [serchInput, packageReviews]);
+  }, [serchInput, packageReviews, allPackages]);
 
   useEffect(() => {
     if (sortOrder) {

@@ -965,7 +965,7 @@ const Navbar = () => {
           <NavLinks closeNavbar={closeNavbar} lastSegment={lastSegment} />
         </ul>
 
-        <div className="lg:block hidden">
+        {/* <div className="lg:block hidden">
 
           <div className="bg-themeColor text-white rounded-full size-6 p-4 flex justify-center items-center shadow-lg">
             <button onClick={() => {
@@ -975,7 +975,15 @@ const Navbar = () => {
               <ArrowRight strokeWidth={3} />
             </button>
           </div>
+        </div> */}
+        <div className="lg:block hidden">
+          <div className="bg-themeColor text-white rounded-full size-6 p-4 flex justify-center items-center shadow-lg">
+            <button onClick={() => router.push(`/filterpage/ALL`)}>
+              <ArrowRight strokeWidth={3} />
+            </button>
+          </div>
         </div>
+
         <ul
           className={`
             lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 px-4 z-30

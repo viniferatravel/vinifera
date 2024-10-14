@@ -121,6 +121,108 @@ const Tour = ({ slug }) => {
           }
         }
 
+        if(slug === "christmas") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("WINTER")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("WINTER")));
+        }
+
+        console.log("slug:::>", slug)
+
+        if(slug === "havenly sky") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("NORTH")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("NORTH")));
+        }
+
+        if(slug === "kedarnath yatra" || slug === "colorful") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("SPIRITUAL")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("SPIRITUAL")));
+        }
+
+        if(slug === "munnar") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("SOUTH")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("SOUTH")));
+        }
+
+        if(slug === "diwali-with-vinifera") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result
+          );
+          setoriginaldata(result.result);
+        }
+
+        if(slug === "eid") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("EID")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("EID")));
+        }
+
 
 
       } catch (error) {
@@ -207,7 +309,7 @@ const Tour = ({ slug }) => {
               {loading ? (
                 <SkeletonCard />
               ) :
-                (fetchfiltertourdata.map((tour, index) => (
+                (fetchfiltertourdata?.map((tour, index) => (
                   <div
                     key={index}
                     className="rounded-lg w-full mt-7 grid grid-cols-1 lg:grid-cols-4 gap-6 p-4 shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] "
@@ -300,7 +402,7 @@ const Tour = ({ slug }) => {
                             <p> Destination :</p>
                           </div>
                           <div className="flex w-full lg:w-[75%] flex-wrap gap-1">
-                            {tour.places.map((place) => (
+                            {tour?.places.map((place) => (
                               <p key={place._id} className="text-sm ">
                                 {place.name},
                               </p>
@@ -314,7 +416,7 @@ const Tour = ({ slug }) => {
                             <p> Highlights :</p>
                           </div>
                           <div className="flex w-full lg:w-[75%] justify-start flex-wrap gap-1 overflow-y-auto h-32">
-                            {tour.highlights.map((highlight, index) => (
+                            {tour?.highlights.map((highlight, index) => (
                               <div
                                 key={index}
                                 className="w-full text-sm flex justify-start gap-1"

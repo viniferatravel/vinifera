@@ -648,115 +648,111 @@ const statesInfo = {
 };
 
 const Breadcrumb = ({ slug, category }) => {
-
-    const [fetchfilterdata, setfetchfilterdata] = useState([]);
-
-
-    const renderDynamicParagraph = (selectedState) => {
-
-
-        const stateInfo = statesInfo[selectedState];
-
-        
-
-        if (stateInfo === undefined) {
-            return false
-        } else {
-            return (
-                <p className='mt-2 text-justify text-gray-500 text-[15px]'>
-                    Discover the timeless beauty of {selectedState}, {stateInfo?.nickname}!
-                    Known for its {stateInfo?.features.join(", ")}, {selectedState} has been shaped by {stateInfo?.rulers}, leaving behind&nbsp;
-                    {stateInfo?.attractions.join(", ")}. Immerse yourself in
-                    its natural splendor, where you can enjoy {stateInfo?.naturalAttraction}.
-                    Don’t miss out on the famous {stateInfo?.festival} festival, which brings
-                    the state’s culture to life. Whether it’s history, nature, or culture,
-                    {selectedState} offers something for everyone.
-                    Explore it all with Vinifera&apos;s {selectedState} holiday packages.
-                </p>
-            );
-        }
-
-
-    };
-
-    const generateCityParagraph = (city) => {
-        if (city === "All") {
-            city = "All tour packages"
-        }
-        return (
-            <p className='mt-2 text-justify text-[15px]'>
-                Welcome to {city}, a vibrant tapestry of culture, history, and modernity. Known for its unique blend of traditions and contemporary living, {city} offers an exciting array of experiences for every traveler. Wander through bustling markets filled with colorful crafts, savor the diverse culinary delights that reflect the rich heritage of the region, and explore historic landmarks that narrate tales of the past. Whether you’re captivated by the serene beauty of its parks, the lively spirit of its festivals, or the warmth of its people, {city} invites you to explore its heart, where every corner holds a new story waiting to be discovered.
-            </p>
-        );
-    };
+    const [fetchFilterData, setFetchFilterData] = useState([]);
+    const [hideSection, setHideSection] = useState(false);
 
     useEffect(() => {
-        async function getData() {
+        const getData = async () => {
             try {
-              
                 const [cityResponse, categoryResponse] = await Promise.all([
-                    axios.post("/api/fetchcategory", {
-                        operation: "fetchdatacitywise",
+                    axios.post('/api/fetchcategory', {
+                        operation: 'fetchdatacitywise',
                         city: slug,
                     }),
-                    axios.post("/api/fetchcategory", {
-                        operation: "fetchdatacategorieswise",
+                    axios.post('/api/fetchcategory', {
+                        operation: 'fetchdatacategorieswise',
                         category: slug,
-                    })
+                    }),
                 ]);
 
-                
-                if (cityResponse.data.fetchcitydata && cityResponse.data.fetchcitydata.length > 0) {
-              
-                    setfetchfilterdata(cityResponse.data.fetchcitydata);
-                } else if (categoryResponse.data.packages && categoryResponse.data.packages.length > 0) {
-          
-                    setfetchfilterdata(categoryResponse.data.packages);
+                if (cityResponse.data.fetchcitydata?.length > 0) {
+                    setFetchFilterData(cityResponse.data.fetchcitydata);
+                } else if (categoryResponse.data.packages?.length > 0) {
+                    setFetchFilterData(categoryResponse.data.packages);
                 }
-
             } catch (error) {
-                
+                console.error('Error fetching data:', error);
             }
-        }
+        };
 
         getData();
     }, [slug]);
-    
-    const [hidesection, sethidesection] = useState(false);
- 
 
-    const readmore = () => {
-        sethidesection(hidesection === false ? true : false);
-    }
+    const renderDynamicParagraph = (selectedState) => {
+        const stateInfo = statesInfo[selectedState];
 
-    function capitalizeWords(sentence) {
+        if (!stateInfo) return false;
+
+        return (
+            `Discover the timeless beauty of ${selectedState}, ${stateInfo.nickname}!
+                Known for its ${stateInfo.features.join(', ')}, ${selectedState} has been shaped by ${stateInfo.rulers}, leaving behind
+                ${stateInfo.attractions.join(', ')}. Immerse yourself in
+                its natural splendor, where you can enjoy ${stateInfo.naturalAttraction}.
+                Don’t miss out on the famous ${stateInfo.festival} festival, which brings
+                the state’s culture to life. Whether it’s history, nature, or culture,
+                ${selectedState} offers something for everyone.
+                Explore it all with Vinifera&apos;s ${selectedState} holiday packages.`
+        );
+    };
+
+    const generateCityParagraph = (city) => {
+        if (city !== "All") return false;
+
+        return `Welcome to ${city} tour packages, a vibrant tapestry of culture, history, and modernity. Known for its unique blend of traditions and contemporary living, ${city} offers an exciting array of experiences for every traveler. Wander through bustling markets filled with colorful crafts, savor the diverse culinary delights that reflect the rich heritage of the region, and explore historic landmarks that narrate tales of the past. Whether you’re captivated by the serene beauty of its parks, the lively spirit of its festivals, or the warmth of its people, ${city} invites you to explore its heart, where every corner holds a new story waiting to be discovered.`
+
+
+    };
+
+    const renderDescription = () => {
+
+        const formattedSlug = capitalizeWords(slug);
+        const dynamicParagraph = renderDynamicParagraph(formattedSlug);
+        const cityParagraph = generateCityParagraph(formattedSlug);
+
+        if (dynamicParagraph) {
+            return dynamicParagraph
+        } else if (cityParagraph) {
+            return cityParagraph
+        } else {
+            if (category?.description) {
+                return (
+                        `${category.description}`
+                );
+            }else {
+            return `Explore our unique experiences that cater to every traveler's desires, whether you’re an adventure seeker craving adrenaline-fueled escapades, a cultural enthusiast eager to discover new traditions, or simply someone looking for a peaceful retreat to recharge and reconnect with nature. Each destination offers a world of possibilities, waiting for you to explore and make unforgettable memories.`
+            }
+        }
+    };
+
+
+    const capitalizeWords = (sentence) => {
         return sentence
             .toLowerCase()
-            .split(" ") 
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) 
-            .join(" "); 
-    }
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
+
+
+    const toggleReadMore = () => setHideSection(prev => !prev);
 
     return (
-        <div>
-            <div className=' w-[95%] m-auto'>
-                <div className='w-full pt-2 pb-2'>
-             
-                    <p className='text-sm md:text-base text-gray-600'>Group-Tours / {capitalizeWords(slug)}</p>
-                </div>
-
-                <div className='w-full py-2'>
-                    <h1 className='text-2xl md:text-4xl font-semibold text-gray-600'>{capitalizeWords(slug)} {slug.includes("TOUR") ? "" : "Tour"} Packages</h1>
-
-
-
-                    {category?.description === "" || category?.description === undefined ? renderDynamicParagraph(capitalizeWords(slug)) === false ? generateCityParagraph(capitalizeWords(slug)) : renderDynamicParagraph(capitalizeWords(slug))
-                        : <p key={""} className='mt-2 text-justify text-gray-500 text-[15px]'>{category?.description}</p>}
-
-                </div>
+        <div className='w-[95%] m-auto'>
+            <div className='w-full py-2'>
+                <p className='text-sm md:text-base text-gray-600'>
+                    Group-Tours / {capitalizeWords(slug)}
+                </p>
+            </div>
+            <div className='w-full py-2'>
+                <h1 className='text-2xl md:text-4xl font-semibold text-gray-600'>
+                    {capitalizeWords(slug)} {slug.includes('TOUR') ? '' : 'Tour'} Packages
+                </h1>
+                <p className='mt-2 text-justify text-gray-500 text-[15px]'>
+                    {renderDescription()}
+                </p>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Breadcrumb
+export default Breadcrumb;

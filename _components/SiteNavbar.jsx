@@ -44,13 +44,13 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   const [navAction, setNavAction] = useState("");
 
   useEffect(() => {
-    const categories = links?.map(link => link.category);
-
+    const categories = links?.map(link => link.category) || [];
     const exclusiveData = categories.flat().find(item => item === "EXCLUSIVE");
     setexclusiveData(exclusiveData);
 
     const specialCategory = categories.flat().find(item => item === "SPECIAL");
     setspecialCategory(specialCategory);
+
 
     if (links) {
       const internationaldata = links.filter(link => link.sub_category.includes("INTERNATIONAL"));
@@ -211,7 +211,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     const uniqueCategoriess = new Set();
     specialpackagedata?.map((packageItem, index) => (
       packageItem.category.map((cat, catIndex) => {
-      
+
         if (!uniqueCategoriess.has(cat)) {
           uniqueCategoriess.add(cat);
           if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
@@ -431,7 +431,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
               <div className="w-full grid grid-cols-3 gap-4 py-4 px-2">
                 {specialpackagedata.map((packageItem, index) => (
                   packageItem.category.map((cat, catIndex) => {
-                    
+
                     if (!uniqueCategories.has(cat)) {
                       uniqueCategories.add(cat);
                       if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
@@ -501,9 +501,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
   }, []);
 
   useEffect(() => {
-    const categories = links.map(link => link.category);
-
-
+    const categories = links?.map(link => link.category) || [];
     const exclusiveData = categories.flat().find(item => item === "EXCLUSIVE");
     setexclusiveData(exclusiveData);
 
@@ -528,7 +526,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
           operation: "fetchdatacategorieswise",
           category: exclusiveData,
         });
-   
+
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "EXCLUSIVE")
@@ -547,13 +545,13 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
           operation: "fetchdatacategorieswise",
           category: specialCategory,
         });
-       
+
 
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "SPECIAL")
         }));
-   
+
 
         setspecialpackagedata(filteredPackages);
       }

@@ -229,8 +229,6 @@ export const links = [
   },
 ];
 
-
-
 // footerData.js
 export const discoverLinks = [
   

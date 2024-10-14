@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
 import { Checkbox } from "@nextui-org/react";
 import { Calendar, Dot, ListFilter, MapPin } from 'lucide-react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const Datemodal = ({ onSelectedDuration }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,9 +28,9 @@ const Datemodal = ({ onSelectedDuration }) => {
     onSelectedDuration(Number(e.target.value))
   };
 
-  const handledeparture = () => {
-    setshowdeparture(!showdeparture)
-  }
+  // const handledeparture = () => {
+  //   setshowdeparture(!showdeparture)
+  // }
 
   const sizes = ["full"];
 
@@ -56,7 +58,7 @@ const Datemodal = ({ onSelectedDuration }) => {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1 font-semibold">Date & Length</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1 font-semibold text-center">Date & Length</ModalHeader>
               <ModalBody>
                 <hr className='border border-[#c6cbd1]' />
                 <div className='border border-[#c6cbd1] mt-3 rounded-sm'>
@@ -115,83 +117,186 @@ const Datemodal = ({ onSelectedDuration }) => {
   );
 }
 
-// const Placemodal = () => {
-//   const { isOpen, onOpen, onClose } = useDisclosure();
-//   const [size, setSize] = React.useState('md');
+const Placemodal = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [size, setSize] = React.useState('md');
 
-//   const [showstate, setshowstate] = useState(false);
-//   // console.log(showstate, "showstate");
+  const [showdeparture, setshowdeparture] = useState(false);
 
-//   const handlestate = () => {
-//     setshowstate(!showstate)
-//   }
+  const [showstate, setshowstate] = useState(false);
+  // console.log(showstate, "showstate");
 
-//   const sizes = ["full"];
+  const [fetchalldata, setfetchalldata] = useState([]);
+  // console.log(fetchalldata, "fetchalldata");
+
+  const [international, setinternational] = useState([]);
+  // console.log(international, "international");
+
+  const [noninternational, setnoninternational] = useState([]);
+  // console.log(noninternational, "noninternational");
+
+  const [selectedState, setSelectedState] = useState(null);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    async function getdata() {
+      const response = await axios.post("/api/fetchcategory", {
+        operation: "fetchallpackage",
+      });
+      console.log(response.data.fetchalldata, "check response");
+      setfetchalldata(response.data.fetchalldata);
+    }
+    getdata();
+  }, []);
+
+  useEffect(() => {
+    if (fetchalldata) {
+      const internationaldata = fetchalldata.filter(link => link.sub_category.includes("INTERNATIONAL"));
+      console.log(internationaldata, "internationaldata checl");
+
+      const noninternationaldata = fetchalldata.filter(link => !link.sub_category.includes("INTERNATIONAL"));
+      console.log(noninternationaldata, "noninternationaldata check");
+
+      const uniqueNonInternationalData = noninternationaldata.filter(
+        (item, index, self) =>
+          index === self.findIndex((t) => t.state === item.state)
+      );
+
+      const uniqueInternationalData = internationaldata.filter(
+        (item, index, self) =>
+          index === self.findIndex((t) => t.state === item.state)
+      );
+
+      setinternational(uniqueInternationalData);
+      setnoninternational(uniqueNonInternationalData);
+
+      const savedState = localStorage.getItem("selectedState");
+      setSelectedState(savedState);
+
+    }
+  }, [fetchalldata])
+
+  const handledeparture = () => {
+    setshowdeparture(!showdeparture)
+  }
+
+  const handlestate = () => {
+    setshowstate(!showstate)
+  }
+
+  const sizes = ["full"];
+
+  const handleOpen = (size) => {
+    setSize(size)
+    onOpen();
+  }
+
+  const handleCheckboxChange = (state) => {
+    // Update selected state and store in localStorage
+    setSelectedState(state);
+    localStorage.setItem("selectedState", state);
+
+    // Update the route
+    router.push(`/filterpage/${state}`);
+  };
+
+  const handleCheckChange = (state) => {
+    setSelectedState(state);
+    localStorage.setItem("selectedState", state);
+
+    // Update the route
+    router.push(`/filterpage/${state}`);
+  }
+
+  return (
+    <>
+
+      <div className="w-full">
+        {sizes.map((size) => (
+          <Button key={size} onPress={() => handleOpen(size)} className='text-sm w-full bg-white border border-[#f33624] text-[#f33624] p-1 rounded-full' color='default' radius='none'><MapPin className='w-[14px] h-[14px] text-[#f33624] ' /> <span><p className='font-semibold'>places</p></span></Button>
+
+        ))}
+      </div>
 
 
-//   const handleOpen = (size) => {
-//     setSize(size)
-//     onOpen();
-//   }
+      <Modal
+        size={size}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1 font-semibold text-center">Places</ModalHeader>
+              <ModalBody>
+                <hr className='border border-[#c6cbd1]' />
 
-//   return (
-//     <>
+                <div className='border border-[#c6cbd1] mt-3 rounded-sm'>
+                  <Accordion>
+                    <AccordionItem key="3" aria-label="Indian Tours" title="Indian Tours" className='font-semibold pl-1'>
+                      <div className="flex flex-col gap-3 font-normal pb-3">
+                        {noninternational &&
+                          noninternational
+                            .slice(0, showstate ? noninternational.length : 2)
+                            .map((e, i) => (
+                              <div key={i} className="flex justify-start gap-3 item-center">
+                                <input
+                                  type="checkbox"
+                                  className="size-5 rounded-sm"
+                                  checked={selectedState === e.state} // Only one can be selected
+                                  onChange={() => handleCheckboxChange(e.state)} // On select, update the selected state
+                                />
+                                <p>{e.state}</p>
+                              </div>
+                            ))}
+                        <Button
+                          onClick={handlestate}
+                          className="w-full bg-[#ed1c24] text-white font-extrabold mt-3 text-base"
+                          radius="sm"
+                        >
+                          {showstate ? 'Show Less' : 'Show More'}
+                        </Button>
+                      </div>
+                    </AccordionItem>
 
-//       <div className="w-full">
-//         {sizes.map((size) => (
-//           <Button key={size} onPress={() => handleOpen(size)} className='text-sm w-full bg-white border border-[#f33624] text-[#f33624] p-1 rounded-full' color='default' radius='none'><MapPin className='w-[14px] h-[14px] text-[#f33624] ' /> <span><p className='font-semibold'>places</p></span></Button>
+                    <AccordionItem key="2" aria-label="Departure date" title="International" className='font-semibold pl-1'>
+                      <div className='flex flex-col gap-3 font-normal pb-3'>
+                        {international && international.slice(0, showdeparture ? international.length : 2).map((e, i) => (
+                          <div key={i} className='flex justify-start gap-3 item-center'>
+                            <input
+                              type="checkbox"
+                              className='size-5 rounded-sm'
+                              checked={selectedState === e.state}
+                              onChange={() => handleCheckChange(e.state)}
+                            />
+                            <p>{e.state}</p>
+                          </div>
+                        ))}
 
-//         ))}
-//       </div>
-
-
-//       <Modal
-//         size={size}
-//         isOpen={isOpen}
-//         onClose={onClose}
-//       >
-//         <ModalContent>
-//           {(onClose) => (
-//             <>
-//               <ModalHeader className="flex flex-col gap-1 font-semibold">Indian Tour</ModalHeader>
-//               <ModalBody>
-//                 <hr className='border border-[#c6cbd1]' />
-
-//                 <div className='border border-[#c6cbd1] mt-3 rounded-sm'>
-//                   <Accordion>
-//                     <AccordionItem key="3" aria-label="Indian Tours" title="Indian Tours" className='font-semibold pl-1'>
-//                       <div className='flex flex-col gap-3 font-normal pb-3'>
-//                         <Checkbox size="md" radius='sm'>Andman</Checkbox>
-//                         <Checkbox size="md" radius='sm'>Goa</Checkbox>
-//                         {showstate && (
-//                           <>
-//                             <Checkbox size="md" radius='sm'>Gujrat</Checkbox>
-//                             <Checkbox size="md" radius='sm'>Kerala</Checkbox>
-//                           </>
-//                         )}
-//                         <Button onClick={() => handlestate()} className='w-full bg-[#ed1c24] text-white font-extrabold mt-3 text-base' radius='sm'>
-//                           {showstate ? 'show Less' : 'show More'}
-//                         </Button>
-//                       </div>
-//                     </AccordionItem>
-//                   </Accordion>
-//                 </div>
-//               </ModalBody>
-//               <ModalFooter>
-//                 <Button color="danger" variant="light" onPress={onClose}>
-//                   Close
-//                 </Button>
-//                 <Button color="primary" onPress={onClose}>
-//                   Action
-//                 </Button>
-//               </ModalFooter>
-//             </>
-//           )}
-//         </ModalContent>
-//       </Modal>
-//     </>
-//   );
-// }
+                        <Button onClick={handledeparture} className="w-full bg-[#ed1c24] text-white font-extrabold mt-3 text-base" radius="sm">
+                          {showdeparture ? 'Show Less' : 'Show More'}
+                        </Button>
+                      </div>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              </ModalBody>
+              {/* <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Action
+                </Button>
+              </ModalFooter> */}
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </>
+  );
+}
 
 const Filtermodal = ({ onselectedprice }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -253,7 +358,7 @@ const Filtermodal = ({ onselectedprice }) => {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1 font-semibold">Filter</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1 font-semibold text-center">Filter</ModalHeader>
               <ModalBody>
                 <hr className='border border-[#c6cbd1]' />
 
@@ -337,6 +442,57 @@ const Sitefilter = ({ onSelectedDuration, onselectedprice }) => {
   const [selectedprice, setselectedprice] = useState(maxprice);
   // console.log(selectedprice, "selectedprice");
 
+  const [fetchalldata, setfetchalldata] = useState([]);
+  // console.log(fetchalldata, "fetchalldata");
+
+  const [international, setinternational] = useState([]);
+  // console.log(international, "international");
+
+  const [noninternational, setnoninternational] = useState([]);
+  // console.log(noninternational, "noninternational");
+
+  const [selectedState, setSelectedState] = useState(null);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    async function getdata() {
+      const response = await axios.post("/api/fetchcategory", {
+        operation: "fetchallpackage",
+      });
+      console.log(response.data.fetchalldata, "check response");
+      setfetchalldata(response.data.fetchalldata);
+    }
+    getdata();
+  }, []);
+
+  useEffect(() => {
+    if (fetchalldata) {
+      const internationaldata = fetchalldata.filter(link => link.sub_category.includes("INTERNATIONAL"));
+      console.log(internationaldata, "internationaldata checl");
+
+      const noninternationaldata = fetchalldata.filter(link => !link.sub_category.includes("INTERNATIONAL"));
+      console.log(noninternationaldata, "noninternationaldata check");
+
+      const uniqueNonInternationalData = noninternationaldata.filter(
+        (item, index, self) =>
+          index === self.findIndex((t) => t.state === item.state)
+      );
+
+      const uniqueInternationalData = internationaldata.filter(
+        (item, index, self) =>
+          index === self.findIndex((t) => t.state === item.state)
+      );
+
+      setinternational(uniqueInternationalData);
+      setnoninternational(uniqueNonInternationalData);
+
+      const savedState = localStorage.getItem("selectedState");
+      setSelectedState(savedState);
+    }
+
+  }, [fetchalldata])
+
   const handledeparture = () => {
     setshowdeparture(!showdeparture)
   }
@@ -353,6 +509,35 @@ const Sitefilter = ({ onSelectedDuration, onselectedprice }) => {
   const handleprice = (e) => {
     setselectedprice(Number(e.target.value));
     onselectedprice(Number(e.target.value));
+  }
+
+  const handleCheckboxChange = (state) => {
+    // Update selected state and store in localStorage
+    setSelectedState(state);
+    localStorage.setItem("selectedState", state);
+
+    // Update the route
+    router.push(`/filterpage/${state}`);
+  };
+
+  const handleCheckChange = (state) => {
+    setSelectedState(state);
+    localStorage.setItem("selectedState", state);
+
+    // Update the route
+    router.push(`/filterpage/${state}`);
+  }
+
+  function capitalizeWords(sentence) {
+    if (typeof sentence !== 'string') {
+      return '';
+    }
+
+    return sentence
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   }
 
   return (
@@ -390,38 +575,53 @@ const Sitefilter = ({ onSelectedDuration, onselectedprice }) => {
                 />
               </div>
             </AccordionItem>
-            {/* 
-            <AccordionItem key="2" aria-label="Departure date" title="Departure date" className='font-semibold pl-1'>
-              <div className='flex flex-col gap-3 font-normal pb-3'>
-                <Checkbox size="md" radius='sm'>September-2024</Checkbox>
-                <Checkbox size="md" radius='sm'>October-2024</Checkbox>
-                {showdeparture && (
-                  <>
-                    <Checkbox size="md" radius='sm'>November-2024</Checkbox>
-                    <Checkbox size="md" radius='sm'>December-2024</Checkbox>
-                  </>
-                )}
-                <Button onClick={() => handledeparture()} className='w-full bg-[#ed1c24] text-white font-extrabold mt-3 text-base' radius='sm'>
-                  {showdeparture ? 'show Less' : 'show More'}
+
+            <AccordionItem key="3" aria-label="Indian Tours" title="Indian Tours" className="font-semibold pl-1">
+              <div className="flex flex-col gap-3 font-normal pb-3">
+                {noninternational &&
+                  noninternational
+                    .slice(0, showstate ? noninternational.length : 2)
+                    .map((e, i) => (
+                      <div key={i} className="flex justify-start gap-3 item-center">
+                        <input
+                          type="checkbox"
+                          className="size-5 rounded-sm"
+                          checked={selectedState === e.state} // Only one can be selected
+                          onChange={() => handleCheckboxChange(e.state)} // On select, update the selected state
+                        />
+                        <p>{capitalizeWords(e.state)} </p>
+                      </div>
+                    ))}
+                <Button
+                  onClick={handlestate}
+                  className="w-full bg-[#ed1c24] text-white font-extrabold mt-3 text-base"
+                  radius="sm"
+                >
+                  {showstate ? 'Show Less' : 'Show More'}
                 </Button>
               </div>
             </AccordionItem>
 
-            <AccordionItem key="3" aria-label="Indian Tours" title="Indian Tours" className='font-semibold pl-1'>
+
+            <AccordionItem key="2" aria-label="Departure date" title="International" className='font-semibold pl-1'>
               <div className='flex flex-col gap-3 font-normal pb-3'>
-                <Checkbox size="md" radius='sm'>Andman</Checkbox>
-                <Checkbox size="md" radius='sm'>Goa</Checkbox>
-                {showstate && (
-                  <>
-                    <Checkbox size="md" radius='sm'>Gujrat</Checkbox>
-                    <Checkbox size="md" radius='sm'>Kerala</Checkbox>
-                  </>
-                )}
-                <Button onClick={() => handlestate()} className='w-full bg-[#ed1c24] text-white font-extrabold mt-3 text-base' radius='sm'>
-                  {showstate ? 'show Less' : 'show More'}
+                {international && international.slice(0, showdeparture ? international.length : 2).map((e, i) => (
+                  <div key={i} className='flex justify-start gap-3 item-center'>
+                    <input
+                      type="checkbox"
+                      className='size-5 rounded-sm'
+                      checked={selectedState === e.state}
+                      onChange={() => handleCheckChange(e.state)}
+                    />
+                    <p>{capitalizeWords(e.state)}</p>
+                  </div>
+                ))}
+
+                <Button onClick={handledeparture} className="w-full bg-[#ed1c24] text-white font-extrabold mt-3 text-base" radius="sm">
+                  {showdeparture ? 'Show Less' : 'Show More'}
                 </Button>
               </div>
-            </AccordionItem> */}
+            </AccordionItem>
 
             <AccordionItem key="4" aria-label="Price" title="Price" className='font-semibold pl-1'>
               <div className='pb-3'>
@@ -451,14 +651,14 @@ const Sitefilter = ({ onSelectedDuration, onselectedprice }) => {
       {/* for mobile view */}
       <div className='flex lg:hidden'>
         <div className=' w-full flex justify-between items-center gap-3 text-center'>
-          <div className='w-[48%]'>
+          <div className='w-[40%]'>
             {/* className='w-[40%]' */}
             <Datemodal onSelectedDuration={onSelectedDuration} />
           </div>
-          {/* <div className='w-[25%]'>
+          <div className='w-[25%]'>
             <Placemodal />
-          </div> */}
-          <div className='w-[48%]'>
+          </div>
+          <div className='w-[25%]'>
             {/* className='w-[25%] */}
             <Filtermodal onselectedprice={onselectedprice} />
           </div>

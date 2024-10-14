@@ -19,7 +19,7 @@ import GuestModal from "@/_components/packages/Modal";
 import EmailModal from "@/_components/EmailModal"
 
 const Tour = ({ slug }) => {
-  // console.log(slug, "check props");
+  console.log(slug, "check props");
 
   const [enquiryClickModal, setEnquiryClickModal] = useState(false);
   const [selectedTour, setSelectedTour] = useState({});
@@ -122,8 +122,6 @@ const Tour = ({ slug }) => {
           }
         }
 
-
-
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -193,6 +191,7 @@ const Tour = ({ slug }) => {
 
   const handlepackage = (package_id) => {
     router.push(`/packages/${package_id}`);
+    localStorage.removeItem("selectedState");
   };
 
   function capitalizeWords(sentence) {
@@ -216,7 +215,8 @@ const Tour = ({ slug }) => {
     <div>
       <div className="w-[95%] m-auto">
         <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-5 pt-4">
-          <div className="col-span-1 lg:sticky lg:top-32 lg:h-[50vh]">
+        {/* lg:sticky lg:top-32 lg:h-[120vh] */}
+          <div className="col-span-1 lg:sticky lg:top-32 lg:h-[230vh]"> 
             <Sitefilter
               onSelectedDuration={handleSeletedDuration}
               onselectedprice={handleselectedprice}

@@ -138,35 +138,42 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   const handlenoninternational = (state) => {
     setNavAction("trip")
     router.push(`/filterpage/${state}`)
+    localStorage.removeItem("selectedState");
   };
 
   const handleinternationaldata = (state) => {
     setNavAction("trip")
     router.push(`/filterpage/${state}`)
+    localStorage.removeItem("selectedState");
   }
 
   const handlepackage = (cat) => {
     setNavAction("exclusive")
     const encodedCategory = encodeURIComponent(cat);
     router.push(`/filterpage/${encodedCategory}`);
+    localStorage.removeItem("selectedState");
   };
 
   const handlespecialpackage = (cat) => {
     setNavAction("special")
     const encodedCategory = encodeURIComponent(cat);
     router.push(`/filterpage/${encodedCategory}`);
+    localStorage.removeItem("selectedState");
   }
 
   const handleCorporatePage = () => {
     router.push(`/corporate`);
+    localStorage.removeItem("selectedState");
   }
 
   const handleTicketsPage = () => {
     router.push(`/tickets`);
+    localStorage.removeItem("selectedState");
   }
 
   const handlePassportPage = () => {
     router.push(`/passport`);
+    localStorage.removeItem("selectedState");
   }
 
   useEffect(() => {
@@ -1268,10 +1275,11 @@ const Navbar = () => {
         <div className="z-50 p-5 lg:w-auto w-full flex justify-between bg-white lg:bg-transparent">
 
           <div onClick={() => {
-router.push(`/`)
-setTimeout(() => {
-  window.location.reload();
-}, 1000);
+            router.push(`/`)
+            localStorage.removeItem("selectedState");
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           }} className="flex items-end relative lg:w-[100px] cursor-pointer">
             <Image src={IMAGES.viniferaLogo} width={50} height={50} className="h-10 w-10 " />
             <p className="hidden text-themeColor text-xl absolute bottom-0 right-3 lg:flex item-end justify-end">inifera</p>
@@ -1286,7 +1294,6 @@ setTimeout(() => {
             <p className="text-gray-400 text-sm">Search &quot;{currentPlace}&quot;</p>
           </div>
           <div className="flex gap-5 items-center justify-center">
-
 
             <div className="text-3xl lg:hidden" onClick={() => setOpen(!open)}>
 
@@ -1315,7 +1322,7 @@ setTimeout(() => {
         <div className="lg:block hidden">
 
           <div className="bg-themeColor text-white rounded-full size-6 p-4 flex justify-center items-center shadow-lg">
-            <button  onClick={() => {
+            <button onClick={() => {
               router.push(`/filterpage/ALL`)
             }}>
               <ArrowRight strokeWidth={3} />

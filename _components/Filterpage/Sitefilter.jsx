@@ -414,7 +414,7 @@ const Filtermodal = ({ onselectedprice }) => {
   );
 }
 
-const Sitefilter = ({ onSelectedDuration, onselectedprice }) => {
+const Sitefilter = ({ onSelectedDuration, onselectedprice, onSetshowstate }) => {
 
   const [selectedKeys, setSelectedKeys] = React.useState(new Set(["1", "2", "3", "4"]));
 
@@ -499,6 +499,7 @@ const Sitefilter = ({ onSelectedDuration, onselectedprice }) => {
 
   const handlestate = () => {
     setshowstate(!showstate)
+    // onSetshowstate(!showstate)
   }
 
   const handleChange = (e) => {

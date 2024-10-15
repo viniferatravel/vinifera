@@ -37,15 +37,15 @@ const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
         const abc = async () => {
             const response = await axios.post("/api/send-email", {
                 operation: "corporateenquiry",
-                name: (formData.name).toString(),
-                email: (formData.email).toString(),
-                phone: (formData.phone).toString(),
-                companyname: (formData.companyname).toString(),
-                noofdays: (formData.noofdays).toString(),
-                destination: (formData.destination).toString(),
-                purpose: (formData.purpose).toString(),
-                date: (formData.date).toString(),
-                queries: (formData.queries).toString(),
+                name: formData.name,
+                email: formData.email,
+                number: formData.phone,
+                companyname: formData.companyname,
+                noofdays: formData.noofdays,
+                destination: formData.destination,
+                purpose: formData.purpose,
+                date: formData.date,
+                queries: formData.queries,
             });
             console.log(response.data, "check respobse");
             if (response.data.status === 200) {
@@ -68,6 +68,21 @@ const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
                 });
                 onSubmitSuccess(true)
             }
+            else if (response.data.status === 402) {
+                Swal.fire({
+                    title: " Number must be exactly 10 digits and contain only numeric values",
+                    // text: "Team connect with you soon",
+                    icon: "success"
+                });
+            }
+            else if (response.data.status === 500) {
+                Swal.fire({
+                    title: "An error occurred during registration",
+                    // text: "Team connect with you soon",
+                    icon: "success"
+                });
+            }
+
         }
 
         abc()
@@ -236,7 +251,6 @@ const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
 };
 
 
-
 const PassportTourEnquiry = ({ onSubmitSuccess }) => {
 
     const [formData, setFormData] = useState({
@@ -284,6 +298,13 @@ const PassportTourEnquiry = ({ onSubmitSuccess }) => {
                     queries: "",
                 });
                 onSubmitSuccess(true)
+            }
+            else if (response.data.status === 402) {
+                Swal.fire({
+                    title: "Number must be exactly 10 digits and contain only numeric values",
+                    // text: "Team connect with you soon",
+                    icon: "success"
+                });
             }
         }
 

@@ -45,8 +45,12 @@ const EmailModal = ({ modalOpen, onCloseModal, selectedPackage }) => {
                     text: "Pleasr check you mail",
                     icon: "success"
                 });
-            } else {
-                // alert(`Error: ${data.message}`);
+            } else if (response.data.status === 404) {
+                Swal.fire({
+                    title: "Data not found",
+                    // text: "",
+                    // icon: "success"
+                });
             }
         } catch (error) {
             // console.log("ERror:::::::>", error)

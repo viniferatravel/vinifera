@@ -185,6 +185,13 @@ const SiteFooter = () => {
         icon: "success"
       });
     }
+    else if (response.data.status === 402) {
+      Swal.fire({
+        title: "Number must be exactly 10 digits and contain only numeric values",
+        // text: "Team connect with you soon",
+        icon: "success"
+      });
+    }
     //     const whatsappMessage = `Hi, I am interested in your service*.
 
     // *My details are -* 

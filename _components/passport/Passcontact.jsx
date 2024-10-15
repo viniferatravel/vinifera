@@ -59,13 +59,25 @@ const Passcontact = () => {
             setSelectedServices([])
         }
         else if (response.data.status === 400) {
-            alert(response.data.message)
+            Swal.fire({
+                title: "Invalid email format",
+                text: "Please Type Correct Email Format",
+                // icon: "success"
+            });
         }
         else if (response.data.status === 401) {
-            alert(response.data.message)
+            Swal.fire({
+                title: "Email is already present",
+                text: "Try With new Email",
+                // icon: "success"
+            });
         }
         else if (response.data.status === 402) {
-            alert(response.data.message)
+            Swal.fire({
+                title: "Number must be exactly 10 digits and contain only numeric values",
+                // text: "Try With new Email",
+                // icon: "success"
+            });
         }
     }
 

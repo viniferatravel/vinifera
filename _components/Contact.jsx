@@ -63,7 +63,15 @@ const ContactForm = ({ selectedPackage, onSubmitSuccess }) => {
         });
         onSubmitSuccess(true)
       }
-    } else {
+      else if (response.data.status === 402) {
+        Swal.fire({
+          title: "Number must be exactly 10 digits and contain only numeric values",
+          // text: "Team connect with you soon",
+          icon: "success"
+        });
+      }
+    }
+    else {
       Swal.fire({
         title: "please select the check",
         // text: "Team connect with you soon",

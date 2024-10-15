@@ -254,7 +254,7 @@ const Tour = ({ slug }) => {
         return tourPrice <= selectedPrice;
       });
 
-      setfetchfiltertourdata(filteredData);
+      setfetchfiltertourdata(filteredData);x
     }
   }, [price, originaldata]);
 

@@ -115,15 +115,15 @@ const Corporateone = () => {
   // Array of image data
   const imageData = [
     {
-      src: IMAGES.corporateone,
+      src: IMAGES.corporate1,
       alt: "Corporate One",
     },
     {
-      src: IMAGES.GroupTours,
+      src: IMAGES.corporate2,
       alt: "Corporate Two",
     },
     {
-      src: IMAGES.ayodhya,
+      src: IMAGES.corporate3,
       alt: "Corporate Three",
     },
   ];
@@ -194,12 +194,12 @@ const Corporateone = () => {
         loop={true}
         className="relative z-0"
       >
-        {imageData.map((image, index) => (
+        {imageData?.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[50vh] md:h-[80vh]">
+            <div className="relative h-[50vh] md:h-[90vh]">
               <Image
-                alt={image.alt} // Use alt text from the data
-                src={image.src} // Use source from the data
+                alt={image.alt}
+                src={image.src}
                 fill
                 className="object-cover"
               />

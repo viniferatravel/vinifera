@@ -84,11 +84,31 @@ const NavbarModal = ({ isOpen, onOpenChange }) => {
     }
 
     if (search) {
-      setfetchfilterdata(
-        links.filter(link =>
-          link.city.toLowerCase().includes(search.toLowerCase())
-        )
-      );
+
+      const cityFilter = links?.filter(link =>
+        link.city.toLowerCase().includes(search.toLowerCase())
+      )
+
+      const stateFilter =  links?.filter(link =>
+        link.state.toLowerCase().includes(search.toLowerCase())
+      )
+
+      const packageFilter =  links?.filter(link =>
+        link.package_name.toLowerCase().includes(search.toLowerCase())
+      )
+
+      if(cityFilter.length !== 0) {
+        setfetchfilterdata(cityFilter);
+      }
+
+      if(stateFilter.length !== 0) {
+        setfetchfilterdata(stateFilter);
+      }
+
+      if(packageFilter.length !== 0) {
+        setfetchfilterdata(packageFilter);
+      }
+
     } else {
       setfetchfilterdata(links);
     }
@@ -217,13 +237,11 @@ const NavbarModal = ({ isOpen, onOpenChange }) => {
 
                             <div className="flex justify-start items-center gap-2">
                               <AlarmClockCheck className="w-[15px] h-[15px] text-[#ff0000]" />
-                              {fetchfilterdata.length > 0 && fetchfilterdata[0].tour_itinerary ? (
+                              
                                 <p className="text-sm flex justify-center items-center">
-                                  {fetchfilterdata[0].tour_itinerary.days}D/{fetchfilterdata[0].tour_itinerary.nights}N
+                                  {tour.tour_itinerary.days}D/{tour.tour_itinerary.nights}N
                                 </p>
-                              ) : (
-                                null
-                              )}
+                              
                             </div>
                           </div>
                         </div>

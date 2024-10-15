@@ -376,7 +376,7 @@ const PassportTourEnquiry = ({ onSubmitSuccess }) => {
                         </div>
                         <div className="flex flex-col lg:flex-row gap-4">
                             <input
-                                type="tel"
+                                type="number"
                                 required
                                 placeholder="Phone Number*"
                                 name="phone"

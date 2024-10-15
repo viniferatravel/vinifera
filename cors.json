@@ -1,9 +1,8 @@
 [
-    {
-      "origin": ["http://localhost:3000"],
-      "method": ["GET", "POST"],
-      "maxAgeSeconds": 3600,
-      "responseHeader": ["Content-Type", "Authorization"]
-    }
-  ]
-  
+  {
+    "origin": ["http://localhost:3000", "https://vinifera.vercel.app", "https://www.viniferaa.com"],
+    "method": ["GET", "POST", "HEAD"],
+    "responseHeader": ["Content-Type", "Authorization"],
+    "maxAgeSeconds": 3600
+  }
+]

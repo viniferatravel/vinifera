@@ -273,58 +273,74 @@ const SlideCards = ({ popularPackages, isLoading }) => {
           <SkeletonCard />
         </>
       ) : (
-        popularPackages?.map((slide, index) => (
-          <div
-            key={index}
-            className="flex-none w-[calc(80%-15px)] lg:w-[calc(25%-15px)] h-96 flex items-center justify-center flex-col gap-5 snap-start cursor-pointer"
-            onClick={() => handleBookButton(slide.package_id)}
-          >
-            <div className="w-full h-[70%]">
-              <Image
-                src={slide.package_image[0]}
-                alt={slide.package_name}
-                height={500}
-                width={500}
-                className="h-full w-full object-fill rounded-2xl"
-              />
-            </div>
-            <div className="flex w-full h-[30%] flex-col gap-2">
-              <div className="flex justify-between items-center">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar
-                      key={i}
-                      className="size-3 lg:size-4 text-yellow-500"
-                    />
-                  ))}
-                </div>
-                <span className="text-sm text-gray-500">Starting from</span>
+        // Separate the prioritized packages
+        (() => {
+          const prioritizedPackages = popularPackages?.filter((slide) =>
+            ["Uttaranchal Chardham Yatra", "Tristhal Darshan With Ayodhya"].includes(slide.package_name)
+          );
+  
+          const remainingPackages = popularPackages?.filter(
+            (slide) => !["Uttaranchal Chardham Yatra", "Tristhal Darshan With Ayodhya"].includes(slide.package_name)
+          );
+  
+          // Combine the prioritized packages with the remaining ones
+          const packagesToDisplay = [...prioritizedPackages, ...remainingPackages];
+  
+          return packagesToDisplay?.map((slide, index) => (
+            <div
+              key={index}
+              className="flex-none w-[calc(80%-15px)] lg:w-[calc(25%-15px)] h-96 flex items-center justify-center flex-col gap-5 snap-start cursor-pointer"
+              onClick={() => handleBookButton(slide.package_id)}
+            >
+              <div className="w-full h-[70%]">
+                <Image
+                  src={slide.package_image[0]}
+                  alt={slide.package_name}
+                  height={500}
+                  width={500}
+                  className="h-full w-full object-fill rounded-2xl"
+                />
               </div>
-              <div className="flex justify-between items-start ">
-                <div className="flex-1">
-                  <h2 className="text-lg font-semibold">
-                    {slide.package_name}
-                  </h2>
-                  <p className="text-sm text-gray-500">
-                    {slide.tour_itinerary.days} Days,{" "}
-                    {slide.tour_itinerary.nights} Nights
-                  </p>
+              <div className="flex w-full h-[30%] flex-col gap-2">
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar
+                        key={i}
+                        className="size-3 lg:size-4 text-yellow-500"
+                      />
+                    ))}
+                  </div>
+                  <span className="text-sm text-gray-500">Starting from</span>
                 </div>
-                <div className="flex-1 flex justify-end ">
-                  <button
-                    onClick={() => handleBookButton(slide.package_id)}
-                    className="bg-themeColor p-2 lg:py-2 lg:px-4 rounded-xl text-sm lg:text-base font-semibold text-white"
-                  >
-                    ₹ {slide.price}
-                  </button>
+                <div className="flex justify-between items-start ">
+                  <div className="flex-1">
+                    <h2 className="text-lg font-semibold">
+                      {slide.package_name}
+                    </h2>
+                    <p className="text-sm text-gray-500">
+                      {slide.tour_itinerary.days} Days,{" "}
+                      {slide.tour_itinerary.nights} Nights
+                    </p>
+                  </div>
+                  <div className="flex-1 flex justify-end ">
+                    <button
+                      onClick={() => handleBookButton(slide.package_id)}
+                      className="bg-themeColor p-2 lg:py-2 lg:px-4 rounded-xl text-sm lg:text-base font-semibold text-white"
+                    >
+                      ₹ {slide.price}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))
+          ));
+        })()
       )}
     </>
   );
+  
+  
 };
 
 export default PopularCarousel;

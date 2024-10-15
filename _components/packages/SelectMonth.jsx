@@ -52,6 +52,18 @@ const SelectMonth = () => {
     }
   };
 
+  function capitalizeWords(sentence) {
+    if (typeof sentence !== 'string') {
+      return '';
+    }
+
+    return sentence
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
 
   return (
     <div className=" p-5 rounded-xl shadow-xl bg-white border flex flex-col gap-5">
@@ -106,7 +118,7 @@ const SelectMonth = () => {
                     <div className="w-full flex-wrap flex justify-between items-center gap-2 mt-2">
                       <div className="flex justify-start items-center gap-2">
                         <MapPin className="w-[15px] h-[15px] text-[#ff0000]" />
-                        <p>{tour.city}</p>
+                        <p>{capitalizeWords(tour.city)}</p>
                       </div>
 
                       <div className="flex justify-start items-center gap-2">

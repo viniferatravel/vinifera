@@ -8,6 +8,14 @@ const IMAGES = {
   ayodhya: "/image/ayodhya.jpg",
   jodhpur: "/image/jodhpur.jpg",
   rajasthan: "/image/rajasthan.jpg",
+
+  agra: "/image/agra.jpg",
+  delhi: "/image/delhi.jpg",
+  mumbai: "/image/mumbai.jpg",
+  chennai: "/image/chennai.jpg",
+  jaipur: "/image/jaipur.jpg",
+  banglore: "/image/banglore.jpg",
+
   sectionfour: "/image/section-4.jpg",
   herolanding: "/image/herolanding.png",
   rajasthanhome: "/image/rajasthanhome.jpg",

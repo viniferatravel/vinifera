@@ -8,7 +8,7 @@ import { FaBus, FaCar, FaTrain } from "react-icons/fa6";
 
 const travelRoutes = [
   {
-    image: IMAGES.corporateGoa,
+    image: IMAGES.agra,
     from: "Delhi",
     to: "Agra",
     flights: 20,
@@ -17,7 +17,7 @@ const travelRoutes = [
     cars: 200,
   },
   {
-    image: IMAGES.corporateGoa,
+    image: IMAGES.mumbai,
     from: "Goa",
     to: "Mumbai",
     flights: 100,
@@ -26,7 +26,7 @@ const travelRoutes = [
     cars: 120,
   },
   {
-    image: IMAGES.corporateRajesthan,
+    image: IMAGES.jaipur,
     from: "Delhi",
     to: "Jaipur",
     flights: 10,
@@ -35,7 +35,7 @@ const travelRoutes = [
     cars: 300,
   },
   {
-    image: IMAGES.corporateRajesthan,
+    image: IMAGES.delhi,
     from: "Kolkata",
     to: "Delhi",
     flights: 40,
@@ -44,7 +44,7 @@ const travelRoutes = [
     cars: 100,
   },
   {
-    image: IMAGES.corporateRajesthan,
+    image: IMAGES.chennai,
     from: "Bangalore",
     to: "Chennai",
     flights: 20,
@@ -53,7 +53,7 @@ const travelRoutes = [
     cars: 200,
   },
   {
-    image: IMAGES.corporateRajesthan,
+    image: IMAGES.banglore,
     from: "Hyderabad",
     to: "Bangalore",
     flights: 15,
@@ -105,8 +105,8 @@ const Explore = () => {
               src={route.image}
               alt={`${route.from} to ${route.to}`}
               width={400}
-              height={250}
-              className="rounded-lg w-[30%]"
+              height={300}
+              className="object-cover rounded-lg w-[30%] h-[100%]"
               objectFit="cover"
             />
             <div className="w-[70%] flex flex-col justify-start items-start gap-5 h-full">

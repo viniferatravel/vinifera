@@ -28,7 +28,7 @@ export default function HotelTable({ selectedPackage }) {
     <div>
       {selectedPackage?.hotels?.length > 0
         ? <div className="flex flex-col gap-5">
-          <h2 className="text-xl font-semibold">Hotels</h2>
+          <h2 className="text-xl font-semibold">Hotels:</h2>
           <Table aria-label="Hotel Information Table">
             <TableHeader>
               <TableColumn>Place</TableColumn>

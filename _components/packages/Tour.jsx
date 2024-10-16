@@ -178,11 +178,11 @@ const Tour = ({ selectedPackage }) => {
 
 
         {/* Road Transport */}
-        {/* {selectedPackage?.our_speciality?.length > 0 && (
+        {selectedPackage?.road_transport?.length > 0 && !selectedPackage?.road_transport?.includes("") && (
           <section className="mb-6 w-full">
             <h2 className="text-xl font-semibold mb-2">Road Transport:</h2>
             <ul className="list-disc pl-5 space-y-2">
-              {selectedPackage.our_speciality.map((item, index) => {
+              {selectedPackage.road_transport.map((item, index) => {
                 return (
                   <li key={index}>
                     {item}
@@ -191,7 +191,7 @@ const Tour = ({ selectedPackage }) => {
               })}
             </ul>
           </section>
-        )} */}
+        )}
 
 
 

@@ -43,6 +43,7 @@ const packageModel = new mongoose.Schema({
     notes: [String],
     special_notes: [String],
     our_speciality: [String],
+    road_transport: [String],
     important_notes: [String],
     package_pdf: String,
     status: String,

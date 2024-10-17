@@ -16,6 +16,15 @@ export default function Home() {
   const specialPackageRef = useRef(null);
 
   useEffect(() => {
+    const loadWidgetScript = () => {
+      const script = document.createElement("script");
+      script.src = "https://cdn.lightwidget.com/widgets/lightwidget.js";
+      script.async = true;
+      document.body.appendChild(script);
+    };
+
+    loadWidgetScript();
+
     const abc = async () => {
       setLoading(true);
       try {
@@ -26,10 +35,9 @@ export default function Home() {
           },
         });
         const result = await response.json();
-        // console.log("Data:", result.result);
         setAllPackages(result.result);
       } catch (error) {
-        // console.log("Error:", error);
+        console.log("Error:", error);
       } finally {
         setLoading(false);
       }
@@ -45,6 +53,7 @@ export default function Home() {
         <ScrollCards />
         <Destination allPackages={allPackages} />
         <FestSeason />
+
         <div ref={specialPackageRef}>
           <PopularCarousel
             popularPackages={allPackages.filter((item) =>
@@ -58,18 +67,21 @@ export default function Home() {
         <CityCarousel allPackages={allPackages} />
         <SuperDeal allPackages={allPackages} />
         <HomePackages allPackages={allPackages} />
+
+        
+        {/* <div className="w-full mb-16">
+          <div className="text-2xl lg:text-3xl text-gray-600 font-bold mb-4">
+            Instagram Post:
+          </div>
+          <iframe
+            src="//lightwidget.com/widgets/fb4569c506bb5cda9ea70a42e6b61792.html"
+            scrolling="no"
+            allowTransparency="true"
+            className="lightwidget-widget"
+            style={{ width: "100%", border: "0", overflow: "hidden" }}
+          ></iframe>
+        </div> */}
       </div>
     </div>
   );
 }
-
-// import React from 'react'
-// import Destination from "@/_components/Home/Destination"
-
-// const page = () => {
-//   return (
-//     <div> <Destination/></div>
-//   )
-// }
-
-// export default page

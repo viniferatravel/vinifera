@@ -79,20 +79,20 @@ const PriceCard = ({ selectedPackage }) => {
     const url = selectedPack?.package_pdf;
 
     try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Network response was not ok');
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
 
-        const blob = await response.blob();
-        const a = document.createElement('a');
-        const objectURL = URL.createObjectURL(blob);
-        a.href = objectURL;
-        a.download = `${selectedPack?.package_name}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(objectURL);
+      const blob = await response.blob();
+      const a = document.createElement('a');
+      const objectURL = URL.createObjectURL(blob);
+      a.href = objectURL;
+      a.download = `${selectedPack?.package_name}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(objectURL);
     } catch (error) {
-        console.error('Error downloading file:', error);
+      console.error('Error downloading file:', error);
     }
   }
 
@@ -121,13 +121,13 @@ const PriceCard = ({ selectedPackage }) => {
             {/* <a href="/kutchPackage.pdf" download><button className="border border-[#ed1c24] py-2 px-4 rounded-full text-base font-semibold text-themeColor hover:bg-themeColor hover:text-white">
               Itenarary
             </button></a> */}
-            <button 
-            className="border border-[#ed1c24] py-2 px-4 rounded-full text-base font-semibold text-themeColor hover:bg-themeColor hover:text-white inline-flex"
-            onClick={() => handleDownloadItenarary(selectedPackage)}
+            <button
+              className="border border-[#ed1c24] py-2 px-4 rounded-full text-base font-semibold text-themeColor hover:bg-themeColor hover:text-white inline-flex"
+              onClick={() => handleDownloadItenarary(selectedPackage)}
             >
-              
+
               Itenarary
-              <Download className="h-6 w-6 pl-2"/>
+              <Download className="h-6 w-6 pl-2" />
             </button>
           </div>
         </div>
@@ -147,9 +147,8 @@ const PriceCard = ({ selectedPackage }) => {
             <p>
               Call Us for details&nbsp;
               <span className="text-base font-semibold cursor-pointer">
-                1800 266 1100
+                7977383452
               </span>
-              (Toll Free)
             </p>
           </div>
 

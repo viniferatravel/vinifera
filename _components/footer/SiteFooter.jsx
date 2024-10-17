@@ -233,7 +233,7 @@ const SiteFooter = () => {
             <p className="text-gray-400">
               Request a quote or just chat about your next vacation
             </p>
-            <p className="text-themeColor font-semibold">1800 000 000 000</p>
+            <p className="text-themeColor font-semibold">7977383452</p>
           </div>
 
           <div className="p-3 flex flex-col gap-3">

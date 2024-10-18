@@ -120,6 +120,7 @@ import ScrollCards from "@/_components/Home/ScrollCards";
 import Destination from "@/_components/Home/Destination";
 import FestSeason from "@/_components/Home/FestSeason";
 import Image from "next/image";
+import InstagramReels from "@/_components/Home/InstagramPosts";
 
 export default function Home() {
   const [allPackages, setAllPackages] = useState([]);
@@ -148,7 +149,7 @@ export default function Home() {
 
     const fetchInstagramFeed = async () => {
       try {
-        const url = `https://graph.instagram.com/me/media?fields=id,username,media_url&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_KEY}`;
+        const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,permalink&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_KEY}`;
         const response = await fetch(url);
         const data = await response.json();
         setFeed(data);
@@ -190,7 +191,9 @@ export default function Home() {
           <div className="text-2xl lg:text-3xl text-gray-600 font-bold border-b-4 border-themeColor">
             Instagram Post
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          <InstagramReels instaFeed={feed}/>
+
+          {/* <div className="grid grid-cols-4 gap-4">
             {feed?.data?.slice(0, 4).map((post, index) => (
               <div key={post.id || index}>
                 {post.media_url ? (
@@ -208,7 +211,7 @@ export default function Home() {
                 )}
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

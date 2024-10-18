@@ -8,7 +8,7 @@ import "swiper/css/autoplay"; // Import autoplay styles
 import { Navigation, Autoplay } from "swiper/modules"; // Import Autoplay module
 import { ChevronLeft, ChevronRight, UserRound } from "lucide-react";
 import IMAGES from "@/public/image";
-import Image from "next/image";
+
 
 const AboutTest = ({ packageReviews }) => {
   const cards = [

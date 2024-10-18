@@ -11,6 +11,7 @@ import { getImageProps } from "next/image";
 import IMAGES from "@/public/image";
 import { useRouter } from "next/navigation";
 
+
 const cardData = [
   {
     alt: "diwali-festival",

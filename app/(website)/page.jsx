@@ -9,14 +9,16 @@ import HomePackages from "@/_components/Home/HomePackages";
 import ScrollCards from "@/_components/Home/ScrollCards";
 import Destination from "@/_components/Home/Destination";
 import FestSeason from "@/_components/Home/FestSeason";
-import Image from "next/image";
+import InstagramPosts from "@/_components/Home/InstagramPosts"
+
 
 export default function Home() {
   const [allPackages, setAllPackages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [feed, setFeed] = useState(null);
   const specialPackageRef = useRef(null);
-
+  
+  const [feed, setFeed] = useState(null);
+  
   useEffect(() => {
     const fetchPackages = async () => {
       setLoading(true);
@@ -80,7 +82,7 @@ export default function Home() {
           <div className="text-2xl lg:text-3xl text-gray-600 font-bold border-b-4 border-themeColor">
             Instagram Post
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          {/* <div className="grid grid-cols-4 gap-4">
             {feed?.data?.slice(0, 4).map((post, index) => (
               <div key={post.id || index}>
                 {post.media_url ? (
@@ -98,6 +100,12 @@ export default function Home() {
                 )}
               </div>
             ))}
+          </div> */}
+
+          <InstagramPosts/>
+
+          <div className="">
+
           </div>
         </div>
       </div>

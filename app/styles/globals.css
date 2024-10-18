@@ -6,6 +6,10 @@
 html {
   scroll-behavior: smooth;
 }
+/* body {
+  cursor: url('../../public/image/planeCursor.svg'), auto;
+ 
+} */
 .hide-scrollbar-x {
   -ms-overflow-style: none; /* Internet Explorer and Edge */
   scrollbar-width: none; /* Firefox */

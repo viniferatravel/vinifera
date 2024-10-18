@@ -10,6 +10,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getImageProps } from "next/image";
 import IMAGES from "@/public/image";
 
+
 const cardData = [
   {
     alt: "diwali-festival",

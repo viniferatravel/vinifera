@@ -341,7 +341,7 @@ const Tour = ({ slug }) => {
 
                     <div className="col-span-1 lg:col-span-2">
                       <div className="flex justify-start items-center">
-                        <p className="text-sm font-semibold text-red-700">
+                        <p className="text-sm font-semibold text-red-700 line-clamp-1">
                           {tour?.sub_category
                             .filter(
                               (item) =>
@@ -352,6 +352,7 @@ const Tour = ({ slug }) => {
                             )
                             ?.map((item) => capitalizeWords(item))
                             .join(", ")}
+                            
                         </p>
                       </div>
 

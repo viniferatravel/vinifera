@@ -133,7 +133,7 @@ const MainContact = () => {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="border flex-1 p-3 rounded-2xl bg-red-100 w-full"
+                className="border flex-1 p-3 rounded-2xl bg-gray-100 w-full"
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
@@ -144,7 +144,7 @@ const MainContact = () => {
               <input
                 type="text"
                 placeholder="Phone Number"
-                className="border flex-1 p-3 rounded-2xl bg-red-100 w-full"
+                className="border flex-1 p-3 rounded-2xl bg-gray-100 w-full"
                 required
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
@@ -156,7 +156,7 @@ const MainContact = () => {
             <input
               type="email"
               placeholder="Email ID"
-              className="border flex-1 p-3 rounded-2xl bg-red-100"
+              className="border flex-1 p-3 rounded-2xl bg-gray-100"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -166,7 +166,7 @@ const MainContact = () => {
             )}
             <textarea
               placeholder="Message"
-              className="border flex-1 p-3 rounded-2xl bg-red-100"
+              className="border flex-1 p-3 rounded-2xl bg-gray-100"
               required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -189,11 +189,11 @@ const MainContact = () => {
             whileInView="visible"
             viewport={{ once: false }}
             variants={sectionVariants}
-            className="bg-themeColor rounded-2xl flex justify-center items-center flex-col p-5 gap-5">
-              <h2 className="text-white text-xl font-semibold">
+            className="bg-white rounded-2xl flex justify-center items-center flex-col p-5 gap-5">
+              <h2 className="text-themeColor text-xl font-semibold">
                 +91- 91364-34899
               </h2>
-              <p className="text-gray-300 text-center">
+              <p className="text-gray-500 text-center">
                 For all inquiries regarding to booking call us any time at the
                 above number
               </p>
@@ -201,11 +201,11 @@ const MainContact = () => {
             <motion.div initial="hidden"
             whileInView="visible"
             viewport={{ once: false }}
-            variants={sectionVariants} className="bg-themeColor rounded-2xl flex justify-center items-center flex-col p-5 gap-5">
-              <h2 className="text-white text-xl font-semibold">
+            variants={sectionVariants} className="bg-white rounded-2xl flex justify-center items-center flex-col p-5 gap-5">
+              <h2 className="text-themeColor text-xl font-semibold">
                 travel@vinifera.com
               </h2>
-              <p className="text-gray-300 text-center">
+              <p className="text-gray-500 text-center">
                 For all inquiries regarding to booking call us any time at the
                 above number
               </p>
@@ -213,11 +213,11 @@ const MainContact = () => {
             <motion.div initial="hidden"
             whileInView="visible"
             viewport={{ once: false }}
-            variants={sectionVariants} className="bg-themeColor rounded-2xl flex justify-center items-center flex-col p-5 gap-5">
-              <h2 className="text-white text-xl font-semibold">
+            variants={sectionVariants} className="bg-white rounded-2xl flex justify-center items-center flex-col p-5 gap-5">
+              <h2 className="text-themeColor text-xl font-semibold">
                 Ocean Pearl Resort
               </h2>
-              <p className="text-gray-300 text-center">
+              <p className="text-gray-500 text-center">
                 1006, Juhi Niharika Mirage, Sector 10, Kharghar, 410210
               </p>
             </motion.div>

@@ -2,7 +2,7 @@ const IMAGES = {
   viniferaLogo: "/image/viniferaLogo.svg",
   Adminloginbg: "/image/adminloginbg.jpg",
   corporate1: "/image/corporate2.jpg",
-  corporate2: "/image/corporate3.webp",
+  corporate2: "/image/corporate3.jpg",
   corporate3: "/image/corporate1.jpg",
   goa: "/image/goa.jpg",
   ayodhya: "/image/ayodhya.jpg",

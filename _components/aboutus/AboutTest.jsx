@@ -6,11 +6,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay"; // Import autoplay styles
 import { Navigation, Autoplay } from "swiper/modules"; // Import Autoplay module
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, UserRound } from "lucide-react";
 import IMAGES from "@/public/image";
 import Image from "next/image";
 
-const AboutTest = () => {
+const AboutTest = ({ packageReviews }) => {
   const cards = [
     {
       title: "An Unforgettable Family Vacation in Kerala ",
@@ -58,7 +58,9 @@ const AboutTest = () => {
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0); // Track the active slide index
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  console.log("packageReviews:::::::>", packageReviews)
 
   return (
     <div className="mt-20 bg-gray-100">
@@ -99,7 +101,7 @@ const AboutTest = () => {
                 setIsEnd(swiper.isEnd);
               }}
             >
-              {cards.map((card, index) => (
+              {Object.keys(packageReviews)?.map((card, index) => (
                 <SwiperSlide key={index}>
                   <div
                     className={`w-full h-72 md:h-80 rounded-lg bg-white border p-2 `}
@@ -107,24 +109,26 @@ const AboutTest = () => {
                     <div className="p-4 flex flex-col justify-between items-center w-full h-full gap-5 lg:gap-10 ">
                       <div className="flex flex-col gap-5">
                         <p className={`font-semibold text-start w-full italic`}>
-                          "{card.title}"
+                          {packageReviews[card][0].tagline}
                         </p>
-                        <p className="text-sm text-gray-600">
-                          {card.description}
+                        <p className="text-sm text-gray-600 line-clamp-5">
+                          {packageReviews[card][0].description}
                         </p>
                       </div>
 
                       <div className="flex gap-5 items-center w-full">
                         <div className="w-16 h-16 rounded-full relative overflow-hidden">
-                          <Image
-                            src={card.img}
-                            alt={card.name}
+
+                        <UserRound className="w-16 h-16 text-gray-500 bg-slate-200"/>
+                          {/* <Image
+                            src={packageReviews[card][0].image[0]}
+                            alt={card}
                             fill
                             className="w-full h-full object-cover"
-                          />
+                          /> */}
                         </div>
                         <h3 className="text-themeColor font-semibold ">
-                          {card.name}
+                          {packageReviews[card][0].name}
                         </h3>
                       </div>
                     </div>

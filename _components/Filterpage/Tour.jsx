@@ -17,6 +17,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import GuestModal from "@/_components/packages/Modal";
 import EmailModal from "@/_components/EmailModal"
+import debounce from 'lodash.debounce';
 
 const Tour = ({ slug }) => {
 
@@ -121,15 +122,113 @@ const Tour = ({ slug }) => {
           }
         }
 
+        if (slug === "christmas") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
 
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("WINTER")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("WINTER")));
+        }
 
+        console.log("slug:::>", slug)
+
+        if (slug === "havenly sky") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("NORTH")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("NORTH")));
+        }
+
+        if (slug === "kedarnath yatra" || slug === "colorful") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("SPIRITUAL")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("SPIRITUAL")));
+        }
+
+        if (slug === "munnar") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("SOUTH")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("SOUTH")));
+        }
+
+        if (slug === "diwali-with-vinifera") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result
+          );
+          setoriginaldata(result.result);
+        }
+
+        if (slug === "eid") {
+          const response = await fetch("/api/fetchcategory", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const result = await response.json();
+
+          setfetchfiltertourdata(
+            result?.result?.filter((item) =>
+              item.sub_category.includes("EID")
+            )
+          );
+          setoriginaldata(result.result?.filter((item) => item.sub_category.includes("EID")));
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
     }
-
     getData();
   }, [slug]);
 
@@ -161,6 +260,7 @@ const Tour = ({ slug }) => {
 
   const handlepackage = (package_id) => {
     router.push(`/packages/${package_id}`);
+    localStorage.removeItem("selectedState");
   };
 
   function capitalizeWords(sentence) {
@@ -180,11 +280,52 @@ const Tour = ({ slug }) => {
     setEnquiryClickModal(val);
   };
 
+  const [scrollDirection, setScrollDirection] = useState('down'); // Track the scroll direction
+  const [stickyTop, setStickyTop] = useState('-top-40'); // Default sticky position
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setScrollDirection('down');
+        setStickyTop('-top-40'); // Stick to -top-40
+      } else {
+        setScrollDirection('up');
+        setStickyTop('top-32'); // Stick to top-32
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    // Use lodash debounce to limit how often handleScroll is called
+    const debouncedHandleScroll = debounce(handleScroll, 100);
+
+    window.addEventListener('scroll', debouncedHandleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', debouncedHandleScroll);
+    };
+  }, []);
+
+  // const [State, setState] = useState('');
+  // console.log(State, "State")
+
+  // const handleShowStateChange = (newState) => {
+  //   setState(newState)
+  // };
+
   return (
     <div>
       <div className="w-[95%] m-auto">
         <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-5 pt-4">
-          <div className="col-span-1 lg:sticky lg:top-32 lg:h-[50vh]">
+          {/* lg:sticky lg:top-32 lg:h-[120vh] */}
+          <div
+            className={`col-span-1 lg:sticky lg:${stickyTop} lg:bottom-0 lg:h-[127vh] lg:min-h-[205vh]`}
+          >
             <Sitefilter
               onSelectedDuration={handleSeletedDuration}
               onselectedprice={handleselectedprice}
@@ -207,7 +348,7 @@ const Tour = ({ slug }) => {
               {loading ? (
                 <SkeletonCard />
               ) :
-                (fetchfiltertourdata.map((tour, index) => (
+                (fetchfiltertourdata?.map((tour, index) => (
                   <div
                     key={index}
                     className="rounded-lg w-full mt-7 grid grid-cols-1 lg:grid-cols-4 gap-6 p-4 shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] "
@@ -300,7 +441,7 @@ const Tour = ({ slug }) => {
                             <p> Destination :</p>
                           </div>
                           <div className="flex w-full lg:w-[75%] flex-wrap gap-1">
-                            {tour.places.map((place) => (
+                            {tour?.places.map((place) => (
                               <p key={place._id} className="text-sm ">
                                 {place.name},
                               </p>
@@ -314,7 +455,7 @@ const Tour = ({ slug }) => {
                             <p> Highlights :</p>
                           </div>
                           <div className="flex w-full lg:w-[75%] justify-start flex-wrap gap-1 overflow-y-auto h-32">
-                            {tour.highlights.map((highlight, index) => (
+                            {tour?.highlights.map((highlight, index) => (
                               <div
                                 key={index}
                                 className="w-full text-sm flex justify-start gap-1"

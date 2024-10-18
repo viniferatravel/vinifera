@@ -34,7 +34,7 @@ const HomePackages = ({ allPackages }) => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={sectionVariants}
-      className="flex flex-col gap-8 justify-center items-center mb-16"
+      className="flex flex-col gap-8 justify-center items-center"
     >
       <h2 className="text-2xl lg:text-3xl text-gray-600 font-bold border-b-4 border-themeColor">
         Beautiful Places around India

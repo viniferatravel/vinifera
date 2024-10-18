@@ -23,6 +23,8 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
   const [notes, setNotes] = useState(action === "edit" ? selectedPack.notes : [""]);
   const [specialNotes, setSpecialNotes] = useState(action === "edit" ? selectedPack.special_notes : [""]);
   const [ourSpeciality, setOurSpeciality] = useState(action === "edit" ? selectedPack.our_speciality : [""]);
+  const [roadTransport, setRoadTransport] = useState(action === "edit" ? selectedPack.road_transport : [""]);
+  
   const [importantNotes, setImportantNotes] = useState(action === "edit" ? selectedPack.important_notes : [""]);
   const [itinerary, setItinerary] = useState(action === "edit" ? [
     selectedPack.tour_itinerary
@@ -100,6 +102,10 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
 
   const addOurSpeciality = () => {
     setOurSpeciality([...ourSpeciality, ""]);
+  };
+
+  const addRoadTransport = () => {
+    setRoadTransport([...roadTransport, ""]);
   };
 
   const addImportantNotes = () => {
@@ -413,6 +419,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
         notes: notes,
         special_notes: specialNotes,
         our_speciality: ourSpeciality,
+        road_transport: roadTransport,
         important_notes: importantNotes,
         package_pdf: packagePdfLink,
         status: selectedStatus
@@ -540,6 +547,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
       special_notes: specialNotes,
       status: selectedStatus,
       our_speciality: ourSpeciality,
+      road_transport: roadTransport,
       important_notes: importantNotes,
       package_pdf: packagePdfLink,
       action: "edit",
@@ -1102,6 +1110,47 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
             <Plus className="h-4 w-4 mr-2" /> Add
           </button>
         </div>
+
+
+
+
+        {/* Road Transport */}
+        <div className="space-y-4">
+          <h2 className="text-xl font-semibold">Road Transport</h2>
+          {roadTransport?.map((highlight, index) => (
+            <div key={index} className="flex items-center space-x-2">
+              <input
+                type="text"
+                value={highlight}
+                onChange={(e) => {
+                  const newHighlights = [...roadTransport];
+                  newHighlights[index] = e.target.value;
+                  setRoadTransport(newHighlights);
+                }}
+                className="border border-gray-300 p-2 rounded-md w-full"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  const newHighlights = roadTransport?.filter((_, i) => i !== index);
+                  setRoadTransport(newHighlights);
+                }}
+                className="bg-transparent p-2 rounded-md"
+              >
+                <X className="h-4 w-4 text-red-500" />
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addRoadTransport}
+            className="border border-gray-300 p-2 rounded-md flex items-center"
+          >
+            <Plus className="h-4 w-4 mr-2" /> Add
+          </button>
+        </div>
+
+
 
 
 

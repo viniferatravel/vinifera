@@ -100,7 +100,7 @@ const AboutCards = () => {
             </h2>
             <p className="text-base lg:text-lg text-gray-600 w-full lg:w-[70%] mb-0 lg:mb-12 xl:mb-16">
               To live life to the fullest and to be productive and efficient at
-              our workplace, as Veena World team members, we practice certain
+              our workplace, as Vinifera&apos;s World team members, we practice certain
               values that guide us in every action and at every step.
             </p>
             <div className="hidden md:flex gap-5 ">

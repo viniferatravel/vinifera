@@ -44,13 +44,13 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   const [navAction, setNavAction] = useState("");
 
   useEffect(() => {
-    const categories = links?.map(link => link.category);
-
+    const categories = links?.map(link => link.category) || [];
     const exclusiveData = categories.flat().find(item => item === "EXCLUSIVE");
     setexclusiveData(exclusiveData);
 
     const specialCategory = categories.flat().find(item => item === "SPECIAL");
     setspecialCategory(specialCategory);
+
 
     if (links) {
       const internationaldata = links.filter(link => link.sub_category.includes("INTERNATIONAL"));
@@ -120,35 +120,42 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
   const handlenoninternational = (state) => {
     setNavAction("trip")
     router.push(`/filterpage/${state}`)
+    localStorage.removeItem("selectedState");
   };
 
   const handleinternationaldata = (state) => {
     setNavAction("trip")
     router.push(`/filterpage/${state}`)
+    localStorage.removeItem("selectedState");
   }
 
   const handlepackage = (cat) => {
     setNavAction("exclusive")
     const encodedCategory = encodeURIComponent(cat);
     router.push(`/filterpage/${encodedCategory}`);
+    localStorage.removeItem("selectedState");
   };
 
   const handlespecialpackage = (cat) => {
     setNavAction("special")
     const encodedCategory = encodeURIComponent(cat);
     router.push(`/filterpage/${encodedCategory}`);
+    localStorage.removeItem("selectedState");
   }
 
   const handleCorporatePage = () => {
     router.push(`/corporate`);
+    localStorage.removeItem("selectedState");
   }
 
   const handleTicketsPage = () => {
     router.push(`/tickets`);
+    localStorage.removeItem("selectedState");
   }
 
   const handlePassportPage = () => {
     router.push(`/passport`);
+    localStorage.removeItem("selectedState");
   }
 
   useEffect(() => {
@@ -211,7 +218,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
     const uniqueCategoriess = new Set();
     specialpackagedata?.map((packageItem, index) => (
       packageItem.category.map((cat, catIndex) => {
-      
+
         if (!uniqueCategoriess.has(cat)) {
           uniqueCategoriess.add(cat);
           if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
@@ -431,7 +438,7 @@ const NavLinks = ({ closeNavbar, lastSegment }) => {
               <div className="w-full grid grid-cols-3 gap-4 py-4 px-2">
                 {specialpackagedata.map((packageItem, index) => (
                   packageItem.category.map((cat, catIndex) => {
-                    
+
                     if (!uniqueCategories.has(cat)) {
                       uniqueCategories.add(cat);
                       if (cat === "NORTH" || cat === "SOUTH" || cat === "EAST" || cat === "WEST" || cat === "EXCLUSIVE" || isNotSpecialCategory(cat)) {
@@ -501,9 +508,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
   }, []);
 
   useEffect(() => {
-    const categories = links.map(link => link.category);
-
-
+    const categories = links?.map(link => link.category) || [];
     const exclusiveData = categories.flat().find(item => item === "EXCLUSIVE");
     setexclusiveData(exclusiveData);
 
@@ -528,7 +533,7 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
           operation: "fetchdatacategorieswise",
           category: exclusiveData,
         });
-   
+
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "EXCLUSIVE")
@@ -547,13 +552,13 @@ const Mobilenavlink = ({ closeNavbar, lastSegment }) => {
           operation: "fetchdatacategorieswise",
           category: specialCategory,
         });
-       
+
 
         const filteredPackages = response.data.packages.map(packageItem => ({
           ...packageItem,
           category: packageItem.category.filter(cat => cat !== "SPECIAL")
         }));
-   
+
 
         setspecialpackagedata(filteredPackages);
       }
@@ -917,6 +922,7 @@ const Navbar = () => {
 
           <div onClick={() => {
             router.push(`/`)
+            localStorage.removeItem("selectedState");
             setTimeout(() => {
               window.location.reload();
             }, 1000);
@@ -934,7 +940,6 @@ const Navbar = () => {
             <p className="text-gray-400 text-sm">Search &quot;{currentPlace}&quot;</p>
           </div>
           <div className="flex gap-5 items-center justify-center">
-
 
             <div className="text-3xl lg:hidden" onClick={() => setOpen(!open)}>
 
@@ -960,16 +965,25 @@ const Navbar = () => {
           <NavLinks closeNavbar={closeNavbar} lastSegment={lastSegment} />
         </ul>
 
-        <div className="lg:block hidden">
+        {/* <div className="lg:block hidden">
 
           <div className="bg-themeColor text-white rounded-full size-6 p-4 flex justify-center items-center shadow-lg">
+            <button onClick={() => {
             <button onClick={() => {
               router.push(`/filterpage/ALL`)
             }}>
               <ArrowRight strokeWidth={3} />
             </button>
           </div>
+        </div> */}
+        <div className="lg:block hidden">
+          <div className="bg-themeColor text-white rounded-full size-6 p-4 flex justify-center items-center shadow-lg">
+            <button onClick={() => router.push(`/filterpage/ALL`)}>
+              <ArrowRight strokeWidth={3} />
+            </button>
+          </div>
         </div>
+
         <ul
           className={`
             lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 px-4 z-30

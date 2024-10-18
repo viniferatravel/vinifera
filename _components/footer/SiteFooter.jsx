@@ -185,6 +185,13 @@ const SiteFooter = () => {
         icon: "success"
       });
     }
+    else if (response.data.status === 402) {
+      Swal.fire({
+        title: "Number must be exactly 10 digits and contain only numeric values",
+        // text: "Team connect with you soon",
+        icon: "success"
+      });
+    }
     //     const whatsappMessage = `Hi, I am interested in your service*.
 
     // *My details are -* 
@@ -226,7 +233,7 @@ const SiteFooter = () => {
             <p className="text-gray-400">
               Request a quote or just chat about your next vacation
             </p>
-            <p className="text-themeColor font-semibold">1800 000 000 000</p>
+            <p className="text-themeColor font-semibold">7977383452</p>
           </div>
 
           <div className="p-3 flex flex-col gap-3">

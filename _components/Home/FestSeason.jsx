@@ -9,11 +9,13 @@ import { Navigation, Autoplay } from "swiper/modules"; // Import Autoplay module
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getImageProps } from "next/image";
 import IMAGES from "@/public/image";
+import { useRouter } from "next/navigation";
 
 
 const cardData = [
   {
     alt: "diwali-festival",
+    name: "diwali-with-vinifera",
     desktop: { src: IMAGES.festDiwali, width: 1600, height: 601, quality: 100 },
     mobile: {
       src: IMAGES.festDiwaliMob,
@@ -24,6 +26,7 @@ const cardData = [
   },
   {
     alt: "kedarnath-yatra",
+    name: "kedarnath yatra",
     desktop: {
       src: IMAGES.festKedarnath,
       width: 1600,
@@ -40,6 +43,7 @@ const cardData = [
 
   {
     alt: "christmas-festival",
+    name: "christmas",
     desktop: {
       src: IMAGES.festChristmas,
       width: 1600,
@@ -55,11 +59,13 @@ const cardData = [
   },
   {
     alt: "holi-festival",
+    name: "colorful",
     desktop: { src: IMAGES.festHoli, width: 1600, height: 601, quality: 100 },
     mobile: { src: IMAGES.festHoliMob, width: 750, height: 1334, quality: 100 },
   },
   {
     alt: "havenly-sky",
+    name: "havenly sky",
     desktop: {
       src: IMAGES.havenlysky,
       width: 1600,
@@ -75,6 +81,7 @@ const cardData = [
   },
   {
     alt: "desert-safari",
+    name: "DESERT",
     desktop: {
       src: IMAGES.desertsafari,
       width: 1600,
@@ -89,7 +96,8 @@ const cardData = [
     },
   },
   {
-    alt: "jamamasjid",
+    alt: "eid",
+    name: "eid",
     desktop: {
       src: IMAGES.jamamasjid,
       width: 1600,
@@ -105,6 +113,7 @@ const cardData = [
   },
   {
     alt: "munnartour",
+    name: "munnar",
     desktop: {
       src: IMAGES.munnartour,
       width: 1600,
@@ -123,6 +132,12 @@ const cardData = [
 const AboutCards = () => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+
+  const router = useRouter()
+
+  const handleFestiveTour = (festival) => {
+    router.push(`/filterpage/${festival}`)
+  }
 
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
@@ -208,7 +223,7 @@ const AboutCards = () => {
 
               return (
                 <SwiperSlide key={index}>
-                  <div className="w-full h-full rounded-xl overflow-hidden shadow-lg bg-white border ">
+                  <div className="w-full h-full rounded-xl overflow-hidden shadow-lg bg-white border " onClick={() => handleFestiveTour(card.name)}>
                     <picture>
                       <source media="(min-width: 1024px)" srcSet={desktop} />
                       <source media="(max-width: 1023px)" srcSet={mobile} />

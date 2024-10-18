@@ -280,11 +280,11 @@ const Passport = () => {
                     src={IMAGES.passport}
                     alt="contact-landing"
                     fill
-                    className="object-cover w-full h-full"
+                    className="object-fill w-full h-full"
                 />
                 <div className="absolute top-0 left-0  w-full h-full flex justify-center items-center">
                     <div className="m-5 lg:m-12 w-full h-full flex flex-col justify-center items-start gap-5">
-                        <p className="text-white text-3xl lg:text-5xl flex font-bold gap-2">
+                        <p className="text-black text-3xl lg:text-5xl flex font-semibold gap-2">
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -293,7 +293,7 @@ const Passport = () => {
                                 Your Journey
                             </motion.span>
                         </p>
-                        <h1 className="text-white text-2xl lg:text-5xl flex font-bold pr-6 py-4 pl-2 bg-themeColor">
+                        <h1 className="text-white text-2xl lg:text-5xl flex font-semibold pr-6 py-4 pl-2 bg-themeColor">
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -303,12 +303,12 @@ const Passport = () => {
                             </motion.span>
                         </h1>
 
-                        <div className="w-[70%] lg:w-1/3">
+                        <div className="w-[70%] lg:w-1/3 ">
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: 0.2 }}
-                                className="text-base lg:text-lg text-white"
+                                className="text-base lg:text-lg text-black"
                             >
                                 Experience seamless processing of your travel documents,
                                 with speed and ease that you can trust. Let our experts handle

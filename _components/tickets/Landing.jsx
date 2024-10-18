@@ -14,7 +14,7 @@ const Landing = () => {
   };
 
   return (
-    <div className="relative h-[70vh] w-full">
+    <div className="relative h-[90vh] w-full">
       <Image
         src={IMAGES.ticketslanding}
         alt=""

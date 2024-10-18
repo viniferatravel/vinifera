@@ -280,43 +280,7 @@ const Tour = ({ slug }) => {
     setEnquiryClickModal(val);
   };
 
-  const [scrollDirection, setScrollDirection] = useState('down'); // Track the scroll direction
-  const [stickyTop, setStickyTop] = useState('-top-40'); // Default sticky position
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY) {
-        // Scrolling down
-        setScrollDirection('down');
-        setStickyTop('-top-40'); // Stick to -top-40
-      } else {
-        setScrollDirection('up');
-        setStickyTop('top-32'); // Stick to top-32
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    // Use lodash debounce to limit how often handleScroll is called
-    const debouncedHandleScroll = debounce(handleScroll, 100);
-
-    window.addEventListener('scroll', debouncedHandleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', debouncedHandleScroll);
-    };
-  }, []);
-
-  // const [State, setState] = useState('');
-  // console.log(State, "State")
-
-  // const handleShowStateChange = (newState) => {
-  //   setState(newState)
-  // };
+  
 
   return (
     <div>
@@ -324,7 +288,7 @@ const Tour = ({ slug }) => {
         <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-5 pt-4">
           {/* lg:sticky lg:top-32 lg:h-[120vh] */}
           <div
-            className={`col-span-1 lg:sticky lg:${stickyTop} lg:bottom-0 lg:h-[127vh] lg:min-h-[205vh]`}
+            className="col-span-1 lg:h-full"
           >
             <Sitefilter
               onSelectedDuration={handleSeletedDuration}

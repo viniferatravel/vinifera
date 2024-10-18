@@ -841,7 +841,7 @@ const TermsAndCondition = () => {
                             <div className="">
                                 <div className="space-y-6">
                                     <section>
-                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">17) Miscellaneous::</h2>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">17) Miscellaneous:</h2>
 
                                         <div className="pl-4">
                                             <p className="text-base lg:text-lg text-justify mb-4">i. <span className="font-semibold text-gray-600">Complaints or Grievances:</span> If the guest has any claim, grievance and / or complaint in respect of services provided by any of the independent contractors, the guest shall immediately notify the same to the independent contractor in writing, and a copy thereof is handed over to the tour / leader / / Assistant and / or Company not later than 7 days thereof to enable Vinifera to take up the matter with the concerned independent contractor.
@@ -914,11 +914,11 @@ const TermsAndCondition = () => {
                             </div>
                         </section>
 
-                        <section className="mb-8">
+                        {/* <section className="mb-8">
                             <div className="">
                                 <div className="space-y-6">
                                     <section>
-                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">18) Refund conditions:</h2>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">19) Refund conditions:</h2>
 
                                         <p className="text-base lg:text-lg text-justify pl-4 mb-4">
                                             i. Give admission to any person for any tour or FIT package or for currency exchange;
@@ -935,21 +935,103 @@ const TermsAndCondition = () => {
                                     </section>
                                 </div>
                             </div>
-                        </section>
+                        </section> */}
 
                         <section className="mb-8">
                             <div className="">
                                 <div className="space-y-6">
                                     <section>
-                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">20) Liability and Responsibility of Vinifera:</h2>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">19) Acceptance of Terms:</h2>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            By accessing our website and using our services, you agree to comply with and be bound by these Terms and Conditions. If you do not agree with any part of these terms, you must discontinue use of our website and services.
+                                        </p>
+                                    </section>
+
+                                    <section>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">20) Information Collection and Use:</h2>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            i. <strong>Personal Information:</strong> When you use our services, you may be asked to provide personal information such as your name, email address, and phone number. This information is collected to process bookings, provide customer support, and communicate with you about updates or promotional offers (if opted in).
+                                        </p>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            ii. <strong>Non-Personal Information:</strong> We may also collect information like your IP address, browser type, and pages you visit. This helps us understand how users interact with our website and improve our services.
+                                        </p>
+                                    </section>
+
+                                    <section>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">21) Use of Cookies:</h2>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            Our website may use cookies to improve your browsing experience. Cookies are small files stored on your device that help us remember your preferences. You can control the use of cookies through your browser settings. Disabling cookies may limit certain features of our website.
+                                        </p>
+                                    </section>
+
+                                    <section>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">22) Data Security:</h2>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            We take reasonable precautions to protect your personal information from unauthorized access and use. However, please note that no method of data transmission over the internet or electronic storage is completely secure. We strive to use commercially acceptable means to protect your information but cannot guarantee absolute security.
+                                        </p>
+                                    </section>
+
+                                    <section>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">23) Sharing of Information:</h2>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            i. We do not sell or rent your personal information to third parties.
+                                        </p>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            ii. We may share your information with service providers, such as payment processors, who assist in delivering our services.
+                                        </p>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            iii. In cases where required by law or to comply with legal obligations, we may disclose your information to authorities.
+                                        </p>
+                                    </section>
+
+                                    <section>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">24) Changes to Terms:</h2>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            We may revise these Terms and Conditions from time to time. Any changes will be posted on this page, and the updated terms will be effective immediately upon posting. We encourage you to review this page regularly to stay informed about our practices.
+                                        </p>
+                                    </section>
+
+                                    <section>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">25) Third-Party Links:</h2>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            Our website may contain links to other websites not operated by us. We are not responsible for the content or privacy practices of those sites. It is recommended to review the privacy policies of any third-party websites you visit.
+                                        </p>
+                                    </section>
+
+                                    <section>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">26) Data Deletion Instructions:</h2>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            You have the right to request the deletion of your personal information that we hold. If you would like us to delete your data, please follow these steps:
+                                        </p>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            i. Send an email to <a href="mailto:info@viniferaa.com" className="text-blue-500">info@viniferaa.com</a> with the subject "Data Deletion Request."
+                                        </p>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            ii. Include your full name, email address, and any relevant information regarding the data you wish to have deleted.
+                                        </p>
+                                        <p className="text-base lg:text-lg text-justify pl-4 mb-4">
+                                            iii. We will process your request within 30 days and confirm the deletion of your data. Please note that certain legal obligations may require us to retain some data.
+                                        </p>
+                                    </section>
+
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <section className="mb-8">
+                            <div className="">
+                                <div className="space-y-6">
+                                    <section>
+                                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">27) Liability and Responsibility of Vinifera Tours and Travels:</h2>
                                         <div>
                                             <p className="text-base lg:text-lg text-justify pl-4 mb-4">
-                                                i. <span className="font-semibold text-gray-600">The liability of Vinifera</span> is restricted only to the making reservation in accordance with the guest/s requirements and no further.
+                                                i. <span className="font-semibold text-gray-600">The liability of Tours and Travels</span> is restricted only to the making reservation in accordance with the guest/s requirements and no further.
                                             </p>
                                             <div className="text-base lg:text-lg text-justify pl-4">
                                                 <p>ii. <span className="font-semibold text-gray-600">Company is not liable for:</span></p>
                                                 <div className="pl-3">
-                                                    <p className="mb-4 mt-4">a. Vinifera is mere a travel agent who books services on behalf of their travelers. Vinifera is not responsible for the delayed / canceled / last moment price increased by the independent contractor.</p>
+                                                    <p className="mb-4 mt-4">a. Vinifera Tours and Travels is mere a travel agent who books services on behalf of their travelers. Vinifera Tours and Travels is not responsible for the delayed / canceled / last moment price increased by the independent contractor.</p>
                                                     <p className="mb-4">b. any loss of person or property caused or damaged or suffered by the guest/s on account of deficiency in services by any independent contractor. Any gesture of courtesy extended by Vinifera to the guest/s to minimize such loss or damage shall not constitute an admission of such liability or a waiver. Vinifera shall in no circumstances whatsoever be liable to the guest/s or any other person for any loss or expenses incurred due to theft or any other reason whatsoever during the tour and the entire responsibility of taking care of their valuables shall be that of the guest/s.</p>
                                                     <p className="mb-4">c. train/flight delays, on account of any reason whatsoever rescheduling/cancellation of train / flights inter-connection meals not being served etc.</p>
                                                     <p className="mb-4">d. any overstay expenses on account of any delay or changes in air, bus, ship, train or cancellation of special bogie on account of Force Majeure including weather conditions, strike, war, quarantine, or any other reason whatsoever</p>
@@ -957,13 +1039,13 @@ const TermsAndCondition = () => {
                                                     <p className="mb-4">f. any tour, holiday, excursion facility exceeding the total amount paid or agreed to be paid by the guest/s for the tour, including any consequential loss or additional expense whatsoever if the guest/s is not allowed to board the train/flight on account certain reasons beyond the control of Vinifera.</p>
                                                     <p className="mb-4">g. any loss of baggage by independent contractor or their agents, hotel staff, bus/coach or during tour including damage or loss caused to the guest due to Force Majeure, negligence or technical fault or any other reason whatsoever on account of any change, amendment or cancellation in their schedule by Airline/Railway Authority/cruizes / Euro rail etc.</p>
                                                     <p className="mb-4">h. allocation of seats, and food service in the aircraft.</p>
-                                                    <p className="mb-4">i. any celebrity assigned for the tour as an entertainer not turning up on the tour due to the reasons beyond the control of Vinifera</p>
+                                                    <p className="mb-4">i. any celebrity assigned for the tour as an entertainer not turning up on the tour due to the reasons beyond the control of Vinifera Tours and Travels</p>
                                                     <p className="mb-4">j. any personal injury, sickness, accident, loss, delay, discomfort, consequential loss and/or damage or any damage to baggage or personal effects howsoever caused.</p>
                                                     <p className="mb-4">k. death of the guest while on tour and all applicable rules and procedures of law are to be followed strictly and all the procedures pertaining to the death shall have to be tackled and handled by the guest or their relatives themselves at their own cost and consequences.</p>
                                                     <p className="mb-4">l. any injury, loss, personal harm, death or damage caused to any person or property by the act or default of the management / employees / agents of any independent contractor.</p>
                                                     <p className="mb-4">m. any damages, additional expenses or any consequential losses suffered by the guest/s due to Cancellation, Amendment and / or alteration of any of the services of the tour mentioned in the itinerary / Brochure by Vinifera after the registration by the guest/s.</p>
-                                                    <p>All or any information given in these Terms and Conditions is based on the information available at the time of publication. Vinifera reserves the right to change any information before or after booking the tour due to circumstances/events beyond our control. In case of knowledge of any change, in advance, we or any of our representative shall accordingly notify the guest/s of any such changes by sms and/or email.</p>
-                                                    <p >Vinifera Management would be happy to meet the guest/s for any improvement points. Management considers all its guest/s as family members and is sure and have confidence that guest/s shall approach the management for any suggestions/improvements.</p>
+                                                    <p>All or any information given in these Terms and Conditions is based on the information available at the time of publication. Vinifera Tours and Travels reserves the right to change any information before or after booking the tour due to circumstances/events beyond our control. In case of knowledge of any change, in advance, we or any of our representative shall accordingly notify the guest/s of any such changes by sms and/or email.</p>
+                                                    <p >Tours and Travels Management would be happy to meet the guest/s for any improvement points. Management considers all its guest/s as family members and is sure and have confidence that guest/s shall approach the management for any suggestions/improvements.</p>
                                                     <p className="mb-4">I, _____________________ have read the above rules and regulations Serial No 1 to 20 and abide by it and accept the Terms and Conditions with unconditional consent, without modification of the terms, conditions and notices contained herein.</p>
 
                                                     <p className="mb-4 font-semibold text-gray-600">Signature in acceptance:</p>

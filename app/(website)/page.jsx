@@ -51,6 +51,8 @@ export default function Home() {
     fetchInstagramFeed();
   }, []);
 
+  console.log("Feed::::::::", feed)
+
   return (
     <div className="flex flex-col w-full gap-0">
       <Landing allPackages={allPackages} />

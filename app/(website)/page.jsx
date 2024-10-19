@@ -187,32 +187,18 @@ export default function Home() {
         <SuperDeal allPackages={allPackages} />
         <HomePackages allPackages={allPackages} />
 
-        <div className="flex flex-col gap-8 justify-center items-center mb-16">
-          <div className="text-2xl lg:text-3xl text-gray-600 font-bold border-b-4 border-themeColor">
-            Instagram Post
-          </div>
-          <InstagramReels instaFeed={feed}/>
-
-          {/* <div className="grid grid-cols-4 gap-4">
-            {feed?.data?.slice(0, 4).map((post, index) => (
-              <div key={post.id || index}>
-                {post.media_url ? (
-                  <Image
-                    src={post.media_url}
-                    alt={`Instagram post by ${post.username}`}
-                    width={400}
-                    height={300}
-                    className="object-cover rounded-lg"
-                  />
-                ) : (
-                  <div className="w-400 h-300 bg-gray-200 flex justify-center items-center rounded-lg">
-                    <span className="text-gray-500">No image available</span>
-                  </div>
-                )}
+        {
+          feed && feed.data
+            ? <div className="flex flex-col gap-8 justify-center items-center mb-16">
+              <div className="text-2xl lg:text-3xl text-gray-600 font-bold border-b-4 border-themeColor">
+                Instagram Post
               </div>
-            ))}
-          </div> */}
-        </div>
+              <InstagramReels instaFeed={feed} />
+            </div>
+            : ""
+        }
+
+
       </div>
     </div>
   );

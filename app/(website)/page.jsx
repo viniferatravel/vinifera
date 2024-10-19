@@ -99,12 +99,12 @@ export default function Home() {
           </div>
         )}
 
-        <div className="flex flex-col gap-8 justify-center items-center mb-16">
+        {/* <div className="flex flex-col gap-8 justify-center items-center mb-16 overflow-hidden">
           <div className="text-2xl lg:text-3xl text-gray-600 font-bold border-b-4 border-themeColor">
             Instagram Post
           </div>
-          <div className="elfsight-app-e1bdc987-773e-4bcd-b599-634c90d40cd5 flex flex-col items-center justify-center" data-elfsight-app-lazy></div>
-        </div>
+          <div className="elfsight-app-e1bdc987-773e-4bcd-b599-634c90d40cd5  overflow-hidden w-[80%] mx-auto" data-elfsight-app-lazy></div>
+        </div> */}
 
 
       </div>

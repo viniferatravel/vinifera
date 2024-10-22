@@ -252,6 +252,7 @@ export const supportLinks = [
   { href: "/contact", label: "Contact Us" },
   { href: "/feedback", label: "Feedback" },
   { href: "/faq", label: "FAQ" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export const resourcesLinks = [

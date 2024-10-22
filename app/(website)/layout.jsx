@@ -9,9 +9,6 @@ export const metadata = {
   title: "Vinifera",
   description: "Vinifera",
   icons: "/Vinifera.svg",
-  other: {
-    "facebook-domain-verification": "0cr9z5v0grizm39hs7fftxf0qvw66i"
-  },
 };
 
 export default function RootLayout({ children }) {

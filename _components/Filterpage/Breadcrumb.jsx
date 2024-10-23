@@ -691,7 +691,7 @@ const Breadcrumb = ({ slug, category }) => {
                 Don’t miss out on the famous ${stateInfo.festival} festival, which brings
                 the state’s culture to life. Whether it’s history, nature, or culture,
                 ${selectedState} offers something for everyone.
-                Explore it all with Vinifera&apos;s ${selectedState} holiday packages.`
+                Explore it all with Vinifera's ${selectedState} holiday packages.`
         );
     };
 

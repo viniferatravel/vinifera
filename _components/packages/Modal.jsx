@@ -260,7 +260,7 @@ const PassportTourEnquiry = ({ onSubmitSuccess }) => {
         service: "",
         queries: "",
     });
-    console.log(formData, "formData");
+    // console.log(formData, "formData");
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -282,7 +282,7 @@ const PassportTourEnquiry = ({ onSubmitSuccess }) => {
                 services: formData.service,
                 query: formData.queries || null,
             });
-            console.log(response.data, "check respobse");
+            // console.log(response.data, "check respobse");
             if (response.data.status === 200) {
                 Swal.fire({
                     title: "Response sent successfully",

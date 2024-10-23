@@ -9,13 +9,13 @@ const CorporatePackages = () => {
   const router = useRouter();
 
   const [links, setlinks] = useState([]);
-  console.log(links, "links");
+  // console.log(links, "links");
 
   const [international, setinternational] = useState([]);
-  console.log(international, "international");
+  // console.log(international, "international");
 
   const [noninternational, setnoninternational] = useState([]);
-  console.log(noninternational, "noninternational");
+  // console.log(noninternational, "noninternational");
 
   useEffect(() => {
     if (links) {
@@ -43,7 +43,7 @@ const CorporatePackages = () => {
   }, []);
 
   const mergedata = [...international, ...noninternational]
-  console.log(mergedata, "mergedata");
+  // console.log(mergedata, "mergedata");
 
   const handleclick = (id) => {
     router.push(`/filterpage/${id}`)

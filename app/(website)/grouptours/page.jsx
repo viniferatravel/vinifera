@@ -8,13 +8,13 @@ import Image from "next/image";
 const Page = () => {
 
   const [fetchgroup, setfetchgroup] = useState([]);
-  console.log(fetchgroup, "fetchgroup");
+  // console.log(fetchgroup, "fetchgroup");
 
   const [international, setinternational] = useState([]);
-  console.log(international, "international");
+  // console.log(international, "international");
 
   const [noninternational, setnoninternational] = useState([]);
-  console.log(noninternational, "noninternational");
+  // console.log(noninternational, "noninternational");
 
   useEffect(() => {
     async function getData() {

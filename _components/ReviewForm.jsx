@@ -45,14 +45,14 @@ const ReviewForm = () => {
                 console.error('Fetch failed:', data.error);
             }
         } catch (error) {
-            console.log("Err: ", error)
+            // console.log("Err: ", error)
         }
 
     };
 
     const handleUpload = async (files, folder) => {
 
-        console.log("File and folder: ", files, folder)
+        // console.log("File and folder: ", files, folder)
         const formData = new FormData();
         files.forEach((file) => {
             formData.append('files', file);
@@ -65,7 +65,7 @@ const ReviewForm = () => {
         });
 
         const data = await response.json();
-        console.log("Date:::::::>0,", data)
+        // console.log("Date:::::::>0,", data)
         if (data.success) {
             fetchImagesFromFolder(folder)
             setFiles([])
@@ -124,7 +124,7 @@ const ReviewForm = () => {
             await handleUpload(files, folderName);
 
             const uploadedImages = await fetchImagesFromFolder(folderName)
-            console.log("uploadedImages:::>", uploadedImages)
+            // console.log("uploadedImages:::>", uploadedImages)
 
             const payload = {
                 review_id: rf_id,

@@ -29,7 +29,7 @@ export async function POST(request) {
     try {
       const findpdf = await Package.findOne({ _id });
 
-      console.log("FindPDF::::::>", findpdf)
+      // console.log("FindPDF::::::>", findpdf)
 
       if (!findpdf) {
         return NextResponse.json({ status: 404, message: "Data not found" });
@@ -52,13 +52,13 @@ export async function POST(request) {
         email: email,
         package_name: findpdf
       })
-      console.log(newEmail, "newEmail");
+      // console.log(newEmail, "newEmail");
       await newEmail.save();
 
       return NextResponse.json({ success: true, message: 'Email sent successfully' }, { status: 200 });
 
     } catch (error) {
-      console.log("Errrrror::::::>", error)
+      // console.log("Errrrror::::::>", error)
       return NextResponse.json({ success: true, message: 'Error sending email' }, { status: 500 });
     }
   }
@@ -110,7 +110,7 @@ export async function POST(request) {
         updatesAgreed,
       });
 
-      console.log(newEnquiry, "newEnquiry");
+      // console.log(newEnquiry, "newEnquiry");
       await newEnquiry.save();
 
       return NextResponse.json({ status: 200, message: "Email sent and enquiry saved successfully" });
@@ -162,7 +162,7 @@ export async function POST(request) {
         services: services,
         query: query,
       })
-      console.log(newEnquiry, "newEnquiry");
+      // console.log(newEnquiry, "newEnquiry");
       await newEnquiry.save();
 
       return NextResponse.json({ status: 200, message: "Response sent successfully" })
@@ -175,7 +175,7 @@ export async function POST(request) {
   } else if (payload.operation === "corporateenquiry") {
 
     try {
-      console.log("Payload:::::::>", payload)
+      // console.log("Payload:::::::>", payload)
 
       const { name,
         email,
@@ -330,7 +330,7 @@ export async function POST(request) {
         date: date,
         queries: queries,
       })
-      console.log(newEnquiry, "newEnquiry");
+      // console.log(newEnquiry, "newEnquiry");
       await newEnquiry.save();
 
       return NextResponse.json({ status: 200, message: "Response sent successfully" })
@@ -385,7 +385,7 @@ export async function POST(request) {
         feedback: feedback,
         feedropdown: feedropdown,
       })
-      console.log(newFeedback, "newFeedback");
+      // console.log(newFeedback, "newFeedback");
       await newFeedback.save();
 
       return NextResponse.json({ status: 200, message: "feedback sent successfully" })
@@ -400,7 +400,7 @@ export async function POST(request) {
 
       const { name, email, phone, services, query } = payload;
 
-      console.log("Payload:::::>", payload, phone)
+      // console.log("Payload:::::>", payload, phone)
 
       // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       // if (!emailRegex.test(email)) {
@@ -414,7 +414,7 @@ export async function POST(request) {
 
       const sanitizedNumber = String(phone).trim().replace(/\D/g, '');
 
-      console.log(`Sanitized number: '${sanitizedNumber}'`);
+      // console.log(`Sanitized number: '${sanitizedNumber}'`);
 
       if (sanitizedNumber.length !== 10) {
         return NextResponse.json({
@@ -478,7 +478,7 @@ export async function POST(request) {
         services: services,
         query: query,
       })
-      console.log(newEnquiry, "newEnquiry");
+      // console.log(newEnquiry, "newEnquiry");
       await newEnquiry.save();
 
       return NextResponse.json({ status: 200, message: "Response sent successfully" })

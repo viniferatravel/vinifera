@@ -44,7 +44,7 @@ const FooterTabs = () => {
     if (id) {
       router.push(`/packages/${id}`)
     } else {
-      console.error("No package ID provided");
+      // console.error("No package ID provided");
     }
   }
 

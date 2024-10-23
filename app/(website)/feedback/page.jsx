@@ -10,13 +10,13 @@ import axios from 'axios';
 const Feedback = () => {
 
   const [phone, setPhone] = useState('');
-  console.log(phone, "phone");
+  // console.log(phone, "phone");
 
   const [feedbackdata, setfeedbackdata] = useState({ name: "", email: "", feedback: "" });
-  console.log(feedbackdata, "feedbackdata");
+  // console.log(feedbackdata, "feedbackdata");
 
   const [selectfeedback, setselectfeedback] = useState('');
-  console.log(selectfeedback, "selectfeedback");
+  // console.log(selectfeedback, "selectfeedback");
 
   const handleinput = (e) => {
     const { name, value } = e.target;
@@ -39,7 +39,7 @@ const Feedback = () => {
       feedback: feedbackdata.feedback,
       feedropdown: selectfeedback,
     })
-    console.log(response.data, "check response");
+    // console.log(response.data, "check response");
     if (response.data.status === 200) {
       alert(response.data.message);
       setfeedbackdata({ name: "", email: "", feedback: "" });

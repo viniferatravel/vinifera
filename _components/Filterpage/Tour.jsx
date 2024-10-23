@@ -139,7 +139,7 @@ const Tour = ({ slug }) => {
           setoriginaldata(result.result?.filter((item) => item.sub_category.includes("WINTER")));
         }
 
-        console.log("slug:::>", slug)
+        // console.log("slug:::>", slug)
 
         if (slug === "havenly sky") {
           const response = await fetch("/api/fetchcategory", {
@@ -224,7 +224,7 @@ const Tour = ({ slug }) => {
           setoriginaldata(result.result?.filter((item) => item.sub_category.includes("EID")));
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }

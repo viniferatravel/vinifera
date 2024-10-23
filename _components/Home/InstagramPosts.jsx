@@ -159,7 +159,7 @@ import IMAGES from "@/public/image";
 import Image from "next/image";
 
 export default function InstagramReels({ instaFeed }) {
-  console.log("instaFeed:::::::>", instaFeed)
+  // console.log("instaFeed:::::::>", instaFeed)
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 

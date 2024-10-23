@@ -31,7 +31,7 @@ export default function Home() {
         const result = await response.json();
         setAllPackages(result.result);
       } catch (error) {
-        console.error("Error fetching packages:", error);
+        // console.error("Error fetching packages:", error);
       } finally {
         setLoading(false);
       }
@@ -65,7 +65,7 @@ export default function Home() {
     };
   }, []);
 
-  console.log("Feed::::::::", feed);
+  // console.log("Feed::::::::", feed);
 
   return (
     <div className="flex flex-col w-full gap-0">

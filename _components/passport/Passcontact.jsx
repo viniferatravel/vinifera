@@ -10,13 +10,13 @@ import Swal from 'sweetalert2';
 const Passcontact = () => {
 
     const [phone, setPhone] = useState('');
-    console.log(phone, "phone");
+    // console.log(phone, "phone");
 
     const [passportenquiry, setpassportenquiry] = useState({ name: "", email: "", textarea: "" });
-    console.log(passportenquiry, "passportenquiry");
+    // console.log(passportenquiry, "passportenquiry");
 
     const [selectedServices, setSelectedServices] = useState([]);
-    console.log(selectedServices, "selectedServices");
+    // console.log(selectedServices, "selectedServices");
 
     // Toggle function to handle selection
     const toggleService = (service) => {

@@ -144,7 +144,7 @@ const Placemodal = () => {
       const response = await axios.post("/api/fetchcategory", {
         operation: "fetchallpackage",
       });
-      console.log(response.data.fetchalldata, "check response");
+      // console.log(response.data.fetchalldata, "check response");
       setfetchalldata(response.data.fetchalldata);
     }
     getdata();
@@ -153,10 +153,10 @@ const Placemodal = () => {
   useEffect(() => {
     if (fetchalldata) {
       const internationaldata = fetchalldata.filter(link => link.sub_category.includes("INTERNATIONAL"));
-      console.log(internationaldata, "internationaldata checl");
+      // console.log(internationaldata, "internationaldata checl");
 
       const noninternationaldata = fetchalldata.filter(link => !link.sub_category.includes("INTERNATIONAL"));
-      console.log(noninternationaldata, "noninternationaldata check");
+      // console.log(noninternationaldata, "noninternationaldata check");
 
       const uniqueNonInternationalData = noninternationaldata.filter(
         (item, index, self) =>
@@ -460,7 +460,7 @@ const Sitefilter = ({ onSelectedDuration, onselectedprice, onSetshowstate }) => 
       const response = await axios.post("/api/fetchcategory", {
         operation: "fetchallpackage",
       });
-      console.log(response.data.fetchalldata, "check response");
+      // console.log(response.data.fetchalldata, "check response");
       setfetchalldata(response.data.fetchalldata);
     }
     getdata();
@@ -469,10 +469,10 @@ const Sitefilter = ({ onSelectedDuration, onselectedprice, onSetshowstate }) => 
   useEffect(() => {
     if (fetchalldata) {
       const internationaldata = fetchalldata.filter(link => link.sub_category.includes("INTERNATIONAL"));
-      console.log(internationaldata, "internationaldata checl");
+      // console.log(internationaldata, "internationaldata checl");
 
       const noninternationaldata = fetchalldata.filter(link => !link.sub_category.includes("INTERNATIONAL"));
-      console.log(noninternationaldata, "noninternationaldata check");
+      // console.log(noninternationaldata, "noninternationaldata check");
 
       const uniqueNonInternationalData = noninternationaldata.filter(
         (item, index, self) =>

@@ -121,7 +121,7 @@ const Passport = () => {
         }
     })
 
-    console.log("luxuryData:::::>", luxurydata)
+    // console.log("luxuryData:::::>", luxurydata)
 
     const luxurydataa = [
         {

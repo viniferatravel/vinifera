@@ -173,7 +173,7 @@ const SiteFooter = () => {
       email: email,
       number: phoneNumber
     })
-    console.log(response.data, "check respobse");
+    // console.log(response.data, "check respobse");
     if (response.data.status === 200) {
       // alert(response.data.message);
       setFullName("");

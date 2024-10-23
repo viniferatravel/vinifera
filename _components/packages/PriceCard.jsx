@@ -92,7 +92,7 @@ const PriceCard = ({ selectedPackage }) => {
       document.body.removeChild(a);
       URL.revokeObjectURL(objectURL);
     } catch (error) {
-      console.error('Error downloading file:', error);
+      // console.error('Error downloading file:', error);
     }
   }
 

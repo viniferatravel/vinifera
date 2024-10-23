@@ -5,7 +5,7 @@ export async function middleware(request) {
 
   const { pathname, cookies } = request;
 
-  // // console.log("Cookies::::::>", cookies)
+  // console.log("Cookies::::::>", cookies)
 
   if (request.nextUrl.pathname.startsWith('/admin/')) {
 
@@ -46,7 +46,7 @@ export async function middleware(request) {
       secret: '42dfd79ba11db84510c34d938d32987171bb48a4e8b1c533928286a8f497fda6',
     });
 
-    // // console.log("Decode 2:::::::>", decoded)
+    // console.log("Decode 2:::::::>", decoded)
 
     if (!authToken) {
       return NextResponse.next();

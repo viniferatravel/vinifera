@@ -75,12 +75,12 @@ export async function POST(request) {
       //   return NextResponse.json({ status: 401, message: 'Invalid email address' });
       // }
 
-      if (!/^\d{10}$/.test(number)) {
-        return NextResponse.json({
-          status: 402,
-          message: "Number must be exactly 10 digits and contain only numeric values"
-        });
-      }
+      // if (!/^\d{10}$/.test(number)) {
+      //   return NextResponse.json({
+      //     status: 402,
+      //     message: "Number must be exactly 10 digits and contain only numeric values"
+      //   });
+      // }
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -206,12 +206,12 @@ export async function POST(request) {
         });
       }
 
-      if (!/^\d{10}$/.test(sanitizedNumber)) {
-        return NextResponse.json({
-          status: 402,
-          message: "Number must contain only numeric values, with no letters or special characters."
-        });
-      }
+      // if (!/^\d{10}$/.test(sanitizedNumber)) {
+      //   return NextResponse.json({
+      //     status: 402,
+      //     message: "Number must contain only numeric values, with no letters or special characters."
+      //   });
+      // }
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -357,12 +357,12 @@ export async function POST(request) {
       //   return NextResponse.json({ status: 401, message: "Email is already present" });
       // }
 
-      if (!/^\d{12}$/.test(number)) {
-        return NextResponse.json({
-          status: 402,
-          message: "Number must be exactly 10 digits and contain only numeric values"
-        });
-      }
+      // if (!/^\d{12}$/.test(number)) {
+      //   return NextResponse.json({
+      //     status: 402,
+      //     message: "Number must be exactly 10 digits and contain only numeric values"
+      //   });
+      // }
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -423,12 +423,12 @@ export async function POST(request) {
         });
       }
 
-      if (!/^\d{10}$/.test(sanitizedNumber)) {
-        return NextResponse.json({
-          status: 402,
-          message: "Number must contain only numeric values, with no letters or special characters."
-        });
-      }
+      // if (!/^\d{10}$/.test(sanitizedNumber)) {
+      //   return NextResponse.json({
+      //     status: 402,
+      //     message: "Number must contain only numeric values, with no letters or special characters."
+      //   });
+      // }
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,

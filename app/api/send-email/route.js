@@ -134,12 +134,12 @@ export async function POST(request) {
       //   return NextResponse.json({ status: 401, message: "Email is already present" });
       // }
 
-      if (!/^\d{12}$/.test(number)) {
-        return NextResponse.json({
-          status: 402,
-          message: "Number must be exactly 10 digits and contain only numeric values"
-        });
-      }
+      // if (!/^\d{12}$/.test(number)) {
+      //   return NextResponse.json({
+      //     status: 402,
+      //     message: "Number must be exactly 10 digits and contain only numeric values"
+      //   });
+      // }
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -316,8 +316,8 @@ export async function POST(request) {
           7777777777</p>
         `,
       });
-      
-      
+
+
 
       const newEnquiry = new CorporateEnquiry({
         name: name,
@@ -463,8 +463,7 @@ export async function POST(request) {
           <p>We will review your request and get back to you shortly with the information you need. If you have any immediate questions, feel free to reply to this email or contact us at 7777777777.</p>
           <p>Thank you for choosing our services!</p>
           <p>Best regards,<br>
-          Sameer Shaikh<br>
-          Tech Lead<br>
+          Vinifera Team<br>
           Vinifera Tours and Travels<br>
           777777777<br>
           https://www.viniferaa.com/</p>

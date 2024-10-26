@@ -197,14 +197,14 @@ export async function POST(request) {
       //   return NextResponse.json({ status: 401, message: "Email is already present" });
       // }
 
-      const sanitizedNumber = String(phone).trim().replace(/\D/g, '');
+      // const sanitizedNumber = String(phone).trim().replace(/\D/g, '');
 
-      if (sanitizedNumber.length !== 10) {
-        return NextResponse.json({
-          status: 402,
-          message: "Number must be exactly 10 digits long."
-        });
-      }
+      // if (sanitizedNumber.length !== 10) {
+      //   return NextResponse.json({
+      //     status: 402,
+      //     message: "Number must be exactly 10 digits long."
+      //   });
+      // }
 
       // if (!/^\d{10}$/.test(sanitizedNumber)) {
       //   return NextResponse.json({
@@ -412,16 +412,16 @@ export async function POST(request) {
       //   return NextResponse.json({ status: 401, message: "Email is already present" });
       // }
 
-      const sanitizedNumber = String(phone).trim().replace(/\D/g, '');
+      // const sanitizedNumber = String(phone).trim().replace(/\D/g, '');
 
-      // console.log(`Sanitized number: '${sanitizedNumber}'`);
+      // // console.log(`Sanitized number: '${sanitizedNumber}'`);
 
-      if (sanitizedNumber.length !== 10) {
-        return NextResponse.json({
-          status: 402,
-          message: "Number must be exactly 10 digits long."
-        });
-      }
+      // if (sanitizedNumber.length !== 10) {
+      //   return NextResponse.json({
+      //     status: 402,
+      //     message: "Number must be exactly 10 digits long."
+      //   });
+      // }
 
       // if (!/^\d{10}$/.test(sanitizedNumber)) {
       //   return NextResponse.json({

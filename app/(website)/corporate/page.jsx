@@ -139,7 +139,7 @@ const Corporate = () => {
     {
       id: "3",
       image: "/image/ayodhya.jpg",
-      destiny: "ayodhya",
+      destiny: "uttar pradesh",
       luxurydatadescription: (
         <>
           <div className=''>

@@ -57,7 +57,7 @@ const Accordian = () => {
 
                             <AccordionItem key="5" aria-label="Accordion 5" title="5. What is your cancellation policy?">
                                 <div className="w-full bg-[#f1f1f1] p-4 text-sm leading-relaxed">
-                                Our cancellation policy allows for cancellations up to [insert number of days] days before departure for a full refund. Please refer to our detailed terms and conditions for specific guidelines regarding cancellations and refunds.
+                                Our cancellation policy allows for cancellations up to 15 days before departure for a full refund. Please refer to our detailed terms and conditions for specific guidelines regarding cancellations and refunds.
                                 </div>
                             </AccordionItem>
 
@@ -78,7 +78,7 @@ const Accordian = () => {
                                 <ul className="list-disc list-inside">
                                         <li>Phone: 1800 000 000</li>
                                         <li>Email: travels@viniferaa.com</li>
-                                        <li>Live chat on our website during business hours We’re available [insert hours of operation] to assist you with any queries.</li>
+                                        <li>Live chat on our website during business hours We’re available 24/7 to assist you with any queries.</li>
                                        
                                     </ul>
                                 </div>

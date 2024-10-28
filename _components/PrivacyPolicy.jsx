@@ -112,7 +112,7 @@ const PrivacyPolicy = () => {
             <section className="mb-8">
                 <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">Disclaimer Of Warranties And Liability</h2>
                 <p className="text-base lg:text-lg text-justify mb-4">
-                    The contents of the Site are provided on an "as is" basis without warranties of any kind. Vinifera cannot be held responsible or liable –
+                    The contents of the Site are provided on an &quot;as is &quot; basis without warranties of any kind. Vinifera cannot be held responsible or liable –
                 </p>
                 <div className='flex flex-col justify-start gap-4'>
                     <div className="text-base lg:text-lg flex justify-start gap-2">
@@ -135,7 +135,7 @@ const PrivacyPolicy = () => {
                     Please note that third parties advertise on our Site. We do not share any of your personal Information with these third party advertisers unless you give us permission, in writing to do so. These advertisers may seek to use cookies and pixel tags to track Session Data about the ads you have seen and types of things in which you appear interested. These advertisers may also use combined information about your visits to our Site and other sites in order to provide advertisements about related goods and services that may be of interest to you.
                 </p>
                 <p className="text-base lg:text-lg text-justify">
-                    When you click on one of these advertisers' links, you are leaving our Site and entering another site. We are not responsible for such third party's sites. You should carefully review the privacy statements of any other site you visit, because those privacy statements will apply to your visit to that site, and may be very different from our policy.
+                    When you click on one of these advertisers links, you are leaving our Site and entering another site. We are not responsible for such third party&apos;s sites. You should carefully review the privacy statements of any other site you visit, because those privacy statements will apply to your visit to that site, and may be very different from our policy.
                 </p>
             </section>
 
@@ -149,7 +149,7 @@ const PrivacyPolicy = () => {
             <section className="mb-8">
                 <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-600">Indemnification</h2>
                 <p className="text-base lg:text-lg text-justify mb-4">
-                    You agree to indemnify, defend, and hold harmless Vinifera, its officers, directors, employees, agents, licensors, and service providers from and against any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses (including but not limited to attorney's fees) arising from:
+                    You agree to indemnify, defend, and hold harmless Vinifera, its officers, directors, employees, agents, licensors, and service providers from and against any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses (including but not limited to attorney&apos;s fees) arising from:
                 </p>
                 <ul className="list-disc list-inside mb-4">
                     <li className="text-base lg:text-lg">Your use of and access to the Site;</li>
@@ -189,7 +189,7 @@ const PrivacyPolicy = () => {
                     You have the right to request the deletion of your personal information that we hold. If you would like us to delete your data, please follow these steps:
                 </p>
                 <p className="text-base lg:text-lg text-justify pl-4 mb-4">
-                    i. Send an email to <a href="mailto:info@viniferaa.com" className="text-blue-500">vinifera.travel@gmail.com</a> with the subject "Data Deletion Request."
+                    i. Send an email to <a href="mailto:info@viniferaa.com" className="text-blue-500">vinifera.travel@gmail.com</a> with the subject {"Data Deletion Request."}
                 </p>
                 <p className="text-base lg:text-lg text-justify pl-4 mb-4">
                     ii. Include your full name, email address, and any relevant information regarding the data you wish to have deleted.

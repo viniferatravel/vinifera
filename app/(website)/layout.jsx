@@ -7,7 +7,7 @@ import ClientLayout from "@/_components/Home/ClientLayout";
 
 export const metadata = {
   title: "Vinifera",
-  description: "Vinifera",
+  description: "Vinifera Tours and Travels",
   icons: "/Vinifera.svg",
   other: {
     "facebook-domain-verification": "0cr9z5v0grizm39hs7fftxf0qvw66i"

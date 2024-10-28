@@ -175,11 +175,11 @@ export async function POST(request) {
   } else if (payload.operation === "corporateenquiry") {
 
     try {
-      // console.log("Payload:::::::>", payload)
+      console.log("Payload:::::::>", payload)
 
       const { name,
         email,
-        phone,
+        number,
         companyname,
         noofdays,
         destination,
@@ -230,7 +230,7 @@ export async function POST(request) {
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone No.:</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${phone.toString()}</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">${number.toString()}</td>
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;"><strong>Company Name:</strong></td>
@@ -282,7 +282,7 @@ export async function POST(request) {
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone No.:</strong></td>
-              <td style="padding: 8px; border: 1px solid #ddd;">${phone.toString()}</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">${number.toString()}</td>
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;"><strong>Company Name:</strong></td>
@@ -322,7 +322,7 @@ export async function POST(request) {
       const newEnquiry = new CorporateEnquiry({
         name: name,
         email: email,
-        phone: phone,
+        phone: number,
         companyname: companyname,
         noofdays: noofdays,
         destination: destination,

@@ -243,7 +243,7 @@ export const discoverLinks = [
 
 export const quickLinks=[
   { href: "/corporate", label: "Corporate" },
-  { href: "/csr-policy", label: "Passport" },
+  { href: "/passport", label: "Passport" },
   { href: "/tickets", label: "Tickets" },
 ]
 

@@ -368,7 +368,7 @@ const SiteFooter = () => {
             Please do not trust or interact with any promotional emails, SMS, or
             web links asking you to click and provide your personal details. All
             authorized communications from Vinifera are sent only from domains
-            @vinifera.com or @vinifera.in, or via SMS from VINFRA or 741324.
+            @vinifera.com or @vinifera.in, or via SMS from VINIFERA or 741324.
             Vinifera assumes no liability or responsibility for any fraudulent
             or misleading communication that is not sent from our registered
             domains.

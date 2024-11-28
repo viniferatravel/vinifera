@@ -3,6 +3,7 @@ import React from "react";
 import IMAGES from "@/public/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react"
 
 const cardVariants = {
   fromLeft: {
@@ -14,7 +15,7 @@ const cardVariants = {
     },
   },
 
- 
+
 };
 
 const sectionVariants = {
@@ -47,10 +48,10 @@ const HomePackages = ({ allPackages }) => {
 
       <div className="flex flex-col lg:flex-row gap-5 h-full lg:h-[500px] w-full ">
         <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={cardVariants.fromLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={cardVariants.fromLeft}
 
           className="relative border flex-1  rounded-xl overflow-hidden cursor-pointer"
           onClick={() => router.push(`filterpage/WEST`)}
@@ -73,17 +74,25 @@ const HomePackages = ({ allPackages }) => {
                 packages
               </span>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
               <span className="text-xl text-white font-semibold">Colors of West</span>
+
+              <div className="block">
+                <div className="bg-gray-200 text-themeColor rounded-full size-4 p-4 flex justify-center items-center shadow-lg">
+                  <button onClick={() => router.push(`filterpage/WEST`)}>
+                    <ArrowRight strokeWidth={3} size={20}/>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
         <div className="flex-1 flex flex-col gap-5">
           <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={cardVariants.fromLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={cardVariants.fromLeft}
             className="relative flex-1 border rounded-xl overflow-hidden cursor-pointer"
             onClick={() => router.push(`filterpage/NORTH`)}
           >
@@ -105,16 +114,24 @@ const HomePackages = ({ allPackages }) => {
                   packages
                 </span>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center justify-between">
                 <span className="text-xl text-white font-semibold ">Peace of North</span>
+
+                <div className="block">
+                <div className="bg-gray-200 text-themeColor rounded-full size-4 p-4 flex justify-center items-center shadow-lg">
+                  <button onClick={() => router.push(`/filterpage/NORTH`)}>
+                    <ArrowRight strokeWidth={3} size={20}/>
+                  </button>
+                </div>
+              </div>
               </div>
             </div>
           </motion.div>
           <motion.div
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true }}
-           variants={cardVariants.fromLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={cardVariants.fromLeft}
             className="relative flex-1 border rounded-xl overflow-hidden cursor-pointer"
             onClick={() => router.push(`filterpage/SOUTH`)}
           >
@@ -136,17 +153,25 @@ const HomePackages = ({ allPackages }) => {
                   packages
                 </span>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center justify-between">
                 <span className="text-xl text-white font-semibold">Beauty of South</span>
+
+                <div className="block">
+                <div className="bg-gray-200 text-themeColor rounded-full size-4 p-4 flex justify-center items-center shadow-lg">
+                  <button onClick={() => router.push(`/filterpage/SOUTH`)}>
+                    <ArrowRight strokeWidth={3} size={20}/>
+                  </button>
+                </div>
+              </div>
               </div>
             </div>
           </motion.div>
         </div>
         <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={cardVariants.fromLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={cardVariants.fromLeft}
 
           className="relative border flex-1 rounded-xl overflow-hidden cursor-pointer"
           onClick={() => router.push(`filterpage/EAST`)}
@@ -169,8 +194,16 @@ const HomePackages = ({ allPackages }) => {
                 packages
               </span>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
               <span className="text-xl text-white font-semibold">Nature of East</span>
+
+              <div className="block">
+                <div className="bg-gray-200 text-themeColor rounded-full size-4 p-4 flex justify-center items-center shadow-lg">
+                  <button onClick={() => router.push(`/filterpage/EAST`)}>
+                    <ArrowRight strokeWidth={3} size={20}/>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

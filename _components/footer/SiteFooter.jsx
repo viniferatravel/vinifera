@@ -217,13 +217,13 @@ const SiteFooter = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
           <div className="p-3 flex flex-col gap-3">
             <h4 className="font-semibold">Our Office</h4>
-            {/* <p className="text-gray-400">
-              1006, Juhi Niharika Mirage, Sector 10, Kharghar, 410210
-            </p> */}
-
             <p className="text-gray-400">
-              Flat No. A/202, Siddhivinayak Twins, Plot NO. 09, Sector 17, Kalamboli 410218, MAHARASHTRA, RAIGAD
+              1006, Juhi Niharika Mirage, Sector 10, Kharghar, 410210
             </p>
+
+{/*             <p className="text-gray-400">
+              Flat No. A/202, Siddhivinayak Twins, Plot NO. 09, Sector 17, Kalamboli 410218, MAHARASHTRA, RAIGAD
+            </p> */}
 
 
 

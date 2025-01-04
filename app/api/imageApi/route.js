@@ -131,7 +131,7 @@ export async function POST(req) {
             
             
             if (action === "placeUpload") {
-                // console.log("Places:::::::>", places)
+                console.log("Places:::::::>", places)
                 const uploadPromises = places.map(async (place, index) => {
                     const file = files[index];
                     const buffer = await file.arrayBuffer();

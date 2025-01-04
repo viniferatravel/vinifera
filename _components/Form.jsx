@@ -326,7 +326,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
     formData.append('subfolder', subfolder);
     formData.append('action', "placeUpload");
 
-    console.log("Dateeee:::::::>,", formData)
+    console.log("Dateeee:::::::>,", JSON.stringify(formData))
 
     const response = await fetch('/api/imageApi', {
       method: 'POST',

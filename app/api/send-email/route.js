@@ -66,22 +66,6 @@ export async function POST(request) {
     try {
       const { name, email, number, city, adults, date, query, termsAgreed, updatesAgreed } = payload;
 
-      // const validateEmail = (email) => {
-      //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      //   return emailRegex.test(email);
-      // };
-
-      // if (!validateEmail(email)) {
-      //   return NextResponse.json({ status: 401, message: 'Invalid email address' });
-      // }
-
-      // if (!/^\d{10}$/.test(number)) {
-      //   return NextResponse.json({
-      //     status: 402,
-      //     message: "Number must be exactly 10 digits and contain only numeric values"
-      //   });
-      // }
-
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,

@@ -308,7 +308,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
 
 
   const handlePlaceUpload = async (files, folder, subfolder) => {
-    // console.log("File and folder: ", files, folder, subfolder)
+    console.log("File and folder: ", files, folder, subfolder)
     const formData = new FormData();
     files.forEach((file) => {
       formData.append('files', file.file);
@@ -332,7 +332,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
     });
 
     const data = await response.json();
-    // console.log("Date:::::::>0,", data)
+    console.log("Date:::::::>,", data)
     if (data.success) {
       fetchImagesFromFolder(folder)
       setFiles([])

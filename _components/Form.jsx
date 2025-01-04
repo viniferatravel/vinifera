@@ -24,7 +24,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
   const [specialNotes, setSpecialNotes] = useState(action === "edit" ? selectedPack.special_notes : [""]);
   const [ourSpeciality, setOurSpeciality] = useState(action === "edit" ? selectedPack.our_speciality : [""]);
   const [roadTransport, setRoadTransport] = useState(action === "edit" ? selectedPack.road_transport : [""]);
-  
+
   const [importantNotes, setImportantNotes] = useState(action === "edit" ? selectedPack.important_notes : [""]);
   const [itinerary, setItinerary] = useState(action === "edit" ? [
     selectedPack.tour_itinerary
@@ -309,6 +309,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
 
   const handlePlaceUpload = async (files, folder, subfolder) => {
     console.log("File and folder: ", files, folder, subfolder)
+
     const formData = new FormData();
     files.forEach((file) => {
       formData.append('files', file.file);
@@ -325,8 +326,6 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
     formData.append('folder', folder);
     formData.append('subfolder', subfolder);
     formData.append('action', "placeUpload");
-
-    console.log("Dateeee:::::::>,", JSON.stringify(formData))
 
     const response = await fetch('/api/imageApi', {
       method: 'POST',
@@ -1368,7 +1367,7 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
 
         </div>
         <div className="p-4">
-          <PdfUpload onSetDownloadURL={handleSetDownloadURL} selectedPack={selectedPack}/>
+          <PdfUpload onSetDownloadURL={handleSetDownloadURL} selectedPack={selectedPack} />
         </div>
 
 

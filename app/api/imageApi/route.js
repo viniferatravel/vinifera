@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import cloudinary from "@/_lib/util/cloudinary";
 
+export const config = {
+    api: {
+      bodyParser: false,
+    },
+  };
+
 export async function GET(req) {
     try {
         const folder = req.nextUrl.searchParams.get('folder');

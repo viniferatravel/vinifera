@@ -6,6 +6,7 @@ import { Button, Autocomplete, AutocompleteItem } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import HotelTable from "@/_components/Admin/HotelTable";
 import PdfUpload from "@/_components/Admin/PdfUpload";
+import imageCompression from 'browser-image-compression';
 
 const BASE_URL = process.env.BASE_URL;
 
@@ -311,21 +312,58 @@ export default function TourPackageForm({ locationState, action, selectedPack, o
     console.log("File and folder: ", files, folder, subfolder)
 
     const formData = new FormData();
-    files.forEach((file) => {
-      formData.append('files', file.file);
-    });
+    // files.forEach((file) => {
+    //   formData.append('files', file.file);
+    // });
 
-    places.forEach((place) => {
-      if (place.file) {
-        formData.append('files', place.file);
+    // places.forEach((place) => {
+    //   if (place.file) {
+    //     formData.append('files', place.file);
+    //   }
+    //   const { file, ...placeWithoutFile } = place;
+    //   formData.append('places', JSON.stringify(placeWithoutFile));
+    // });
+
+    // formData.append('folder', folder);
+    // formData.append('subfolder', subfolder);
+    // formData.append('action', "placeUpload");
+
+    const compressionOptions = {
+      maxSizeMB: 1, // Maximum file size (e.g., 1 MB)
+      maxWidthOrHeight: 1024, // Maximum width or height in pixels
+      useWebWorker: true, // Use a web worker for better performance
+    };
+  
+    // Compress and append files
+    for (const file of files) {
+      try {
+        const compressedFile = await imageCompression(file.file, compressionOptions);
+        formData.append('files', compressedFile);
+      } catch (error) {
+        console.error('Error compressing file:', error);
       }
+    }
+  
+    // Compress and append places
+    for (const place of places) {
+      if (place.file) {
+        try {
+          const compressedFile = await imageCompression(place.file, compressionOptions);
+          formData.append('files', compressedFile);
+        } catch (error) {
+          console.error('Error compressing place file:', error);
+        }
+      }
+  
+      // Append the rest of the place object (without the file)
       const { file, ...placeWithoutFile } = place;
       formData.append('places', JSON.stringify(placeWithoutFile));
-    });
-
+    }
+  
+    // Append additional fields
     formData.append('folder', folder);
     formData.append('subfolder', subfolder);
-    formData.append('action', "placeUpload");
+    formData.append('action', 'placeUpload');
 
     const response = await fetch('/api/imageApi', {
       method: 'POST',

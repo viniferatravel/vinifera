@@ -5,9 +5,55 @@ import ContactForm from "@/_components/Contact"
 import "@/app/styles/modal.css"
 import axios from "axios";
 import Swal from 'sweetalert2';
+import { useAnimate, stagger, motion } from "framer-motion";
+import "./styles.css"
+
+
+const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
+
+
 
 
 const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
+
+    function useMenuAnimation(isOpen) {
+        const [scope, animate] = useAnimate();
+
+        useEffect(() => {
+            animate(".arrow", { rotate: isOpen ? 180 : 0 }, { duration: 0.2 });
+
+            animate(
+                "ul",
+                {
+                    clipPath: isOpen
+                        ? "inset(0% 0% 0% 0% round 10px)"
+                        : "inset(10% 50% 90% 50% round 10px)",
+                },
+                {
+                    type: "spring",
+                    bounce: 0,
+                    duration: 0.5,
+                }
+            );
+
+            animate(
+                "li",
+                isOpen
+                    ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+                    : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+                {
+                    duration: 0.2,
+                    delay: isOpen ? staggerMenuItems : 0,
+                }
+            );
+        }, [isOpen]);
+
+        return scope;
+    }
+
+    const [isOpenn, setIsOpenn] = useState(false);
+    const [selectedValue, setSelectedValue] = useState("Select Purpose");
+    const scope = useMenuAnimation(isOpenn);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -120,12 +166,28 @@ const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
         // });
     };
 
+    useEffect(() => {
+      if(selectedValue !== "Select Purpose") {
+        setIsOpenn(false)
+        setFormData((prevData) => ({
+            ...prevData,
+            purpose: selectedValue,
+        }));
+      }
+    }, [selectedValue])
+
+    useEffect(() => {
+        console.log("selectedValue:::::::>", formData)
+    }, [formData])
+    
+    
+
 
     return (
         // <div className="flex justify-center items-center min-h-screen bg-gray-100">
         <div className="flex flex-col md:flex-row">
             {/* Image Section */}
-            <div className="hidden md:block w-[35%] ">
+            <div className="hidden md:block md:w-[35%] ">
                 <img
                     src="/image/corporate.jpeg"
                     alt="Tour Destination"
@@ -134,7 +196,7 @@ const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
             </div>
 
             {/* Form Section */}
-            <div className="w-[65%] p-8">
+            <div className="w-[100%] md:w-[65%] p-8">
                 <h2 className="text-3xl font-bold mb-6 text-left">Corporate Tour Enquiry</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="flex flex-col lg:flex-row gap-4">
@@ -202,7 +264,7 @@ const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
                     </div>
 
                     <div className="flex flex-col lg:flex-row gap-4">
-                        <select
+                        {/* <select
                             className="px-3 py-2 border rounded-lg w-full"
                             defaultValue=""
                             required
@@ -216,8 +278,51 @@ const CorporateTourEnquiry = ({ onSubmitSuccess }) => {
                             <option>Conference</option>
                             <option>Exhibition</option>
                             <option>Educational tours</option>
-                        </select>
+                        </select> */}
 
+                        <nav className="menu w-full z-50 h-[3rem] justify-center items-center" ref={scope}>
+                            {/* <div
+                                style={{
+                                    position: "fixed",
+                                    bottom: -210,
+                                    left: 200,
+                                    width: 100,
+                                    height: 100,
+                                    background: "white",
+                                }}
+                            /> */}
+                            <motion.button
+                                className="flex justify-between w-full items-center p-3 border rounded-lg"
+                                type="button"
+                                whileTap={{ scale: 0.97 }}
+                                onClick={() => setIsOpenn(!isOpenn)}
+                            >
+                                {selectedValue}
+                                <div className="arrow" style={{ transformOrigin: "50% 55%" }}>
+                                    <svg width="15" height="15" viewBox="0 0 20 20">
+                                        <path d="M0 7 L 20 7 L 10 16" />
+                                    </svg>
+                                </div>
+                            </motion.button>
+                            <ul
+                                className="bg-slate-50 h-[11rem] custom-scrollbar cursor-pointer menuul"
+                                style={{
+                                    pointerEvents: isOpenn ? "auto" : "none",
+                                    clipPath: "inset(10% 50% 90% 50% round 10px)",
+                                }}
+                                defaultValue=""
+                                required
+                                name="purpose"
+                                value={formData.purpose}
+                                onChange={handleChange}
+                            >
+                                <li className="menuli" onClick={ (e) => setSelectedValue("Meetings")}>Meetings</li>
+                                <li className="menuli" onClick={ (e) => setSelectedValue("Incentive tours")}>Incentive tours</li>
+                                <li className="menuli" onClick={ (e) => setSelectedValue("Conference")}>Conference</li>
+                                <li className="menuli" onClick={ (e) => setSelectedValue("Exhibition")}>Exhibition</li>
+                                <li className="menuli" onClick={ (e) => setSelectedValue("Educational tours")}>Educational tours</li>
+                            </ul>{" "}
+                        </nav>
 
                         <input
                             type="date"

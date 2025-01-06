@@ -73,7 +73,7 @@
 
 //   return (
 //     <div className="flex flex-col gap-8 justify-center items-center">
-      
+
 //       <h2 className="text-2xl lg:text-3xl font-bold border-b-4 border-themeColor">Popular Packages</h2>
 //       <p className="text-base lg:text-lg lg:w-[80%] text-center">
 //         Explore amazing destinations, enjoy comfortable stays, and create
@@ -179,6 +179,7 @@ import { FaStar } from "react-icons/fa";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 
 const PopularCarousel = ({ popularPackages, isLoading }) => {
@@ -249,7 +250,7 @@ const SlideCards = ({ popularPackages, isLoading }) => {
     router.push(`/packages/${id}`);
   };
 
- 
+
   const SkeletonCard = () => (
     <div
       className="flex-none w-[calc(80%-15px)] lg:w-[calc(25%-15px)] h-96 flex items-center justify-center flex-col gap-5"
@@ -278,14 +279,14 @@ const SlideCards = ({ popularPackages, isLoading }) => {
           const prioritizedPackages = popularPackages?.filter((slide) =>
             ["Uttaranchal Chardham Yatra", "Tristhal Darshan With Ayodhya"].includes(slide.package_name)
           );
-  
+
           const remainingPackages = popularPackages?.filter(
             (slide) => !["Uttaranchal Chardham Yatra", "Tristhal Darshan With Ayodhya"].includes(slide.package_name)
           );
-  
+
           // Combine the prioritized packages with the remaining ones
           const packagesToDisplay = [...prioritizedPackages, ...remainingPackages];
-  
+
           return packagesToDisplay?.map((slide, index) => (
             <div
               key={index}
@@ -311,7 +312,7 @@ const SlideCards = ({ popularPackages, isLoading }) => {
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-gray-500">Starting from</span>
+                  <span className="text-sm text-gray-500 pr-4">Starting from</span>
                 </div>
                 <div className="flex justify-between items-start ">
                   <div className="flex-1">
@@ -323,14 +324,18 @@ const SlideCards = ({ popularPackages, isLoading }) => {
                       {slide.tour_itinerary.nights} Nights
                     </p>
                   </div>
-                  <div className="flex-1 flex justify-end ">
+                  <motion.div className="box flex-1 flex justify-end pr-4"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
                     <button
                       onClick={() => handleBookButton(slide.package_id)}
-                      className="bg-themeColor p-2 lg:py-2 lg:px-4 rounded-xl text-sm lg:text-base font-semibold text-white"
+                      className="bg-themeColor p-2 lg:py-2 lg:px-4 rounded-xl text-sm lg:text-base font-semibold text-white hover:bg-red-950 transition-colors duration-300"
                     >
                       ₹ {slide.price}
                     </button>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -339,8 +344,8 @@ const SlideCards = ({ popularPackages, isLoading }) => {
       )}
     </>
   );
-  
-  
+
+
 };
 
 export default PopularCarousel;
